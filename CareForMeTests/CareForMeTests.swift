@@ -11,14 +11,13 @@ import XCTest
 class CareForMeTests: XCTestCase {
 
     func testCategory_andAlert_dontRetain() {
-        let alertCategory = AlertCategory(id: UUID(), color: .red, type: "")
+        let alertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.red.rawValue, type: "")
         
-        let alert = CareAlert(id: UUID(),
+        let alert = CareAlertType(id: UUID(),
                               category: alertCategory,
                               title: "",
                               message: "",
-                              date: Date(),
-                              image: UIImage())
+                              image: UIImage().pngData() ?? Data())
         
         alertCategory.alerts = [alert]
         

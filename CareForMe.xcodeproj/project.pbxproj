@@ -25,7 +25,7 @@
 		AAE262C62679530600ABC882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE262C42679530600ABC882 /* LaunchScreen.storyboard */; };
 		AAE262D12679530600ABC882 /* CareForMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262D02679530600ABC882 /* CareForMeTests.swift */; };
 		AAE262EB2679539800ABC882 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262EA2679539800ABC882 /* AlertType.swift */; };
-		AAE262EF2679705000ABC882 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262EE2679704F00ABC882 /* AlertViewModel.swift */; };
+		AAE262EF2679705000ABC882 /* AlertTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262EE2679704F00ABC882 /* AlertTypeViewModel.swift */; };
 		AAE262F22679716500ABC882 /* AlertTypeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */; };
 		AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */; };
 		AAE262F62679AA3600ABC882 /* UIView+programmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262F52679AA3600ABC882 /* UIView+programmatic.swift */; };
@@ -87,7 +87,7 @@
 		AAE262D02679530600ABC882 /* CareForMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareForMeTests.swift; sourceTree = "<group>"; };
 		AAE262D22679530600ABC882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAE262EA2679539800ABC882 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
-		AAE262EE2679704F00ABC882 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		AAE262EE2679704F00ABC882 /* AlertTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeViewModel.swift; sourceTree = "<group>"; };
 		AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeCollectionView.swift; sourceTree = "<group>"; };
 		AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAE262F52679AA3600ABC882 /* UIView+programmatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+programmatic.swift"; sourceTree = "<group>"; };
@@ -222,9 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				AAE262EA2679539800ABC882 /* AlertType.swift */,
-				AAE262EE2679704F00ABC882 /* AlertViewModel.swift */,
-				AAC07F46267A462300ADD525 /* UIImage+named.swift */,
-				AAC07F48267A497800ADD525 /* UIColor+named.swift */,
+				AAE262EE2679704F00ABC882 /* AlertTypeViewModel.swift */,
 				AA6B1977268D9923002B43BA /* User.swift */,
 			);
 			path = Model;
@@ -236,9 +234,19 @@
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
 				AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */,
 				AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */,
-				AAE262F52679AA3600ABC882 /* UIView+programmatic.swift */,
+				AAE91897268EE160003A8278 /* Extensions */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AAE91897268EE160003A8278 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAE262F52679AA3600ABC882 /* UIView+programmatic.swift */,
+				AAC07F46267A462300ADD525 /* UIImage+named.swift */,
+				AAC07F48267A497800ADD525 /* UIColor+named.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CDF6346D8BC85E6E83323EFD /* Frameworks */ = {
@@ -412,7 +420,7 @@
 				AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AAE262F22679716500ABC882 /* AlertTypeCollectionView.swift in Sources */,
-				AAE262EF2679705000ABC882 /* AlertViewModel.swift in Sources */,
+				AAE262EF2679705000ABC882 /* AlertTypeViewModel.swift in Sources */,
 				AAE262F62679AA3600ABC882 /* UIView+programmatic.swift in Sources */,
 				AA6B197C268D9A2D002B43BA /* UserController.swift in Sources */,
 				AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */,

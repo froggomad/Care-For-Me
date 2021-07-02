@@ -41,9 +41,12 @@ class AlertTypeCollectionView: UIView {
     
     var alertType: AlertCategorizable? {
         didSet {
-            titleLabel.text = alertType?.type
-            collectionView.backgroundColor = alertType?.color
-            // could reloadViews here
+            guard let alertType = alertType else { return }
+            
+            titleLabel.text = alertType.type
+            if let color = UIColor.NamedColor(rawValue: alertType.color) {
+                collectionView.backgroundColor = UIColor.named(color)
+            }            
         }
     }
     

@@ -7,42 +7,49 @@
 
 import UIKit
 
-protocol AlertCategorizable: AnyObject {
+protocol AlertCategorizable: AnyObject, Codable {
     var id: UUID { get }
-    var color: UIColor { get set }
+    var color: String { get set }
     var type: String { get set }
-    var alerts: [CareAlert] { get set }
+    var alerts: [CareAlertType] { get set }
 }
 
-class AlertCategory: AlertCategorizable {
+class AlertCategory: AlertCategorizable, CustomStringConvertible, Codable {
     
     var id: UUID
-    var color: UIColor
+    var color: String
     var type: String
-    var alerts: [CareAlert] = []
+    var alerts: [CareAlertType] = []
     
-    init(id: UUID, color: UIColor, type: String) {
+    init(id: UUID, color: String, type: String) {
         self.id = id
         self.color = color
         self.type = type
     }
     
+    /// debug description
+    var description: String {
+            """
+            type: \(type)
+            color: \(color)
+            alerts: \(alerts)
+            """
+    }
+    
 }
 
-struct CareAlert {
+struct CareAlertType: CustomStringConvertible, Codable {
     var id: UUID
-    unowned var category: AlertCategorizable
+    unowned var category: AlertCategory
     var title: String
     var message: String
-    var date: Date
-    var image: UIImage
+    var image: Data
     
-    var viewModel: AlertViewModel {
-        return AlertViewModel(
+    var viewModel: AlertTypeViewModel {
+        return AlertTypeViewModel(
             title: title,
             message: message,
-            image: image,
-            date: date
+            image: UIImage(data: image) ?? UIImage()
         )
     }
     /// debug description
@@ -51,7 +58,6 @@ struct CareAlert {
             category: \(category)
             title: \(title)
             message: \(message)
-            date: \(date)
             image: \(image)
             """
     }

@@ -10,7 +10,7 @@ import UIKit
 class AlertTypeCollectionViewCell: UICollectionViewCell {
     static let identifier = "AlertTypeCollectionViewCell"
     
-    var viewModel: AlertViewModel? {
+    var viewModel: AlertTypeViewModel? {
         didSet {
             imageView.image = viewModel?.image
             titleLabel.text = viewModel?.title

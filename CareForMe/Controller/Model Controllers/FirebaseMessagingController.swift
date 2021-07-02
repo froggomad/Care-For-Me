@@ -77,14 +77,10 @@ class FirebaseMessagingController {
     }
     
     func postMessage(title: String, text: String, toUserId: String) {
-        let endpoint = APIRef.userNotifications(userId: toUserId)
-        dbController.createReferenceWithId(for: endpoint, using: CareNotification(title: title, text: text, forUserId: toUserId)) { error in
-            if let error = error {
-                print(error)
-                return
-            }
-        }
-        
+        let userRef = APIRef.userNotifications(userId: toUserId)
+        let id = UUID()
+        let endpoint = userRef + "\(id)"
+        dbController.setValue(for: endpoint, with: CareNotification(id: id, title: title, message: text, forUserId: toUserId))
     }
     
 }

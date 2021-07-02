@@ -7,16 +7,14 @@
 
 import UIKit
 
-class AlertViewModel {
+class AlertTypeViewModel {
     var title: String
     var message: String
     var image: UIImage
-    var date: Date
     
-    init(title: String, message: String, image: UIImage, date: Date) {
+    init(title: String, message: String, image: UIImage) {
         self.title = title
         self.message = message
         self.image = image
-        self.date = date
     }
 }

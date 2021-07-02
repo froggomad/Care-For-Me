@@ -7,11 +7,12 @@
 
 import UIKit
 
-enum NamedColor: String {
-    case care
-    case companionship
-}
+
 extension UIColor {
+    enum NamedColor: String {
+        case red
+        case yellow
+    }
     static func named(_ color: NamedColor) -> UIColor {
         return UIColor(named: color.rawValue)!
     }
