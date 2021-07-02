@@ -50,13 +50,6 @@
 			remoteGlobalIDString = AAE262B52679530500ABC882;
 			remoteInfo = CareForMe;
 		};
-		AAE262D82679530600ABC882 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE262AE2679530500ABC882 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AAE262B52679530500ABC882;
-			remoteInfo = CareForMe;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,7 +86,6 @@
 		AAE262CC2679530600ABC882 /* CareForMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CareForMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262D02679530600ABC882 /* CareForMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareForMeTests.swift; sourceTree = "<group>"; };
 		AAE262D22679530600ABC882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAE262D72679530600ABC882 /* CareForMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CareForMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262EA2679539800ABC882 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		AAE262EE2679704F00ABC882 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeCollectionView.swift; sourceTree = "<group>"; };
@@ -127,13 +119,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AAE262C92679530600ABC882 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAE262D42679530600ABC882 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,7 +192,6 @@
 			children = (
 				AAE262B62679530500ABC882 /* CareForMe.app */,
 				AAE262CC2679530600ABC882 /* CareForMeTests.xctest */,
-				AAE262D72679530600ABC882 /* CareForMeUITests.xctest */,
 				AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */,
 			);
 			name = Products;
@@ -333,24 +317,6 @@
 			productReference = AAE262CC2679530600ABC882 /* CareForMeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AAE262D62679530600ABC882 /* CareForMeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AAE262E62679530600ABC882 /* Build configuration list for PBXNativeTarget "CareForMeUITests" */;
-			buildPhases = (
-				AAE262D32679530600ABC882 /* Sources */,
-				AAE262D42679530600ABC882 /* Frameworks */,
-				AAE262D52679530600ABC882 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AAE262D92679530600ABC882 /* PBXTargetDependency */,
-			);
-			name = CareForMeUITests;
-			productName = CareForMeUITests;
-			productReference = AAE262D72679530600ABC882 /* CareForMeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -367,10 +333,6 @@
 						CreatedOnToolsVersion = 12.5;
 					};
 					AAE262CB2679530600ABC882 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = AAE262B52679530500ABC882;
-					};
-					AAE262D62679530600ABC882 = {
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = AAE262B52679530500ABC882;
 					};
@@ -395,7 +357,6 @@
 			targets = (
 				AAE262B52679530500ABC882 /* CareForMe */,
 				AAE262CB2679530600ABC882 /* CareForMeTests */,
-				AAE262D62679530600ABC882 /* CareForMeUITests */,
 				AA4D31E026817071004EF6A2 /* Care For Me Notifications */,
 			);
 		};
@@ -420,13 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AAE262CA2679530600ABC882 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAE262D52679530600ABC882 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -473,13 +427,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAE262D32679530600ABC882 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -492,11 +439,6 @@
 			isa = PBXTargetDependency;
 			target = AAE262B52679530500ABC882 /* CareForMe */;
 			targetProxy = AAE262CD2679530600ABC882 /* PBXContainerItemProxy */;
-		};
-		AAE262D92679530600ABC882 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AAE262B52679530500ABC882 /* CareForMe */;
-			targetProxy = AAE262D82679530600ABC882 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -758,46 +700,6 @@
 			};
 			name = Release;
 		};
-		AAE262E72679530600ABC882 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34P4RF23ET;
-				INFOPLIST_FILE = CareForMeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kennydubroff.CareForMeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CareForMe;
-			};
-			name = Debug;
-		};
-		AAE262E82679530600ABC882 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34P4RF23ET;
-				INFOPLIST_FILE = CareForMeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kennydubroff.CareForMeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CareForMe;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -833,15 +735,6 @@
 			buildConfigurations = (
 				AAE262E42679530600ABC882 /* Debug */,
 				AAE262E52679530600ABC882 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AAE262E62679530600ABC882 /* Build configuration list for PBXNativeTarget "CareForMeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AAE262E72679530600ABC882 /* Debug */,
-				AAE262E82679530600ABC882 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

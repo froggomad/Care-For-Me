@@ -10,24 +10,28 @@ import XCTest
 
 class CareForMeTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testCategory_andAlert_dontRetain() {
+        let alertCategory = AlertCategory(id: UUID(), color: .red, type: "")
+        
+        let alert = CareAlert(id: UUID(),
+                              category: alertCategory,
+                              title: "",
+                              message: "",
+                              date: Date(),
+                              image: UIImage())
+        
+        alertCategory.alerts = [alert]
+        
+        assertNoMemoryLeak(alertCategory)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+extension XCTestCase {
+    // Credit: https://www.essentialdeveloper.com/
+    func assertNoMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential retain cycle.", file: file, line: line)
         }
     }
-
 }
