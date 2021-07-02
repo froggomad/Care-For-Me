@@ -9,13 +9,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    private lazy var careCollectionView: CareTypeCollectionView = {
-        let collectionView = CareTypeCollectionView(alertType: .care)
+    private lazy var careCollectionView: AlertTypeCollectionView = {
+        let collectionView = AlertTypeCollectionView(alertType: .care)
         return collectionView
     }()
     
-    private lazy var companionCollectionView: CareTypeCollectionView = {
-        let collectionView = CareTypeCollectionView(alertType: .companionship)
+    private lazy var companionCollectionView: AlertTypeCollectionView = {
+        let collectionView = AlertTypeCollectionView(alertType: .companionship)
         return collectionView
     }()
 
@@ -35,10 +35,10 @@ class MainViewController: UIViewController {
             careCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             careCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             careCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            careCollectionView.heightAnchor.constraint(equalToConstant: CareTypeCollectionView.Layout.heightConstant + 20),
+            careCollectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant + 20),
             
             companionCollectionView.topAnchor.constraint(equalTo: careCollectionView.bottomAnchor, constant: 20),
-            companionCollectionView.heightAnchor.constraint(equalToConstant: CareTypeCollectionView.Layout.heightConstant + 20),
+            companionCollectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant + 20),
             companionCollectionView.leadingAnchor.constraint(equalTo: careCollectionView.leadingAnchor),
             companionCollectionView.trailingAnchor.constraint(equalTo: careCollectionView.trailingAnchor)
         ])

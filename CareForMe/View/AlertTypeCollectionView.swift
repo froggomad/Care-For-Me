@@ -8,7 +8,7 @@
 import UIKit
 import BadgeGenerator
 
-class CareTypeCollectionView: UIView {
+class AlertTypeCollectionView: UIView {
     
     private lazy var vStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel, collectionView])
@@ -63,7 +63,7 @@ class CareTypeCollectionView: UIView {
     
 }
 
-private extension CareTypeCollectionView {
+private extension AlertTypeCollectionView {
     private func setupViews() {
         backgroundColor = .systemBackground
         addSubview(vStack)
@@ -77,7 +77,7 @@ private extension CareTypeCollectionView {
     }
 }
 
-extension CareTypeCollectionView: UICollectionViewDataSource {
+extension AlertTypeCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         alertType?.count ?? 0
     }
@@ -98,7 +98,7 @@ extension CareTypeCollectionView: UICollectionViewDataSource {
     
 }
 
-extension CareTypeCollectionView {
+extension AlertTypeCollectionView {
     
     class Layout: UICollectionViewFlowLayout {
         static let heightConstant: CGFloat = 150
@@ -115,7 +115,7 @@ extension CareTypeCollectionView {
     
 }
 
-extension CareTypeCollectionView: UICollectionViewDelegate {
+extension AlertTypeCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch alertType {
         case .care:
