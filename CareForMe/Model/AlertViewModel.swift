@@ -11,10 +11,12 @@ class AlertViewModel {
     var title: String
     var message: String
     var image: UIImage
+    var date: Date
     
-    init(title: String, message: String, image: UIImage) {
+    init(title: String, message: String, image: UIImage, date: Date) {
         self.title = title
         self.message = message
         self.image = image
+        self.date = date
     }
 }

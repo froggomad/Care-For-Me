@@ -7,134 +7,52 @@
 
 import UIKit
 
-enum AlertChoice: String, CustomStringConvertible {
-    case care
-    case companionship
+protocol AlertCategorizable: AnyObject {
+    var id: UUID { get }
+    var color: UIColor { get set }
+    var type: String { get set }
+    var alerts: [CareAlert] { get set }
+}
+
+class AlertCategory: AlertCategorizable {
     
-    var description: String {
-        return String(describing: rawValue).capitalized
-    }
+    var id: UUID
+    var color: UIColor
+    var type: String
+    var alerts: [CareAlert] = []
     
-    var count: Int {
-        switch self {
-        case .care:
-            return CareType.allCases.count
-        case .companionship:
-            return CompanionType.allCases.count
-        }
-    }
-    
-    var color: UIColor {
-        switch self {
-        case .care:
-            return UIColor.named(.care)
-        case .companionship:
-            return UIColor.named(.companionship)
-        }
+    init(id: UUID, color: UIColor, type: String) {
+        self.id = id
+        self.color = color
+        self.type = type
     }
     
 }
 
-enum CareType: String, CaseIterable, CustomStringConvertible, NeedType {
-    case drink
-    case food
-    case medication
-    
-    var description: String {
-        var name: String = ""
-                
-        for char in String(describing: rawValue) {
-            if String(char) != String(char).uppercased() {
-                name.append(String(char))
-            } else {
-                // add a space when we come to the camel-cased character
-                name.append(" \(String(char))")
-            }
-        }
-        
-        return name.capitalized
-    }
-    
-    var message: String {
-        switch self {
-        case .drink:
-            return "I'm thirsty"
-        case .food:
-            return "I'm hungry"
-        case .medication:
-            return "I need medication(s)"
-        }
-    }
-    
-    var image: UIImage {
-        switch self {
-        case .drink:
-            return UIImage.named(.drink)
-        case .food:
-            return UIImage.named(.food)
-        case .medication:
-            return UIImage.named(.medication)
-        }
-    }
+struct CareAlert {
+    var id: UUID
+    unowned var category: AlertCategorizable
+    var title: String
+    var message: String
+    var date: Date
+    var image: UIImage
     
     var viewModel: AlertViewModel {
         return AlertViewModel(
-            title: self.description,
-            message: self.message,
-            image: image
+            title: title,
+            message: message,
+            image: image,
+            date: date
         )
     }
-}
-
-enum CompanionType: String, CaseIterable, NeedType {
-    case chat
-    case important
-    case spendTime
-    
+    /// debug description
     var description: String {
-        
-        var name: String = ""
-                
-        for char in String(describing: rawValue) {
-            if String(char) != String(char).uppercased() {
-                name.append(String(char))
-            } else {
-                // add a space when we come to the camel-cased character
-                name.append(" \(String(char))")
-            }
-        }
-        
-        return name.capitalized
+            """
+            category: \(category)
+            title: \(title)
+            message: \(message)
+            date: \(date)
+            image: \(image)
+            """
     }
-    
-    var message: String {
-        switch self {
-        case .chat:
-            return "Can we chat?"
-        case .important:
-            return "I have to tell you something important"
-        case .spendTime:
-            return "Can we spend time together?"
-        }
-    }
-    
-    var image: UIImage {
-        switch self {
-        case .chat:
-            return UIImage.named(.chat)
-        case .important:
-            return UIImage.named(.important)
-        case .spendTime:
-            return UIImage.named(.spendTime)
-        }
-    }
-    
-    var viewModel: AlertViewModel {
-        return AlertViewModel(
-            title: self.description,
-            message: self.message,
-            image: image
-        )
-    }
-    
 }

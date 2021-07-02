@@ -39,16 +39,16 @@ class AlertTypeCollectionView: UIView {
     /// for didSelectItem
     weak var cellSelectDelegate: CareTypeCollectionViewDelegate?
     
-    var alertType: AlertChoice? {
+    var alertType: AlertCategorizable? {
         didSet {
-            titleLabel.text = alertType?.description
+            titleLabel.text = alertType?.type
             collectionView.backgroundColor = alertType?.color
             // could reloadViews here
         }
     }
     
     /// programmatic init
-    init(alertType: AlertChoice) {
+    init(alertType: AlertCategorizable) {
         super.init(frame: .zero)
         defer { self.alertType = alertType }
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -79,20 +79,13 @@ private extension AlertTypeCollectionView {
 
 extension AlertTypeCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        alertType?.count ?? 0
+        alertType?.alerts.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlertTypeCollectionViewCell.identifier, for: indexPath) as! AlertTypeCollectionViewCell
         
-        switch alertType {
-        case .care:
-            cell.viewModel = CareType.allCases[indexPath.item].viewModel
-        case .companionship:
-            cell.viewModel = CompanionType.allCases[indexPath.item].viewModel
-        default:
-            break
-        }
+        cell.viewModel = alertType?.alerts[indexPath.item].viewModel
         return cell
     }
     
@@ -117,14 +110,7 @@ extension AlertTypeCollectionView {
 
 extension AlertTypeCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch alertType {
-        case .care:
-            cellSelectDelegate?.didSelect(CareType.allCases[indexPath.item])
-        case .companionship:
-            cellSelectDelegate?.didSelect(CompanionType.allCases[indexPath.item])
-        default:
-            break
-        }
-        
+        guard let alertType = alertType else { return }
+        cellSelectDelegate?.didSelect(alertType.alerts[indexPath.item])
     }
 }

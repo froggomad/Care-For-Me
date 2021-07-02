@@ -10,12 +10,25 @@ import UIKit
 class MainViewController: UIViewController {
     
     private lazy var careCollectionView: AlertTypeCollectionView = {
-        let collectionView = AlertTypeCollectionView(alertType: .care)
+        let careAlertCategory = AlertCategory(id: UUID(), color: .red, type: "Care")
+        let drinkAlert = CareAlert(id: UUID(), category: careAlertCategory, title: "Drink", message: "I need water", date: Date(), image: .named(.drink))
+        let foodAlert = CareAlert(id: UUID(), category: careAlertCategory, title: "Food", message: "I need food", date: Date(), image: .named(.food))
+        let medicationAlert = CareAlert(id: UUID(), category: careAlertCategory, title: "Medication", message: "I need pills", date: Date(), image: .named(.medication))
+        
+        careAlertCategory.alerts = [drinkAlert, foodAlert, medicationAlert]
+        
+        let collectionView = AlertTypeCollectionView(alertType: careAlertCategory)
         return collectionView
     }()
     
     private lazy var companionCollectionView: AlertTypeCollectionView = {
-        let collectionView = AlertTypeCollectionView(alertType: .companionship)
+        let companionAlertCategory = AlertCategory(id: UUID(), color: .yellow, type: "Companionship")
+        let timeAlert = CareAlert(id: UUID(), category: companionAlertCategory, title: "Spend Time", message: "I want to spend time with you", date: Date(), image: .named(.spendTime))
+        let chatAlert = CareAlert(id: UUID(), category: companionAlertCategory, title: "Chat", message: "I want to talk", date: Date(), image: .named(.chat))
+        let importantAlert = CareAlert(id: UUID(), category: companionAlertCategory, title: "Important", message: "I need to talk about something important", date: Date(), image: .named(.important))
+        
+        companionAlertCategory.alerts = [timeAlert, chatAlert, importantAlert]
+        let collectionView = AlertTypeCollectionView(alertType: companionAlertCategory)
         return collectionView
     }()
 
@@ -46,23 +59,15 @@ class MainViewController: UIViewController {
 
 }
 
-protocol NeedType: CustomStringConvertible {
-    var description: String { get }
-    var message: String { get }
-    var image: UIImage { get }
-    var viewModel: AlertViewModel { get }
-    var rawValue: String { get }
-}
-
 protocol CareTypeCollectionViewDelegate: AnyObject {
-    func didSelect(_ need: NeedType)
+    func didSelect(_ need: CareAlert)
 }
 
 extension MainViewController: CareTypeCollectionViewDelegate {
     
-    func didSelect(_ need: NeedType) {
+    func didSelect(_ need: CareAlert) {
         // post to user/notifications/
-        print(need.rawValue)
+        print(need.title)
     }
     
 }
