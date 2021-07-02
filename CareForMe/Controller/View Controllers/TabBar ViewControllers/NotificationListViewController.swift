@@ -9,16 +9,25 @@ import UIKit
 
 class NotificationListViewController: UIViewController {
     
-    let tableView: NotificationListTableView = {
+    var dataSource: CareNotificationController?
+    
+    lazy var tableView: NotificationListTableView = {
         // TODO: Use live controller
         let dataSource = CareNotificationController(read: [CareNotification(id: UUID(), title: "Title", message: "Hello", forUserId: "1", date: Date())], unread: [])
-        let tableView = NotificationListTableView(dataSource: dataSource)
+        self.dataSource = dataSource
+        let tableView = NotificationListTableView(dataSource: self.dataSource!)
         return tableView
     }()
     
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
         subviews()
+        tableView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
     }
     
     init() {
@@ -49,5 +58,9 @@ class NotificationListViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         ])
     }
+    
+}
+
+extension NotificationListViewController: UITableViewDelegate {
     
 }

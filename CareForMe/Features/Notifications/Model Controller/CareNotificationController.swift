@@ -40,15 +40,21 @@ extension CareNotificationController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CareNotificationTableViewCell.identifier) as! CareNotificationTableViewCell
         
-        // TODO: viewModel
+        cell.viewModel = NotificationCellViewModel(category: "Foo", title: "Bar", message: "Test")
         
         return cell
         
     }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return [CareNotificationDataSource.read.title,
-                CareNotificationDataSource.unread.title]
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case CareNotificationDataSource.read.sectionNumber:
+            return CareNotificationDataSource.read.title
+        case CareNotificationDataSource.unread.sectionNumber:
+            return CareNotificationDataSource.unread.title
+        default:
+            return ""
+        }
     }
     
 }
