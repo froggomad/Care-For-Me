@@ -34,14 +34,13 @@ class CareNotificationTableViewCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = .preferredFont(for: .headline, weight: .semibold)
         return label
     }()
     
     lazy var bodyLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
-        label.textColor = .systemGray
+        label.font = .preferredFont(for: .body, weight: .ultraLight)
         return label
     }()
     
