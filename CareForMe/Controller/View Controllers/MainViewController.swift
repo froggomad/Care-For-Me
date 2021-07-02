@@ -35,8 +35,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setTab()
         careCollectionView.cellSelectDelegate = self
         companionCollectionView.cellSelectDelegate = self
+    }
+    
+    private func setTab() {
+        self.title = "Needs"
+        self.tabBarItem.image = UIImage(systemName: "square.grid.3x2")
+        self.tabBarItem.selectedImage = UIImage(systemName: "square.grid.3x2.fill")
     }
     
     private func setupViews() {
