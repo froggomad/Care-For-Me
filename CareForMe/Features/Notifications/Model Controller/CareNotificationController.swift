@@ -25,6 +25,10 @@ class CareNotificationController: NSObject {
 
 
 extension CareNotificationController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        CareNotificationDataSource.allCases.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case CareNotificationDataSource.read.sectionNumber:
@@ -37,10 +41,20 @@ extension CareNotificationController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var viewModel: NotificationCellViewModel?
+        
+        switch indexPath.section {
+        case CareNotificationDataSource.read.sectionNumber:
+            viewModel = read[indexPath.item].viewModel
+        case CareNotificationDataSource.unread.sectionNumber:
+            viewModel = unread[indexPath.item].viewModel
+        default:
+            break
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CareNotificationTableViewCell.identifier) as! CareNotificationTableViewCell
         
-        cell.viewModel = NotificationCellViewModel(category: "Foo", title: "Bar", message: "Test")
+        cell.viewModel = viewModel
         
         return cell
         
@@ -59,7 +73,7 @@ extension CareNotificationController: UITableViewDataSource {
     
 }
 
-enum CareNotificationDataSource: Int {
+enum CareNotificationDataSource: Int, CaseIterable {
     case read
     case unread
     

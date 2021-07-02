@@ -81,8 +81,13 @@ extension MainViewController: CareTypeCollectionViewDelegate {
 
 struct CareNotification: Codable {
     let id: UUID
+    let category: String
     let title: String
     let message: String
     let forUserId: String
     let date: Date
+    
+    var viewModel: NotificationCellViewModel {
+        NotificationCellViewModel(category: category, title: title, message: message)
+    }
 }

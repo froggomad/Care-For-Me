@@ -76,11 +76,11 @@ class FirebaseMessagingController {
         
     }
     
-    func postMessage(title: String, text: String, toUserId: String) {
+    func postMessage(category: String, title: String, text: String, toUserId: String) {
         let userRef = APIRef.userNotifications(userId: toUserId)
         let id = UUID()
         let endpoint = userRef + "\(id)"
-        dbController.setValue(for: endpoint, with: CareNotification(id: id, title: title, message: text, forUserId: toUserId, date: Date()))
+        dbController.setValue(for: endpoint, with: CareNotification(id: id, category: category, title: title, message: text, forUserId: toUserId, date: Date()))
     }
     
 }
@@ -126,8 +126,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let title = response.notification.request.content.title
         let message = response.notification.request.content.body
         let date = userInfo["date"] as? Date ?? response.notification.date
+        let category = userInfo["category"] as? String ?? ""
         // TODO: Get user id of current user
-        let notification = CareNotification(id: UUID(), title: title, message: message, forUserId: "userId", date: date)
+        let notification = CareNotification(id: UUID(), category: category, title: title, message: message, forUserId: "userId", date: date)
         // TODO: Present notification detail screen
         
         completionHandler()
