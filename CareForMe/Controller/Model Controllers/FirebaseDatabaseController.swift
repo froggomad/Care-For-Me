@@ -27,6 +27,11 @@ class FirebaseDatabaseController {
         FirebaseDatabaseController.db.child(ref).setValue(value)
     }
     
+    func observe(endpoint: String, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
+        let ref = FirebaseDatabaseController.db.child(endpoint)
+        ref.observe(event, with: completion)
+    }
+    
 }
 
 struct APIRef {
