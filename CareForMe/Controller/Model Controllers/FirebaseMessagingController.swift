@@ -80,7 +80,7 @@ class FirebaseMessagingController {
         let userRef = APIRef.userNotifications(userId: toUserId)
         let id = UUID()
         let endpoint = userRef + "\(id)"
-        dbController.setValue(for: endpoint, with: CareNotification(id: id, title: title, message: text, forUserId: toUserId))
+        dbController.setValue(for: endpoint, with: CareNotification(id: id, title: title, message: text, forUserId: toUserId, date: Date()))
     }
     
 }

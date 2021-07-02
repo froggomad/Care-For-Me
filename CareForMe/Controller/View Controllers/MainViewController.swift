@@ -77,4 +77,5 @@ struct CareNotification: Codable {
     let title: String
     let message: String
     let forUserId: String
+    let date: Date
 }
