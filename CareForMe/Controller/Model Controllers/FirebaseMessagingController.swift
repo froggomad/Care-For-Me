@@ -33,7 +33,7 @@ class FirebaseMessagingController {
         self.token = token
         let apiTokenDict = ["token": token]
         // TODO: UserId
-        FirebaseDatabaseController().setValue(for: APIRef.userRef(userId: "userId"), with: apiTokenDict)
+        FirebaseDatabaseController().setValue(for: APIRef.userRef(userId: "userId").endpoint, with: apiTokenDict)
         
     }
     
@@ -70,16 +70,16 @@ class FirebaseMessagingController {
                 let dataDict:[Notification.Name: String] = [.tokenKey: token]
                 NotificationCenter.default.post(name: .tokenKey, object: nil, userInfo: dataDict)
                 // TODO: UserId
-                self?.dbController.setValue(for: APIRef.userRef(userId: "userId"), with: token)
+                self?.dbController.setValue(for: APIRef.userRef(userId: "userId").endpoint, with: token)
             }
         }
         
     }
     
     func postMessage(category: String, title: String, text: String, toUserId: String) {
-        let userRef = APIRef.userNotifications(userId: toUserId)
+        let unreadNotificationRef = APIRef.userUnreadNotifications(userId: toUserId).endpoint
         let id = UUID()
-        let endpoint = userRef + "\(id)"
+        let endpoint = unreadNotificationRef + "\(id)"
         dbController.setValue(for: endpoint, with: CareNotification(id: id, category: category, title: title, message: text, forUserId: toUserId, date: Date()))
     }
     

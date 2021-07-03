@@ -34,12 +34,30 @@ class FirebaseDatabaseController {
     
 }
 
-struct APIRef {
-    static func userNotifications(userId: String) -> String {
-        "/users/\(userId)/notifications/"
+enum APIRef {
+    case userRef(userId: String)
+    case userNotifications(userId: String)
+    case userReadNotifications(userId: String)
+    case userUnreadNotifications(userId: String)
+    
+    var endpoint: String {
+        switch self {
+        case let .userRef(userId):
+            return userRef(userId: userId)
+        case let .userNotifications(userId):
+            return self.userNotifications(userId: userId)
+        case let .userReadNotifications(userId):
+            return self.userNotifications(userId: userId) + "read"
+        case let .userUnreadNotifications(userId):
+            return self.userNotifications(userId: userId) + "unread/"
+        }
     }
     
-    static func userRef(userId: String) -> String {
-        "/users/\(userId)"
+    private func userRef(userId: String) -> String {
+        return "/users/\(userId)/"
+    }
+    
+    private func userNotifications(userId: String) -> String {
+        return userRef(userId: userId) + "notifications/"
     }
 }

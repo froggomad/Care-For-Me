@@ -7,7 +7,13 @@
 
 import UIKit
 
+
 class CareNotificationController: NSObject {
+    private struct NotificationData: Codable {
+        var read: [CareNotification]
+        var unread: [CareNotification]
+    }
+    
     private let dbController = FirebaseDatabaseController()
     
     var read: [CareNotification]
@@ -18,8 +24,15 @@ class CareNotificationController: NSObject {
         self.unread = unread
     }
     
-    func getNotificationsFromAPI() {
-        
+    func getNotificationsFromAPI(for userId: String) {
+        dbController.observe(endpoint: APIRef.userNotifications(userId: userId).endpoint, event: .value) { snapshot in
+            guard let notification = try? snapshot.data(as: NotificationData.self) else {
+                return
+            }
+            self.read = notification.read
+            self.unread = notification.unread
+            
+        }
     }
 }
 
