@@ -18,6 +18,7 @@
 		AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = AAB5574E2684053A0022D47D /* BadgeGenerator */; };
 		AABB53E0268FAC0A00EF7ABC /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */; };
 		AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */; };
+		AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AABB53E3269025C000EF7ABC /* FirebaseAuth */; };
 		AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F46267A462300ADD525 /* UIImage+named.swift */; };
 		AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F48267A497800ADD525 /* UIColor+named.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
@@ -123,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */,
+				AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */,
 				AAEB516226826D0900A0B741 /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				AA4D31F82681747B004EF6A2 /* FirebaseMessaging in Frameworks */,
 				AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */,
@@ -368,6 +370,7 @@
 				AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */,
 				AAEB516326826DBC00A0B741 /* FirebaseDatabase */,
 				AAB5574E2684053A0022D47D /* BadgeGenerator */,
+				AABB53E3269025C000EF7ABC /* FirebaseAuth */,
 			);
 			productName = CareForMe;
 			productReference = AAE262B62679530500ABC882 /* CareForMe.app */;
@@ -860,6 +863,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AAB5574D2684053A0022D47D /* XCRemoteSwiftPackageReference "BadgeGenerator" */;
 			productName = BadgeGenerator;
+		};
+		AABB53E3269025C000EF7ABC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;

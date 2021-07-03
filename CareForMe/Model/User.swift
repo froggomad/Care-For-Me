@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
-    let userId: UUID
+struct CareUser: Codable {
+    let userId: String
     let notifications: [CareNotification]
 }
