@@ -13,13 +13,18 @@ class AuthService {
         case passwordValidation
         case firebaseAuthError
     }
+    
     private let dbController = FirebaseDatabaseController()
     var user: CareUser?
     
     var isLoggedIn: Bool {
         Auth.auth().currentUser != nil && user != nil
     }
-    // TODO: Result type
+    
+    // MARK: - Singleton -
+    static let shared = AuthService()
+    private init() { }
+    
     func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, RegistrationError>) -> Void) {
         
         var emailValidation = EmailAuth(email: emailInput)
@@ -37,13 +42,17 @@ class AuthService {
                     completion(.failure(.firebaseAuthError))
                     return
                 }
-                let user = authResult?.user
-                let careUser = CareUser(userId: user?.uid ?? UUID().uuidString, notifications: [])
                 
-                self.user = careUser
-                self.dbController.setValue(for: APIRef.userRef(userId: careUser.userId).endpoint, with: careUser)
-                
-                completion(.success(authResult))
+                if let user = authResult?.user {
+                    
+                    let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
+                    
+                    self.user = careUser
+                    self.dbController.setValue(for: APIRef.userRef(userId: careUser.userId).endpoint, with: careUser)
+                    
+                    completion(.success(authResult))
+                    
+                } else { completion(.failure(.firebaseAuthError)) }
             }
         }
         

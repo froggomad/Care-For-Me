@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,12 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
       
         let window = UIWindow(windowScene: windowScene)
-        let tabBar = UITabBarController()
-        tabBar.viewControllers = [
-            MainViewController(),
-            NotificationListViewController()
-        ]
-        window.rootViewController = tabBar
+        if let authUser = Auth.auth().currentUser {
+            
+            AuthService.shared.user = CareUser(userId: authUser.uid, displayName: authUser.displayName ?? "Anonymous")
+            let tabBar = TabBar.create()
+            window.rootViewController = tabBar
+            
+        } else {
+            let vc = RegistrationViewController()
+            window.rootViewController = vc
+        }
+        
         window.makeKeyAndVisible()
         self.window = window
     }
@@ -57,3 +63,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+enum TabBar {
+    static func create() -> UITabBarController {
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [
+            MainViewController(),
+            NotificationListViewController()
+        ]
+        return tabBar
+    }
+}

@@ -23,8 +23,12 @@ class FirebaseDatabaseController {
         }
     }
     
-    func setValue<T: Codable>(for ref: String, with value: T) {
-        FirebaseDatabaseController.db.child(ref).setValue(value)
+    func setValue<T: Encodable>(for ref: String, with value: T) {
+        try? FirebaseDatabaseController.db.child(ref).setValue(from: value)
+    }
+    
+    func updateValues(for ref: String, with dictionary: [String: Encodable]) {
+        FirebaseDatabaseController.db.child(ref).updateChildValues(dictionary)
     }
     
     func observe(endpoint: String, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {

@@ -32,8 +32,10 @@ class FirebaseMessagingController {
               let token = tokenDict[.tokenKey] else { return }
         self.token = token
         let apiTokenDict = ["token": token]
-        // TODO: UserId
-        FirebaseDatabaseController().setValue(for: APIRef.userRef(userId: "userId").endpoint, with: apiTokenDict)
+        if AuthService.shared.isLoggedIn {
+            guard let user = AuthService.shared.user else { return }
+            FirebaseDatabaseController().updateValues(for: APIRef.userRef(userId: user.userId).endpoint, with: apiTokenDict)
+        }
         
     }
     
@@ -63,14 +65,12 @@ class FirebaseMessagingController {
     /// use this to retrieve a messaging token directly and send a notification (fallback)
     func retrieveMessagingToken() {
         
-        Messaging.messaging().token { [weak self] token, error in
+        Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching FCM registration token: \(error)")
             } else if let token = token {
                 let dataDict:[Notification.Name: String] = [.tokenKey: token]
                 NotificationCenter.default.post(name: .tokenKey, object: nil, userInfo: dataDict)
-                // TODO: UserId
-                self?.dbController.setValue(for: APIRef.userRef(userId: "userId").endpoint, with: token)
             }
         }
         

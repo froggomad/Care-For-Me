@@ -9,5 +9,5 @@ import Foundation
 
 struct CareUser: Codable {
     let userId: String
-    let notifications: [CareNotification]
+    let displayName: String
 }
