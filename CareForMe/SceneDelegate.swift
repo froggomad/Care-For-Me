@@ -20,16 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let authUser = Auth.auth().currentUser {
             
             AuthService.shared.user = CareUser(userId: authUser.uid, displayName: authUser.displayName ?? "Anonymous")
-            let tabBar = TabBar.create()
+            let tabBar = TabBar.createMainTabBar()
             window.rootViewController = tabBar
             
         } else {
+            
             let vc = RegistrationViewController()
             window.rootViewController = vc
+            
         }
         
         window.makeKeyAndVisible()
         self.window = window
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -61,15 +64,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
-}
-
-enum TabBar {
-    static func create() -> UITabBarController {
-        let tabBar = UITabBarController()
-        tabBar.viewControllers = [
-            MainViewController(),
-            NotificationListViewController()
-        ]
-        return tabBar
-    }
 }
