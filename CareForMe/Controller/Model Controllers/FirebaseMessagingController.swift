@@ -80,7 +80,7 @@ class FirebaseMessagingController {
         let unreadNotificationRef = APIRef.userUnreadNotifications(userId: toUserId).endpoint
         let id = UUID()
         let endpoint = unreadNotificationRef + "\(id)"
-        dbController.setValue(for: endpoint, with: CareNotification(id: id, category: category, title: title, message: text, forUserId: toUserId, date: Date()))
+        dbController.setValue(for: endpoint, with: CareNotification(id: id, category: category, title: title, text: text, forUserId: toUserId, date: Date()))
     }
     
 }
@@ -127,9 +127,17 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let message = response.notification.request.content.body
         let date = userInfo["date"] as? Date ?? response.notification.date
         let category = userInfo["category"] as? String ?? ""
-        // TODO: Get user id of current user
-        let notification = CareNotification(id: UUID(), category: category, title: title, message: message, forUserId: "userId", date: date)
-        // TODO: Present notification detail screen
+        let userId = userInfo["forUserId"] as? String ?? ""
+        
+        let notification = CareNotification(id: UUID(),
+                                            category: category,
+                                            title: title,
+                                            text: message,
+                                            forUserId: userId,
+                                            date: date)
+        
+        let vc = NotificationDetailViewController(notification: notification)
+        UIApplication.shared.windows.first?.rootViewController = vc
         
         completionHandler()
     }
