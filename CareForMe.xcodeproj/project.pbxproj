@@ -24,6 +24,7 @@
 		AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AABB53E3269025C000EF7ABC /* FirebaseAuth */; };
 		AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F46267A462300ADD525 /* UIImage+named.swift */; };
 		AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F48267A497800ADD525 /* UIColor+named.swift */; };
+		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
 		AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BB2679530500ABC882 /* SceneDelegate.swift */; };
 		AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BD2679530500ABC882 /* MainViewController.swift */; };
@@ -91,6 +92,7 @@
 		AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+preferredFont(for style, weight).swift"; sourceTree = "<group>"; };
 		AAC07F46267A462300ADD525 /* UIImage+named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+named.swift"; sourceTree = "<group>"; };
 		AAC07F48267A497800ADD525 /* UIColor+named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+named.swift"; sourceTree = "<group>"; };
+		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE262BB2679530500ABC882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +247,23 @@
 			name = App;
 			sourceTree = "<group>";
 		};
+		AACD90072692A384009740EA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AACD90082692A393009740EA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9189F268EF983003A8278 /* Model Controller */,
+				AACD90072692A384009740EA /* View Controllers */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		AAE262AD2679530500ABC882 = {
 			isa = PBXGroup;
 			children = (
@@ -344,7 +363,7 @@
 			children = (
 				AABB53DE268FAC0000EF7ABC /* Model */,
 				AAE918A0268EF99E003A8278 /* View */,
-				AAE9189F268EF983003A8278 /* Model Controller */,
+				AACD90082692A393009740EA /* Controller */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -530,6 +549,7 @@
 			files = (
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
+				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
