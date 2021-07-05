@@ -30,6 +30,10 @@ class NotificationListViewController: UIViewController {
         tableView.reloadData()
     }
     
+    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setTabBar()
@@ -62,5 +66,20 @@ class NotificationListViewController: UIViewController {
 }
 
 extension NotificationListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var notification: CareNotification?
+        
+        switch indexPath.section {
+        case CareNotificationDataSource.unread.rawValue:
+            notification = dataSource?.unread[indexPath.item]
+        case CareNotificationDataSource.read.rawValue:
+            notification = dataSource?.read[indexPath.item]
+        default:
+            break
+        }
+        
+        guard let notification = notification else { return }
+        let vc = NotificationDetailViewController(notification: notification)
+        showDetailViewController(vc, sender: nil)
+    }
 }

@@ -31,11 +31,19 @@ class MainViewController: UIViewController {
         let collectionView = AlertTypeCollectionView(alertType: companionAlertCategory)
         return collectionView
     }()
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        setTab()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setTab()
         careCollectionView.cellSelectDelegate = self
         companionCollectionView.cellSelectDelegate = self
     }
@@ -89,5 +97,9 @@ struct CareNotification: Codable {
     
     var viewModel: NotificationCellViewModel {
         NotificationCellViewModel(category: category, title: title, message: text)
+    }
+    
+    var categoryTitle: String {
+        "\(category): \(title)"
     }
 }
