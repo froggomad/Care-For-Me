@@ -81,7 +81,7 @@ protocol CareTypeCollectionViewDelegate: AnyObject {
 extension MainViewController: CareTypeCollectionViewDelegate {
     
     func didSelect(_ need: CareAlertType) {
-        // post to user/notifications/
+        FirebaseMessagingController.shared.postMessage(category: "Test Notification", title: "Title", text: "Text", toUserId: AuthService.shared.user!.userId)
         print(need.title)
     }
     

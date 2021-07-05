@@ -24,6 +24,7 @@
 		AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AABB53E3269025C000EF7ABC /* FirebaseAuth */; };
 		AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F46267A462300ADD525 /* UIImage+named.swift */; };
 		AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F48267A497800ADD525 /* UIColor+named.swift */; };
+		AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
 		AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BB2679530500ABC882 /* SceneDelegate.swift */; };
@@ -92,6 +93,7 @@
 		AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+preferredFont(for style, weight).swift"; sourceTree = "<group>"; };
 		AAC07F46267A462300ADD525 /* UIImage+named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+named.swift"; sourceTree = "<group>"; };
 		AAC07F48267A497800ADD525 /* UIColor+named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+named.swift"; sourceTree = "<group>"; };
+		AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		AA5068AA26918EBF006F1126 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				AAC12AB926938C500084A1E2 /* View */,
 				AA5068AE26918EE6006F1126 /* Model */,
 				AA5068AD26918EDD006F1126 /* Controller */,
 			);
@@ -245,6 +248,14 @@
 				AAE262C72679530600ABC882 /* Info.plist */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		AAC12AB926938C500084A1E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AACD90072692A384009740EA /* View Controllers */ = {
@@ -561,6 +572,7 @@
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
 				AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */,
 				AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */,
+				AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */,
 				AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */,

@@ -47,21 +47,21 @@ enum APIRef {
     var endpoint: String {
         switch self {
         case let .userRef(userId):
-            return userRef(userId: userId)
+            return userRefEndpoint(userId: userId)
         case let .userNotifications(userId):
-            return self.userNotifications(userId: userId)
+            return self.userNotificationsEndpoint(userId: userId)
         case let .userReadNotifications(userId):
-            return self.userNotifications(userId: userId) + "read"
+            return self.userNotificationsEndpoint(userId: userId) + "read/"
         case let .userUnreadNotifications(userId):
-            return self.userNotifications(userId: userId) + "unread/"
+            return self.userNotificationsEndpoint(userId: userId) + "unread/"
         }
     }
     
-    private func userRef(userId: String) -> String {
+    private func userRefEndpoint(userId: String) -> String {
         return "/users/\(userId)/"
     }
     
-    private func userNotifications(userId: String) -> String {
-        return userRef(userId: userId) + "notifications/"
+    private func userNotificationsEndpoint(userId: String) -> String {
+        return userRefEndpoint(userId: userId) + "notifications/"
     }
 }
