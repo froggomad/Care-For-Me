@@ -14,7 +14,7 @@ class NotificationListViewController: UIViewController {
     lazy var tableView: NotificationListTableView = {
         // TODO: Use live controller
         let dataSource = CareNotificationController(read: [CareNotification(id: UUID(), category: "Read", title: "Testing read", text: "Message", forUserId: "1", date: Date())], unread: [CareNotification(id: UUID(), category: "Unread", title: "Testing unread", text: "Message", forUserId: "2", date: Date())])
-        self.dataSource = dataSource
+        self.dataSource = dataSource // dataSource needs a strong reference to stay alive
         let tableView = NotificationListTableView(dataSource: self.dataSource!)
         return tableView
     }()
