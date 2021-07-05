@@ -137,7 +137,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                             date: date)
         
         let vc = NotificationDetailViewController(notification: notification)
-        UIApplication.shared.windows.first?.rootViewController = vc
+        let window = UIApplication.shared.windows.first
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
         
         completionHandler()
     }
