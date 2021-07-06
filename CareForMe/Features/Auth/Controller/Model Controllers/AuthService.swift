@@ -58,11 +58,24 @@ class AuthService {
         
     }
     
-    func foo() {
-        registerWithEmail(emailInput: "kenny@foo.bar", password: "12345678") { authResult in
+    func loginWithEmail(_ email: String, password: String, completion: @escaping (Result<AuthDataResult?, RegistrationError>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+            
+            if error != nil {
+                completion(.failure(.firebaseAuthError))
+                return
+            }
+            
+            if let user = authResult?.user {
+                let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
+                self.user = careUser
+                completion(.success(authResult))
+            } else { completion(.failure(.firebaseAuthError)) }
             
         }
     }
+    
     /// preferred registration method
     func registerWithPhone() {
         

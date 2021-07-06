@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         } else {
             
-            let vc = RegistrationViewController()
+            let vc = LoginViewController()
             window.rootViewController = vc
             
         }

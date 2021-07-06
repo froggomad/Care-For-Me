@@ -7,7 +7,10 @@
 
 import UIKit
 
-enum TabBar {
+enum TabBar: Int {
+    case main
+    case notifications
+    
     static func createMainTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [
@@ -15,6 +18,11 @@ enum TabBar {
             NavigationViewController.notifications.navigationController
         ]
         return tabBar
+    }
+    
+    static func activate(_ tab: TabBar) {
+        guard let tabBarController = UIApplication.shared.windows.first?.rootViewController as? UITabBarController else { return }
+        tabBarController.selectedIndex = tab.rawValue
     }
 }
 

@@ -122,25 +122,21 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        let title = response.notification.request.content.title
-        let message = response.notification.request.content.body
-        let date = userInfo["date"] as? Date ?? response.notification.date
-        let category = userInfo["category"] as? String ?? ""
-        let userId = userInfo["forUserId"] as? String ?? ""
-        
-        let notification = CareNotification(id: UUID(),
-                                            category: category,
-                                            title: title,
-                                            text: message,
-                                            forUserId: userId,
-                                            date: date)
-        
-        let vc = NotificationDetailViewController(notification: notification)
-        let window = UIApplication.shared.windows.first
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
-        
+//        let userInfo = response.notification.request.content.userInfo
+//        let title = response.notification.request.content.title
+//        let message = response.notification.request.content.body
+//        let date = userInfo["date"] as? Date ?? response.notification.date
+//        let category = userInfo["category"] as? String ?? ""
+//        let userId = userInfo["forUserId"] as? String ?? ""
+//
+//        let notification = CareNotification(id: UUID(),
+//                                            category: category,
+//                                            title: title,
+//                                            text: message,
+//                                            forUserId: userId,
+//                                            date: date)
+        TabBar.activate(.notifications)
+        // TODO: post notification and update UI as appropriate (definitely update notificationController so list updates)
         completionHandler()
     }
 }
