@@ -81,13 +81,13 @@ protocol CareTypeCollectionViewDelegate: AnyObject {
 extension MainViewController: CareTypeCollectionViewDelegate {
     
     func didSelect(_ need: CareAlertType) {
-        FirebaseMessagingController.shared.postMessage(category: "Test Notification", title: "Title", text: "Text", toUserId: AuthService.shared.user!.userId)
-        print(need.title)
+        // TODO: use companion userId
+        FirebaseMessagingController.shared.postMessage(category: need.category.type, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
     }
     
 }
 
-struct CareNotification: Codable {
+struct CareNotification: Codable, Equatable {
     let id: UUID
     let category: String
     let title: String
@@ -95,11 +95,24 @@ struct CareNotification: Codable {
     let forUserId: String
     let date: Date
     
+    static func ==(lhs: CareNotification, rhs: CareNotification) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var viewModel: NotificationCellViewModel {
         NotificationCellViewModel(category: category, title: title, message: text)
     }
     
     var categoryTitle: String {
         "\(category): \(title)"
+    }
+    
+    init(id: UUID, category: String, title: String, text: String, forUserId: String, date: Date) {
+        self.id = id
+        self.category = category
+        self.title = title
+        self.text = text
+        self.forUserId = forUserId
+        self.date = date
     }
 }

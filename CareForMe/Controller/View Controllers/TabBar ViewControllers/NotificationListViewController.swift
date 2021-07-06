@@ -9,13 +9,10 @@ import UIKit
 
 class NotificationListViewController: UIViewController {
     
-    var dataSource: CareNotificationController?
+    var dataSource: CareNotificationController
     
     lazy var tableView: NotificationListTableView = {
-        // TODO: Use live controller
-        let dataSource = CareNotificationController(read: [CareNotification(id: UUID(), category: "Read", title: "Testing read", text: "Message", forUserId: "1", date: Date())], unread: [CareNotification(id: UUID(), category: "Unread", title: "Testing unread", text: "Message", forUserId: "2", date: Date())])
-        self.dataSource = dataSource // dataSource needs a strong reference to stay alive
-        let tableView = NotificationListTableView(dataSource: self.dataSource!)
+        let tableView = NotificationListTableView(dataSource: self.dataSource)
         return tableView
     }()
     
@@ -34,9 +31,14 @@ class NotificationListViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    init() {
+    init(dataSource: CareNotificationController = CareNotificationController(read: [], unread: [])) {
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         setTabBar()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(receiveUnreadNotification(_:)),
+                                               name: .newUnreadNotification,
+                                               object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -63,6 +65,12 @@ class NotificationListViewController: UIViewController {
         ])
     }
     
+    @objc private func receiveUnreadNotification(_ notification: Notification) {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
 }
 
 extension NotificationListViewController: UITableViewDelegate {
@@ -71,9 +79,9 @@ extension NotificationListViewController: UITableViewDelegate {
         
         switch indexPath.section {
         case CareNotificationDataSource.unread.rawValue:
-            notification = dataSource?.unread[indexPath.item]
+            notification = dataSource.unread[indexPath.item]
         case CareNotificationDataSource.read.rawValue:
-            notification = dataSource?.read[indexPath.item]
+            notification = dataSource.read[indexPath.item]
         default:
             break
         }

@@ -78,9 +78,11 @@ class FirebaseMessagingController {
     
     func postMessage(category: String, title: String, text: String, toUserId: String) {
         let unreadNotificationRef = APIRef.userUnreadNotifications(userId: toUserId).endpoint
-        let id = UUID()
-        let endpoint = unreadNotificationRef + "\(id)"
-        dbController.setValue(for: endpoint, with: CareNotification(id: id, category: category, title: title, text: text, forUserId: toUserId, date: Date()))
+        
+        let careNotificationId = UUID()
+        let endpoint = unreadNotificationRef + "\(careNotificationId)"
+        dbController.setValue(for: endpoint, with: CareNotification(id: careNotificationId, category: category, title: title, text: text, forUserId: toUserId, date: Date()))
+        
     }
     
 }
@@ -103,7 +105,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     }
     
     // MARK: - APNS -
-    
+    // set FirebaseMessaging service with apnsToken
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
     }
@@ -111,33 +113,41 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
         
-        print(userInfo)
+        let careNotification = parseUNNotification(notification: notification)
+        NotificationCenter.default.post(name: .newUnreadNotification, object: nil, userInfo: ["careNotification": careNotification])
         
-        completionHandler([[.alert, .sound]])
+        if #available(iOS 14, *) {
+            completionHandler([[.banner, .sound, .badge]])
+        } else {
+            completionHandler([[.alert, .sound, .badge]])
+        }
     }
     
     /// handle user tapping on notification
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-//        let userInfo = response.notification.request.content.userInfo
-//        let title = response.notification.request.content.title
-//        let message = response.notification.request.content.body
-//        let date = userInfo["date"] as? Date ?? response.notification.date
-//        let category = userInfo["category"] as? String ?? ""
-//        let userId = userInfo["forUserId"] as? String ?? ""
-//
-//        let notification = CareNotification(id: UUID(),
-//                                            category: category,
-//                                            title: title,
-//                                            text: message,
-//                                            forUserId: userId,
-//                                            date: date)
         TabBar.activate(.notifications)
-        // TODO: post notification and update UI as appropriate (definitely update notificationController so list updates)
         completionHandler()
+    }
+    
+    private func parseUNNotification(notification: UNNotification) -> CareNotification {
+        let userInfo = notification.request.content.userInfo
+        let message = notification.request.content.body
+        
+        let title = userInfo["title"] as? String ?? ""
+        let date = userInfo["date"] as? Date ?? notification.date
+        let category = userInfo["category"] as? String ?? ""
+        let userId = userInfo["forUserId"] as? String ?? ""
+
+        let notification = CareNotification(id: UUID(),
+                                            category: category,
+                                            title: title,
+                                            text: message,
+                                            forUserId: userId,
+                                            date: date)
+        return notification
     }
 }
 

@@ -22,6 +22,11 @@ class CareNotificationController: NSObject {
     init(read: [CareNotification], unread: [CareNotification]) {
         self.read = read
         self.unread = unread
+        super.init()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(receiveUnreadNotification(_:)),
+                                               name: .newUnreadNotification,
+                                               object: nil)
     }
     
     func getNotificationsFromAPI(for userId: String) {
@@ -31,7 +36,15 @@ class CareNotificationController: NSObject {
             }
             self.read = notification.read
             self.unread = notification.unread
-            
+        }
+    }
+    
+    @objc private func receiveUnreadNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
+        
+        if !unread.contains(careNotification) {
+            unread.append(careNotification)
         }
     }
 }
@@ -107,3 +120,6 @@ enum CareNotificationDataSource: Int, CaseIterable {
     }
 }
 
+extension Notification.Name {
+    static let newUnreadNotification = Notification.Name("NewUnreadNotification")
+}
