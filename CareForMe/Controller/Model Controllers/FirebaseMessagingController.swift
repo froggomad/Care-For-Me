@@ -9,6 +9,12 @@ import FirebaseMessaging
 import UIKit
 
 class FirebaseMessagingController {
+    enum NotificationPermissionStatus {
+        case authorized
+        case denied
+        case needPermission
+    }
+    
     static let shared = FirebaseMessagingController()
     var token: String?
     private let dbController = FirebaseDatabaseController()
@@ -40,12 +46,6 @@ class FirebaseMessagingController {
     
     private func registerForRemoteNotifications(_ application: UIApplication) {
         application.registerForRemoteNotifications()
-    }
-    
-    enum NotificationPermissionStatus {
-        case authorized
-        case denied
-        case needPermission
     }
     
     func getNotificationSettings(completion: @escaping (NotificationPermissionStatus) -> Void) {

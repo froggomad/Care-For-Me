@@ -24,6 +24,7 @@ class NotificationListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        FirebaseMessagingController.shared.requestNotificationPermissions(completion: {_ in })
         tableView.reloadData()
     }
     
