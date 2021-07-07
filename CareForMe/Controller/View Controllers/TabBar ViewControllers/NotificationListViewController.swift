@@ -31,14 +31,11 @@ class NotificationListViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    init(dataSource: CareNotificationController = CareNotificationController(read: [], unread: [])) {
+    init(dataSource: CareNotificationController = CareNotificationController.shared) {
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         setTabBar()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(receiveUnreadNotification(_:)),
-                                               name: .newUnreadNotification,
-                                               object: nil)
+        addObservers()
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +46,18 @@ class NotificationListViewController: UIViewController {
         self.title = "Notifications"
         self.tabBarItem.image = UIImage(systemName: "bell")
         self.tabBarItem.selectedImage = UIImage(systemName: "bell.fill")
+    }
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(receiveNotification(_:)),
+                                               name: .newUnreadNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(receiveNotification(_:)),
+                                               name: .newReadNotification,
+                                               object: nil)
     }
     
     private func subviews() {
@@ -65,7 +74,7 @@ class NotificationListViewController: UIViewController {
         ])
     }
     
-    @objc private func receiveUnreadNotification(_ notification: Notification) {
+    @objc private func receiveNotification(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
@@ -77,17 +86,24 @@ extension NotificationListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var notification: CareNotification?
         
+        let cell = tableView.cellForRow(at: indexPath) as! CareNotificationTableViewCell
+        let viewModel = cell.viewModel
+        let id = viewModel?.id.uuidString ?? "1"
+        
         switch indexPath.section {
         case CareNotificationDataSource.unread.rawValue:
-            notification = dataSource.unread[indexPath.item]
+            notification = self.dataSource.unread[id]
         case CareNotificationDataSource.read.rawValue:
-            notification = dataSource.read[indexPath.item]
+            notification = self.dataSource.read[id]
         default:
             break
         }
         
         guard let notification = notification else { return }
+        NotificationCenter.default.post(name: .newReadNotification, object: nil, userInfo: ["careNotification": notification])
         let vc = NotificationDetailViewController(notification: notification)
-        showDetailViewController(vc, sender: nil)
+        self.showDetailViewController(vc, sender: nil)
+        
     }
+    
 }

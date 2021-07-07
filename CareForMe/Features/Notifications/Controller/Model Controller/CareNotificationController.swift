@@ -9,6 +9,8 @@ import UIKit
 
 
 class CareNotificationController: NSObject {
+    static let shared = CareNotificationController()
+    
     private struct NotificationData: Codable {
         var read: [CareNotification]
         var unread: [CareNotification]
@@ -16,16 +18,22 @@ class CareNotificationController: NSObject {
     
     private let dbController = FirebaseDatabaseController()
     
-    var read: [CareNotification]
-    var unread: [CareNotification]
+    var read: [String: CareNotification]
+    var unread: [String: CareNotification]
     
-    init(read: [CareNotification], unread: [CareNotification]) {
-        self.read = read
-        self.unread = unread
+    override private init() {
+        self.read = [:]
+        self.unread = [:]
         super.init()
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(receiveUnreadNotification(_:)),
                                                name: .newUnreadNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(receiveReadNotification(_:)),
+                                               name: .newReadNotification,
                                                object: nil)
     }
     
@@ -34,8 +42,17 @@ class CareNotificationController: NSObject {
             guard let notification = try? snapshot.data(as: NotificationData.self) else {
                 return
             }
-            self.read = notification.read
-            self.unread = notification.unread
+            var readHashMap: Dictionary<String, CareNotification> = [:]
+            for notification in notification.read {
+                readHashMap[notification.id.uuidString] = notification
+            }
+            self.read = readHashMap
+                        
+            var unreadHashMap: Dictionary<String, CareNotification> = [:]
+            for notification in notification.unread {
+                unreadHashMap[notification.id.uuidString] = notification
+            }
+            self.unread = unreadHashMap
         }
     }
     
@@ -43,9 +60,18 @@ class CareNotificationController: NSObject {
         let userInfo = notification.userInfo
         guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
         
-        if !unread.contains(careNotification) {
-            unread.append(careNotification)
+        unread[careNotification.id.uuidString] = careNotification
+    }
+    
+    @objc private func receiveReadNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
+        
+        if let unreadNotification = unread[careNotification.id.uuidString] {
+            unread.removeValue(forKey: unreadNotification.id.uuidString)
         }
+        
+        read[careNotification.id.uuidString] = careNotification
     }
 }
 
@@ -71,9 +97,13 @@ extension CareNotificationController: UITableViewDataSource {
         
         switch indexPath.section {
         case CareNotificationDataSource.read.sectionNumber:
-            viewModel = read[indexPath.item].viewModel
+            let readIds = read.map { $0.key }
+            let readId = readIds[indexPath.item]
+            viewModel = read[readId]?.viewModel
         case CareNotificationDataSource.unread.sectionNumber:
-            viewModel = unread[indexPath.item].viewModel
+            let unreadIds = unread.map { $0.key }
+            let unreadId = unreadIds[indexPath.item]
+            viewModel = unread[unreadId]?.viewModel
         default:
             break
         }
@@ -122,4 +152,5 @@ enum CareNotificationDataSource: Int, CaseIterable {
 
 extension Notification.Name {
     static let newUnreadNotification = Notification.Name("NewUnreadNotification")
+    static let newReadNotification = Notification.Name("NewReadNotification")
 }
