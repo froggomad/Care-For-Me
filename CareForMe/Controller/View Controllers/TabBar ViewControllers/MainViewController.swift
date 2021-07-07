@@ -82,7 +82,15 @@ extension MainViewController: CareTypeCollectionViewDelegate {
     
     func didSelect(_ need: CareAlertType) {
         // TODO: use companion userId
-        FirebaseMessagingController.shared.postMessage(category: need.category.type, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
+        FirebaseMessagingController.shared.requestNotificationPermissions { enabled in
+            switch enabled {
+            case .success:
+                break
+            case let .failure(error):
+                print("Error with notification permissions: \(error)")
+            }
+            FirebaseMessagingController.shared.postMessage(category: need.category.type, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
+        }
     }
     
 }
@@ -100,7 +108,7 @@ struct CareNotification: Codable, Equatable {
     }
     
     var viewModel: NotificationCellViewModel {
-        NotificationCellViewModel(category: category, title: title, message: text)
+        NotificationCellViewModel(id: id, category: category, title: title, message: text)
     }
     
     var categoryTitle: String {
