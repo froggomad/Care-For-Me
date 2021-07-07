@@ -21,7 +21,6 @@ class FirebaseMessagingController {
             object: nil)
         
         registerForRemoteNotifications(UIApplication.shared)
-        requestNotificationPermissions { _ in }
         Messaging.messaging().delegate = UIApplication.shared.delegate as? MessagingDelegate
         UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? AppDelegate
     }
@@ -43,13 +42,36 @@ class FirebaseMessagingController {
         application.registerForRemoteNotifications()
     }
     
-    private func requestNotificationPermissions(completion: @escaping (Result<Bool, Error>) -> Void) {
+    enum NotificationPermissionStatus {
+        case authorized
+        case denied
+        case needPermission
+    }
+    
+    func getNotificationSettings(completion: @escaping (NotificationPermissionStatus) -> Void) {
+        let current = UNUserNotificationCenter.current()
+        current.getNotificationSettings(completionHandler: { permission in
+            switch permission.authorizationStatus  {
+            case .authorized, .provisional, .ephemeral:
+                completion(.authorized)
+            case .denied:
+                completion(.denied)
+            case .notDetermined:
+                completion(.needPermission)
+            @unknown default:
+                completion(.needPermission)
+            }
+        })
+    }
+    
+    func requestNotificationPermissions(completion: @escaping (Result<Bool, Error>) -> Void) {
         
         let authOptions: UNAuthorizationOptions = [.alert, .badge]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
-            completionHandler: { success, error in
+            completionHandler: { [weak self] success, error in
                 if success {
+                    self?.retrieveMessagingToken()
                     completion(.success(success))
                 } else if let error = error {
                     completion(.failure(error))
