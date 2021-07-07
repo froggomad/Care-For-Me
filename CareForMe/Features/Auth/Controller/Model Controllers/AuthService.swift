@@ -5,7 +5,8 @@
 //  Created by Kenneth Dubroff on 6/30/21.
 //
 
-import FirebaseAuth
+// NOTE: Not importing FirebaseAuth due to intermittent issues with `AuthDataResult` not found
+import Firebase
 
 class AuthService {
     enum RegistrationError: Error {
