@@ -167,7 +167,6 @@
 			children = (
 				AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */,
 				AAEACFA9268069F5007E9511 /* FirebaseMessagingController.swift */,
-				AACAF26F26952C08005821B4 /* AppSettingsController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -274,6 +273,7 @@
 		AAC9D174269652C100DB3FA5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				AAC9D17C2696875000DB3FA5 /* Controller */,
 				AAC9D175269652CE00DB3FA5 /* UI */,
 			);
 			path = Settings;
@@ -285,6 +285,14 @@
 				AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		AAC9D17C2696875000DB3FA5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AACAF26F26952C08005821B4 /* AppSettingsController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		AACD90072692A384009740EA /* View Controllers */ = {
