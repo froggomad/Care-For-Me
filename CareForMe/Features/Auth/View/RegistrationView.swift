@@ -76,7 +76,7 @@ class RegistrationView: UIView {
     }
     
     init(delegate: RegistrationProcessable) {
-        super.init(frame: UIApplication.shared.windows.first?.frame ?? .zero)
+        super.init(frame: .zero)
         self.delegate = delegate
         backgroundColor = .systemBackground
         subViews()

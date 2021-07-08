@@ -76,7 +76,7 @@ class LoginView: UIView {
     }
     
     init(delegate: LoginProcessable) {
-        super.init(frame: UIApplication.shared.windows.first?.frame ?? .zero)
+        super.init(frame: .zero)
         self.delegate = delegate
         backgroundColor = .systemBackground
         subViews()
