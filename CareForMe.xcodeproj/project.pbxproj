@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3C425829EAD180867907B2 /* Pods_CareForMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF912FF59CF9073DC644768B /* Pods_CareForMeTests.framework */; };
+		84A2FF371C96ADB564A06AF5 /* Pods_Care_For_Me_Notifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFB6A4288E92145DB3DF9A /* Pods_Care_For_Me_Notifications.framework */; };
 		AA4D31E426817071004EF6A2 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D31E326817071004EF6A2 /* NotificationService.swift */; };
 		AA4D31E826817071004EF6A2 /* Care For Me Notifications.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AA4D31F62681747B004EF6A2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F52681747B004EF6A2 /* FirebaseAnalytics */; };
-		AA4D31F82681747B004EF6A2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F72681747B004EF6A2 /* FirebaseMessaging */; };
-		AA4D31FA26817494004EF6A2 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F926817494004EF6A2 /* FirebaseMessaging */; };
+		AA4D31F62681747B004EF6A2 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F52681747B004EF6A2 /* SwiftPackageProductDependency */; };
+		AA4D31F82681747B004EF6A2 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F72681747B004EF6A2 /* SwiftPackageProductDependency */; };
+		AA4D31FA26817494004EF6A2 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F926817494004EF6A2 /* SwiftPackageProductDependency */; };
 		AA4D31FC26817DF2004EF6A2 /* FirebaseMessagingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEACFA9268069F5007E9511 /* FirebaseMessagingController.swift */; };
 		AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50685D2690AAA6006F1126 /* TapticFeedback.swift */; };
 		AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5068AF26918F00006F1126 /* RegistrationVC.swift */; };
 		AA5068B22691A150006F1126 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5068B12691A150006F1126 /* TabBar.swift */; };
 		AA6B1978268D9923002B43BA /* CareUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B1977268D9923002B43BA /* CareUser.swift */; };
 		AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B197B268D9A2D002B43BA /* AuthService.swift */; };
-		AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = AAB5574E2684053A0022D47D /* BadgeGenerator */; };
+		AAB5574F2684053A0022D47D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AAB5574E2684053A0022D47D /* SwiftPackageProductDependency */; };
 		AABB53E0268FAC0A00EF7ABC /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */; };
 		AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */; };
-		AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AABB53E3269025C000EF7ABC /* FirebaseAuth */; };
+		AABB53E4269025C000EF7ABC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AABB53E3269025C000EF7ABC /* SwiftPackageProductDependency */; };
 		AAC06D582693C34600408AE3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC06D572693C34600408AE3 /* LoginVC.swift */; };
 		AAC06D5A2693C7FB00408AE3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC06D592693C7FB00408AE3 /* LoginView.swift */; };
 		AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F46267A462300ADD525 /* UIImage+named.swift */; };
@@ -44,14 +46,16 @@
 		AAE262F22679716500ABC882 /* AlertTypeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */; };
 		AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */; };
 		AAE262F62679AA3600ABC882 /* UIView+programmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262F52679AA3600ABC882 /* UIView+programmatic.swift */; };
+		AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */; };
 		AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */; };
 		AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A1268EF9AA003A8278 /* NotificationListTableView.swift */; };
 		AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A3268EF9E7003A8278 /* CareNotificationController.swift */; };
 		AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A5268EFBC3003A8278 /* CareNotificationTableViewCell.swift */; };
 		AAEACFA8268067E6007E9511 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAEACFA7268067E6007E9511 /* GoogleService-Info.plist */; };
 		AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */; };
-		AAEB516226826D0900A0B741 /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */; };
-		AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516326826DBC00A0B741 /* FirebaseDatabase */; };
+		AAEB516226826D0900A0B741 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516126826D0900A0B741 /* SwiftPackageProductDependency */; };
+		AAEB516426826DBC00A0B741 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516326826DBC00A0B741 /* SwiftPackageProductDependency */; };
+		B208D1FBD1D55209A54FCFCC /* Pods_CareForMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A0AA6D40030EC784023A01 /* Pods_CareForMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18150D8111CC72697DBF40E9 /* Pods-Care For Me Notifications.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Care For Me Notifications.debug.xcconfig"; path = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications.debug.xcconfig"; sourceTree = "<group>"; };
+		2F74571D73F0E9A111E02A84 /* Pods-CareForMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMeTests.release.xcconfig"; path = "Target Support Files/Pods-CareForMeTests/Pods-CareForMeTests.release.xcconfig"; sourceTree = "<group>"; };
+		7D7AE93D78FFA58C4393C0A1 /* Pods-CareForMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMeTests.debug.xcconfig"; path = "Target Support Files/Pods-CareForMeTests/Pods-CareForMeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89A0AA6D40030EC784023A01 /* Pods_CareForMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareForMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EEFB6A4288E92145DB3DF9A /* Pods_Care_For_Me_Notifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Care_For_Me_Notifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B3D66E0F53DF8EC9A253A8B /* Pods-Care For Me Notifications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Care For Me Notifications.release.xcconfig"; path = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications.release.xcconfig"; sourceTree = "<group>"; };
+		A1A1E052B3EB0C3BB014458C /* Pods-CareForMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMe.debug.xcconfig"; path = "Target Support Files/Pods-CareForMe/Pods-CareForMe.debug.xcconfig"; sourceTree = "<group>"; };
 		AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Care For Me Notifications.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4D31E326817071004EF6A2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		AA4D31E526817071004EF6A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +135,7 @@
 		AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeCollectionView.swift; sourceTree = "<group>"; };
 		AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAE262F52679AA3600ABC882 /* UIView+programmatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+programmatic.swift"; sourceTree = "<group>"; };
+		AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDetailViewController.swift; sourceTree = "<group>"; };
 		AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		AAE918A1268EF9AA003A8278 /* NotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListTableView.swift; sourceTree = "<group>"; };
 		AAE918A3268EF9E7003A8278 /* CareNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareNotificationController.swift; sourceTree = "<group>"; };
@@ -132,6 +144,8 @@
 		AAEACFA9268069F5007E9511 /* FirebaseMessagingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingController.swift; sourceTree = "<group>"; };
 		AAEACFAB26807317007E9511 /* CareForMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CareForMe.entitlements; sourceTree = "<group>"; };
 		AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseController.swift; sourceTree = "<group>"; };
+		EC7B36EC069D8E1CB6B95F43 /* Pods-CareForMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMe.release.xcconfig"; path = "Target Support Files/Pods-CareForMe/Pods-CareForMe.release.xcconfig"; sourceTree = "<group>"; };
+		FF912FF59CF9073DC644768B /* Pods_CareForMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareForMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4D31FA26817494004EF6A2 /* FirebaseMessaging in Frameworks */,
+				AA4D31FA26817494004EF6A2 /* BuildFile in Frameworks */,
+				84A2FF371C96ADB564A06AF5 /* Pods_Care_For_Me_Notifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,12 +162,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */,
-				AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */,
-				AAEB516226826D0900A0B741 /* FirebaseDatabaseSwift-Beta in Frameworks */,
-				AA4D31F82681747B004EF6A2 /* FirebaseMessaging in Frameworks */,
-				AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */,
-				AA4D31F62681747B004EF6A2 /* FirebaseAnalytics in Frameworks */,
+				AAB5574F2684053A0022D47D /* BuildFile in Frameworks */,
+				AABB53E4269025C000EF7ABC /* BuildFile in Frameworks */,
+				AAEB516226826D0900A0B741 /* BuildFile in Frameworks */,
+				AA4D31F82681747B004EF6A2 /* BuildFile in Frameworks */,
+				AAEB516426826DBC00A0B741 /* BuildFile in Frameworks */,
+				AA4D31F62681747B004EF6A2 /* BuildFile in Frameworks */,
+				B208D1FBD1D55209A54FCFCC /* Pods_CareForMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,12 +176,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D3C425829EAD180867907B2 /* Pods_CareForMeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15E094C27F882993319FCC28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18150D8111CC72697DBF40E9 /* Pods-Care For Me Notifications.debug.xcconfig */,
+				9B3D66E0F53DF8EC9A253A8B /* Pods-Care For Me Notifications.release.xcconfig */,
+				A1A1E052B3EB0C3BB014458C /* Pods-CareForMe.debug.xcconfig */,
+				EC7B36EC069D8E1CB6B95F43 /* Pods-CareForMe.release.xcconfig */,
+				7D7AE93D78FFA58C4393C0A1 /* Pods-CareForMeTests.debug.xcconfig */,
+				2F74571D73F0E9A111E02A84 /* Pods-CareForMeTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AA4D31DC26813AB5004EF6A2 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +279,7 @@
 		AAC07F4B267A7E1400ADD525 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAE59FE526975B28008BF7FE /* Base VCs */,
 				AAE9189C268EF949003A8278 /* TabBar ViewControllers */,
 			);
 			path = "View Controllers";
@@ -349,6 +381,7 @@
 				AAE262CF2679530600ABC882 /* CareForMeTests */,
 				AAE262B72679530500ABC882 /* Products */,
 				CDF6346D8BC85E6E83323EFD /* Frameworks */,
+				15E094C27F882993319FCC28 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -404,6 +437,14 @@
 				AAE91897268EE160003A8278 /* Extensions */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AAE59FE526975B28008BF7FE /* Base VCs */ = {
+			isa = PBXGroup;
+			children = (
+				AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */,
+			);
+			path = "Base VCs";
 			sourceTree = "<group>";
 		};
 		AAE91897268EE160003A8278 /* Extensions */ = {
@@ -470,6 +511,9 @@
 			children = (
 				AA4D31F1268172C8004EF6A2 /* FirebaseMessaging.framework */,
 				AA4D31ED26817098004EF6A2 /* FirebaseMessaging.framework */,
+				8EEFB6A4288E92145DB3DF9A /* Pods_Care_For_Me_Notifications.framework */,
+				89A0AA6D40030EC784023A01 /* Pods_CareForMe.framework */,
+				FF912FF59CF9073DC644768B /* Pods_CareForMeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -481,6 +525,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA4D31E926817071004EF6A2 /* Build configuration list for PBXNativeTarget "Care For Me Notifications" */;
 			buildPhases = (
+				04080B92509C5BF430350698 /* [CP] Check Pods Manifest.lock */,
 				AA4D31DD26817071004EF6A2 /* Sources */,
 				AA4D31DE26817071004EF6A2 /* Frameworks */,
 				AA4D31DF26817071004EF6A2 /* Resources */,
@@ -491,7 +536,7 @@
 			);
 			name = "Care For Me Notifications";
 			packageProductDependencies = (
-				AA4D31F926817494004EF6A2 /* FirebaseMessaging */,
+				AA4D31F926817494004EF6A2 /* SwiftPackageProductDependency */,
 			);
 			productName = "Care For Me Notifications";
 			productReference = AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */;
@@ -501,10 +546,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAE262E02679530600ABC882 /* Build configuration list for PBXNativeTarget "CareForMe" */;
 			buildPhases = (
+				40184ADF8938AC57A1AEB221 /* [CP] Check Pods Manifest.lock */,
 				AAE262B22679530500ABC882 /* Sources */,
 				AAE262B32679530500ABC882 /* Frameworks */,
 				AAE262B42679530500ABC882 /* Resources */,
 				AA4D31EC26817071004EF6A2 /* Embed App Extensions */,
+				68255E725E03350779F049E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -513,12 +560,12 @@
 			);
 			name = CareForMe;
 			packageProductDependencies = (
-				AA4D31F52681747B004EF6A2 /* FirebaseAnalytics */,
-				AA4D31F72681747B004EF6A2 /* FirebaseMessaging */,
-				AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */,
-				AAEB516326826DBC00A0B741 /* FirebaseDatabase */,
-				AAB5574E2684053A0022D47D /* BadgeGenerator */,
-				AABB53E3269025C000EF7ABC /* FirebaseAuth */,
+				AA4D31F52681747B004EF6A2 /* SwiftPackageProductDependency */,
+				AA4D31F72681747B004EF6A2 /* SwiftPackageProductDependency */,
+				AAEB516126826D0900A0B741 /* SwiftPackageProductDependency */,
+				AAEB516326826DBC00A0B741 /* SwiftPackageProductDependency */,
+				AAB5574E2684053A0022D47D /* SwiftPackageProductDependency */,
+				AABB53E3269025C000EF7ABC /* SwiftPackageProductDependency */,
 			);
 			productName = CareForMe;
 			productReference = AAE262B62679530500ABC882 /* CareForMe.app */;
@@ -528,6 +575,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAE262E32679530600ABC882 /* Build configuration list for PBXNativeTarget "CareForMeTests" */;
 			buildPhases = (
+				273589A938A8FF502678B042 /* [CP] Check Pods Manifest.lock */,
 				AAE262C82679530600ABC882 /* Sources */,
 				AAE262C92679530600ABC882 /* Frameworks */,
 				AAE262CA2679530600ABC882 /* Resources */,
@@ -573,8 +621,8 @@
 			);
 			mainGroup = AAE262AD2679530500ABC882;
 			packageReferences = (
-				AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				AAB5574D2684053A0022D47D /* XCRemoteSwiftPackageReference "BadgeGenerator" */,
+				AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */,
+				AAB5574D2684053A0022D47D /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = AAE262B72679530500ABC882 /* Products */;
 			projectDirPath = "";
@@ -614,6 +662,92 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04080B92509C5BF430350698 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Care For Me Notifications-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		273589A938A8FF502678B042 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CareForMeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40184ADF8938AC57A1AEB221 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CareForMe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68255E725E03350779F049E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CareForMe/Pods-CareForMe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CareForMe/Pods-CareForMe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CareForMe/Pods-CareForMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA4D31DD26817071004EF6A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -629,6 +763,7 @@
 			files = (
 				AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */,
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
+				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
@@ -699,6 +834,7 @@
 /* Begin XCBuildConfiguration section */
 		AA4D31EA26817071004EF6A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18150D8111CC72697DBF40E9 /* Pods-Care For Me Notifications.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -720,6 +856,7 @@
 		};
 		AA4D31EB26817071004EF6A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B3D66E0F53DF8EC9A253A8B /* Pods-Care For Me Notifications.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -857,6 +994,7 @@
 		};
 		AAE262E12679530600ABC882 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1A1E052B3EB0C3BB014458C /* Pods-CareForMe.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -879,6 +1017,7 @@
 		};
 		AAE262E22679530600ABC882 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC7B36EC069D8E1CB6B95F43 /* Pods-CareForMe.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -901,6 +1040,7 @@
 		};
 		AAE262E42679530600ABC882 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D7AE93D78FFA58C4393C0A1 /* Pods-CareForMeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -923,6 +1063,7 @@
 		};
 		AAE262E52679530600ABC882 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F74571D73F0E9A111E02A84 /* Pods-CareForMeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -985,7 +1126,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -993,7 +1134,7 @@
 				minimumVersion = 8.1.1;
 			};
 		};
-		AAB5574D2684053A0022D47D /* XCRemoteSwiftPackageReference "BadgeGenerator" */ = {
+		AAB5574D2684053A0022D47D /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/froggomad/BadgeGenerator";
 			requirement = {
@@ -1004,39 +1145,39 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AA4D31F52681747B004EF6A2 /* FirebaseAnalytics */ = {
+		AA4D31F52681747B004EF6A2 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */;
 			productName = FirebaseAnalytics;
 		};
-		AA4D31F72681747B004EF6A2 /* FirebaseMessaging */ = {
+		AA4D31F72681747B004EF6A2 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */;
 			productName = FirebaseMessaging;
 		};
-		AA4D31F926817494004EF6A2 /* FirebaseMessaging */ = {
+		AA4D31F926817494004EF6A2 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */;
 			productName = FirebaseMessaging;
 		};
-		AAB5574E2684053A0022D47D /* BadgeGenerator */ = {
+		AAB5574E2684053A0022D47D /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AAB5574D2684053A0022D47D /* XCRemoteSwiftPackageReference "BadgeGenerator" */;
+			package = AAB5574D2684053A0022D47D /* RemoteSwiftPackageReference */;
 			productName = BadgeGenerator;
 		};
-		AABB53E3269025C000EF7ABC /* FirebaseAuth */ = {
+		AABB53E3269025C000EF7ABC /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */;
 			productName = FirebaseAuth;
 		};
-		AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */ = {
+		AAEB516126826D0900A0B741 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */;
 			productName = "FirebaseDatabaseSwift-Beta";
 		};
-		AAEB516326826DBC00A0B741 /* FirebaseDatabase */ = {
+		AAEB516326826DBC00A0B741 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = AA4D31F42681747B004EF6A2 /* RemoteSwiftPackageReference */;
 			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */

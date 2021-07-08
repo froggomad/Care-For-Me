@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: ParentDetailViewController {
 
     lazy var stack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [notificationToggle])
@@ -40,11 +40,12 @@ class SettingsViewController: UIViewController {
     }
     
     private func constraints() {
+        let padding: CGFloat = 20
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
         ])
     }
     
@@ -86,7 +87,7 @@ class SettingsViewController: UIViewController {
                                                instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
                                                image: UIImage(systemName: "questionmark.circle.fill")!,
                                                // TODO: replace with animated gif showing setting change
-                                               caption: "to open your iOS Settings App, tap below",
+                                               caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
         } else {
@@ -94,9 +95,9 @@ class SettingsViewController: UIViewController {
             
             let vc = InstructionViewController(title: "About Setting Notifications",
                                                instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
-                                               image: UIImage(systemName: "questionmark.circle.fill")!,
                                                // TODO: replace with animated gif showing setting change
-                                               caption: "to open your iOS Settings App, tap below",
+                                               image: UIImage(systemName: "questionmark.circle.fill")!,
+                                               caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
         }
@@ -106,11 +107,4 @@ class SettingsViewController: UIViewController {
         stack.addArrangedSubview(toggle)
     }
     
-    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
-        if let navController = navigationController {
-            navController.pushViewController(vc, animated: true)
-        } else {
-            present(vc, animated: true)
-        }
-    }
 }

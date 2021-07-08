@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotificationListViewController: UIViewController {
+class NotificationListViewController: ParentDetailViewController {
     
     var dataSource: CareNotificationController
     
@@ -26,10 +26,6 @@ class NotificationListViewController: UIViewController {
         super.viewDidAppear(animated)
         FirebaseMessagingController.shared.requestNotificationPermissions(completion: {_ in })
         tableView.reloadData()
-    }
-    
-    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     init(dataSource: CareNotificationController = CareNotificationController.shared) {
