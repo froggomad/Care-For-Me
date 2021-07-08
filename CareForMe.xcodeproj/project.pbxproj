@@ -29,6 +29,7 @@
 		AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */; };
 		AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */; };
 		AAC9D17B269656D700DB3FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */; };
+		AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D1802696A86200DB3FA5 /* InstructionView.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
@@ -103,6 +104,7 @@
 		AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledToggle.swift; sourceTree = "<group>"; };
 		AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AAC9D1802696A86200DB3FA5 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,17 +276,17 @@
 			isa = PBXGroup;
 			children = (
 				AAC9D17C2696875000DB3FA5 /* Controller */,
-				AAC9D175269652CE00DB3FA5 /* UI */,
+				AAC9D175269652CE00DB3FA5 /* View */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		AAC9D175269652CE00DB3FA5 /* UI */ = {
+		AAC9D175269652CE00DB3FA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */,
 			);
-			path = UI;
+			path = View;
 			sourceTree = "<group>";
 		};
 		AAC9D17C2696875000DB3FA5 /* Controller */ = {
@@ -293,6 +295,22 @@
 				AACAF26F26952C08005821B4 /* AppSettingsController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		AAC9D17E2696A77600DB3FA5 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				AAC9D17F2696A78D00DB3FA5 /* View */,
+			);
+			path = Instructions;
+			sourceTree = "<group>";
+		};
+		AAC9D17F2696A78D00DB3FA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAC9D1802696A86200DB3FA5 /* InstructionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AACD90072692A384009740EA /* View Controllers */ = {
@@ -401,6 +419,7 @@
 		AAE9189D268EF961003A8278 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AAC9D17E2696A77600DB3FA5 /* Instructions */,
 				AA5068AA26918EBF006F1126 /* Auth */,
 				AAE9189E268EF974003A8278 /* Notifications */,
 				AAC9D174269652C100DB3FA5 /* Settings */,
@@ -601,6 +620,7 @@
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
+				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
