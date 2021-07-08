@@ -51,15 +51,17 @@ class FirebaseMessagingController {
     func getNotificationSettings(completion: @escaping (NotificationPermissionStatus) -> Void) {
         let current = UNUserNotificationCenter.current()
         current.getNotificationSettings(completionHandler: { permission in
-            switch permission.authorizationStatus  {
-            case .authorized, .provisional, .ephemeral:
-                completion(.authorized)
-            case .denied:
-                completion(.denied)
-            case .notDetermined:
-                completion(.needPermission)
-            @unknown default:
-                completion(.needPermission)
+            DispatchQueue.main.async {
+                switch permission.authorizationStatus  {
+                case .authorized, .provisional, .ephemeral:
+                    completion(.authorized)
+                case .denied:
+                    completion(.denied)
+                case .notDetermined:
+                    completion(.needPermission)
+                @unknown default:
+                    completion(.needPermission)
+                }
             }
         })
     }

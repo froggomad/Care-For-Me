@@ -15,7 +15,8 @@ enum TabBar: Int {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [
             NavigationViewController.main.navigationController,
-            NavigationViewController.notifications.navigationController
+            NavigationViewController.notifications.navigationController,
+            NavigationViewController.settings.navigationController
         ]
         return tabBar
     }
@@ -30,6 +31,7 @@ enum NavigationViewController {
     
     case main
     case notifications
+    case settings
     
     var navigationController: UINavigationController {
         switch self {
@@ -38,6 +40,9 @@ enum NavigationViewController {
             return navController
         case .notifications:
             let navController = UINavigationController(rootViewController: NotificationListViewController())
+            return navController
+        case .settings:
+            let navController = UINavigationController(rootViewController: SettingsViewController())
             return navController
         }
     }
