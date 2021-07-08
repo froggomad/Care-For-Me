@@ -14,25 +14,25 @@ class FirebaseDatabaseController {
     /// Create a new database entry with an auto-created ID
     /// - Parameters:
     ///   - childRef: The path to the database entry
-    ///   - using: a Codable instance used to set keys and values
-    func createReferenceWithId<T: Codable>(for childRef: String, using: T, completion: @escaping (Error?) -> Void) {
+    ///   - value: a Codable instance used to set keys and values
+    func createReferenceWithId<T: Codable>(for childRef: String, using value: T, completion: @escaping (Error?) -> Void) {
         do {
-            try FirebaseDatabaseController.db.child(childRef).childByAutoId().setValue(from: using, completion: completion)
+            try Self.db.child(childRef).childByAutoId().setValue(from: value, completion: completion)
         } catch {
             completion(error)
         }
     }
     
     func setValue<T: Encodable>(for ref: String, with value: T) {
-        try? FirebaseDatabaseController.db.child(ref).setValue(from: value)
+        try? Self.db.child(ref).setValue(from: value)
     }
     
     func updateValues(for ref: String, with dictionary: [String: Encodable]) {
-        FirebaseDatabaseController.db.child(ref).updateChildValues(dictionary)
+        Self.db.child(ref).updateChildValues(dictionary)
     }
     
     func observe(endpoint: String, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
-        let ref = FirebaseDatabaseController.db.child(endpoint)
+        let ref = Self.db.child(endpoint)
         ref.observe(event, with: completion)
     }
     

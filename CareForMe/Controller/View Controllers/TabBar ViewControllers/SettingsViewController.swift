@@ -8,19 +8,25 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    var toggles: [LabeledToggleSwitch] = []
 
     lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: toggles)
+        let stack = UIStackView(arrangedSubviews: [notificationToggle])
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    lazy var notificationToggle: LabeledToggleSwitch = {
+        LabeledToggleSwitch(title: "Notifications", toggleFunction: #selector(toggleNotifications), target: self)
+    }()
         
-    init(toggles: LabeledToggleSwitch...) {
-        self.toggles = toggles
+    init(toggles: LabeledToggleSwitch...) {        
+        
         super.init(nibName: nil, bundle: nil)
+        for toggle in toggles {
+            addToggle(toggle: toggle)
+        }
         setTab()
     }
     
@@ -52,31 +58,57 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        let toggle = LabeledToggleSwitch(title: "Notifications", toggleFunction: #selector(toggleNotifications), target: self)
-        setNotificationSwitchState(for: toggle)
-        addToggle(toggle: toggle)
-        
         subviews()
     }
     
-    private func setNotificationSwitchState(for toggle: LabeledToggleSwitch) {
-        FirebaseMessagingController.shared.getNotificationSettings { permissionStatus in
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setNotificationSwitchState()
+    }
+    
+    private func setNotificationSwitchState() {
+        FirebaseMessagingController.shared.getNotificationSettings { [weak self] permissionStatus in
             switch permissionStatus {
             case .authorized:
-                toggle.setSwitchState(on: true)
+                self?.notificationToggle.setSwitchState(on: true)
             case .denied, .needPermission:
-                toggle.setSwitchState(on: false)
+                self?.notificationToggle.setSwitchState(on: false)
             }
         }
     }
     
     @objc private func toggleNotifications(_ sender: UISwitch) {
+        
         if !sender.isOn {
             AppSettingsController.disableNotifications()
+            
+            let vc = InstructionViewController(title: "Notifications have been disabled for this session only",
+                                               instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
+                                               image: UIImage(systemName: "questionmark.circle.fill")!,
+                                               // TODO: replace with animated gif showing setting change
+                                               caption: "iOS Settings App")
+            showDetailViewController(vc, sender: nil)
+        } else {
+            FirebaseMessagingController.shared.registerForRemoteNotifications()
+            
+            let vc = InstructionViewController(title: "About Setting Notifications",
+                                               instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
+                                               image: UIImage(systemName: "questionmark.circle.fill")!,
+                                               // TODO: replace with animated gif showing setting change
+                                               caption: "iOS Settings App")
+            showDetailViewController(vc, sender: nil)
         }
     }
     
     func addToggle(toggle: LabeledToggleSwitch) {
         stack.addArrangedSubview(toggle)
+    }
+    
+    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
+        if let navController = navigationController {
+            navController.pushViewController(vc, animated: true)
+        } else {
+            present(vc, animated: true)
+        }
     }
 }

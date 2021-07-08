@@ -26,7 +26,7 @@ class FirebaseMessagingController {
             name: .tokenKey,
             object: nil)
         
-        registerForRemoteNotifications(UIApplication.shared)
+        registerForRemoteNotifications()
         Messaging.messaging().delegate = UIApplication.shared.delegate as? MessagingDelegate
         UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? AppDelegate
     }
@@ -44,7 +44,7 @@ class FirebaseMessagingController {
         
     }
     
-    private func registerForRemoteNotifications(_ application: UIApplication) {
+    func registerForRemoteNotifications(_ application: UIApplication = UIApplication.shared) {
         application.registerForRemoteNotifications()
     }
     
