@@ -383,9 +383,9 @@
 		AAE9189C268EF949003A8278 /* TabBar ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */,
 				AAE262BD2679530500ABC882 /* MainViewController.swift */,
 				AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */,
+				AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */,
 			);
 			path = "TabBar ViewControllers";
 			sourceTree = "<group>";

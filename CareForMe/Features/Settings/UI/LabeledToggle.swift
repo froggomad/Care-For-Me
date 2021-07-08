@@ -30,11 +30,15 @@ class LabeledToggleSwitch: UIView {
         return toggleSwitch
     }()
     
-    init(title: String, toggleFunction selector: Selector, target: Any, event: UIControl.Event = .touchUpInside) {
+    init(title: String, toggleFunction selector: Selector, target: Any, event: UIControl.Event = .valueChanged) {
         self.title = title
         super.init(frame: .zero)
         toggleSwitch.addTarget(target, action: selector, for: event)
         subviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Programmatic View")
     }
     
     private func subviews() {
@@ -50,8 +54,5 @@ class LabeledToggleSwitch: UIView {
     func setSwitchState(on: Bool) {
         toggleSwitch.isOn = on
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("Programmatic View")
-    }
+
 }
