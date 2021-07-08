@@ -56,6 +56,7 @@ class InstructionView: UIView {
         imageView.image = image
         imageView.frame.size.height = 200
         imageView.frame.size.width = imageView.frame.height
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
