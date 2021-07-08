@@ -86,7 +86,8 @@ class SettingsViewController: UIViewController {
                                                instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
                                                image: UIImage(systemName: "questionmark.circle.fill")!,
                                                // TODO: replace with animated gif showing setting change
-                                               caption: "iOS Settings App")
+                                               caption: "to open your iOS Settings App, tap below",
+                                               buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
         } else {
             FirebaseMessagingController.shared.registerForRemoteNotifications()
@@ -95,7 +96,8 @@ class SettingsViewController: UIViewController {
                                                instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
                                                image: UIImage(systemName: "questionmark.circle.fill")!,
                                                // TODO: replace with animated gif showing setting change
-                                               caption: "iOS Settings App")
+                                               caption: "to open your iOS Settings App, tap below",
+                                               buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
         }
     }
