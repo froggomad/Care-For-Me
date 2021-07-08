@@ -20,7 +20,6 @@ class AlertTypeCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero, translates: false)
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "pencil.circle.fill")
         return imageView
     }()
     

@@ -21,7 +21,7 @@ class AlertTypeCollectionView: UIView {
     }()
     
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(frame: .zero, translates: false)
+        let label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .title1)
         label.numberOfLines = 1
         return label
