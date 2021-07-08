@@ -29,6 +29,7 @@ class InstructionView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         label.font = .preferredFont(for: .title1)
         label.text = titleString
         label.numberOfLines = 0
@@ -37,6 +38,7 @@ class InstructionView: UIView {
     
     private lazy var instructionLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         label.font = .preferredFont(for: .body, weight: .bold)
         label.text = instructions
         label.numberOfLines = 0
@@ -62,6 +64,7 @@ class InstructionView: UIView {
     
     private lazy var captionLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         label.font = .preferredFont(for: .caption1, weight: .bold)
         label.text = caption
         return label
@@ -82,7 +85,7 @@ class InstructionView: UIView {
         self.buttonTitle = buttonTitle
         self.target = target
         self.selector = selector
-        super.init(frame: UIApplication.shared.windows.first?.frame ?? .zero)
+        super.init(frame: .zero)
         backgroundColor = .systemBackground
         subviews()
     }
