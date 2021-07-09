@@ -84,7 +84,6 @@ class SettingsViewController: ParentDetailViewController {
             let vc = InstructionViewController(title: "Notifications have been disabled for this session only",
                                                instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
                                                image: Gif.notificationsOff.rawValue,
-                                               // TODO: replace with animated gif showing setting change
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
@@ -93,7 +92,6 @@ class SettingsViewController: ParentDetailViewController {
             
             let vc = InstructionViewController(title: "About Setting Notifications",
                                                instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
-                                               // TODO: replace with animated gif showing setting change
                                                image: Gif.notificationsOn.rawValue,
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
