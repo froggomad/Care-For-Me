@@ -13,6 +13,7 @@ class ColorPicker: UIControl {
     var color: UIColor = .white {
         didSet {
             sendActions(for: .valueChanged)
+            brightnessLabel.setContextualTextColor(for: color)
         }
     }
     
@@ -32,7 +33,6 @@ class ColorPicker: UIControl {
         let label = UILabel()
         label.text = "Brightness"
         label.textAlignment = .center
-        label.backgroundColor = .systemBackground
         return label
     }()
     
