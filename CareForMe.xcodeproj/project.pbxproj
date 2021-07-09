@@ -22,6 +22,10 @@
 		AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B197B268D9A2D002B43BA /* AuthService.swift */; };
 		AA79AD002697C68200786881 /* notificationsOff.gif in Resources */ = {isa = PBXBuildFile; fileRef = AA79ACFF2697C68200786881 /* notificationsOff.gif */; };
 		AA79AD032697CAFC00786881 /* notificationsOn.gif in Resources */ = {isa = PBXBuildFile; fileRef = AA79AD022697CAFC00786881 /* notificationsOn.gif */; };
+		AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD062697FD2F00786881 /* ColorPicker.swift */; };
+		AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD082697FD7200786881 /* ColorWheel.swift */; };
+		AA79AD0B2697FDAF00786881 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD0A2697FDAF00786881 /* Color.swift */; };
+		AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */; };
 		AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = AAB5574E2684053A0022D47D /* BadgeGenerator */; };
 		AABB53E0268FAC0A00EF7ABC /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */; };
 		AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */; };
@@ -35,6 +39,7 @@
 		AAC9D17B269656D700DB3FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */; };
 		AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D1802696A86200DB3FA5 /* InstructionView.swift */; };
 		AAC9D1842696AB9100DB3FA5 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D1832696AB9100DB3FA5 /* InstructionViewController.swift */; };
+		AACA591D269881660090CAF2 /* UIColor+isDarkColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591C269881660090CAF2 /* UIColor+isDarkColor.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
@@ -111,6 +116,10 @@
 		AA6B197B268D9A2D002B43BA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AA79ACFF2697C68200786881 /* notificationsOff.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = notificationsOff.gif; sourceTree = "<group>"; };
 		AA79AD022697CAFC00786881 /* notificationsOn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = notificationsOn.gif; sourceTree = "<group>"; };
+		AA79AD062697FD2F00786881 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		AA79AD082697FD7200786881 /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
+		AA79AD0A2697FDAF00786881 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModel.swift; sourceTree = "<group>"; };
 		AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+preferredFont(for style, weight).swift"; sourceTree = "<group>"; };
 		AAC06D572693C34600408AE3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -122,6 +131,7 @@
 		AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AAC9D1802696A86200DB3FA5 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		AAC9D1832696AB9100DB3FA5 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		AACA591C269881660090CAF2 /* UIColor+isDarkColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+isDarkColor.swift"; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +279,25 @@
 				AA79ACFF2697C68200786881 /* notificationsOff.gif */,
 			);
 			name = Media;
+			sourceTree = "<group>";
+		};
+		AA79AD042697FD1100786881 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD062697FD2F00786881 /* ColorPicker.swift */,
+				AA79AD082697FD7200786881 /* ColorWheel.swift */,
+				AA79AD0A2697FDAF00786881 /* Color.swift */,
+				AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */,
+			);
+			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		AA79AD052697FD1700786881 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD042697FD1100786881 /* ColorPicker */,
+			);
+			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
 		AABB53DE268FAC0000EF7ABC /* Model */ = {
@@ -444,6 +473,7 @@
 		AAE262F02679715700ABC882 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AA79AD052697FD1700786881 /* Custom Controls */,
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
 				AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */,
 				AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */,
@@ -467,6 +497,7 @@
 				AAC07F46267A462300ADD525 /* UIImage+named.swift */,
 				AAC07F48267A497800ADD525 /* UIColor+named.swift */,
 				AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */,
+				AACA591C269881660090CAF2 /* UIColor+isDarkColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -780,17 +811,21 @@
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
+				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
 				AA4D31FC26817DF2004EF6A2 /* FirebaseMessagingController.swift in Sources */,
+				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
 				AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */,
 				AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */,
 				AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */,
+				AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
+				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
 				AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */,
 				AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */,
@@ -807,6 +842,7 @@
 				AAC9D1842696AB9100DB3FA5 /* InstructionViewController.swift in Sources */,
 				AAC06D582693C34600408AE3 /* LoginVC.swift in Sources */,
 				AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */,
+				AACA591D269881660090CAF2 /* UIColor+isDarkColor.swift in Sources */,
 				AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */,
 				AA5068B22691A150006F1126 /* TabBar.swift in Sources */,
 			);
