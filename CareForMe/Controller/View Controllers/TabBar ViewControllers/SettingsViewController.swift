@@ -81,11 +81,9 @@ class SettingsViewController: ParentDetailViewController {
     @objc private func toggleNotifications(_ sender: UISwitch) {
         
         if !sender.isOn {
-            AppSettingsController.disableNotifications()
-            
             let vc = InstructionViewController(title: "Notifications have been disabled for this session only",
                                                instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
-                                               image: UIImage(systemName: "questionmark.circle.fill")!,
+                                               image: Gif.notificationsOff.rawValue,
                                                // TODO: replace with animated gif showing setting change
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
@@ -96,7 +94,7 @@ class SettingsViewController: ParentDetailViewController {
             let vc = InstructionViewController(title: "About Setting Notifications",
                                                instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
                                                // TODO: replace with animated gif showing setting change
-                                               image: UIImage(systemName: "questionmark.circle.fill")!,
+                                               image: Gif.notificationsOn.rawValue,
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
@@ -107,4 +105,9 @@ class SettingsViewController: ParentDetailViewController {
         stack.addArrangedSubview(toggle)
     }
     
+}
+
+enum Gif: String {
+    case notificationsOff
+    case notificationsOn
 }

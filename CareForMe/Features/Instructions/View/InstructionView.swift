@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import JellyGif
 
 class InstructionView: UIView {
     
     private var titleString: String
     private var instructions: String
-    private var image: UIImage
+    private var image: String
     private var caption: String?
     private var buttonTitle: String
     private var target: Any?
@@ -50,15 +51,16 @@ class InstructionView: UIView {
         stack.axis = .vertical
         stack.distribution = .equalCentering
         stack.alignment = .center
+        stack.spacing = 4
         return stack
     }()
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = image
-        imageView.frame.size.height = 200
+    private lazy var imageView: JellyGifImageView = {
+        let imageView = JellyGifImageView()
+        imageView.frame.size.height = 100
         imageView.frame.size.width = imageView.frame.height
         imageView.contentMode = .scaleAspectFit
+        imageView.startGif(with: .name(image))
         return imageView
     }()
     
@@ -77,10 +79,10 @@ class InstructionView: UIView {
         return button
     }()
     
-    init(title: String, instructions: String, image: UIImage, caption: String? = nil, buttonTitle: String, target: Any, selector: Selector) {
+    init(title: String, instructions: String, imageFilename: String, caption: String? = nil, buttonTitle: String, target: Any, selector: Selector) {
         self.titleString = title
         self.instructions = instructions
-        self.image = image
+        self.image = imageFilename
         self.caption = caption
         self.buttonTitle = buttonTitle
         self.target = target

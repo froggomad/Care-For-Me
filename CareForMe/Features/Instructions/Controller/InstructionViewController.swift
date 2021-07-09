@@ -11,14 +11,14 @@ class InstructionViewController: UIViewController {
     
     var titleText: String
     var instructions: String
-    var image: UIImage
+    var image: String
     var caption: String?
     var buttonTitle: String
     
     lazy var instructionView: InstructionView = {
         InstructionView(title: titleText,
                         instructions: instructions,
-                        image: image,
+                        imageFilename: image,
                         caption: caption,
                         buttonTitle: buttonTitle,
                         target: self,
@@ -26,7 +26,7 @@ class InstructionViewController: UIViewController {
         )
     }()
     
-    init(title: String, instructions: String, image: UIImage, caption: String? = nil, buttonTitle: String) {
+    init(title: String, instructions: String, image: String, caption: String? = nil, buttonTitle: String) {
         self.titleText = title
         self.instructions = instructions
         self.image = image
