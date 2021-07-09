@@ -22,6 +22,10 @@
 		AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B197B268D9A2D002B43BA /* AuthService.swift */; };
 		AA79AD002697C68200786881 /* notificationsOff.gif in Resources */ = {isa = PBXBuildFile; fileRef = AA79ACFF2697C68200786881 /* notificationsOff.gif */; };
 		AA79AD032697CAFC00786881 /* notificationsOn.gif in Resources */ = {isa = PBXBuildFile; fileRef = AA79AD022697CAFC00786881 /* notificationsOn.gif */; };
+		AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD062697FD2F00786881 /* ColorPicker.swift */; };
+		AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD082697FD7200786881 /* ColorWheel.swift */; };
+		AA79AD0B2697FDAF00786881 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD0A2697FDAF00786881 /* Color.swift */; };
+		AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */; };
 		AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = AAB5574E2684053A0022D47D /* BadgeGenerator */; };
 		AABB53E0268FAC0A00EF7ABC /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */; };
 		AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */; };
@@ -111,6 +115,10 @@
 		AA6B197B268D9A2D002B43BA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AA79ACFF2697C68200786881 /* notificationsOff.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = notificationsOff.gif; sourceTree = "<group>"; };
 		AA79AD022697CAFC00786881 /* notificationsOn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = notificationsOn.gif; sourceTree = "<group>"; };
+		AA79AD062697FD2F00786881 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		AA79AD082697FD7200786881 /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
+		AA79AD0A2697FDAF00786881 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModel.swift; sourceTree = "<group>"; };
 		AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+preferredFont(for style, weight).swift"; sourceTree = "<group>"; };
 		AAC06D572693C34600408AE3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -269,6 +277,25 @@
 				AA79ACFF2697C68200786881 /* notificationsOff.gif */,
 			);
 			name = Media;
+			sourceTree = "<group>";
+		};
+		AA79AD042697FD1100786881 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD062697FD2F00786881 /* ColorPicker.swift */,
+				AA79AD082697FD7200786881 /* ColorWheel.swift */,
+				AA79AD0A2697FDAF00786881 /* Color.swift */,
+				AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */,
+			);
+			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		AA79AD052697FD1700786881 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD042697FD1100786881 /* ColorPicker */,
+			);
+			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
 		AABB53DE268FAC0000EF7ABC /* Model */ = {
@@ -444,6 +471,7 @@
 		AAE262F02679715700ABC882 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AA79AD052697FD1700786881 /* Custom Controls */,
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
 				AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */,
 				AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */,
@@ -780,17 +808,21 @@
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
+				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
 				AA4D31FC26817DF2004EF6A2 /* FirebaseMessagingController.swift in Sources */,
+				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
 				AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */,
 				AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */,
 				AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */,
+				AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
+				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
 				AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */,
 				AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */,
