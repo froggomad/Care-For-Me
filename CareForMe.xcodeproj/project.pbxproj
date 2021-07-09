@@ -286,11 +286,9 @@
 		AA79AD042697FD1100786881 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				AA79AD062697FD2F00786881 /* ColorPicker.swift */,
-				AA79AD082697FD7200786881 /* ColorWheel.swift */,
-				AA79AD0A2697FDAF00786881 /* Color.swift */,
-				AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */,
-				AACA591E2698A5920090CAF2 /* ColorPickerView.swift */,
+				AACA59202698B90B0090CAF2 /* Model */,
+				AACA59212698B9150090CAF2 /* View */,
+				AACA59222698B92B0090CAF2 /* Controller */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -397,6 +395,32 @@
 			isa = PBXGroup;
 			children = (
 				AAC9D1832696AB9100DB3FA5 /* InstructionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AACA59202698B90B0090CAF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD0A2697FDAF00786881 /* Color.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AACA59212698B9150090CAF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD062697FD2F00786881 /* ColorPicker.swift */,
+				AA79AD082697FD7200786881 /* ColorWheel.swift */,
+				AACA591E2698A5920090CAF2 /* ColorPickerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AACA59222698B92B0090CAF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
