@@ -23,11 +23,8 @@ class ColorPickerViewController: UIViewController {
         return view
     }()
     
-    init(color: UIColor = .blue) {
-        defer {
-            colorPickerView.color = color
-            setUIColors()
-        }
+    init(color: UIColor = .systemBackground) {
+        defer { colorPickerView.color = color }
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
     }
@@ -47,15 +44,11 @@ class ColorPickerViewController: UIViewController {
     
     @objc func changeColor(_ sender: ColorPicker) {
         view.backgroundColor = sender.color
-        setUIColors()
-    }
-    
-    private func setUIColors() {
-        let backgroundColor = view.backgroundColor ?? .black
-        controllerDelegate?.colorWasPicked(backgroundColor)
     }
     
     @objc func setColor(_ sender: UIButton) {
+        let backgroundColor = view.backgroundColor ?? .black
+        controllerDelegate?.colorWasPicked(backgroundColor)
         dismiss(animated: true)
     }
     
