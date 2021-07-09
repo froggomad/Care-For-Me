@@ -12,7 +12,7 @@ class InstructionView: UIView {
     
     private var titleString: String
     private var instructions: String
-    private var image: String
+    private var image: Gif
     private var caption: String?
     private var buttonTitle: String
     private var target: Any?
@@ -60,7 +60,7 @@ class InstructionView: UIView {
         imageView.frame.size.height = 100
         imageView.frame.size.width = imageView.frame.height
         imageView.contentMode = .scaleAspectFit
-        imageView.startGif(with: .name(image))
+        imageView.startGif(with: .name(image.rawValue))
         return imageView
     }()
     
@@ -79,7 +79,7 @@ class InstructionView: UIView {
         return button
     }()
     
-    init(title: String, instructions: String, imageFilename: String, caption: String? = nil, buttonTitle: String, target: Any, selector: Selector) {
+    init(title: String, instructions: String, imageFilename: Gif, caption: String? = nil, buttonTitle: String, target: Any, selector: Selector) {
         self.titleString = title
         self.instructions = instructions
         self.image = imageFilename

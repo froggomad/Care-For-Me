@@ -81,9 +81,9 @@ class SettingsViewController: ParentDetailViewController {
     @objc private func toggleNotifications(_ sender: UISwitch) {
         
         if !sender.isOn {
-            let vc = InstructionViewController(title: "Notifications have been disabled for this session only",
+            let vc = InstructionViewController(title: "About Disabling Notifications",
                                                instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
-                                               image: Gif.notificationsOff.rawValue,
+                                               image: .notificationsOff,
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
@@ -92,7 +92,7 @@ class SettingsViewController: ParentDetailViewController {
             
             let vc = InstructionViewController(title: "About Setting Notifications",
                                                instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
-                                               image: Gif.notificationsOn.rawValue,
+                                               image: .notificationsOn,
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)

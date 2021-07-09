@@ -11,7 +11,7 @@ class InstructionViewController: UIViewController {
     
     var titleText: String
     var instructions: String
-    var image: String
+    var image: Gif
     var caption: String?
     var buttonTitle: String
     
@@ -26,7 +26,7 @@ class InstructionViewController: UIViewController {
         )
     }()
     
-    init(title: String, instructions: String, image: String, caption: String? = nil, buttonTitle: String) {
+    init(title: String, instructions: String, image: Gif, caption: String? = nil, buttonTitle: String) {
         self.titleText = title
         self.instructions = instructions
         self.image = image
