@@ -25,7 +25,6 @@ class ColorPickerViewController: UIViewController {
     lazy var informationLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(for: .title3, weight: .semibold)
-        label.backgroundColor = .systemBackground
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = "Please choose a color by tapping and dragging the color wheel below."
@@ -41,7 +40,6 @@ class ColorPickerViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Set Color", for: .normal)
         button.addTarget(self, action: #selector(setColor), for: .touchUpInside)
-        button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.layer.masksToBounds = true
@@ -49,12 +47,14 @@ class ColorPickerViewController: UIViewController {
         return button
     }()
     
-    init(color: UIColor = .black) {
+    init(color: UIColor = .systemBackground) {
+        defer { colorPicker.color = color }
+        
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
         colorPicker.addTarget(self, action: #selector(changeColor(_:)), for: .valueChanged)
-        defer { colorPicker.color = color }
         view.backgroundColor = .systemBackground
+        setUIColors()
     }
     
     required init?(coder: NSCoder) {
@@ -83,6 +83,7 @@ class ColorPickerViewController: UIViewController {
     
     @objc func changeColor(_ sender: ColorPicker) {
         view.backgroundColor = sender.color
+        setUIColors()
     }
     
     @objc func setColor(_ sender: UIButton) {
@@ -90,4 +91,13 @@ class ColorPickerViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    private func setUIColors() {
+        let backgroundColor = view.backgroundColor ?? .black
+        button.setContextualLinkColor(for: backgroundColor)
+        button.setContextualBackgroundColor(for: backgroundColor)
+        
+        informationLabel.setContextualTextColor(for: backgroundColor)
+    }
+    
 }
+
