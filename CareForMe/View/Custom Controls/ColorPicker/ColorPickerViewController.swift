@@ -12,7 +12,6 @@ protocol ColorPickerDelegate: AnyObject {
 }
 
 class ColorPickerViewController: UIViewController {
-    weak var buttonDelegate: ColorPickerDelegate?
     weak var controllerDelegate: ColorPickerDelegate?
     
     lazy var colorPickerView: ColorPickerView = {
@@ -53,7 +52,7 @@ class ColorPickerViewController: UIViewController {
     
     private func setUIColors() {
         let backgroundColor = view.backgroundColor ?? .black
-        buttonDelegate?.colorWasPicked(backgroundColor)
+        controllerDelegate?.colorWasPicked(backgroundColor)
     }
     
     @objc func setColor(_ sender: UIButton) {
