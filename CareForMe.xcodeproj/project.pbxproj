@@ -500,8 +500,8 @@
 		AAE262F02679715700ABC882 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA79AD052697FD1700786881 /* Custom Controls */,
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
+				AA79AD052697FD1700786881 /* Custom Controls */,
 				AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */,
 				AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */,
 				AAE91897268EE160003A8278 /* Extensions */,
