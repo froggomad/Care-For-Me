@@ -39,6 +39,7 @@ class AlertCategory: AlertCategorizable, CustomStringConvertible, Codable {
 }
 
 struct CareAlertType: CustomStringConvertible, Codable {
+    
     var id: UUID
     unowned var category: AlertCategory
     var stockPhotoName: NamedPhoto
@@ -49,7 +50,7 @@ struct CareAlertType: CustomStringConvertible, Codable {
         return AlertTypeViewModel(
             title: title,
             message: message,
-            image: .stockImage(from: stockPhotoName)
+            image: .stockImage(from: stockPhotoName).withTintColor(.label)
         )
     }
     /// debug description
@@ -61,4 +62,13 @@ struct CareAlertType: CustomStringConvertible, Codable {
             image: \(stockPhotoName.image )
             """
     }
+    
+    internal init(id: UUID, category: AlertCategory, stockPhotoName: NamedPhoto, title: String? = nil, message: String) {
+        self.id = id
+        self.category = category
+        self.stockPhotoName = stockPhotoName
+        self.title = title ?? stockPhotoName.title
+        self.message = message
+    }
+    
 }
