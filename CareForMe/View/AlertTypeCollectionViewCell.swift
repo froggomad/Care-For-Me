@@ -28,6 +28,9 @@ class AlertTypeCollectionViewCell: UICollectionViewCell {
         label.font = .preferredFont(forTextStyle: .headline)
         label.numberOfLines = 1
         label.textAlignment = .center
+        label.allowsDefaultTighteningForTruncation = true
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     

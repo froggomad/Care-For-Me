@@ -10,24 +10,25 @@ import UIKit
 class MainViewController: UIViewController {
     
     private lazy var careCollectionView: AlertTypeCollectionView = {
-        let careAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.red.rawValue, type: "Care")
-        let drinkAlert = CareAlertType(id: UUID(), category: careAlertCategory, title: "Drink", message: "I need water", image: UIImage.named(.drink).pngData() ?? Data())
-        let foodAlert = CareAlertType(id: UUID(), category: careAlertCategory, title: "Food", message: "I need food", image: UIImage.named(.food).pngData() ?? Data())
-        let medicationAlert = CareAlertType(id: UUID(), category: careAlertCategory, title: "Medication", message: "I need pills", image: UIImage.named(.medication).pngData() ?? Data())
+        let careAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.red.rawValue, type: "Play")
+        let drinkAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .cat, title: "Play with cat", message: "I want to play with the cat")
+        let foodAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .chess, title: "Play Chess", message: "I want to play chess")
+        let importantAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .flower, title: "Gardening", message: "I want to do some gardening")
         
-        careAlertCategory.alerts = [drinkAlert, foodAlert, medicationAlert]
+        
+        careAlertCategory.alerts = [drinkAlert, foodAlert, importantAlert]
         
         let collectionView = AlertTypeCollectionView(alertType: careAlertCategory)
         return collectionView
     }()
     
     private lazy var companionCollectionView: AlertTypeCollectionView = {
-        let companionAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.yellow.rawValue, type: "Companionship")
-        let timeAlert = CareAlertType(id: UUID(), category: companionAlertCategory, title: "Spend Time", message: "I want to spend time with you", image: UIImage.named(.spendTime).pngData() ?? Data())
-        let chatAlert = CareAlertType(id: UUID(), category: companionAlertCategory, title: "Chat", message: "I want to talk", image: UIImage.named(.chat).pngData() ?? Data())
-        let importantAlert = CareAlertType(id: UUID(), category: companionAlertCategory, title: "Important", message: "I need to talk about something important", image: UIImage.named(.important).pngData() ?? Data())
+        let companionAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.yellow.rawValue, type: "Help")
+        let timeAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .callDoctor, title: "Call Doctor", message: "I don't feel good. Please call the doctor for me")
+        let chatAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .cough, title: "I'm Coughing", message: "I'm coughing. I don't feel good")
+        let medicationAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .pill, title: "Need Pills", message: "I need to take medication")
         
-        companionAlertCategory.alerts = [timeAlert, chatAlert, importantAlert]
+        companionAlertCategory.alerts = [timeAlert, chatAlert, medicationAlert]
         let collectionView = AlertTypeCollectionView(alertType: companionAlertCategory)
         return collectionView
     }()

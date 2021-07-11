@@ -41,15 +41,15 @@ class AlertCategory: AlertCategorizable, CustomStringConvertible, Codable {
 struct CareAlertType: CustomStringConvertible, Codable {
     var id: UUID
     unowned var category: AlertCategory
+    var stockPhotoName: NamedPhoto
     var title: String
     var message: String
-    var image: Data
     
     var viewModel: AlertTypeViewModel {
         return AlertTypeViewModel(
             title: title,
             message: message,
-            image: UIImage(data: image) ?? UIImage()
+            image: .stockImage(from: stockPhotoName)
         )
     }
     /// debug description
@@ -58,7 +58,7 @@ struct CareAlertType: CustomStringConvertible, Codable {
             category: \(category)
             title: \(title)
             message: \(message)
-            image: \(image)
+            image: \(stockPhotoName.image )
             """
     }
 }
