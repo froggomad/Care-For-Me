@@ -46,6 +46,8 @@ class MainViewController: UIViewController {
         setupViews()
         careCollectionView.cellSelectDelegate = self
         companionCollectionView.cellSelectDelegate = self
+        
+        let photo = StockPhoto(name: .footballSoccerGoalPost)
     }
     
     private func setTab() {
