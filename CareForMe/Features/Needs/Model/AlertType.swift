@@ -55,15 +55,15 @@ struct CareAlertType: CustomStringConvertible, Codable {
     }
     /// debug description
     var description: String {
-            """
-            category: \(category)
-            title: \(title)
-            message: \(message)
-            image: \(stockPhotoName.image )
-            """
+        """
+        category: \(category)
+        title: \(title)
+        message: \(message)
+        image: \(stockPhotoName.image )
+        """
     }
     
-    internal init(id: UUID, category: AlertCategory, stockPhotoName: NamedPhoto, title: String? = nil, message: String) {
+    init(id: UUID, category: AlertCategory, stockPhotoName: NamedPhoto, title: String? = nil, message: String) {
         self.id = id
         self.category = category
         self.stockPhotoName = stockPhotoName

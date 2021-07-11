@@ -64,6 +64,8 @@
 		AAEB516226826D0900A0B741 /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */; };
 		AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516326826DBC00A0B741 /* FirebaseDatabase */; };
 		AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */; };
+		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
+		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
 		B208D1FBD1D55209A54FCFCC /* Pods_CareForMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A0AA6D40030EC784023A01 /* Pods_CareForMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +164,8 @@
 		AAEACFAB26807317007E9511 /* CareForMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CareForMe.entitlements; sourceTree = "<group>"; };
 		AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseController.swift; sourceTree = "<group>"; };
 		AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhoto.swift; sourceTree = "<group>"; };
+		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
+		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
 		EC7B36EC069D8E1CB6B95F43 /* Pods-CareForMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMe.release.xcconfig"; path = "Target Support Files/Pods-CareForMe/Pods-CareForMe.release.xcconfig"; sourceTree = "<group>"; };
 		FF912FF59CF9073DC644768B /* Pods_CareForMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareForMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -491,8 +495,6 @@
 		AAE262E92679537100ABC882 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AAE262EA2679539800ABC882 /* AlertType.swift */,
-				AAE262EE2679704F00ABC882 /* AlertTypeViewModel.swift */,
 				AA50685D2690AAA6006F1126 /* TapticFeedback.swift */,
 				AA5068B12691A150006F1126 /* TabBar.swift */,
 			);
@@ -503,9 +505,6 @@
 			isa = PBXGroup;
 			children = (
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
-				AA79AD052697FD1700786881 /* Custom Controls */,
-				AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */,
-				AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */,
 				AAE91897268EE160003A8278 /* Extensions */,
 			);
 			path = View;
@@ -544,10 +543,11 @@
 		AAE9189D268EF961003A8278 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AAF7C8A4269AB72D00EB11EC /* Needs */,
+				AAE9189E268EF974003A8278 /* Notifications */,
 				AAF7C8A0269A091B00EB11EC /* StockImagePicker */,
 				AAC9D17E2696A77600DB3FA5 /* Instructions */,
 				AA5068AA26918EBF006F1126 /* Auth */,
-				AAE9189E268EF974003A8278 /* Notifications */,
 				AAC9D174269652C100DB3FA5 /* Settings */,
 			);
 			path = Features;
@@ -586,6 +586,44 @@
 				AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */,
 			);
 			path = StockImagePicker;
+			sourceTree = "<group>";
+		};
+		AAF7C8A4269AB72D00EB11EC /* Needs */ = {
+			isa = PBXGroup;
+			children = (
+				AAF7C8A6269AB76200EB11EC /* Model */,
+				AAF7C8A5269AB74300EB11EC /* View */,
+				AAF7C8A7269AB8FF00EB11EC /* Controller */,
+			);
+			path = Needs;
+			sourceTree = "<group>";
+		};
+		AAF7C8A5269AB74300EB11EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA79AD052697FD1700786881 /* Custom Controls */,
+				AAE262F12679716500ABC882 /* AlertTypeCollectionView.swift */,
+				AAE262F32679A15100ABC882 /* AlertTypeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AAF7C8A6269AB76200EB11EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAE262EA2679539800ABC882 /* AlertType.swift */,
+				AAE262EE2679704F00ABC882 /* AlertTypeViewModel.swift */,
+				AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AAF7C8A7269AB8FF00EB11EC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CDF6346D8BC85E6E83323EFD /* Frameworks */ = {
@@ -862,7 +900,9 @@
 				AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */,
 				AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */,
 				AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */,
+				AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
+				AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
 				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
