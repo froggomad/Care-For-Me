@@ -8,7 +8,7 @@
 import Foundation
 
 class NeedsController {
-    private var categories: [NeedsCategory] = []
+    var categories: [NeedsCategory] = []
     
     @discardableResult func addCategory(_ category: NeedsCategory) -> Bool {
         guard !categories.contains(category) else { return false }
