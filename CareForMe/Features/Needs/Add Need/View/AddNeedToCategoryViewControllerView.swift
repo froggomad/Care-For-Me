@@ -24,11 +24,11 @@ class AddNeedToCategoryViewControllerView: UIView {
         return stack
     }()
     
-    lazy var previewStack: UIStackView = .componentStack(elements: [previewLabel, line, categoryCollectionView])
+    lazy var previewStack: UIStackView = .componentStack(elements: [previewLabel, previewLine, categoryCollectionView])
     
     lazy var previewLabel: UILabel = .title3Label(text: "Category Preview")
     
-    lazy var line: UIView = .separatorLine()
+    lazy var previewLine: UIView = .separatorLine()
     
     lazy var categoryCollectionView: AlertTypeCollectionView = {
         let collectionView = AlertTypeCollectionView(alertType: alertCategory)
@@ -36,9 +36,12 @@ class AddNeedToCategoryViewControllerView: UIView {
         return collectionView
     }()
     
-    lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleTextField])
+    lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleLine, titleTextField])
     
     lazy var titleLabel: UILabel = .title3Label(text: "Name")
+    
+    lazy var titleLine: UIView = .separatorLine()
+    
     lazy var titleTextField: UITextField = .borderedTextField(padding: 10, borderColor: .contextualColor(for: backgroundColor ?? .black), borderWidth: 1, placeholderText: "Tap to Name This Need", text: nil)
     
     init(alertCategory: AlertCategory) {
