@@ -27,22 +27,6 @@ class AddCategoryViewControllerView: UIView {
     private lazy var titleInfoLabel: UILabel = .title3Label(text: "Title")
     
     private lazy var titleTextField: UITextField = .borderedTextField(placeholderText: "Tap to enter title")
-//        {
-//        let textField = UITextField()
-//        textField.leftViewMode = .always
-//        textField.rightViewMode = .always
-//        textField.layer.masksToBounds = true
-//
-//        let leftPaddingView = UIView(frame: .init(x: 0, y: 0, width: 10, height: textField.frame.height))
-//        let rightPaddingView = UIView(frame: .init(x: 0, y: 0, width: 10, height: textField.frame.height))
-//        textField.leftView = leftPaddingView
-//        textField.rightView = rightPaddingView
-//
-//        textField.layer.borderColor = UIColor.label.cgColor
-//        textField.layer.borderWidth = 1
-//        textField.placeholder = "Tap to enter title"
-//        return textField
-//    }()
     
     private lazy var colorStack: UIStackView = .componentStack(elements: [colorLabel, colorButton])
     
