@@ -47,6 +47,8 @@ class MainViewController: UIViewController {
         setupViews()
         careCollectionView.cellSelectDelegate = self
         companionCollectionView.cellSelectDelegate = self
+        let vc = AddCategoryViewController()
+        present(vc, animated: true)
     }
     
     private func setTab() {
@@ -90,7 +92,7 @@ extension MainViewController: CareTypeCollectionViewDelegate {
             case let .failure(error):
                 print("Error with notification permissions: \(error)")
             }
-            FirebaseMessagingController.shared.postMessage(category: need.category.type, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
+            FirebaseMessagingController.shared.postMessage(category: need.category.title, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
         }
     }
     
