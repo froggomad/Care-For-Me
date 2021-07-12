@@ -12,7 +12,7 @@ extension UIStackView {
         let stack = UIStackView(arrangedSubviews: elements)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fill
+        stack.distribution = .fillProportionally
         stack.alignment = .fill
         stack.spacing = 2
         
