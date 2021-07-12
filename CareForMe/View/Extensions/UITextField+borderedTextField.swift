@@ -13,6 +13,7 @@ extension UITextField {
         textField.leftViewMode = .always
         textField.rightViewMode = .always
         textField.layer.masksToBounds = true
+        textField.layer.cornerRadius = padding
         
         let leftPaddingView = UIView(frame: .init(x: 0, y: 0, width: padding, height: textField.frame.height))
         let rightPaddingView = UIView(frame: .init(x: 0, y: 0, width: padding, height: textField.frame.height))

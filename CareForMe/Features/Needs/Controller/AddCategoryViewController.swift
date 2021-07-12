@@ -13,6 +13,8 @@ protocol CategoryUpdatable: AnyObject {
 
 class AddCategoryViewController: UIViewController, CategoryUpdatable {
     
+    private let controller = NeedsController()
+    
     lazy var categorySetupView: AddCategoryViewControllerView = {
         let view = AddCategoryViewControllerView(target: self, selector: #selector(presentColorChoice))
         view.categoryUpdateDelegate = self
@@ -31,16 +33,17 @@ class AddCategoryViewController: UIViewController, CategoryUpdatable {
     
     func createCategory(title: String?) {
         // call modelController and update view
-        guard let title = title else {
+        guard let title = title,
+              !title.isEmpty else {
             // TODO: present alert
             return
         }
+        
         let category = NeedsCategory(title: title)
-        let controller = NeedsController()
         
         controller.addCategory(category)
         print(controller.categories.count)
-        // TODO: present StockImageViewController
+        // TODO: present NeedsViewController
     }
 }
 
@@ -49,4 +52,3 @@ extension AddCategoryViewController: ColorPickerDelegate {
         categorySetupView.updateColors(basedOn: color)
     }
 }
-f

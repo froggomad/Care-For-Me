@@ -20,7 +20,7 @@ struct NeedsCategory: Codable, Equatable {
     }
     
     static func ==(lhs: NeedsCategory, rhs: NeedsCategory) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id || lhs.title == rhs.title
     }
 }
 
