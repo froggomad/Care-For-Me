@@ -39,7 +39,7 @@ class AddCategoryViewController: UIViewController, CategoryUpdatable {
             return
         }
         
-        let category = AlertCategory(id: UUID(), color: "red", type: title)
+        let category = AlertCategory(id: UUID(), color: .init(uiColor: .red), type: title)
         
 //        controller.addCategory(category)
         print(controller.categories.count)

@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     private lazy var careCollectionView: AlertTypeCollectionView = {
-        let careAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.red.rawValue, type: "Play")
+        let careAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .red), type: "Play")
         let catAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .cat, title: "Play with cat", message: "I want to play with the cat")
         let chessAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .chess, message: "I want to play chess")
         let gardeningAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .flower, title: "Gardening", message: "I want to do some gardening")
@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var companionCollectionView: AlertTypeCollectionView = {
-        let companionAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.yellow.rawValue, type: "Help")
+        let companionAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .yellow), type: "Help")
         let callDoctorAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .callDoctor, message: "I don't feel good. Please call the doctor for me")
         let coughAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .cough, title: "I'm Coughing", message: "I'm coughing. I don't feel good")
         let medicationAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .pill, title: "Need Pills", message: "I need to take medication")

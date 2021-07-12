@@ -9,7 +9,7 @@ import UIKit
 
 protocol AlertCategorizable: AnyObject, Codable {
     var id: UUID { get }
-    var color: String { get set }
+    var color: CodableColor { get set }
     var title: String { get set }
     var alerts: [CareAlertType] { get set }
 }
@@ -17,11 +17,11 @@ protocol AlertCategorizable: AnyObject, Codable {
 class AlertCategory: AlertCategorizable, CustomStringConvertible, Codable {
     
     var id: UUID
-    var color: String
+    var color: CodableColor
     var title: String
     var alerts: [CareAlertType] = []
     
-    init(id: UUID, color: String, type: String) {
+    init(id: UUID, color: CodableColor, type: String) {
         self.id = id
         self.color = color
         self.title = type

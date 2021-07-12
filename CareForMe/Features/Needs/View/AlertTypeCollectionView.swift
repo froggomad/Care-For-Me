@@ -44,9 +44,7 @@ class AlertTypeCollectionView: UIView {
             guard let alertType = alertType else { return }
             
             titleLabel.text = alertType.title
-            if let color = UIColor.NamedColor(rawValue: alertType.color) {
-                collectionView.backgroundColor = UIColor.named(color)
-            }            
+            collectionView.backgroundColor = alertType.color.uiColor
         }
     }
     
