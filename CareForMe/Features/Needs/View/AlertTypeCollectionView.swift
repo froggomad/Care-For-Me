@@ -64,6 +64,12 @@ class AlertTypeCollectionView: UIView {
         setupViews()
     }
     
+    func reloadData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+    
 }
 
 private extension AlertTypeCollectionView {
