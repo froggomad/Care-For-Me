@@ -10,6 +10,7 @@ import UIKit
 struct StockPhoto: Codable {
     
     private var name: NamedPhoto
+    private var category: AlertCategory
     var data: Data = Data()
     
     var image: UIImage? {
@@ -20,7 +21,12 @@ struct StockPhoto: Codable {
         Self.TitleFormatter.formatTitle(title: name.rawValue)
     }
     
-    init(name: NamedPhoto) {
+    var cellModel: CareAlertType {
+        CareAlertType(id: UUID(), category: category, stockPhotoName: name, message: "")
+    }
+    
+    init(category: AlertCategory, name: NamedPhoto) {
+        self.category = category
         self.name = name
         self.data = image?.pngData() ?? Data()
     }
@@ -62,6 +68,8 @@ extension UIImage {
 }
 
 enum NamedPhoto: String, Codable, CaseIterable {
+    static let category = AlertCategory(id: UUID(), color: .init(uiColor: .systemBackground), type: "")
+    
     // MARK: - Activities -
     case playAmericanFootball
     case playCards
@@ -100,7 +108,11 @@ enum NamedPhoto: String, Codable, CaseIterable {
     case tennisRacquet
     
     var photoModel: StockPhoto {
-        StockPhoto(name: self)
+        StockPhoto(category: Self.category, name: self)
+    }
+    
+    var photoAlert: CareAlertType {
+        photoModel.cellModel
     }
     
     var title: String {
