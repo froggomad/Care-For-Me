@@ -9,6 +9,8 @@ import UIKit
 
 class AddNeedToCategoryViewControllerView: UIView {
     var alertCategory: AlertCategory
+    var presentPhotoTarget: Any?
+    var presentPhotoSelector: Selector
     var selectedPhoto: NamedPhoto?
     
     lazy var alerts: [CareAlertType] = alertCategory.alerts {
@@ -32,9 +34,9 @@ class AddNeedToCategoryViewControllerView: UIView {
     
     lazy var previewLine: UIView = .separatorLine()
     
-    lazy var categoryCollectionView: AlertTypeCollectionView = {
-        let collectionView = AlertTypeCollectionView(alertType: alertCategory)
-        collectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant).isActive = true
+    lazy var categoryCollectionView: CareCollectionView = {
+        let collectionView = CareCollectionView(alertType: alertCategory)
+        collectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant).isActive = true
         return collectionView
     }()
     
@@ -75,7 +77,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     }()
     
     lazy var buttonStack: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [addButton, saveButton], horizontalAlignment: .bottom)
+        let stack: UIStackView = .componentStack(elements: [saveButton], horizontalAlignment: .bottom)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -83,11 +85,13 @@ class AddNeedToCategoryViewControllerView: UIView {
     lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", targetAndSelector: (self, #selector(addAlert)))
     lazy var saveButton: UIButton = .fullWidthButton(with: "Save Category and Quit")
     
-    init(alertCategory: AlertCategory) {
+    init(alertCategory: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector) {
         self.alertCategory = alertCategory
+        self.presentPhotoTarget = photoPresentationTarget
+        self.presentPhotoSelector = photoPresentationSelector
         super.init(frame: .zero)
         subviews()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
+        let tap = UITapGestureRecognizer(target: photoPresentationTarget, action: photoPresentationSelector)
         tap.numberOfTouchesRequired = 1
         tap.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(tap)
@@ -99,6 +103,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     
     func subviews() {
         addSubview(parentStack)
+        addSubview(addButton)
         addSubview(buttonStack)
         constraints()
     }
@@ -107,7 +112,7 @@ class AddNeedToCategoryViewControllerView: UIView {
         let bottomButtonConstraint = buttonStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         bottomButtonConstraint.priority = .defaultHigh
         
-        let parentBottomConstraint = parentStack.bottomAnchor.constraint(equalTo: buttonStack.topAnchor, constant: -10)
+        let parentBottomConstraint = parentStack.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -10)
         parentBottomConstraint.priority = .defaultLow
         
         NSLayoutConstraint.activate([
@@ -115,6 +120,10 @@ class AddNeedToCategoryViewControllerView: UIView {
             parentStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
             parentStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
             parentBottomConstraint,
+            
+            addButton.trailingAnchor.constraint(equalTo: buttonStack.trailingAnchor),
+            addButton.bottomAnchor.constraint(equalTo: buttonStack.topAnchor),
+            addButton.leadingAnchor.constraint(equalTo: buttonStack.leadingAnchor),
             
             buttonStack.trailingAnchor.constraint(equalTo: parentStack.safeAreaLayoutGuide.trailingAnchor),
             buttonStack.leadingAnchor.constraint(equalTo: parentStack.safeAreaLayoutGuide.leadingAnchor),
@@ -125,14 +134,9 @@ class AddNeedToCategoryViewControllerView: UIView {
     }
     
     @objc func addAlert() {
-        let alert = CareAlertType(id: UUID(), category: alertCategory, stockPhotoName: selectedPhoto ?? .ambulance, title: titleTextField.text, message: "I need an ambulance!")
+        let alert = CareAlertType(id: UUID(), category: alertCategory, stockPhotoName: selectedPhoto ?? .firstAid, title: titleTextField.text, message: "I'm hurt")
         alertCategory.alerts.append(alert)
         alerts = alertCategory.alerts
-    }
-    
-    @objc func chooseImage() {
-        // TODO: present StockImagePicker through delegation
-        print("tap")
     }
 }
 
