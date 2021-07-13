@@ -49,7 +49,11 @@ class ColorPickerViewController: UIViewController {
     @objc func setColor(_ sender: UIButton) {
         let backgroundColor = view.backgroundColor ?? .black
         controllerDelegate?.colorWasPicked(backgroundColor)
-        dismiss(animated: true)
+        if let navC = navigationController {
+            navC.popViewController(animated: true)
+        } else {
+            dismiss(animated: true)
+        }
     }
     
 }
