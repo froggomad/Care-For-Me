@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: ParentDetailViewController {
     
-    private lazy var careCollectionView: AlertTypeCollectionView = {
+    private lazy var careCollectionView: CareCollectionView = {
         let careAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .red), type: "Play")
         let catAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .cat, title: "Play with cat", message: "I want to play with the cat")
         let chessAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .chess, message: "I want to play chess")
@@ -18,18 +18,18 @@ class MainViewController: ParentDetailViewController {
         
         careAlertCategory.alerts = [catAlert, chessAlert, gardeningAlert]
         
-        let collectionView = AlertTypeCollectionView(alertType: careAlertCategory)
+        let collectionView = CareCollectionView(alertType: careAlertCategory)
         return collectionView
     }()
     
-    private lazy var companionCollectionView: AlertTypeCollectionView = {
+    private lazy var companionCollectionView: CareCollectionView = {
         let companionAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .yellow), type: "Help")
         let callDoctorAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .callDoctor, message: "I don't feel good. Please call the doctor for me")
         let coughAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .cough, title: "I'm Coughing", message: "I'm coughing. I don't feel good")
         let medicationAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .pill, title: "Need Pills", message: "I need to take medication")
         
         companionAlertCategory.alerts = [callDoctorAlert, coughAlert, medicationAlert]
-        let collectionView = AlertTypeCollectionView(alertType: companionAlertCategory)
+        let collectionView = CareCollectionView(alertType: companionAlertCategory)
         return collectionView
     }()
     
@@ -66,10 +66,10 @@ class MainViewController: ParentDetailViewController {
             careCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             careCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             careCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            careCollectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant + 20),
+            careCollectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant + 20),
             
             companionCollectionView.topAnchor.constraint(equalTo: careCollectionView.bottomAnchor, constant: 20),
-            companionCollectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant + 20),
+            companionCollectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant + 20),
             companionCollectionView.leadingAnchor.constraint(equalTo: careCollectionView.leadingAnchor),
             companionCollectionView.trailingAnchor.constraint(equalTo: careCollectionView.trailingAnchor)
         ])
