@@ -1,0 +1,25 @@
+//
+//  UIButton+fullWidthButton.swift
+//  CareForMe
+//
+//  Created by Kenneth Dubroff on 7/12/21.
+//
+
+import UIKit
+
+typealias TargetSelector = (target: Any, selector: Selector)
+
+extension UIButton {
+    static func fullWidthButton(with title: String? = nil, targetAndSelector: TargetSelector? = nil) -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(title, for: .normal)
+        button.backgroundColor = .link
+        button.setTitleColor(.white, for: .normal)
+        
+        guard let (target, selector) = targetAndSelector else { return button }
+        
+        button.addTarget(target, action: selector, for: .touchUpInside)
+        return button
+    }
+}
