@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: ParentDetailViewController {
     
     private lazy var careCollectionView: AlertTypeCollectionView = {
         let careAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .red), type: "Play")
@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
         careCollectionView.cellSelectDelegate = self
         companionCollectionView.cellSelectDelegate = self
         let vc = AddCategoryViewController()
-        present(vc, animated: true)
+        showDetailViewController(vc, sender: nil)
     }
     
     private func setTab() {
