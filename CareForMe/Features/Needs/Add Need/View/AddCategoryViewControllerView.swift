@@ -39,15 +39,7 @@ class AddCategoryViewControllerView: UIView {
         return button
     }()
     
-    private lazy var nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Next: Create Need(s)", for: .normal)
-        button.backgroundColor = .link
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(updateViewController), for: .touchUpInside)
-        return button
-    }()
+    private lazy var nextButton: UIButton = .fullWidthButton(with: "Next: Create Need(s)", targetAndSelector: (self, #selector(updateViewController)))
     
     init(target: Any?, selector: Selector) {
         self.colorButtonTarget = target
@@ -80,6 +72,7 @@ class AddCategoryViewControllerView: UIView {
             nextButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             nextButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             nextButton.heightAnchor.constraint(equalToConstant: 50),
+            
             parentStackView.bottomAnchor.constraint(greaterThanOrEqualTo: nextButton.safeAreaLayoutGuide.topAnchor, constant: 8)
         ])
     }
