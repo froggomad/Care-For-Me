@@ -8,7 +8,9 @@
 import UIKit
 import BadgeGenerator
 
-class AlertTypeCollectionView: UIView {
+class CareCollectionView: UIView {
+    
+    var layout: UICollectionViewFlowLayout
     
     private lazy var vStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel, collectionView])
@@ -28,7 +30,7 @@ class AlertTypeCollectionView: UIView {
     }()
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: Layout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -49,7 +51,8 @@ class AlertTypeCollectionView: UIView {
     }
     
     /// programmatic init
-    init(alertType: AlertCategorizable) {
+    init(alertType: AlertCategorizable, layout: UICollectionViewFlowLayout = CareTypeLayout()) {
+        self.layout = layout
         super.init(frame: .zero)
         defer { self.alertType = alertType }
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -57,9 +60,16 @@ class AlertTypeCollectionView: UIView {
         setupViews()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    init(layout: UICollectionViewFlowLayout = PhotoTypeLayout()) {
+        self.layout = layout
+        super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = true
         setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
     }
     
     func reloadData() {
@@ -70,7 +80,7 @@ class AlertTypeCollectionView: UIView {
     
 }
 
-private extension AlertTypeCollectionView {
+private extension CareCollectionView {
     private func setupViews() {
         backgroundColor = .systemBackground
         addSubview(vStack)
@@ -84,7 +94,7 @@ private extension AlertTypeCollectionView {
     }
 }
 
-extension AlertTypeCollectionView: UICollectionViewDataSource {
+extension CareCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         alertType?.alerts.count ?? 0
     }
@@ -98,16 +108,16 @@ extension AlertTypeCollectionView: UICollectionViewDataSource {
     
 }
 
-extension AlertTypeCollectionView {
+extension CareCollectionView {
     
-    class Layout: UICollectionViewFlowLayout {
+    class CareTypeLayout: UICollectionViewFlowLayout {
         static let heightConstant: CGFloat = 150
         
         override func prepare() {
             super.prepare()
             guard let collectionView = collectionView else { return }
             // TODO: why -13 to make the size even?
-            itemSize = CGSize(width: collectionView.frame.width / 3 - 13, height: Self.heightConstant - 40)
+            itemSize = CGSize(width: collectionView.frame.width / 3 - 13, height: Self.heightConstant - 63)
             scrollDirection = .horizontal
             sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
@@ -115,7 +125,26 @@ extension AlertTypeCollectionView {
     
 }
 
-extension AlertTypeCollectionView: UICollectionViewDelegate {
+extension CareCollectionView {
+    
+    class PhotoTypeLayout: UICollectionViewFlowLayout {
+        static let heightConstant: CGFloat = 150
+        /*
+         height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values
+         */
+        override func prepare() {
+            super.prepare()
+            guard let collectionView = collectionView else { return }
+            // TODO: why -13 to make the size even?
+            itemSize = CGSize(width: collectionView.frame.width / 4, height: Self.heightConstant - 63)
+            scrollDirection = .horizontal
+            sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        }
+    }
+    
+}
+
+extension CareCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let alertType = alertType else { return }
         cellSelectDelegate?.didSelect(alertType.alerts[indexPath.item])
