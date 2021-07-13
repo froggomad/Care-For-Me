@@ -74,6 +74,7 @@
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
 		AAF7C8AD269AC41D00EB11EC /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AC269AC41D00EB11EC /* AddCategoryViewController.swift */; };
+		AAFFECED269CE03900847072 /* UIViewController+presentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */; };
 		B208D1FBD1D55209A54FCFCC /* Pods_CareForMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A0AA6D40030EC784023A01 /* Pods_CareForMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,7 @@
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
 		AAF7C8AC269AC41D00EB11EC /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentAlert.swift"; sourceTree = "<group>"; };
 		EC7B36EC069D8E1CB6B95F43 /* Pods-CareForMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMe.release.xcconfig"; path = "Target Support Files/Pods-CareForMe/Pods-CareForMe.release.xcconfig"; sourceTree = "<group>"; };
 		FF912FF59CF9073DC644768B /* Pods_CareForMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareForMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -573,6 +575,7 @@
 				AABF3D29269BC021008A2CC2 /* UIStackView+componentView.swift */,
 				AABF3D2B269BC04E008A2CC2 /* UILabel+title3Label.swift */,
 				AABF3D2D269BC078008A2CC2 /* UITextField+borderedTextField.swift */,
+				AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -956,6 +959,7 @@
 				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
 				AAC07F47267A462300ADD525 /* UIImage+named.swift in Sources */,
+				AAFFECED269CE03900847072 /* UIViewController+presentAlert.swift in Sources */,
 				AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */,
 				AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */,
 				AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */,
