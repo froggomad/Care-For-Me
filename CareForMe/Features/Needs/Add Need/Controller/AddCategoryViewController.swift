@@ -11,7 +11,7 @@ protocol CategoryUpdatable: AnyObject {
     func createCategory(title: String?)
 }
 
-class AddCategoryViewController: UIViewController, CategoryUpdatable {
+class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
     private let controller = NeedsController()
     
@@ -28,24 +28,25 @@ class AddCategoryViewController: UIViewController, CategoryUpdatable {
     @objc func presentColorChoice() {
         let vc = ColorPickerViewController()
         vc.controllerDelegate = self
-        present(vc, animated: true)
+        showDetailViewController(vc, sender: nil)
     }
     
     func createCategory(title: String?) {
         // call modelController and update view
         guard let title = title,
-              !title.isEmpty else {
-            // TODO: present alert
+              !title.isEmpty,
+              let color = categorySetupView.backgroundColor else {
+            presentAlert(title: "Title Needed", message: "Please enter a title for your new category")
             return
         }
         
-        let category = AlertCategory(id: UUID(), color: .init(uiColor: .red), type: title)
+        let category = AlertCategory(id: UUID(), color: .init(uiColor: color), type: title)
         
 //        controller.addCategory(category)
-        print(controller.categories.count)
+//        print(controller.categories.count)
         
         let vc = AddNeedToCategoryViewController(category: category)
-        present(vc, animated: true)
+        showDetailViewController(vc, sender: nil)
     }
 }
 
