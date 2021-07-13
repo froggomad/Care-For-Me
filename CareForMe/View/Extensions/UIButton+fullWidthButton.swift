@@ -13,6 +13,8 @@ extension UIButton {
     static func fullWidthButton(with title: String? = nil, targetAndSelector: TargetSelector? = nil) -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        button.layer.cornerRadius = 10
         button.setTitle(title, for: .normal)
         button.backgroundColor = .link
         button.setTitleColor(.white, for: .normal)
