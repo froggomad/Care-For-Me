@@ -8,7 +8,7 @@
 import UIKit
 
 class AddCategoryViewControllerView: UIView {
-    var colorButtonTarget: Any?
+    var colorButtonTarget: Any
     var colorButtonSelector: Selector
     
     weak var categoryUpdateDelegate: CategoryUpdatable?
@@ -18,7 +18,6 @@ class AddCategoryViewControllerView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
-        stack.alignment = .leading
         return stack
     }()
     
@@ -32,16 +31,12 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var colorLabel: UILabel = .title3Label(text: "Background Color")
     
-    private lazy var colorButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.underlinedTitle(with: "Change Background Color")
-        button.addTarget(colorButtonTarget, action: colorButtonSelector, for: .touchUpInside)
-        return button
-    }()
+    private lazy var colorButton: UIButton = .fullWidthButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: (colorButtonTarget, colorButtonSelector))
+        
     
     private lazy var nextButton: UIButton = .fullWidthButton(with: "Next: Create Need(s)", targetAndSelector: (self, #selector(updateViewController)))
     
-    init(target: Any?, selector: Selector) {
+    init(target: Any, selector: Selector) {
         self.colorButtonTarget = target
         self.colorButtonSelector = selector
         super.init(frame: .zero)

@@ -40,15 +40,15 @@ class AddNeedToCategoryViewControllerView: UIView {
         return collectionView
     }()
     
-    lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleLine, titleTextField])
+    lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleTextField])
     
     lazy var titleLabel: UILabel = .title3Label(text: "Name")
     
-    lazy var titleLine: UIView = .separatorLine()
+//    lazy var titleLine: UIView = .separatorLine()
     
-    lazy var titleTextField: UITextField = .borderedTextField(padding: 10, borderColor: .contextualColor(for: backgroundColor ?? .black), borderWidth: 1, placeholderText: "Tap to Name This Need", text: nil)
+    lazy var titleTextField: UITextField = .borderedTextField(padding: 10, placeholderText: "Tap to Name This Need")
     
-    lazy var imageStack: UIStackView = .componentStack(elements: [imageLine, imageView, imageCaptionInstructionLabel], verticalAlignment: .center)
+    lazy var imageStack: UIStackView = .componentStack(elements: [imageView, imageCaptionInstructionLabel], verticalAlignment: .center)
     
     lazy var imageLabel: UILabel = .title3Label(text: "Image")
     
@@ -82,7 +82,7 @@ class AddNeedToCategoryViewControllerView: UIView {
         return stack
     }()
     
-    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", targetAndSelector: (self, #selector(addAlert)))
+    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addAlert)))
     lazy var saveButton: UIButton = .fullWidthButton(with: "Save Category and Quit")
     
     init(alertCategory: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector) {
