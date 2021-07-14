@@ -7,37 +7,27 @@
 
 import UIKit
 
+protocol AddNeedDelegate: AnyObject {
+    func receivedNeed(_ need: CareAlertType)
+}
+
 class AddNeedToCategoryViewControllerView: UIView {
-    var alertCategory: AlertCategory
     var presentPhotoTarget: Any?
     var presentPhotoSelector: Selector
+    
+    weak var addNeedDelegate: AddNeedDelegate?
+    
     var selectedPhoto: NamedPhoto?
     
-    lazy var alerts: [CareAlertType] = alertCategory.alerts {
-        didSet {
-            categoryCollectionView.reloadData()
-        }
-    }
+    var currentNeed: CareAlertType?
     
     lazy var parentStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [previewStack, titleStack, imageLabel, imageStack])
+        let stack = UIStackView(arrangedSubviews: [titleStack, imageLabel, imageStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 20
         return stack
-    }()
-    
-    lazy var previewStack: UIStackView = .componentStack(elements: [previewLabel, previewLine, categoryCollectionView])
-    
-    lazy var previewLabel: UILabel = .title3Label(text: "Category Preview")
-    
-    lazy var previewLine: UIView = .separatorLine()
-    
-    lazy var categoryCollectionView: CareCollectionView = {
-        let collectionView = CareCollectionView(alertType: alertCategory)
-        collectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant).isActive = true
-        return collectionView
     }()
     
     lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleTextField])
@@ -82,13 +72,13 @@ class AddNeedToCategoryViewControllerView: UIView {
         return stack
     }()
     
-    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addAlert)))
+    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addNeed(_:))))
     lazy var saveButton: UIButton = .fullWidthButton(with: "Save Category and Quit")
     
-    init(alertCategory: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector) {
-        self.alertCategory = alertCategory
+    init(photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
         self.presentPhotoTarget = photoPresentationTarget
         self.presentPhotoSelector = photoPresentationSelector
+        self.addNeedDelegate = addNeedDelegate
         super.init(frame: .zero)
         subviews()
         let tap = UITapGestureRecognizer(target: photoPresentationTarget, action: photoPresentationSelector)
@@ -133,11 +123,11 @@ class AddNeedToCategoryViewControllerView: UIView {
         ])
     }
     
-    @objc func addAlert() {
-        let alert = CareAlertType(id: UUID(), category: alertCategory, stockPhotoName: selectedPhoto ?? .firstAid, title: titleTextField.text, message: "I'm hurt")
-        alertCategory.alerts.append(alert)
-        alerts = alertCategory.alerts
+    @objc private func addNeed(_ sender: UIButton) {
+        guard let need = currentNeed else { return }
+        addNeedDelegate?.receivedNeed(need)
     }
+    
 }
 
 extension UIView {

@@ -10,15 +10,32 @@ import UIKit
 class AddCategoryViewControllerView: UIView {
     var colorButtonTarget: Any
     var colorButtonSelector: Selector
+    var alertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .named(.highlight)), type: "Title Here") {
+        didSet {
+            categoryCollectionView.alertType = alertCategory
+        }
+    }
     
     weak var categoryUpdateDelegate: CategoryUpdatable?
     
     private lazy var parentStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleStack, colorStack])
+        let stack = UIStackView(arrangedSubviews: [titleStack, colorStack, previewStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         return stack
+    }()
+    
+    lazy var previewStack: UIStackView = .componentStack(elements: [previewLabel, previewLine, categoryCollectionView])
+    
+    lazy var previewLabel: UILabel = .title3Label(text: "Category Preview")
+    
+    lazy var previewLine: UIView = .separatorLine()
+    
+    lazy var categoryCollectionView: CareCollectionView = {
+        let collectionView = CareCollectionView(alertType: alertCategory)
+        collectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant).isActive = true
+        return collectionView
     }()
     
     private lazy var titleStack: UIStackView = .componentStack(elements: [titleInfoLabel, titleTextField])
@@ -40,9 +57,14 @@ class AddCategoryViewControllerView: UIView {
         self.colorButtonTarget = target
         self.colorButtonSelector = selector
         super.init(frame: .zero)
+        titleTextField.delegate = self
         colorButton.addTarget(target, action: selector, for: .touchUpInside)
         backgroundColor = .systemBackground
         subviews()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(resignTextField))
+        tap.numberOfTouchesRequired = 1
+        tap.numberOfTapsRequired = 1
+        addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {
@@ -77,15 +99,33 @@ class AddCategoryViewControllerView: UIView {
     }
     
     func updateColors(basedOn color: UIColor) {
-        self.backgroundColor = color
-        titleTextField.textColor = .contextualColor(for: color)
-        titleTextField.layer.borderColor = UIColor.contextualColor(for: color).cgColor
-        titleTextField.attributedPlaceholder = NSAttributedString(string: titleTextField.placeholder ?? "",
-                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.contextualColor(for: color, lightColorToUse: .white, darkColorToUse: .systemGray)])
-        titleInfoLabel.textColor = .contextualColor(for: color)
-        colorLabel.textColor = .contextualColor(for: color)
-        colorButton.setContextualLinkColor(for: color, lightColorToUse: .white, darkColorToUse: .link)
+        let category = alertCategory
+        category.color = .init(uiColor: color)
+        alertCategory = category // this triggers didSet here which triggers didSet in the CollectionView's view
     }
     
 }
 
+extension AddCategoryViewControllerView: UITextFieldDelegate {
+    /// called when view is tapped
+    @objc private func resignTextField() {
+        titleTextField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text,
+              !text.isEmpty
+        else { return }
+
+        let category = alertCategory
+        
+        category.title = text
+        alertCategory = category // this triggers didSet here which triggers didSet in the CollectionView's view
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignTextField()
+        return true
+    }
+    
+}
