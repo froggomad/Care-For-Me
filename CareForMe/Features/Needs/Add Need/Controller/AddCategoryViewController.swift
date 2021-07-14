@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CategoryUpdatable: AnyObject {
-    func createCategory(title: String?)
+    func updateCategory(title: String?)
 }
 
 class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
@@ -31,7 +31,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
         showDetailViewController(vc, sender: nil)
     }
     
-    func createCategory(title: String?) {
+    func updateCategory(title: String?) {
         // call modelController and update view
         guard let title = title,
               !title.isEmpty,
@@ -40,12 +40,12 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
             return
         }
         
-        let category = AlertCategory(id: UUID(), color: .init(uiColor: color), type: title)
-        categorySetupView.alertCategory = category
+        categorySetupView.alertCategory.title = title
+        categorySetupView.alertCategory.color = .init(uiColor: color)
 //        controller.addCategory(category)
 //        print(controller.categories.count)
         
-        let vc = AddNeedToCategoryViewController(category: category, delegate: self)
+        let vc = AddNeedToCategoryViewController(category: categorySetupView.alertCategory, delegate: self)
         present(vc, animated: true)
     }
 }

@@ -95,7 +95,7 @@ class AddCategoryViewControllerView: UIView {
     }
     
     @objc private func updateViewController() {
-        categoryUpdateDelegate?.createCategory(title: titleTextField.text)
+        categoryUpdateDelegate?.updateCategory(title: titleTextField.text)
     }
     
     func updateColors(basedOn color: UIColor) {
