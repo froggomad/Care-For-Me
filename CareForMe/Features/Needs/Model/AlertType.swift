@@ -50,7 +50,7 @@ struct CareAlertType: CustomStringConvertible, Codable {
         return AlertTypeViewModel(
             title: title,
             message: message,
-            image: .stockImage(from: stockPhotoName).withTintColor(.label)
+            image: .stockImage(from: stockPhotoName)
         )
     }
     /// debug description

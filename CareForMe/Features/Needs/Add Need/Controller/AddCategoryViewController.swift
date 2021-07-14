@@ -41,17 +41,25 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
         }
         
         let category = AlertCategory(id: UUID(), color: .init(uiColor: color), type: title)
-        
+        categorySetupView.alertCategory = category
 //        controller.addCategory(category)
 //        print(controller.categories.count)
         
-        let vc = AddNeedToCategoryViewController(category: category)
-        showDetailViewController(vc, sender: nil)
+        let vc = AddNeedToCategoryViewController(category: category, delegate: self)
+        present(vc, animated: true)
     }
 }
 
 extension AddCategoryViewController: ColorPickerDelegate {
     func colorWasPicked(_ color: UIColor) {
         categorySetupView.updateColors(basedOn: color)
+    }
+}
+
+extension AddCategoryViewController: AddNeedDelegate {
+    func receivedNeed(_ need: CareAlertType) {
+        let alertCategory = categorySetupView.alertCategory
+        alertCategory.alerts.append(need)
+        categorySetupView.alertCategory = alertCategory
     }
 }

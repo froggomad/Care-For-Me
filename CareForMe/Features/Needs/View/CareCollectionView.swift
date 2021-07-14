@@ -47,6 +47,7 @@ class CareCollectionView: UIView {
             
             titleLabel.text = alertType.title
             collectionView.backgroundColor = alertType.color.uiColor
+            collectionView.reloadData()
         }
     }
     
