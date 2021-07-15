@@ -66,14 +66,7 @@ class AddNeedToCategoryViewControllerView: UIView {
         return label
     }()
     
-    lazy var buttonStack: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [saveButton], horizontalAlignment: .bottom)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
     lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addNeed(_:))))
-    lazy var saveButton: UIButton = .fullWidthButton(with: "Save Category and Quit")
     
     init(category: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
         self.presentPhotoTarget = photoPresentationTarget
@@ -100,32 +93,19 @@ class AddNeedToCategoryViewControllerView: UIView {
     private func subviews() {
         addSubview(parentStack)
         addSubview(addButton)
-        addSubview(buttonStack)
         constraints()
     }
     
     func constraints() {
-        let bottomButtonConstraint = buttonStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
-        bottomButtonConstraint.priority = .defaultHigh
-        
-        let parentBottomConstraint = parentStack.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -10)
-        parentBottomConstraint.priority = .defaultLow
         
         NSLayoutConstraint.activate([
             parentStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
             parentStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            parentStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
-            parentBottomConstraint,
+            parentStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),            
             
-            addButton.trailingAnchor.constraint(equalTo: buttonStack.trailingAnchor),
-            addButton.bottomAnchor.constraint(equalTo: buttonStack.topAnchor),
-            addButton.leadingAnchor.constraint(equalTo: buttonStack.leadingAnchor),
-            
-            buttonStack.trailingAnchor.constraint(equalTo: parentStack.safeAreaLayoutGuide.trailingAnchor),
-            buttonStack.leadingAnchor.constraint(equalTo: parentStack.safeAreaLayoutGuide.leadingAnchor),
-            bottomButtonConstraint
-            
-            
+            addButton.trailingAnchor.constraint(equalTo: parentStack.trailingAnchor),
+            addButton.topAnchor.constraint(equalTo: parentStack.bottomAnchor, constant: 20),
+            addButton.leadingAnchor.constraint(equalTo: parentStack.leadingAnchor)            
         ])
     }
     
