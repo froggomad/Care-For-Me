@@ -32,14 +32,12 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     func updateCategory(title: String?) {
         // call modelController and update view
         guard let title = title,
-              !title.isEmpty,
-              let color = categorySetupView.backgroundColor else {
+              !title.isEmpty
+        else {
             presentAlert(title: "Title Needed", message: "Please enter a title for your new category")
             return
         }
-        
         categorySetupView.alertCategory.title = title
-        categorySetupView.alertCategory.color = .init(uiColor: color)
 //        controller.addCategory(category)
 //        print(controller.categories.count)
         
