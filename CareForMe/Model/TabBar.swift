@@ -46,10 +46,7 @@ enum NavigationViewController {
     }
     
     var navigationController: UINavigationController {
-        self.makeNavigationController(rootViewController)
-    }
-    
-    private func makeNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
         UINavigationController(rootViewController: rootViewController)
     }
+    
 }
