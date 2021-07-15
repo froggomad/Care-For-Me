@@ -16,13 +16,10 @@ class AddNeedToCategoryViewControllerView: UIView {
 
     var presentPhotoTarget: Any?
     var presentPhotoSelector: Selector
-    var addNeedTargetSelector: TargetSelector
     
     weak var addNeedDelegate: AddNeedDelegate?
     
     var selectedPhoto: NamedPhoto! = .firstAid
-    
-    var currentNeed: CareAlertType?
     
     lazy var parentStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleStack, imageLabel, imageStack])
@@ -78,25 +75,29 @@ class AddNeedToCategoryViewControllerView: UIView {
     lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addNeed(_:))))
     lazy var saveButton: UIButton = .fullWidthButton(with: "Save Category and Quit")
     
-    init(category: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedTargetSelector: TargetSelector, addNeedDelegate: AddNeedDelegate) {
+    init(category: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
         self.presentPhotoTarget = photoPresentationTarget
         self.presentPhotoSelector = photoPresentationSelector
         self.addNeedDelegate = addNeedDelegate
-        self.addNeedTargetSelector = addNeedTargetSelector
         self.category = category
         super.init(frame: .zero)
-        subviews()
-        let tap = UITapGestureRecognizer(target: photoPresentationTarget, action: photoPresentationSelector)
-        tap.numberOfTouchesRequired = 1
-        tap.numberOfTapsRequired = 1
-        imageView.addGestureRecognizer(tap)
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("programmatic view")
     }
     
-    func subviews() {
+    private func setupViews() {
+        backgroundColor = .systemBackground
+        subviews()
+        let tap = UITapGestureRecognizer(target: presentPhotoTarget, action: presentPhotoSelector)
+        tap.numberOfTouchesRequired = 1
+        tap.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tap)
+    }
+    
+    private func subviews() {
         addSubview(parentStack)
         addSubview(addButton)
         addSubview(buttonStack)

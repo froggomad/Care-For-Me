@@ -18,13 +18,12 @@ class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoIma
     }
     
     var category: AlertCategory
-    lazy var addNeedView = AddNeedToCategoryViewControllerView(category: category, photoPresentationTarget: self, photoPresentationSelector: #selector(presentPhotos), addNeedTargetSelector: TargetSelector(self, #selector(addNeed)), addNeedDelegate: delegate)
+    lazy var addNeedView = AddNeedToCategoryViewControllerView(category: category, photoPresentationTarget: self, photoPresentationSelector: #selector(presentPhotos), addNeedDelegate: delegate)
     
     init(category: AlertCategory, delegate: AddNeedDelegate) {
         self.category = category
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {
@@ -40,16 +39,6 @@ class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoIma
         let vc = StockPhotoViewController()
         vc.photoSelectionDelegate = self
         showDetailViewController(vc, sender: nil)
-    }
-    
-    @objc private func addNeed() {
-        guard let title = addNeedView.titleTextField.text,
-              !title.isEmpty,
-              let image = selectedImage
-        else { return }
-        let need = CareAlertType(id: UUID(), category: category, stockPhotoName: image.cellModel.stockPhotoName, title: title, message: "")
-        
-        delegate?.receivedNeed(need)
     }
     
 }
