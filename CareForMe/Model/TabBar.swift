@@ -36,14 +36,15 @@ enum NavigationViewController {
     var navigationController: UINavigationController {
         switch self {
         case .main:
-            let navController = UINavigationController(rootViewController: MainViewController())
-            return navController
+            return makeNavigationController(MainViewController())
         case .notifications:
-            let navController = UINavigationController(rootViewController: NotificationListViewController())
-            return navController
+            return makeNavigationController(NotificationListViewController())
         case .settings:
-            let navController = UINavigationController(rootViewController: SettingsViewController())
-            return navController
+            return makeNavigationController(SettingsViewController())
         }
+    }
+    
+    private func makeNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
+        UINavigationController(rootViewController: rootViewController)
     }
 }
