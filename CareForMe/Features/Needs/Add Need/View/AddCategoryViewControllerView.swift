@@ -53,12 +53,17 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var nextButton: UIButton = .fullWidthButton(with: "Next: Create Need(s)", targetAndSelector: (self, #selector(updateViewController)))
     
-    init(target: Any, selector: Selector) {
+    init(target: Any, selector: Selector, delegate: CategoryUpdatable) {
+        self.categoryUpdateDelegate = delegate
         self.colorButtonTarget = target
         self.colorButtonSelector = selector
         super.init(frame: .zero)
-        titleTextField.delegate = self
         colorButton.addTarget(target, action: selector, for: .touchUpInside)
+        setupViews()
+    }
+    
+    private func setupViews() {
+        titleTextField.delegate = self
         backgroundColor = .systemBackground
         subviews()
         let tap = UITapGestureRecognizer(target: self, action: #selector(resignTextField))

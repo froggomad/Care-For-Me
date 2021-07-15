@@ -29,6 +29,13 @@ class ColorPickerViewController: UIViewController {
         modalPresentationStyle = .fullScreen
     }
     
+    init(color: UIColor = .systemBackground, delegate: ColorPickerDelegate) {
+        defer { colorPickerView.color = color }
+        super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .fullScreen
+        self.controllerDelegate = delegate
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("programmatic view")
     }

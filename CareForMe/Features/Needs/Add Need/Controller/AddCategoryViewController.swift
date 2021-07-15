@@ -16,8 +16,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     private let controller = NeedsController()
     
     lazy var categorySetupView: AddCategoryViewControllerView = {
-        let view = AddCategoryViewControllerView(target: self, selector: #selector(presentColorChoice))
-        view.categoryUpdateDelegate = self
+        let view = AddCategoryViewControllerView(target: self, selector: #selector(presentColorChoice), delegate: self)
         return view
     }()
     
@@ -26,8 +25,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     }
     
     @objc func presentColorChoice() {
-        let vc = ColorPickerViewController()
-        vc.controllerDelegate = self
+        let vc = ColorPickerViewController(color: categorySetupView.alertCategory.color.uiColor, delegate: self)
         showDetailViewController(vc, sender: nil)
     }
     
