@@ -53,7 +53,7 @@ class AddCategoryViewControllerView: UIView {
         
     private lazy var needStack: UIStackView = .componentStack(elements: [needLabel, needButton])
     
-    private lazy var needLabel: UILabel = .title3Label(text: "Needs")
+    lazy var needLabel: UILabel = .title3Label(text: "Needs")
     
     private lazy var needButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: addNeedPresentationTargetSelector)
     
