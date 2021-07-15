@@ -16,7 +16,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     private let controller = NeedsController()
     
     lazy var categorySetupView: AddCategoryViewControllerView = {
-        let view = AddCategoryViewControllerView(target: self, selector: #selector(presentColorChoice), delegate: self)
+        let view = AddCategoryViewControllerView(addNeedPresentationTargetSelector: (self, #selector(presentNeed)), target: self, selector: #selector(presentColorChoice), delegate: self)
         return view
     }()
     
@@ -34,13 +34,18 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
         guard let title = title,
               !title.isEmpty
         else {
-            presentAlert(title: "Title Needed", message: "Please enter a title for your new category")
+            presentAlert(title: "Title Needed", message: "Please enter a title for your new category") { [weak self] _ in
+                self?.categorySetupView.titleTextField.becomeFirstResponder()
+            }
             return
         }
-        categorySetupView.alertCategory.title = title
-//        controller.addCategory(category)
-//        print(controller.categories.count)
-        
+        let category = categorySetupView.alertCategory
+        category.title = title
+        categorySetupView.alertCategory = category
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc private func presentNeed() {
         let vc = AddNeedToCategoryViewController(category: categorySetupView.alertCategory, delegate: self)
         present(vc, animated: true)
     }
@@ -57,5 +62,6 @@ extension AddCategoryViewController: AddNeedDelegate {
         let alertCategory = categorySetupView.alertCategory
         alertCategory.alerts.append(need)
         categorySetupView.alertCategory = alertCategory
+        dismiss(animated: true)
     }
 }

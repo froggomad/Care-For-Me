@@ -130,9 +130,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     }
     
     @objc private func addNeed(_ sender: UIButton) {
-        guard let title = titleTextField.text,
-              !title.isEmpty
-        else { return }
+        let title = titleTextField.text ?? ""
         let need = CareAlertType(id: UUID(), category: category, stockPhotoName: selectedPhoto, title: title, message: "")
         addNeedDelegate?.receivedNeed(need)
     }

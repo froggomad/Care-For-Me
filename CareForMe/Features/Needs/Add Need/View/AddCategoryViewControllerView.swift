@@ -8,6 +8,7 @@
 import UIKit
 
 class AddCategoryViewControllerView: UIView {
+    var addNeedPresentationTargetSelector: TargetSelector
     var colorButtonTarget: Any
     var colorButtonSelector: Selector
     var alertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .named(.highlight)), type: "Title Here") {
@@ -19,7 +20,7 @@ class AddCategoryViewControllerView: UIView {
     weak var categoryUpdateDelegate: CategoryUpdatable?
     
     private lazy var parentStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleStack, colorStack, previewStack])
+        let stack = UIStackView(arrangedSubviews: [titleStack, colorStack, needStack, previewStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
@@ -42,7 +43,7 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var titleInfoLabel: UILabel = .title3Label(text: "Title")
     
-    private lazy var titleTextField: UITextField = .borderedTextField(placeholderText: "Tap to enter title")
+    lazy var titleTextField: UITextField = .borderedTextField(placeholderText: "Tap to enter title")
     
     private lazy var colorStack: UIStackView = .componentStack(elements: [colorLabel, colorButton])
     
@@ -50,10 +51,16 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var colorButton: UIButton = .fullWidthButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: (colorButtonTarget, colorButtonSelector))
         
+    private lazy var needStack: UIStackView = .componentStack(elements: [needLabel, needButton])
     
-    private lazy var nextButton: UIButton = .fullWidthButton(with: "Next: Create Need(s)", targetAndSelector: (self, #selector(updateViewController)))
+    private lazy var needLabel: UILabel = .title3Label(text: "Needs")
     
-    init(target: Any, selector: Selector, delegate: CategoryUpdatable) {
+    private lazy var needButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: addNeedPresentationTargetSelector)
+    
+    private lazy var nextButton: UIButton = .fullWidthButton(with: "Done", targetAndSelector: (self, #selector(updateViewController)))
+    
+    init(addNeedPresentationTargetSelector: TargetSelector, target: Any, selector: Selector, delegate: CategoryUpdatable) {
+        self.addNeedPresentationTargetSelector = addNeedPresentationTargetSelector
         self.categoryUpdateDelegate = delegate
         self.colorButtonTarget = target
         self.colorButtonSelector = selector
