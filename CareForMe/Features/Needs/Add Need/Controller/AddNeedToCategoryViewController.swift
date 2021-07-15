@@ -18,7 +18,7 @@ class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoIma
     }
     
     var category: AlertCategory
-    lazy var addNeedView = AddNeedToCategoryViewControllerView(category: category, photoPresentationTarget: self, photoPresentationSelector: #selector(presentPhotos), addNeedDelegate: delegate)
+    lazy var addNeedView = AddNeedToCategoryViewControllerView(category: category, photoPresentationTarget: self, photoPresentationSelector: #selector(presentPhotos), addNeedDelegate: self)
     
     init(category: AlertCategory, delegate: AddNeedDelegate) {
         self.category = category
@@ -41,4 +41,11 @@ class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoIma
         showDetailViewController(vc, sender: nil)
     }
     
+}
+
+extension AddNeedToCategoryViewController: AddNeedDelegate {
+    func receivedNeed(_ need: CareAlertType) {
+        delegate.receivedNeed(need)
+        dismiss(animated: true)
+    }
 }

@@ -62,6 +62,11 @@ extension AddCategoryViewController: AddNeedDelegate {
         let alertCategory = categorySetupView.alertCategory
         alertCategory.alerts.append(need)
         categorySetupView.alertCategory = alertCategory
-        dismiss(animated: true)
+        
+        guard alertCategory.alerts.count > 0 else {
+            categorySetupView.needLabel.text = "Needs"
+            return
+        }
+        categorySetupView.needLabel.text = "Needs: \(alertCategory.alerts.count)"
     }
 }
