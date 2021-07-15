@@ -99,8 +99,7 @@ class AddCategoryViewControllerView: UIView {
             
             nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding),
             nextButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            nextButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            nextButton.heightAnchor.constraint(equalToConstant: 50),
+            nextButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),           
             
             parentStackView.bottomAnchor.constraint(greaterThanOrEqualTo: nextButton.safeAreaLayoutGuide.topAnchor, constant: 8)
         ])
