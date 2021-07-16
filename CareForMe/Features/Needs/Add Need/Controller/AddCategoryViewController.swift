@@ -15,8 +15,6 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
     private let controller = NeedsController.shared
     
-    
-    
     lazy var categorySetupView: AddCategoryViewControllerView = {
         let view = AddCategoryViewControllerView(addNeedPresentationTargetSelector: (self, #selector(presentNeed)), colorButtonTargetSelector: (self, #selector(presentColorChoice)), delegate: self)
         return view
