@@ -11,7 +11,7 @@ class AddCategoryViewControllerView: UIView {
     var addNeedPresentationTargetSelector: TargetSelector
     var colorButtonTarget: Any
     var colorButtonSelector: Selector
-    var alertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .named(.highlight)), type: "Title Here") {
+    var alertCategory = NeedsCategory(id: UUID(), title: "Title Here", color: .init(uiColor: .named(.highlight))) {
         didSet {
             categoryCollectionView.alertType = alertCategory
         }

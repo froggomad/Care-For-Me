@@ -39,7 +39,7 @@ class CareCollectionView: UIView {
     }()
     
     /// for didSelectItem
-    weak var cellSelectDelegate: CareTypeCollectionViewDelegate?
+    weak var cellSelectDelegate: CareAlertSelectionDelegate?
     
     var alertType: AlertCategorizable? {
         didSet {
@@ -147,6 +147,6 @@ extension CareCollectionView {
 extension CareCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let alertType = alertType else { return }
-        cellSelectDelegate?.didSelect(alertType.alerts[indexPath.item])
+        cellSelectDelegate?.didSelect(alertType.alerts[indexPath.item] as! CareAlertType)
     }
 }

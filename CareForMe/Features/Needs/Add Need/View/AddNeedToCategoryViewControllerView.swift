@@ -8,11 +8,11 @@
 import UIKit
 
 protocol AddNeedDelegate: AnyObject {
-    func receivedNeed(_ need: CareAlertType)
+    func receivedNeed(_ need: CareTypeable)
 }
 
 class AddNeedToCategoryViewControllerView: UIView {
-    var category: AlertCategory
+    var category: NeedsCategory
 
     var presentPhotoTarget: Any?
     var presentPhotoSelector: Selector
@@ -68,7 +68,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     
     lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addNeed(_:))))
     
-    init(category: AlertCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
+    init(category: NeedsCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
         self.presentPhotoTarget = photoPresentationTarget
         self.presentPhotoSelector = photoPresentationSelector
         self.addNeedDelegate = addNeedDelegate
@@ -111,7 +111,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     
     @objc private func addNeed(_ sender: UIButton) {
         let title = titleTextField.text ?? ""
-        let need = CareAlertType(id: UUID(), category: category, stockPhotoName: selectedPhoto, title: title, message: "")
+        let need = Need(id: UUID(), category: category, stockPhotoName: selectedPhoto, title: title, message: "")
         addNeedDelegate?.receivedNeed(need)
     }
     

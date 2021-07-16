@@ -7,14 +7,17 @@
 
 import UIKit
 
-class AlertTypeViewModel {
+class AlertTypeViewModel: Codable {
     var title: String
     var message: String
-    var image: UIImage
+    var data: Data
+    var image: UIImage {
+        .init(data: data) ?? UIImage()
+    }
     
-    init(title: String, message: String, image: UIImage) {
+    init(title: String, message: String, data: Data) {
         self.title = title
         self.message = message
-        self.image = image
+        self.data = data
     }
 }

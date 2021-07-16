@@ -50,7 +50,7 @@ class StockPhotoViewController: UIViewController {
     }
 }
 
-extension StockPhotoViewController: CareTypeCollectionViewDelegate {
+extension StockPhotoViewController: CareAlertSelectionDelegate {
     func didSelect(_ need: CareAlertType) {
         photoSelectionDelegate?.receivedImage(need.stockPhotoName.photoModel)
         if let navC = navigationController {

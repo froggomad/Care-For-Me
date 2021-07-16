@@ -15,6 +15,8 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
     private let controller = NeedsController()
     
+    
+    
     lazy var categorySetupView: AddCategoryViewControllerView = {
         let view = AddCategoryViewControllerView(addNeedPresentationTargetSelector: (self, #selector(presentNeed)), target: self, selector: #selector(presentColorChoice), delegate: self)
         return view
@@ -39,9 +41,17 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
             }
             return
         }
-        let category = categorySetupView.alertCategory
+        let category = categorySetupView.alertCategory as! NeedsCategory
         category.title = title
         categorySetupView.alertCategory = category
+        controller.addCategory(category) { result in
+            switch result {
+            case .success:
+                break
+            case let .failure(error):
+                print(error)
+            }
+        }
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -58,7 +68,7 @@ extension AddCategoryViewController: ColorPickerDelegate {
 }
 
 extension AddCategoryViewController: AddNeedDelegate {
-    func receivedNeed(_ need: CareAlertType) {
+    func receivedNeed(_ need: CareTypeable) {
         let alertCategory = categorySetupView.alertCategory
         alertCategory.alerts.append(need)
         categorySetupView.alertCategory = alertCategory

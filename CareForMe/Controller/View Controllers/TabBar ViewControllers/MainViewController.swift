@@ -77,11 +77,11 @@ class MainViewController: ParentDetailViewController {
 
 }
 
-protocol CareTypeCollectionViewDelegate: AnyObject {
+protocol CareAlertSelectionDelegate: AnyObject {
     func didSelect(_ need: CareAlertType)
 }
 
-extension MainViewController: CareTypeCollectionViewDelegate {
+extension MainViewController: CareAlertSelectionDelegate {
     
     func didSelect(_ need: CareAlertType) {
         // TODO: use companion userId

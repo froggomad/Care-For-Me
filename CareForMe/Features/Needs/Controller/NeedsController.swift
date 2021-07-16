@@ -65,7 +65,7 @@ class NeedsController {
             return
         }
         
-        categories[categoryIndex].needs[needIndex] = newNeed
+        categories[categoryIndex].alerts[needIndex] = newNeed
         completion(.success(newNeed))
     }
     
