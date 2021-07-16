@@ -129,7 +129,6 @@ extension CareCollectionView {
 extension CareCollectionView {
     
     class PhotoTypeLayout: UICollectionViewFlowLayout {
-        static let heightConstant: CGFloat = 150
         /*
          height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values
          */
@@ -137,7 +136,7 @@ extension CareCollectionView {
             super.prepare()
             guard let collectionView = collectionView else { return }
             // TODO: why -13 to make the size even?
-            itemSize = CGSize(width: collectionView.frame.width / 4, height: Self.heightConstant - 63)
+            itemSize = CGSize(width: collectionView.frame.width / 4, height: 87)
             scrollDirection = .horizontal
             sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
