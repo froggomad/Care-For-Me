@@ -18,7 +18,7 @@ extension StockPhotoImageSelectionDelegate {
         selectedImage = image
     }
 }
-// TODO: Implement
+
 class StockPhotoViewController: UIViewController {
     weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
     var alert: AlertCategory = NamedPhoto.category
