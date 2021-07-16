@@ -24,7 +24,7 @@ class StockPhotoViewController: UIViewController {
     var alert: AlertCategory = NamedPhoto.category
     
     lazy var collectionView: CareCollectionView = {
-        alert.alerts.append(contentsOf: NamedPhoto.allCases.map({$0.photoAlert}))
+        alert.alerts.append(contentsOf: NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title}))
         let collectionView = CareCollectionView(alertType: alert, layout: CareCollectionView.PhotoTypeLayout())
         collectionView.cellSelectDelegate = self
         return collectionView
