@@ -29,7 +29,7 @@ class NeedsController {
     
     func editCategory(_ oldCategory: NeedsCategory, title: String, completion: @escaping CategoryCompletion) {
         guard let categoryIndex = categories.firstIndex(of: oldCategory) else {
-            completion(.failure(.notExists))
+            addCategory(oldCategory, completion: completion)
             return
         }
         self.categories[categoryIndex].title = title

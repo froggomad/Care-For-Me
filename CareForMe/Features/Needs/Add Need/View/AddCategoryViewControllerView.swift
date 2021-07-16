@@ -9,8 +9,7 @@ import UIKit
 
 class AddCategoryViewControllerView: UIView {
     var addNeedPresentationTargetSelector: TargetSelector
-    var colorButtonTarget: Any
-    var colorButtonSelector: Selector
+    var colorButtonTargetSelector: TargetSelector
     var alertCategory = NeedsCategory(id: UUID(), title: "Title Here", color: .init(uiColor: .named(.highlight))) {
         didSet {
             categoryCollectionView.alertType = alertCategory
@@ -49,7 +48,7 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var colorLabel: UILabel = .subHeadlineLabel(text: "Background Color")
     
-    private lazy var colorButton: UIButton = .fullWidthButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: (colorButtonTarget, colorButtonSelector))
+    private lazy var colorButton: UIButton = .fullWidthButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: colorButtonTargetSelector)
         
     private lazy var needStack: UIStackView = .componentStack(elements: [needLabel, needButton])
     
@@ -59,13 +58,11 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var nextButton: UIButton = .fullWidthButton(with: "Done", targetAndSelector: (self, #selector(updateViewController)))
     
-    init(addNeedPresentationTargetSelector: TargetSelector, target: Any, selector: Selector, delegate: CategoryUpdatable) {
+    init(addNeedPresentationTargetSelector: TargetSelector, colorButtonTargetSelector: TargetSelector, delegate: CategoryUpdatable) {
         self.addNeedPresentationTargetSelector = addNeedPresentationTargetSelector
         self.categoryUpdateDelegate = delegate
-        self.colorButtonTarget = target
-        self.colorButtonSelector = selector
-        super.init(frame: .zero)
-        colorButton.addTarget(target, action: selector, for: .touchUpInside)
+        self.colorButtonTargetSelector = colorButtonTargetSelector
+        super.init(frame: .zero)        
         setupViews()
     }
     

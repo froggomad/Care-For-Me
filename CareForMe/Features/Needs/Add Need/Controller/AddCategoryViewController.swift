@@ -18,7 +18,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
     
     lazy var categorySetupView: AddCategoryViewControllerView = {
-        let view = AddCategoryViewControllerView(addNeedPresentationTargetSelector: (self, #selector(presentNeed)), target: self, selector: #selector(presentColorChoice), delegate: self)
+        let view = AddCategoryViewControllerView(addNeedPresentationTargetSelector: (self, #selector(presentNeed)), colorButtonTargetSelector: (self, #selector(presentColorChoice)), delegate: self)
         return view
     }()
     
@@ -41,10 +41,11 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
             }
             return
         }
-        let category = categorySetupView.alertCategory as! NeedsCategory
+        let category = categorySetupView.alertCategory
         category.title = title
         categorySetupView.alertCategory = category
-        controller.addCategory(category) { result in
+        
+        controller.editCategory(category, title: title) { result in
             switch result {
             case .success:
                 break
@@ -52,6 +53,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
                 print(error)
             }
         }
+        
         navigationController?.popToRootViewController(animated: true)
     }
     
