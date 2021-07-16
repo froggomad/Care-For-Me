@@ -8,29 +8,62 @@
 import UIKit
 
 class MainViewController: ParentDetailViewController {
+    let needsController = NeedsController.shared
     
-    private lazy var careCollectionView: CareCollectionView = {
-        let careAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .red), type: "Play")
-        let catAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .cat, title: "Play with cat", message: "I want to play with the cat")
-        let chessAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .chess, message: "I want to play chess")
-        let gardeningAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .flower, title: "Gardening", message: "I want to do some gardening")
+    func makeCareTypeCollectionViews() {
+        for view in contentStack.arrangedSubviews {
+            contentStack.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
         
+        for category in NeedsController.shared.categories {
+            let collectionView = CareCollectionView(alertType: category)
+            collectionView.cellSelectDelegate = self
+            collectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant).isActive = true
+            contentStack.addArrangedSubview(collectionView)
+        }
+    }
+    
+    lazy var addButton: UIButton = {
+        let button = UIButton()
+        let heightConstant: CGFloat = 60
         
-        careAlertCategory.alerts = [catAlert, chessAlert, gardeningAlert]
+        button.addTarget(self, action: #selector(presentAddNeed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
+        button.setTitle("+", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .named(.link)
+        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .bold)
         
-        let collectionView = CareCollectionView(alertType: careAlertCategory)
-        return collectionView
+        NSLayoutConstraint.activate([
+            button.heightAnchor.constraint(equalToConstant: heightConstant),
+            button.widthAnchor.constraint(equalTo: button.heightAnchor)
+        ])
+        button.layer.cornerRadius = heightConstant/2
+        
+        return button
     }()
     
-    private lazy var companionCollectionView: CareCollectionView = {
-        let companionAlertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .yellow), type: "Help")
-        let callDoctorAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .callDoctor, message: "I don't feel good. Please call the doctor for me")
-        let coughAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .cough, title: "I'm Coughing", message: "I'm coughing. I don't feel good")
-        let medicationAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .pill, title: "Need Pills", message: "I need to take medication")
-        
-        companionAlertCategory.alerts = [callDoctorAlert, coughAlert, medicationAlert]
-        let collectionView = CareCollectionView(alertType: companionAlertCategory)
-        return collectionView
+    lazy var parentStack: UIStackView = {
+        let stackView: UIStackView = UIStackView(arrangedSubviews: [contentStack])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 0
+        stackView.alignment = .top
+        return stackView
+    }()
+    
+    lazy var contentStack: UIStackView = {
+        let stackView: UIStackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .fill
+        return stackView
     }()
     
     init() {
@@ -45,8 +78,9 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        careCollectionView.cellSelectDelegate = self
-        companionCollectionView.cellSelectDelegate = self
+    }
+    
+    @objc func presentAddNeed() {
         let vc = AddCategoryViewController()
         showDetailViewController(vc, sender: nil)
     }
@@ -57,21 +91,23 @@ class MainViewController: ParentDetailViewController {
         self.tabBarItem.selectedImage = UIImage(systemName: "square.grid.3x2.fill")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        makeCareTypeCollectionViews()
+    }
+    
     private func setupViews() {
-        view.addSubview(careCollectionView)
-        view.addSubview(companionCollectionView)
+        view.addSubview(addButton)
+        view.addSubview(parentStack)
         view.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
-            careCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            careCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            careCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            careCollectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant + 20),
-            
-            companionCollectionView.topAnchor.constraint(equalTo: careCollectionView.bottomAnchor, constant: 20),
-            companionCollectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant + 20),
-            companionCollectionView.leadingAnchor.constraint(equalTo: careCollectionView.leadingAnchor),
-            companionCollectionView.trailingAnchor.constraint(equalTo: careCollectionView.trailingAnchor)
+            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            addButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            parentStack.topAnchor.constraint(equalTo: addButton.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+            parentStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            parentStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            parentStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         ])
     }
 
