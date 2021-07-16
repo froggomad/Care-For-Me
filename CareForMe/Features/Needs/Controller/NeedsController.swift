@@ -8,46 +8,65 @@
 import Foundation
 
 class NeedsController {
+    enum Error: Swift.Error {
+        case exists
+        case notExists
+    }
+    
+    typealias CategoryCompletion = (Result<NeedsCategory, Error>) -> Void
+    typealias NeedCompletion = (Result<Need, Error>) -> Void
+    
     var categories: [NeedsCategory] = []
     
-    @discardableResult func addCategory(_ category: NeedsCategory) -> Bool {
-        guard !categories.contains(category) else { return false }
+    func addCategory(_ category: NeedsCategory, completion: @escaping CategoryCompletion) {
+        guard !categories.contains(category) else {
+            completion(.failure(.exists))
+            return
+        }
         categories.append(category)
-        return true
+        completion(.success(category))
     }
     
-    @discardableResult func editCategory(_ oldCategory: NeedsCategory, title: String) -> Bool {
-        guard let categoryIndex = categories.firstIndex(of: oldCategory) else { return false }
+    func editCategory(_ oldCategory: NeedsCategory, title: String, completion: @escaping CategoryCompletion) {
+        guard let categoryIndex = categories.firstIndex(of: oldCategory) else {
+            completion(.failure(.notExists))
+            return
+        }
         self.categories[categoryIndex].title = title
-        return true
+        completion(.success(self.categories[categoryIndex]))
     }
     
-    @discardableResult func deleteCategory(_ category: NeedsCategory) -> Bool {
-        guard let categoryIndex = categories.firstIndex(of: category) else { return false }
+    func deleteCategory(_ category: NeedsCategory, completion: @escaping CategoryCompletion) {
+        guard let categoryIndex = categories.firstIndex(of: category) else {
+            completion(.failure(.notExists))
+            return
+        }
         categories.remove(at: categoryIndex)
-        return true
+        completion(.success(category))
     }
     
     // MARK: - Needs -
     /// add a need to an existing category
-    /// - Returns: true if the add succeeded, false if it failed
-    @discardableResult func addNeed(_ need: Need, to category: NeedsCategory) -> Bool {
-        
+    func addNeed(_ need: Need, to category: NeedsCategory, completion: @escaping NeedCompletion) {
         if let categoryIndex = categories.firstIndex(of: category) {
-            return self.categories[categoryIndex].addNeed(need)            
-        } else { return false }
-        
+            self.categories[categoryIndex].addNeed(need)
+            completion(.success(need))
+        } else {
+            completion(.failure(.notExists))
+        }
     }
     
-    @discardableResult func editNeed(_ oldNeed: Need, with newNeed: Need, in category: NeedsCategory) -> Bool {
+    func editNeed(_ oldNeed: Need, with newNeed: Need, in category: NeedsCategory, completion: @escaping NeedCompletion) {
         
         guard let categoryIndex = categories.firstIndex(of: category),
               let needIndex = categories[categoryIndex].needs.firstIndex(of: oldNeed)
-        else { return false }
+        else {
+            completion(.failure(.notExists))
+            return
+        }
         
         categories[categoryIndex].needs[needIndex] = newNeed
-        return true
-        
+        completion(.success(newNeed))
     }
     
 }
