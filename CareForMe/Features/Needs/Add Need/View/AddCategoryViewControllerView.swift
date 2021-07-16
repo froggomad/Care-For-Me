@@ -29,7 +29,7 @@ class AddCategoryViewControllerView: UIView {
     
     lazy var previewStack: UIStackView = .componentStack(elements: [previewLabel, previewLine, categoryCollectionView])
     
-    lazy var previewLabel: UILabel = .title3Label(text: "Category Preview")
+    lazy var previewLabel: UILabel = .subHeadlineLabel(text: "Category Preview")
     
     lazy var previewLine: UIView = .separatorLine()
     
@@ -41,19 +41,19 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var titleStack: UIStackView = .componentStack(elements: [titleInfoLabel, titleTextField])
     
-    private lazy var titleInfoLabel: UILabel = .title3Label(text: "Title")
+    private lazy var titleInfoLabel: UILabel = .subHeadlineLabel(text: "Title")
     
     lazy var titleTextField: UITextField = .borderedTextField(placeholderText: "Tap to enter title")
     
     private lazy var colorStack: UIStackView = .componentStack(elements: [colorLabel, colorButton])
     
-    private lazy var colorLabel: UILabel = .title3Label(text: "Background Color")
+    private lazy var colorLabel: UILabel = .subHeadlineLabel(text: "Background Color")
     
     private lazy var colorButton: UIButton = .fullWidthButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: (colorButtonTarget, colorButtonSelector))
         
     private lazy var needStack: UIStackView = .componentStack(elements: [needLabel, needButton])
     
-    lazy var needLabel: UILabel = .title3Label(text: "Needs")
+    lazy var needLabel: UILabel = .subHeadlineLabel(text: "Needs")
     
     private lazy var needButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: addNeedPresentationTargetSelector)
     

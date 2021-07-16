@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextField {
-    static func borderedTextField(padding: CGFloat = 10, borderColor: UIColor = .named(.link), borderWidth: CGFloat = 1,  placeholderText: String? = nil, text: String? = nil) -> UITextField {
+    static func borderedTextField(padding: CGFloat = 10, borderColor: UIColor = .named(.secondaryLink), borderWidth: CGFloat = 1,  placeholderText: String? = nil, text: String? = nil) -> UITextField {
         let textField = UITextField()
         textField.leftViewMode = .always
         textField.rightViewMode = .always
@@ -24,6 +24,7 @@ extension UITextField {
         
         textField.layer.borderColor = borderColor.cgColor
         textField.layer.borderWidth = borderWidth
+        textField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         return textField
     }
 }
