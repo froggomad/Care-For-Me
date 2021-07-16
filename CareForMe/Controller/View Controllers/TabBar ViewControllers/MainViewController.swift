@@ -114,12 +114,12 @@ class MainViewController: ParentDetailViewController {
 }
 
 protocol CareAlertSelectionDelegate: AnyObject {
-    func didSelect(_ need: CareAlertType)
+    func didSelect(_ need: CareTypeable)
 }
 
 extension MainViewController: CareAlertSelectionDelegate {
     
-    func didSelect(_ need: CareAlertType) {
+    func didSelect(_ need: CareTypeable) {
         // TODO: use companion userId
         FirebaseMessagingController.shared.requestNotificationPermissions { enabled in
             switch enabled {

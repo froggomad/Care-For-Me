@@ -147,6 +147,6 @@ extension CareCollectionView {
 extension CareCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let alertType = alertType else { return }
-        cellSelectDelegate?.didSelect(alertType.alerts[indexPath.item] as! CareAlertType)
+        cellSelectDelegate?.didSelect(alertType.alerts[indexPath.item])
     }
 }

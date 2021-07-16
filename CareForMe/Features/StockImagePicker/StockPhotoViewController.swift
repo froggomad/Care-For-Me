@@ -51,7 +51,7 @@ class StockPhotoViewController: UIViewController {
 }
 
 extension StockPhotoViewController: CareAlertSelectionDelegate {
-    func didSelect(_ need: CareAlertType) {
+    func didSelect(_ need: CareTypeable) {
         photoSelectionDelegate?.receivedImage(need.stockPhotoName.photoModel)
         if let navC = navigationController {
             navC.popViewController(animated: true)
