@@ -137,7 +137,7 @@ extension CareCollectionView {
             guard let collectionView = collectionView else { return }
             // TODO: why -13 to make the size even?
             itemSize = CGSize(width: collectionView.frame.width / 4, height: 87)
-            scrollDirection = .horizontal
+            scrollDirection = .vertical
             sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
     }
