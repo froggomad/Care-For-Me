@@ -18,6 +18,10 @@ class NeedsController {
     
     var categories: [NeedsCategory] = []
     
+    static var shared = NeedsController()
+    
+    private init() { }
+    
     func addCategory(_ category: NeedsCategory, completion: @escaping CategoryCompletion) {
         guard !categories.contains(category) else {
             completion(.failure(.exists))

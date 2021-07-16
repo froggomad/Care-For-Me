@@ -13,7 +13,7 @@ protocol CategoryUpdatable: AnyObject {
 
 class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
-    private let controller = NeedsController()
+    private let controller = NeedsController.shared
     
     
     
