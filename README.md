@@ -18,12 +18,12 @@ The client's needs are shown in a set of horizontal collection views in a view t
 #### Notifications:
 The client should receive notifications pertaining to their needs. 
 1. Caregiver met need
-  a. This gives the client a chance to ask for the need to be met again if it wasn't met to their satisfaction
-  b. It gives the client peace of mind. Some clients are forgetful and may forget that their caregiver met their need 
+  - This gives the client a chance to ask for the need to be met again if it wasn't met to their satisfaction
+  - It gives the client peace of mind. Some clients are forgetful and may forget that their caregiver met their need 
 2. Caregiver declined to meet need
-  a. The need may be unreasonable. The caregiver will be required to give a reason why they're declining the requested need 
+  - The need may be unreasonable. The caregiver will be required to give a reason why they're declining the requested need 
 3. It's been more than 30 minutes since I asked for my need
-  a. This gives the client the opportunity to ask for their need to be met again
+  - This gives the client the opportunity to ask for their need to be met again
 
 ### Caregiver
 Making sure my client is well taken care of is my primary concern. My client has regular needs I'd like to be able to keep track of and I'd also like to know if my client needs something that isn't on the schedule. Some of my clients have a hard time communicating
