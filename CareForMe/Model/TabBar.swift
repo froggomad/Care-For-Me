@@ -10,6 +10,7 @@ import UIKit
 enum TabBar: Int {
     case main
     case notifications
+    case settings
     
     static func createMainTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
@@ -33,17 +34,19 @@ enum NavigationViewController {
     case notifications
     case settings
     
-    var navigationController: UINavigationController {
+    var rootViewController: UIViewController {
         switch self {
         case .main:
-            let navController = UINavigationController(rootViewController: MainViewController())
-            return navController
+            return MainViewController()
         case .notifications:
-            let navController = UINavigationController(rootViewController: NotificationListViewController())
-            return navController
+            return NotificationListViewController()
         case .settings:
-            let navController = UINavigationController(rootViewController: SettingsViewController())
-            return navController
+            return SettingsViewController()
         }
     }
+    
+    var navigationController: UINavigationController {
+        UINavigationController(rootViewController: rootViewController)
+    }
+    
 }

@@ -41,10 +41,10 @@ extension UILabel {
 }
 
 extension UIButton {
-    func setContextualLinkColor(for color: UIColor) {
+    func setContextualLinkColor(for color: UIColor, lightColorToUse: UIColor = .link, darkColorToUse: UIColor = .white) {
         let contextualColor: UIColor = .contextualColor(for: color,
-                                                        lightColorToUse: .link,
-                                                        darkColorToUse: .white)
+                                                        lightColorToUse: lightColorToUse,
+                                                        darkColorToUse: darkColorToUse)
         
         setTitleColor(contextualColor, for: .normal)
     }

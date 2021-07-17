@@ -7,34 +7,45 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: ParentDetailViewController {
+    let needsController = NeedsController.shared
     
-    private lazy var careCollectionView: AlertTypeCollectionView = {
-        let careAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.red.rawValue, type: "Play")
-        let catAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .cat, title: "Play with cat", message: "I want to play with the cat")
-        let chessAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .chess, message: "I want to play chess")
-        let gardeningAlert = CareAlertType(id: UUID(), category: careAlertCategory, stockPhotoName: .flower, title: "Gardening", message: "I want to do some gardening")
+    lazy var addButton: UIButton = {
+        let button = UIButton()
+        let heightConstant: CGFloat = 60
         
+        button.addTarget(self, action: #selector(presentAddNeed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
+        button.setTitle("+", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .named(.link)
+        button.titleLabel?.font = .systemFont(ofSize: 24, weight: .bold)
         
-        careAlertCategory.alerts = [catAlert, chessAlert, gardeningAlert]
+        NSLayoutConstraint.activate([
+            button.heightAnchor.constraint(equalToConstant: heightConstant),
+            button.widthAnchor.constraint(equalTo: button.heightAnchor)
+        ])
+        button.layer.cornerRadius = heightConstant/2
         
-        let collectionView = AlertTypeCollectionView(alertType: careAlertCategory)
-        return collectionView
+        return button
     }()
     
-    private lazy var companionCollectionView: AlertTypeCollectionView = {
-        let companionAlertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.yellow.rawValue, type: "Help")
-        let callDoctorAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .callDoctor, message: "I don't feel good. Please call the doctor for me")
-        let coughAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .cough, title: "I'm Coughing", message: "I'm coughing. I don't feel good")
-        let medicationAlert = CareAlertType(id: UUID(), category: companionAlertCategory, stockPhotoName: .pill, title: "Need Pills", message: "I need to take medication")
-        
-        companionAlertCategory.alerts = [callDoctorAlert, coughAlert, medicationAlert]
-        let collectionView = AlertTypeCollectionView(alertType: companionAlertCategory)
-        return collectionView
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = needsController
+        tableView.delegate = self
+        tableView.delaysContentTouches = false
+        tableView.canCancelContentTouches = false
+        tableView.register(AlertCategoryTableViewCell.self, forCellReuseIdentifier: AlertCategoryTableViewCell.reuseIdentifier)
+        return tableView
     }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        needsController.cellSelectDelegate = self
         setTab()
     }
     
@@ -45,10 +56,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        careCollectionView.cellSelectDelegate = self
-        companionCollectionView.cellSelectDelegate = self
-        
-        let photo = StockPhoto(name: .footballSoccerGoalPost)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    @objc func presentAddNeed() {
+        let vc = AddCategoryViewController()
+        showDetailViewController(vc, sender: nil)
     }
     
     private func setTab() {
@@ -58,32 +74,29 @@ class MainViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(careCollectionView)
-        view.addSubview(companionCollectionView)
+        view.addSubview(addButton)
+        view.addSubview(tableView)
         view.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
-            careCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            careCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            careCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            careCollectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant + 20),
-            
-            companionCollectionView.topAnchor.constraint(equalTo: careCollectionView.bottomAnchor, constant: 20),
-            companionCollectionView.heightAnchor.constraint(equalToConstant: AlertTypeCollectionView.Layout.heightConstant + 20),
-            companionCollectionView.leadingAnchor.constraint(equalTo: careCollectionView.leadingAnchor),
-            companionCollectionView.trailingAnchor.constraint(equalTo: careCollectionView.trailingAnchor)
+            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            addButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            tableView.topAnchor.constraint(equalTo: addButton.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         ])
     }
 
 }
 
-protocol CareTypeCollectionViewDelegate: AnyObject {
-    func didSelect(_ need: CareAlertType)
+protocol CareAlertSelectionDelegate: AnyObject {
+    func didSelect(_ need: CareTypeable)
 }
 
-extension MainViewController: CareTypeCollectionViewDelegate {
+extension MainViewController: CareAlertSelectionDelegate {
     
-    func didSelect(_ need: CareAlertType) {
+    func didSelect(_ need: CareTypeable) {
         // TODO: use companion userId
         FirebaseMessagingController.shared.requestNotificationPermissions { enabled in
             switch enabled {
@@ -92,7 +105,7 @@ extension MainViewController: CareTypeCollectionViewDelegate {
             case let .failure(error):
                 print("Error with notification permissions: \(error)")
             }
-            FirebaseMessagingController.shared.postMessage(category: need.category.type, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
+            FirebaseMessagingController.shared.postMessage(category: need.category.title, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
         }
     }
     
@@ -125,5 +138,11 @@ struct CareNotification: Codable, Equatable {
         self.text = text
         self.forUserId = forUserId
         self.date = date
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CareCollectionView.CareTypeLayout.heightConstant
     }
 }

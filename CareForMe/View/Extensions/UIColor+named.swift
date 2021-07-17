@@ -10,8 +10,9 @@ import UIKit
 
 extension UIColor {
     enum NamedColor: String {
-        case red
-        case yellow
+        case link
+        case highlight
+        case secondaryLink
     }
     static func named(_ color: NamedColor) -> UIColor {
         return UIColor(named: color.rawValue)!

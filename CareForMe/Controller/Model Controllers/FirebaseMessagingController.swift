@@ -8,7 +8,7 @@
 import FirebaseMessaging
 import UIKit
 
-class FirebaseMessagingController {
+class FirebaseMessagingController: NSObject {
     enum NotificationPermissionStatus {
         case authorized
         case denied
@@ -19,7 +19,8 @@ class FirebaseMessagingController {
     var token: String?
     private let dbController = FirebaseDatabaseController()
     
-    private init() {
+    override private init() {
+        super.init()
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(receiveToken(_:)),
@@ -27,8 +28,8 @@ class FirebaseMessagingController {
             object: nil)
         
         registerForRemoteNotifications()
-        Messaging.messaging().delegate = UIApplication.shared.delegate as? MessagingDelegate
-        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? AppDelegate
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
     }
     
     @objc private func receiveToken(_ notification: Notification) {
@@ -115,7 +116,7 @@ extension Notification.Name {
     static let tokenKey = Notification.Name("FCMToken")
 }
 
-extension AppDelegate : UNUserNotificationCenterDelegate {
+extension FirebaseMessagingController: UNUserNotificationCenterDelegate {
     
     // MARK: - Firebase Messaging -
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -175,7 +176,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     }
 }
 
-extension AppDelegate: MessagingDelegate {
+extension FirebaseMessagingController: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         guard let fcmToken = fcmToken else { return }
