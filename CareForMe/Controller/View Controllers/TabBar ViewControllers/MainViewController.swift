@@ -10,20 +10,6 @@ import UIKit
 class MainViewController: ParentDetailViewController {
     let needsController = NeedsController.shared
     
-    func makeCareTypeCollectionViews() {
-        for view in contentStack.arrangedSubviews {
-            contentStack.removeArrangedSubview(view)
-            view.removeFromSuperview()
-        }
-        
-        for category in NeedsController.shared.categories {
-            let collectionView = CareCollectionView(alertType: category)
-            collectionView.cellSelectDelegate = self
-            collectionView.heightAnchor.constraint(equalToConstant: CareCollectionView.CareTypeLayout.heightConstant).isActive = true
-            contentStack.addArrangedSubview(collectionView)
-        }
-    }
-    
     lazy var addButton: UIButton = {
         let button = UIButton()
         let heightConstant: CGFloat = 60
@@ -46,28 +32,20 @@ class MainViewController: ParentDetailViewController {
         return button
     }()
     
-    lazy var parentStack: UIStackView = {
-        let stackView: UIStackView = UIStackView(arrangedSubviews: [contentStack])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 0
-        stackView.alignment = .top
-        return stackView
-    }()
-    
-    lazy var contentStack: UIStackView = {
-        let stackView: UIStackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .fill
-        return stackView
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = needsController
+        tableView.delegate = self
+        tableView.delaysContentTouches = false
+        tableView.canCancelContentTouches = false
+        tableView.register(AlertCategoryTableViewCell.self, forCellReuseIdentifier: AlertCategoryTableViewCell.reuseIdentifier)
+        return tableView
     }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        needsController.cellSelectDelegate = self
         setTab()
     }
     
@@ -78,6 +56,10 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     @objc func presentAddNeed() {
@@ -91,23 +73,18 @@ class MainViewController: ParentDetailViewController {
         self.tabBarItem.selectedImage = UIImage(systemName: "square.grid.3x2.fill")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        makeCareTypeCollectionViews()
-    }
-    
     private func setupViews() {
         view.addSubview(addButton)
-        view.addSubview(parentStack)
+        view.addSubview(tableView)
         view.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
             addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             addButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            parentStack.topAnchor.constraint(equalTo: addButton.safeAreaLayoutGuide.bottomAnchor, constant: 20),
-            parentStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            parentStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            parentStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
+            tableView.topAnchor.constraint(equalTo: addButton.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         ])
     }
 
@@ -161,5 +138,11 @@ struct CareNotification: Codable, Equatable {
         self.text = text
         self.forUserId = forUserId
         self.date = date
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CareCollectionView.CareTypeLayout.heightConstant
     }
 }

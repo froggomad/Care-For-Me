@@ -5,9 +5,9 @@
 //  Created by Kenneth Dubroff on 7/10/21.
 //
 
-import Foundation
+import UIKit
 
-class NeedsController {
+class NeedsController: NSObject {
     enum Error: Swift.Error {
         case exists
         case notExists
@@ -17,10 +17,11 @@ class NeedsController {
     typealias NeedCompletion = (Result<Need, Error>) -> Void
     
     var categories: [NeedsCategory] = []
+    var cellSelectDelegate: CareAlertSelectionDelegate?
     
     static var shared = NeedsController()
     
-    private init() { }
+    private override init() { super.init() }
     
     func addCategory(_ category: NeedsCategory, completion: @escaping CategoryCompletion) {
         guard !categories.contains(category) else {
@@ -73,4 +74,15 @@ class NeedsController {
         completion(.success(newNeed))
     }
     
+}
+
+extension NeedsController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        categories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = AlertCategoryTableViewCell(alertCategory: categories[indexPath.row], cellSelectDelegate: cellSelectDelegate)
+        return cell
+    }
 }
