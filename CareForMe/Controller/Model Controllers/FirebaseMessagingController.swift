@@ -110,6 +110,10 @@ class FirebaseMessagingController: NSObject {
         
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension Notification.Name {

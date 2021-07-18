@@ -77,6 +77,10 @@ class NotificationListViewController: ParentDetailViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 }
 
 extension NotificationListViewController: UITableViewDelegate {
