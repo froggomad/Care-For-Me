@@ -73,6 +73,10 @@ class CareNotificationController: NSObject {
         
         read[careNotification.id.uuidString] = careNotification
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 
