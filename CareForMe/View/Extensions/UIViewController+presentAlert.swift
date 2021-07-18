@@ -17,8 +17,8 @@ extension UIViewController {
     func presentAlert(title: String, message: String, completion: @escaping (UIAlertAction) -> Void = {_ in }) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true)
         }
     }
     
@@ -36,8 +36,8 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
             complete(false)
         }))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true)
         }
     }
 }
