@@ -38,7 +38,7 @@ class CareNotificationController: NSObject {
     }
     
     func getNotificationsFromAPI(for userId: String) {
-        dbController.observe(endpoint: APIRef.userNotifications(userId: userId).endpoint, event: .value) { snapshot in
+        dbController.observe(endpoint: APIRef.userNotifications(userId: userId).endpoint, event: .value) { [weak self] snapshot in
             guard let notification = try? snapshot.data(as: NotificationData.self) else {
                 return
             }
@@ -46,13 +46,13 @@ class CareNotificationController: NSObject {
             for notification in notification.read {
                 readHashMap[notification.id.uuidString] = notification
             }
-            self.read = readHashMap
+            self?.read = readHashMap
                         
             var unreadHashMap: Dictionary<String, CareNotification> = [:]
             for notification in notification.unread {
                 unreadHashMap[notification.id.uuidString] = notification
             }
-            self.unread = unreadHashMap
+            self?.unread = unreadHashMap
         }
     }
     
