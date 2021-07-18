@@ -66,7 +66,7 @@ class AddNeedToCategoryViewControllerView: UIView {
         return label
     }()
     
-    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: (self, #selector(addNeed(_:))))
+    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(addNeed(_:))))
     
     init(category: NeedsCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
         self.presentPhotoTarget = photoPresentationTarget

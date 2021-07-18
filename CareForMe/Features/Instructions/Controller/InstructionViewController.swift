@@ -15,16 +15,12 @@ class InstructionViewController: UIViewController {
     var caption: String?
     var buttonTitle: String
     
-    lazy var instructionView: InstructionView = {
-        InstructionView(title: titleText,
-                        instructions: instructions,
-                        imageFilename: image,
-                        caption: caption,
-                        buttonTitle: buttonTitle,
-                        target: self,
-                        selector: #selector(openSettings)
-        )
-    }()
+    lazy var instructionView: InstructionView = InstructionView(title: titleText,
+                                                                instructions: instructions,
+                                                                imageFilename: image,
+                                                                caption: caption,
+                                                                buttonTitle: buttonTitle,
+                                                                selectionDelegate: TargetSelector(target: self, selector: #selector(openSettings)))
     
     init(title: String, instructions: String, image: Gif, caption: String? = nil, buttonTitle: String) {
         self.titleText = title
@@ -45,6 +41,10 @@ class InstructionViewController: UIViewController {
     
     @objc private func openSettings() {
         AppSettingsController.openSettings()
+    }
+    
+    deinit {
+        print("deinit")
     }
     
 }

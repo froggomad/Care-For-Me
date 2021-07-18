@@ -7,7 +7,15 @@
 
 import UIKit
 
-typealias TargetSelector = (target: Any, selector: Selector)
+class TargetSelector {
+    var target: Any?
+    var selector: Selector
+    
+    init(target: Any?, selector: Selector) {
+        self.target = target
+        self.selector = selector
+    }    
+}
 
 extension UIButton {
     static func fullWidthButton(with title: String? = nil, color: UIColor = .named(.link), targetAndSelector: TargetSelector? = nil) -> UIButton {
@@ -19,9 +27,11 @@ extension UIButton {
         button.backgroundColor = color
         button.setTitleColor(.white, for: .normal)
         
-        guard let (target, selector) = targetAndSelector else { return button }
-        
+        guard let targetSelector = targetAndSelector else { return button }
+        let target = targetSelector.target
+        let selector = targetSelector.selector
         button.addTarget(target, action: selector, for: .touchUpInside)
+        
         return button
     }
 }

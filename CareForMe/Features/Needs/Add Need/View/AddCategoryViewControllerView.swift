@@ -8,8 +8,8 @@
 import UIKit
 
 class AddCategoryViewControllerView: UIView {
-    var addNeedPresentationTargetSelector: TargetSelector
-    var colorButtonTargetSelector: TargetSelector
+    weak var addNeedPresentationTargetSelector: TargetSelector?
+    weak var colorButtonTargetSelector: TargetSelector?
     var alertCategory = NeedsCategory(id: UUID(), title: "Title Here", color: .init(uiColor: .named(.highlight))) {
         didSet {
             categoryCollectionView.alertType = alertCategory
@@ -56,7 +56,7 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var needButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: addNeedPresentationTargetSelector)
     
-    private lazy var nextButton: UIButton = .fullWidthButton(with: "Done", targetAndSelector: (self, #selector(updateViewController)))
+    private lazy var nextButton: UIButton = .fullWidthButton(with: "Done", targetAndSelector: TargetSelector(target: self, selector: #selector(updateViewController)))
     
     init(addNeedPresentationTargetSelector: TargetSelector, colorButtonTargetSelector: TargetSelector, delegate: CategoryUpdatable) {
         self.addNeedPresentationTargetSelector = addNeedPresentationTargetSelector
