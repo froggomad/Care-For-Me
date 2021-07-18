@@ -50,9 +50,9 @@ class SettingsViewController: ParentDetailViewController {
     }
     
     private func setTab() {
-        self.title = "Settings"
-        self.tabBarItem.image = UIImage(systemName: "gearshape")
-        self.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
+        title = "Settings"
+        tabBarItem.image = UIImage(systemName: "gearshape")
+        tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
     }
     
     override func viewDidLoad() {
