@@ -7,16 +7,6 @@
 
 import UIKit
 
-class TargetSelector {
-    var target: Any?
-    var selector: Selector
-    
-    init(target: Any?, selector: Selector) {
-        self.target = target
-        self.selector = selector
-    }    
-}
-
 extension UIButton {
     static func fullWidthButton(with title: String? = nil, color: UIColor = .named(.link), targetAndSelector: TargetSelector? = nil) -> UIButton {
         let button = UIButton(type: .system)

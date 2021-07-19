@@ -8,8 +8,8 @@
 import UIKit
 
 class AddCategoryViewControllerView: UIView {
-    weak var addNeedPresentationTargetSelector: TargetSelector?
-    weak var colorButtonTargetSelector: TargetSelector?
+    var addNeedPresentationTargetSelector: TargetSelector
+    var colorButtonTargetSelector: TargetSelector
     var alertCategory = NeedsCategory(id: UUID(), title: "Title Here", color: .init(uiColor: .named(.highlight))) {
         didSet {
             categoryCollectionView.alertType = alertCategory

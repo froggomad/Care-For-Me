@@ -15,7 +15,7 @@ class InstructionView: UIView {
     private var image: Gif
     private var caption: String?
     private var buttonTitle: String
-    private weak var selectionDelegate: TargetSelector?
+    private var selectionDelegate: TargetSelector
     
     private lazy var mainStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel, instructionLabel, imageStack, button])
@@ -74,13 +74,11 @@ class InstructionView: UIView {
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(buttonTitle, for: .normal)
-        if let selectionDelegate = selectionDelegate {
-            button.addTarget(selectionDelegate.target, action: selectionDelegate.selector, for: .touchUpInside)
-        }
+        button.addTarget(selectionDelegate.target, action: selectionDelegate.selector, for: .touchUpInside)
         return button
     }()
     
-    init(title: String, instructions: String, imageFilename: Gif, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector?) {
+    init(title: String, instructions: String, imageFilename: Gif, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
         self.titleString = title
         self.instructions = instructions
         self.image = imageFilename
