@@ -86,7 +86,7 @@ class ColorPickerView: UIView {
     
     @objc private func setUIColors() {
         let backgroundColor = backgroundColor ?? .black
-        button.setContextualLinkColor(for: backgroundColor)
+        button.setContextualLinkColor()
         button.setContextualBackgroundColor(for: backgroundColor)
         
         informationLabel.setContextualTextColor(for: backgroundColor)

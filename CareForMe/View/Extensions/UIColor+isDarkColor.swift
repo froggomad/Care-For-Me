@@ -41,7 +41,16 @@ extension UILabel {
 }
 
 extension UIButton {
-    func setContextualLinkColor(for color: UIColor, lightColorToUse: UIColor = .link, darkColorToUse: UIColor = .white) {
+    func setContextualLinkColor(for colorToCompare: UIColor? = nil, lightColorToUse: UIColor = .link, darkColorToUse: UIColor = .white) {
+        var comparativeColor: UIColor
+        
+        if let existingColor = colorToCompare {
+            comparativeColor = existingColor
+        } else {
+            comparativeColor = backgroundColor ?? .black
+        }
+        
+        let color: UIColor = .contextualColor(for: comparativeColor)
         let contextualColor: UIColor = .contextualColor(for: color,
                                                         lightColorToUse: lightColorToUse,
                                                         darkColorToUse: darkColorToUse)
