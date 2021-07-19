@@ -8,10 +8,8 @@
 import UIKit
 
 class ColorPickerView: UIView {
-    let buttonTarget: Any?
-    let buttonAction: Selector
-    let colorChangeTarget: Any?
-    let colorChangeAction: Selector
+    let buttonTargetSelector: TargetSelector
+    let colorChangeTargetSelector: TargetSelector
     
     var color: UIColor = .systemBackground {
         didSet {
@@ -38,7 +36,10 @@ class ColorPickerView: UIView {
 
     lazy var colorPicker: ColorPicker = {
         let picker = ColorPicker()
-        picker.addTarget(colorChangeTarget, action: colorChangeAction, for: .valueChanged)
+        let target = colorChangeTargetSelector.target
+        let colorSelector = colorChangeTargetSelector.selector
+        
+        picker.addTarget(target, action: colorSelector, for: .valueChanged)
         picker.addTarget(self, action: #selector(setUIColors), for: .valueChanged)
         return picker
     }()
@@ -46,6 +47,8 @@ class ColorPickerView: UIView {
     lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Set Color", for: .normal)
+        let buttonTarget = buttonTargetSelector.target
+        let buttonAction = buttonTargetSelector.selector
         button.addTarget(buttonTarget, action: buttonAction, for: .touchUpInside)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
@@ -55,11 +58,9 @@ class ColorPickerView: UIView {
     }()
 
     
-    init(buttonTarget: Any?, buttonAction: Selector, colorChangeTarget: Any?, colorChangeAction: Selector) {
-        self.buttonTarget = buttonTarget
-        self.buttonAction = buttonAction
-        self.colorChangeTarget = colorChangeTarget
-        self.colorChangeAction = colorChangeAction
+    init(buttonTargetSelector: TargetSelector, colorTargetSelector: TargetSelector) {
+        self.buttonTargetSelector = buttonTargetSelector
+        self.colorChangeTargetSelector = colorTargetSelector
         super.init(frame: .zero)
         subviews()
     }

@@ -15,11 +15,9 @@ class ColorPickerViewController: UIViewController {
     weak var controllerDelegate: ColorPickerDelegate?
     
     lazy var colorPickerView: ColorPickerView = {
-        let view = ColorPickerView(buttonTarget: self,
-                                   buttonAction: #selector(setColor(_:)),
-                                   colorChangeTarget: self,
-                                   colorChangeAction: #selector(changeColor(_:))
-        )
+        let buttonTargetSelector = TargetSelector(target: self, selector: #selector(setColor(_:)))
+        let colorTargetSelector = TargetSelector(target: self, selector: #selector(changeColor(_:)))
+        let view = ColorPickerView(buttonTargetSelector: buttonTargetSelector, colorTargetSelector: colorTargetSelector)
         return view
     }()
     
