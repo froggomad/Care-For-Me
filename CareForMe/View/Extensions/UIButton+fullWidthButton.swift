@@ -15,7 +15,15 @@ extension UIButton {
         button.layer.cornerRadius = 10
         button.setTitle(title, for: .normal)
         button.backgroundColor = color
-        button.setTitleColor(.white, for: .normal)
+        button.setContextualLinkColor(darkColorToUse: .white)
+        
+        button.layer.shadowColor = UIColor.contextualColor(for: color).cgColor
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowOffset = .init(width: 1, height: 1)
+        button.layer.shadowRadius = 1
+        
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
         
         guard let targetSelector = targetAndSelector else { return button }
         let target = targetSelector.target
