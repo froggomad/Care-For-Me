@@ -81,6 +81,8 @@ class AddNeedToCategoryViewControllerView: UIView {
         self.addNeedDelegate = addNeedDelegate
         self.category = category
         super.init(frame: .zero)
+        titleTextField.delegate = self
+        messageTextField.delegate = self
         setupViews()
     }
     
@@ -124,6 +126,18 @@ class AddNeedToCategoryViewControllerView: UIView {
         addNeedDelegate?.receivedNeed(need)
     }
     
+}
+
+extension AddNeedToCategoryViewControllerView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case titleTextField:
+            messageTextField.becomeFirstResponder()
+        default:
+            break
+        }
+        return true
+    }
 }
 
 extension UIView {
