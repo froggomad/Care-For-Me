@@ -45,7 +45,13 @@ class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoIma
 
 extension AddNeedToCategoryViewController: AddNeedDelegate {
     func receivedNeed(_ need: CareTypeable) {
-        delegate.receivedNeed(need)
-        dismiss(animated: true)
+        if !need.title.isEmpty {
+            delegate.receivedNeed(need)
+            dismiss(animated: true)
+        } else {
+            presentAlert(title: "Missing Title", message: "Please enter a Name for this need.")
+            addNeedView.titleTextField.becomeFirstResponder()
+        }
+        
     }
 }
