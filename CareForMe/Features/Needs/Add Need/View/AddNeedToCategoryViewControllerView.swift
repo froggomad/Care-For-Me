@@ -22,7 +22,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     var selectedPhoto: NamedPhoto! = .firstAid
     
     lazy var parentStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleStack, imageLabel, imageStack])
+        let stack = UIStackView(arrangedSubviews: [titleStack, messageStack, imageLabel, imageStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
@@ -30,13 +30,20 @@ class AddNeedToCategoryViewControllerView: UIView {
         return stack
     }()
     
+    
     lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleTextField])
     
     lazy var titleLabel: UILabel = .title3Label(text: "Name")
     
-//    lazy var titleLine: UIView = .separatorLine()
-    
     lazy var titleTextField: UITextField = .borderedTextField(padding: 10, placeholderText: "Tap to Name This Need")
+        
+    
+    lazy var messageStack: UIStackView = .componentStack(elements: [messageLabel, messageTextField])
+    
+    lazy var messageLabel: UILabel = .title3Label(text: "Message")
+    
+    lazy var messageTextField: UITextField = .borderedTextField(padding: 10, placeholderText: "Tap to add a default message.")
+    
     
     lazy var imageStack: UIStackView = .componentStack(elements: [imageView, imageCaptionInstructionLabel], verticalAlignment: .center)
     
@@ -111,7 +118,9 @@ class AddNeedToCategoryViewControllerView: UIView {
     
     @objc private func addNeed(_ sender: UIButton) {
         let title = titleTextField.text ?? ""
-        let need = Need(id: UUID(), category: category, stockPhotoName: selectedPhoto, title: title, message: "")
+        let message = messageTextField.text ?? ""
+        
+        let need = Need(id: UUID(), category: category, stockPhotoName: selectedPhoto, title: title, message: message)
         addNeedDelegate?.receivedNeed(need)
     }
     
