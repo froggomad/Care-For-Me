@@ -7,25 +7,25 @@
 
 import UIKit
 
-enum PasswordError: StatusErrorable {
-    case invalidPassword
-    
-    var message: String {
-        switch self {
-        case .invalidPassword:
-            return "Invalid Password"
-        }
-    }
-    
-    var instructions: String {
-        switch self {
-        case .invalidPassword:
-            return "Must contain some stuff you didn't put"
-        }
-    }
-}
 // MARK: - ViewController used as Controller -
 final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
+    enum PasswordError: Swift.Error, StatusErrorable {
+        case invalidPassword
+        
+        var message: String {
+            switch self {
+            case .invalidPassword:
+                return "Invalid Password"
+            }
+        }
+        
+        var instructions: String {
+            switch self {
+            case .invalidPassword:
+                return "Must contain some stuff you didn't put"
+            }
+        }
+    }
     lazy var textFields: [StatusTextField<ExampleStatusTextFieldPasswordDelegate>] = [textField]
     typealias Error = PasswordError
     
@@ -73,12 +73,11 @@ extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
 // MARK: - Outside Controller -
 final class Foo: NSObject, StatusTextFieldDelegate {
     
-    enum FooError: StatusErrorable {
-        var message: String { "bad" }
-        
-        var instructions: String { "bad juju, abort now" }
-        
+    enum FooError: Swift.Error, StatusErrorable {
         case badStuffHappenedHere
+        
+        var message: String { "Empty" }
+        var instructions: String { "This field cannot be empty" }
     }
     
     lazy var textFields: [StatusTextField<Foo>] = statusTextField != nil ? [statusTextField!] : []
