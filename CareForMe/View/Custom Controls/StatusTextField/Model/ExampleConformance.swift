@@ -55,15 +55,14 @@ extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let textFields: [UITextField: StatusTextField] = Dictionary(uniqueKeysWithValues: self.textFields.map { ($0.textFieldView.textField, $0) })
         
         if textField.text == "Foo" {
             print("entered super secret testing mode, try an \"!\"")
             if string == "!" {
-                textFields[textField]?.displayErrorMessage(for: Error.invalidPassword)
+                textFieldDictionary[textField]?.displayErrorMessage(for: Error.invalidPassword)
             }
         } else if textField.text == "Foo!" {
-            textFields[textField]?.displayStatusMessage()
+            textFieldDictionary[textField]?.displayStatusMessage()
         }
         return true
         
@@ -94,12 +93,11 @@ final class Foo: NSObject, StatusTextFieldDelegate {
     typealias Error = FooError
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let textFields: [UITextField: StatusTextField] = Dictionary(uniqueKeysWithValues: self.textFields.map { ($0.textFieldView.textField, $0) })
         
         if textField.text?.isEmpty ?? true {
-            textFields[textField]?.displayStatusMessage()
+            textFieldDictionary[textField]?.displayStatusMessage()
         } else {
-            textFields[textField]?.displayErrorMessage(for: Error.badStuffHappenedHere)
+            textFieldDictionary[textField]?.displayErrorMessage(for: Error.badStuffHappenedHere)
         }
         return true
     }
