@@ -93,12 +93,23 @@ final class Foo: NSObject, StatusTextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField.text?.isEmpty ?? true {
-            textFieldDictionary[textField]?.displayStatusMessage()
-        } else {
+        guard let text = textField.text else { return true }
+        let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let allEmpty = text.isEmpty && string.isEmpty
+        let stringIsBackSpace = text.isEmpty && string == .backSpace
+        let willBecomeEmpty = (text.count == 1 && string == .backSpace) || (text.count == 1 && string.isEmpty)
+        
+        if allEmpty || stringIsBackSpace || willBecomeEmpty {
             textFieldDictionary[textField]?.displayErrorMessage(for: Error.badStuffHappenedHere)
+        } else {
+            textFieldDictionary[textField]?.displayStatusMessage()
         }
         return true
     }
     
+}
+
+extension String {
+    static let backSpace = String(UnicodeScalar(8))
 }
