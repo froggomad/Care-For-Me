@@ -51,6 +51,9 @@
 		AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591E2698A5920090CAF2 /* ColorPickerView.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
+		AAD1150326A78DF60010A9D7 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150226A78DF60010A9D7 /* StatusTextField.swift */; };
+		AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150826A7E05C0010A9D7 /* Protocols.swift */; };
+		AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
 		AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BB2679530500ABC882 /* SceneDelegate.swift */; };
 		AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BD2679530500ABC882 /* MainViewController.swift */; };
@@ -159,6 +162,9 @@
 		AACA591E2698A5920090CAF2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
+		AAD1150226A78DF60010A9D7 /* StatusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
+		AAD1150826A7E05C0010A9D7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleConformance.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE262BB2679530500ABC882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -508,6 +514,32 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		AAD1150426A7E02B0010A9D7 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1150C26A7E20C0010A9D7 /* StatusTextField */,
+			);
+			path = "Custom Controls";
+			sourceTree = "<group>";
+		};
+		AAD1150726A7E03C0010A9D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1150826A7E05C0010A9D7 /* Protocols.swift */,
+				AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AAD1150C26A7E20C0010A9D7 /* StatusTextField */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1150226A78DF60010A9D7 /* StatusTextField.swift */,
+				AAD1150726A7E03C0010A9D7 /* Model */,
+			);
+			path = StatusTextField;
+			sourceTree = "<group>";
+		};
 		AAE262AD2679530500ABC882 = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +597,7 @@
 		AAE262F02679715700ABC882 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AAD1150426A7E02B0010A9D7 /* Custom Controls */,
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
 				AAE91897268EE160003A8278 /* Extensions */,
 			);
@@ -964,10 +997,12 @@
 				AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */,
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
+				AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
 				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
+				AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
@@ -984,6 +1019,7 @@
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */,
 				AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */,
+				AAD1150326A78DF60010A9D7 /* StatusTextField.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
 				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
