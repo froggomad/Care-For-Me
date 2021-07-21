@@ -25,7 +25,8 @@ enum PasswordError: StatusErrorable {
     }
 }
 // MARK: - ViewController used as Controller -
-final class ExampleStatusTextFieldPasswordDelegate: UIViewController, UITextFieldDelegate {
+final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
+    lazy var textFields: [StatusTextField<ExampleStatusTextFieldPasswordDelegate>] = [textField]
     typealias Error = PasswordError
     
     lazy var fooController = Foo(statusTextField: textField2)
@@ -51,15 +52,18 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController, UITextFiel
 
 extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
     
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textFields: [UITextField: StatusTextField] = Dictionary(uniqueKeysWithValues: self.textFields.map { ($0.textFieldView.textField, $0) })
         
         if textField.text == "Foo" {
             print("entered super secret testing mode, try an \"!\"")
             if string == "!" {
-                self.textField.displayErrorMessage(for: Error.invalidPassword)
+                textFields[textField]?.displayErrorMessage(for: Error.invalidPassword)
             }
         } else if textField.text == "Foo!" {
-            self.textField.displayStatusMessage()
+            textFields[textField]?.displayStatusMessage()
         }
         return true
         
@@ -68,16 +72,17 @@ extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
 }
 
 // MARK: - Outside Controller -
-enum FooError: StatusErrorable {
-    var message: String { "bad" }
+final class Foo: NSObject, StatusTextFieldDelegate {
     
-    var instructions: String { "bad juju, abort now" }
+    enum FooError: StatusErrorable {
+        var message: String { "bad" }
+        
+        var instructions: String { "bad juju, abort now" }
+        
+        case badStuffHappenedHere
+    }
     
-    case badStuffHappenedHere
-    
-}
-
-class Foo: NSObject, StatusTextFieldDelegate, UITextFieldDelegate {
+    lazy var textFields: [StatusTextField<Foo>] = statusTextField != nil ? [statusTextField!] : []
     
     required init(statusTextField: StatusTextField<Foo>) {
         super.init()
@@ -89,10 +94,12 @@ class Foo: NSObject, StatusTextFieldDelegate, UITextFieldDelegate {
     typealias Error = FooError
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textFields: [UITextField: StatusTextField] = Dictionary(uniqueKeysWithValues: self.textFields.map { ($0.textFieldView.textField, $0) })
+        
         if textField.text?.isEmpty ?? true {
-            statusTextField?.displayStatusMessage()
+            textFields[textField]?.displayStatusMessage()
         } else {
-            statusTextField?.displayErrorMessage(for: Error.badStuffHappenedHere)
+            textFields[textField]?.displayErrorMessage(for: Error.badStuffHappenedHere)
         }
         return true
     }

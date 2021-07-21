@@ -14,6 +14,7 @@ protocol StatusErrorable: Error {
 
 /// Associated Type is used to guarantee class has access to required Error type (`StatusErrorable`)
 protocol StatusTextFieldDelegate: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    var textFields: [StatusTextField<Self>] { get set }
     associatedtype Error: StatusErrorable
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
 }
