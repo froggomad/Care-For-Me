@@ -23,6 +23,15 @@ class CareForMeTests: XCTestCase {
         
         assertNoMemoryLeak(alertCategory)
     }
+    
+    func testStatusTextField_andDelegate_dontRetain() {
+        let textField = StatusTextField<Foo>(type: .information, exampleText: "", textFieldPlaceholderText: "", instructionText: "")
+        let foo = Foo(statusTextField: textField)
+        textField.statusTextFieldDelegate = foo
+        
+        assertNoMemoryLeak(foo)
+        assertNoMemoryLeak(textField)
+    }
 
 }
 
