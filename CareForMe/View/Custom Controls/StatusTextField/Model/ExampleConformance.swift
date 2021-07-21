@@ -28,7 +28,7 @@ enum PasswordError: StatusErrorable {
 final class ExampleStatusTextFieldPasswordDelegate: UIViewController, UITextFieldDelegate {
     typealias Error = PasswordError
     
-    let fooController = Foo()
+    lazy var fooController = Foo(statusTextField: textField2)
     
     var textField2: StatusTextField<Foo> = StatusTextField<Foo>(type: .information, exampleText: "Example2", textFieldPlaceholderText: "Test2", instructionText: "Instructions 2")
     
@@ -47,16 +47,6 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController, UITextFiel
         view.backgroundColor = .systemBackground
     }
     
-    
-    func displayMessage(type: StatusType) {
-        switch type {
-        case let .error(error):
-            textField.displayErrorMessage(for: error)
-        case .information:
-            textField.displayStatusMessage()
-        }
-    }
-    
 }
 
 extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
@@ -66,10 +56,10 @@ extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
         if textField.text == "Foo" {
             print("entered super secret testing mode, try an \"!\"")
             if string == "!" {
-                displayMessage(type: .error(Error.invalidPassword))
+                self.textField.displayErrorMessage(for: Error.invalidPassword)
             }
         } else if textField.text == "Foo!" {
-            displayMessage(type: .information)
+            self.textField.displayStatusMessage()
         }
         return true
         
@@ -88,10 +78,22 @@ enum FooError: StatusErrorable {
 }
 
 class Foo: NSObject, StatusTextFieldDelegate, UITextFieldDelegate {
+    
+    required init(statusTextField: StatusTextField<Foo>) {
+        super.init()
+        self.statusTextField = statusTextField
+    }
+    
+    weak var statusTextField: StatusTextField<Foo>?
+    
     typealias Error = FooError
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("Foo")
+        if textField.text?.isEmpty ?? true {
+            statusTextField?.displayStatusMessage()
+        } else {
+            statusTextField?.displayErrorMessage(for: Error.badStuffHappenedHere)
+        }
         return true
     }
     
