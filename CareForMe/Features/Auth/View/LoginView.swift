@@ -15,27 +15,27 @@ class LoginView: UIView {
     
     weak var delegate: LoginProcessable?
     
+    let passwordDelegate = PasswordStatusTextFieldDelegate()
+    
     var emailAddress: String? {
         emailAddressTextField.text
     }
     
+    var password: String? {
+        passwordTextField.text
+    }
+    
     private lazy var mainStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [emailAddressStack, registerButton])
+        let stack = UIStackView(arrangedSubviews: [textFieldStack, loginButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.alignment = .center
+        stack.alignment = .fill
         stack.distribution = .fill
         stack.spacing = 4
         return stack
     }()
         
-    private lazy var emailAddressStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [emailLabel, emailAddressTextField])
-        stack.axis = .vertical
-        stack.distribution = .equalCentering
-        stack.alignment = .center
-        return stack
-    }()
+    private lazy var textFieldStack: UIStackView = .componentStack(elements: [emailLabel, emailAddressTextField, passwordTextField])
     
     private lazy var emailLabel: UILabel = {
         let label = UILabel()
@@ -49,7 +49,9 @@ class LoginView: UIView {
         return textField
     }()
     
-    private lazy var registerButton: UIButton = {
+    private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
+    
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
         button.addTarget(self, action: #selector(updateDelegate), for: .touchUpInside)
@@ -59,20 +61,19 @@ class LoginView: UIView {
     private func subViews() {
         addSubview(mainStack)
         
-        let height: CGFloat = 100
-        
         NSLayoutConstraint.activate([
-            mainStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -height/2),
+            mainStack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             mainStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            mainStack.heightAnchor.constraint(equalToConstant: height),
             mainStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40)
         ])
         
     }
     
     @objc private func updateDelegate() {
-        guard let emailAddress = emailAddress else { return }
-        delegate?.processLogin(email: emailAddress, password: "12345678")
+        guard let emailAddress = emailAddress,
+              let password = password
+        else { return }
+        delegate?.processLogin(email: emailAddress, password: password)
     }
     
     init(delegate: LoginProcessable) {
@@ -80,6 +81,8 @@ class LoginView: UIView {
         self.delegate = delegate
         backgroundColor = .systemBackground
         subViews()
+        passwordTextField.statusTextFieldDelegate = passwordDelegate
+        passwordDelegate.textFields.append(passwordTextField)
     }
     
     required init?(coder: NSCoder) {
