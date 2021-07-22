@@ -25,7 +25,7 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
     
     lazy var textFieldView: StatusTextFieldView = StatusTextFieldView(type: type, exampleText: exampleText, textFieldPlaceholderText: textFieldPlaceholderText, instructionText: instructionText)
     
-    internal init(type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
+    required init(type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
         self.type = type
         self.exampleText = exampleText
         self.textFieldPlaceholderText = textFieldPlaceholderText
