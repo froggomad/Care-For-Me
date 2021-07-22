@@ -25,12 +25,19 @@ class CareForMeTests: XCTestCase {
     }
     
     func testStatusTextField_andDelegate_dontRetain() {
-        let textField = StatusTextField<Foo>(type: .information, exampleText: "", textFieldPlaceholderText: "", instructionText: "")
+        let textField = StatusTextField<Foo>(type: .information)
         let foo = Foo(textFields: [textField])
-        textField.statusTextFieldDelegate = foo
+        
         XCTAssertNotNil(textField.statusTextFieldDelegate)
         assertNoMemoryLeak(foo)
         assertNoMemoryLeak(textField)
+    }
+    
+    func testStatusTextFieldDelegate_NotNil_AfterInit() {
+        let passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information)
+        let delegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
+        XCTAssertEqual(delegate.textFields.count, 1)
+        XCTAssertNotNil(passwordTextField.statusTextFieldDelegate)
     }
 
 }
