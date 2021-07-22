@@ -26,16 +26,29 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
             }
         }
     }
-    lazy var textFields: [StatusTextField<ExampleStatusTextFieldPasswordDelegate>] = [textField]
+    var textFields: [StatusTextField<ExampleStatusTextFieldPasswordDelegate>]
     typealias Error = PasswordError
     
-    lazy var fooController = Foo(statusTextField: textField2)
+    var fooController: Foo?
     
     var textField2: StatusTextField<Foo> = StatusTextField<Foo>(type: .information, exampleText: "Example2", textFieldPlaceholderText: "Test2", instructionText: "Instructions 2")
     
     var textField: StatusTextField = StatusTextField<ExampleStatusTextFieldPasswordDelegate>(type: .information, exampleText: "Example", textFieldPlaceholderText: "Test", instructionText: "Instructions")
     
     lazy var stack: UIStackView = .componentStack(elements: [textField, textField2])
+    
+    required init(textFields: [StatusTextField<ExampleStatusTextFieldPasswordDelegate>]) {
+        self.textFields = [textField]
+        super.init(nibName: nil, bundle: nil)
+        for textField in self.textFields {
+            textField.statusTextFieldDelegate = self
+        }
+        fooController = .init(textFields: [textField2])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
     
     override func loadView() {
         view = stack
@@ -51,7 +64,6 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
 }
 
 extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
-    
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -73,6 +85,8 @@ extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
 // MARK: - Outside Controller -
 final class Foo: NSObject, StatusTextFieldDelegate {
     
+    
+    
     enum FooError: Swift.Error, StatusErrorable {
         case badStuffHappenedHere
         
@@ -82,9 +96,9 @@ final class Foo: NSObject, StatusTextFieldDelegate {
     
     lazy var textFields: [StatusTextField<Foo>] = statusTextField != nil ? [statusTextField!] : []
     
-    required init(statusTextField: StatusTextField<Foo>) {
+    init(textFields: [StatusTextField<Foo>]) {
         super.init()
-        self.statusTextField = statusTextField
+        self.textFields = textFields
     }
     
     weak var statusTextField: StatusTextField<Foo>?

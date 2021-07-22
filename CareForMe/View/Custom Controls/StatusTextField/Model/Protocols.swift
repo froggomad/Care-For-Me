@@ -18,6 +18,7 @@ protocol StatusTextFieldDelegate: UITextFieldDelegate {
     var textFieldDictionary: [UITextField: StatusTextField<Self>] { get }
     associatedtype Error: StatusErrorable
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    init(textFields: [StatusTextField<Self>])
 }
 
 extension StatusTextFieldDelegate {

@@ -58,7 +58,15 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         }
     }
     
-    var textFields: [StatusTextField<PasswordStatusTextFieldDelegate>] = []
+    var textFields: [StatusTextField<PasswordStatusTextFieldDelegate>]
+    
+    required init(textFields: [StatusTextField<PasswordStatusTextFieldDelegate>]) {
+        self.textFields = textFields
+        super.init()
+        for textField in self.textFields {
+            textField.statusTextFieldDelegate = self
+        }
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
