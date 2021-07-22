@@ -15,7 +15,7 @@ class LoginView: UIView {
     
     weak var delegate: LoginProcessable?
     
-    let passwordDelegate = PasswordStatusTextFieldDelegate()
+    var passwordDelegate: PasswordStatusTextFieldDelegate?
     
     var emailAddress: String? {
         emailAddressTextField.text
@@ -80,9 +80,8 @@ class LoginView: UIView {
         super.init(frame: .zero)
         self.delegate = delegate
         backgroundColor = .systemBackground
+        self.passwordDelegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
         subViews()
-        passwordTextField.statusTextFieldDelegate = passwordDelegate
-        passwordDelegate.textFields.append(passwordTextField)
     }
     
     required init?(coder: NSCoder) {
