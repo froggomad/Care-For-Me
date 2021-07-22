@@ -14,10 +14,14 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
             textFieldView.delegate = statusTextFieldDelegate
         }
     }
-    var type: StatusType
-    var exampleText: String?
-    var textFieldPlaceholderText: String?
-    var instructionText: String?
+    private var type: StatusType
+    private var exampleText: String?
+    private var textFieldPlaceholderText: String?
+    private var instructionText: String?
+    
+    var text: String? {
+        textFieldView.textField.text
+    }
     
     lazy var textFieldView: StatusTextFieldView = StatusTextFieldView(type: type, exampleText: exampleText, textFieldPlaceholderText: textFieldPlaceholderText, instructionText: instructionText)
     
