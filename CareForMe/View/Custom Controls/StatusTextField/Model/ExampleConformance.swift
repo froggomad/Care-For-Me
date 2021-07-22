@@ -99,6 +99,9 @@ final class Foo: NSObject, StatusTextFieldDelegate {
     init(textFields: [StatusTextField<Foo>]) {
         super.init()
         self.textFields = textFields
+        for textField in textFields {
+            textField.statusTextFieldDelegate = self
+        }
     }
     
     weak var statusTextField: StatusTextField<Foo>?
