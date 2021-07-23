@@ -56,8 +56,6 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField2.statusTextFieldDelegate = fooController
-        textField.statusTextFieldDelegate = self
         view.backgroundColor = .systemBackground
     }
     
@@ -114,8 +112,8 @@ final class Foo: NSObject, StatusTextFieldDelegate {
         let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let allEmpty = text.isEmpty && string.isEmpty
-        let stringIsBackSpace = text.isEmpty && string == .backSpace
-        let willBecomeEmpty = (text.count == 1 && string == .backSpace) || (text.count == 1 && string.isEmpty)
+        let stringIsBackSpace = text.isEmpty && string.isBackSpace
+        let willBecomeEmpty = (text.count == 1 && string.isBackSpace) || (text.count == 1 && string.isEmpty)
         
         if allEmpty || stringIsBackSpace || willBecomeEmpty {
             textFieldDictionary[textField]?.displayErrorMessage(for: Error.badStuffHappenedHere)
@@ -125,8 +123,15 @@ final class Foo: NSObject, StatusTextFieldDelegate {
         return true
     }
     
+    
 }
 
 extension String {
-    static let backSpace = String(UnicodeScalar(8))
+    var isBackSpace: Bool {
+        let isBackspace = strcmp(cString(using: .utf8), "\\b")
+        if isBackspace == -92 {
+            return true
+        }
+        return false
+    }
 }
