@@ -23,6 +23,15 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         textFieldView.textField.text
     }
     
+    var error: StatusErrorable? {
+        switch self.type {
+        case .information:
+            return nil
+        case let .error(error):
+            return error
+        }
+    }
+    
     lazy var textFieldView: StatusTextFieldView = StatusTextFieldView(type: type, exampleText: exampleText, textFieldPlaceholderText: textFieldPlaceholderText, instructionText: instructionText)
     
     required init(type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
