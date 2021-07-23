@@ -78,10 +78,12 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         var text = textField.text ?? ""
+
+        guard let statusTextField = textFieldDictionary[textField] else { return true }
         
         guard !string.isEmpty else {
             if string.isBackSpace { // backspace is interpreted as empty String even though it's not
-                text.removeLast() // character will be removed, so remove it before comparing
+                text = statusTextField.backSpace() // character will be removed, so remove it before comparing
             }
             return isValidPassword(string: text, textField: textField)
         }
@@ -90,10 +92,10 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
     }
     
     @discardableResult func isValidPassword(string: String, textField: UITextField) -> Bool {
-        return processChar(string: string, textField: textField)
+        return processChars(string: string, textField: textField)
     }
     
-    @discardableResult private func processChar(string: String, textField: UITextField) -> Bool {
+    @discardableResult private func processChars(string: String, textField: UITextField) -> Bool {
         let comparisonSet = CharacterSet.letters.union(Error.validCharSet)
         let lowerInputCharSet = CharacterSet(charactersIn: string.lowercased())
         
