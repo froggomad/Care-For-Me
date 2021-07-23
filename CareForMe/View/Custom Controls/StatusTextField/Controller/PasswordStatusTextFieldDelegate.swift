@@ -19,8 +19,10 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         case missingUpperAlpha
         case missingSpecial
         
-        static var specialChars: String { "!@#$%^&*" }
-        static var validChars: String { "a-z, A-Z, 0-9, \(specialChars)" }
+        static let minLength: Int = 6
+        static let specialChars: String = "!@#$%^&*"
+        static let validCharSet: CharacterSet = ["-","0","1","2","3","4","5","6","7","8","9","!","@","#","$","%","^","&","*"]
+        static var displayValidChars: String { "a-z, A-Z, 0-9, \(specialChars)" }
         
         var message: String {
             switch self {
@@ -43,9 +45,9 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
             
             switch self {
             case .tooShort:
-                return "Your password must be at least 6 characters"
+                return "Your password must be at least \(Self.minLength) characters"
             case .invalidCharacter:
-                return "Your password contains unknown characters. Please use \(Self.validChars)"
+                return "That's an invalid character. Please use \(Self.displayValidChars)"
             case .missingDigit:
                 return "Your password must contain at least 1 digit (0-9)"
             case .missingLowerAlpha:
@@ -53,7 +55,7 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
             case .missingUpperAlpha:
                 return "Your password must contain at least 1 Uppercase Alphanumeric Character (A-Z)"
             case .missingSpecial:
-                return "Your password must include at least 1 special character (\(Self.specialChars)"
+                return "Your password must include at least 1 special character (\(Self.specialChars))"
             }
         }
     }
