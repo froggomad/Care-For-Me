@@ -11,17 +11,33 @@ import XCTest
 class CareForMeTests: XCTestCase {
 
     func testCategory_andAlert_dontRetain() {
-        let alertCategory = AlertCategory(id: UUID(), color: UIColor.NamedColor.red.rawValue, type: "")
+        let alertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .named(.highlight)), type: "")
         
         let alert = CareAlertType(id: UUID(),
-                              category: alertCategory,
-                              title: "",
-                              message: "",
-                              image: UIImage().pngData() ?? Data())
+                                  category: alertCategory,
+                                  stockPhotoName: .ambulance,
+                                  title: "",
+                                  message: "")
         
         alertCategory.alerts = [alert]
         
         assertNoMemoryLeak(alertCategory)
+    }
+    
+    func testStatusTextField_andDelegate_dontRetain() {
+        let textField = StatusTextField<Foo>(type: .information)
+        let foo = Foo(textFields: [textField])
+        
+        XCTAssertNotNil(textField.statusTextFieldDelegate)
+        assertNoMemoryLeak(foo)
+        assertNoMemoryLeak(textField)
+    }
+    
+    func testStatusTextFieldDelegate_NotNil_AfterInit() {
+        let passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information)
+        let delegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
+        XCTAssertEqual(delegate.textFields.count, 1)
+        XCTAssertNotNil(passwordTextField.statusTextFieldDelegate)
     }
 
 }

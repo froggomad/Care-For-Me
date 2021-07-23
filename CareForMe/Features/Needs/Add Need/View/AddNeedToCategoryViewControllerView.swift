@@ -22,7 +22,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     var selectedPhoto: NamedPhoto! = .firstAid
     
     lazy var parentStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleStack, messageStack, imageLabel, imageStack])
+        let stack = UIStackView(arrangedSubviews: [messageStack, imageLabel, imageStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
@@ -30,6 +30,7 @@ class AddNeedToCategoryViewControllerView: UIView {
         return stack
     }()
     
+//    lazy var filledTitleStack: UIView = StatusTextField(type: .information, exampleText: "Example", textFieldPlaceholderText: "Placeholder", instructionText: "Instructions")
     
     lazy var titleStack: UIStackView = .componentStack(elements: [titleLabel, titleTextField])
     

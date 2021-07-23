@@ -20,6 +20,14 @@ extension UILabel {
         careForMeLabel(text: text, preferred: .subheadline, weight: weight)
     }
     
+    static func captionLabel(text: String?, weight: UIFont.Weight = .semibold) -> UILabel {
+        careForMeLabel(text: text, preferred: .caption1, weight: weight)
+    }
+    
+    static func bodyLabel(text: String?, weight: UIFont.Weight = .regular) -> UILabel {
+        careForMeLabel(text: text, preferred: .body, weight: weight)
+    }
+    
     private static func careForMeLabel(text: String?, preferred font: UIFont.TextStyle, weight: UIFont.Weight) -> UILabel {
         let label = UILabel()
         label.numberOfLines = 0

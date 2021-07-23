@@ -42,6 +42,8 @@
 		AAC06D5A2693C7FB00408AE3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC06D592693C7FB00408AE3 /* LoginView.swift */; };
 		AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F48267A497800ADD525 /* UIColor+named.swift */; };
 		AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */; };
+		AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD426A872B800019BE8 /* StatusTextField.swift */; };
+		AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */; };
 		AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7C8E626A53C820008EFFE /* TargetSelector.swift */; };
 		AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */; };
 		AAC9D17B269656D700DB3FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */; };
@@ -51,6 +53,10 @@
 		AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591E2698A5920090CAF2 /* ColorPickerView.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
+		AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */; };
+		AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150826A7E05C0010A9D7 /* Protocols.swift */; };
+		AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */; };
+		AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD468EC26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
 		AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BB2679530500ABC882 /* SceneDelegate.swift */; };
 		AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BD2679530500ABC882 /* MainViewController.swift */; };
@@ -150,6 +156,8 @@
 		AAC06D592693C7FB00408AE3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AAC07F48267A497800ADD525 /* UIColor+named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+named.swift"; sourceTree = "<group>"; };
 		AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		AAC5CCD426A872B800019BE8 /* StatusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
+		AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
 		AAC7C8E626A53C820008EFFE /* TargetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSelector.swift; sourceTree = "<group>"; };
 		AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledToggle.swift; sourceTree = "<group>"; };
 		AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +167,10 @@
 		AACA591E2698A5920090CAF2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
+		AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextFieldView.swift; sourceTree = "<group>"; };
+		AAD1150826A7E05C0010A9D7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleConformance.swift; sourceTree = "<group>"; };
+		AAD468EC26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE262BB2679530500ABC882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -415,6 +427,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AAC5CCD626A9035300019BE8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */,
+				AAD468EC26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		AAC9D174269652C100DB3FA5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +529,34 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		AAD1150426A7E02B0010A9D7 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1150C26A7E20C0010A9D7 /* StatusTextField */,
+			);
+			path = "Custom Controls";
+			sourceTree = "<group>";
+		};
+		AAD1150726A7E03C0010A9D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1150826A7E05C0010A9D7 /* Protocols.swift */,
+				AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */,
+				AAC5CCD426A872B800019BE8 /* StatusTextField.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AAD1150C26A7E20C0010A9D7 /* StatusTextField */ = {
+			isa = PBXGroup;
+			children = (
+				AAC5CCD626A9035300019BE8 /* Controller */,
+				AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */,
+				AAD1150726A7E03C0010A9D7 /* Model */,
+			);
+			path = StatusTextField;
+			sourceTree = "<group>";
+		};
 		AAE262AD2679530500ABC882 = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +614,7 @@
 		AAE262F02679715700ABC882 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AAD1150426A7E02B0010A9D7 /* Custom Controls */,
 				AAE262C42679530600ABC882 /* LaunchScreen.storyboard */,
 				AAE91897268EE160003A8278 /* Extensions */,
 			);
@@ -964,10 +1014,12 @@
 				AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */,
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
+				AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
 				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
+				AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
@@ -981,9 +1033,11 @@
 				AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */,
 				AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */,
 				AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */,
+				AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */,
 				AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */,
+				AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
 				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
@@ -992,9 +1046,11 @@
 				AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */,
 				AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */,
 				AABF3D33269C0C22008A2CC2 /* AddNeedToCategoryViewControllerView.swift in Sources */,
+				AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */,
 				AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */,
 				AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
+				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,
 				AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */,
 				AAE262F22679716500ABC882 /* CareCollectionView.swift in Sources */,
 				AABF3D2A269BC021008A2CC2 /* UIStackView+componentView.swift in Sources */,
