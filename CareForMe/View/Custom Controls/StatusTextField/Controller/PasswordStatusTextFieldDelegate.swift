@@ -71,16 +71,36 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // TODO: Intercept bad password choices? i.e. stop character from being entered
         
-        let customSet: CharacterSet = [" ", "-", "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9","!","@","#","$","%","^","&","*"]
-        let comparisonSet = CharacterSet.letters.union(customSet)         
+        var text = textField.text ?? ""
         
-        if !comparisonSet.isSuperset(of: CharacterSet(charactersIn: string)) {
+        guard !string.isEmpty else {
+            if string.isBackSpace { // backspace is interpreted as empty String even though it's not
+                text.removeLast() // character will be removed, so remove it before comparing
+            }
+            return isValidPassword(string: text, textField: textField)
+        }
+        
+        return isValidPassword(string: text+string, textField: textField)
+    }
+    
+    @discardableResult func isValidPassword(string: String, textField: UITextField) -> Bool {
+        return processChar(string: string, textField: textField)
+    }
+    
+    @discardableResult private func processChar(string: String, textField: UITextField) -> Bool {
+        let comparisonSet = CharacterSet.letters.union(Error.validCharSet)
+        let lowerInputCharSet = CharacterSet(charactersIn: string.lowercased())
+        
+        if !comparisonSet.isSuperset(of: lowerInputCharSet) {
             textFieldDictionary[textField]?.displayErrorMessage(for: Error.invalidCharacter)
+            TapticEngine.failed.tapUser()
+            return false
         } else {
             textFieldDictionary[textField]?.displayStatusMessage()
+            return true
         }
-        return true
     }
     
 }
