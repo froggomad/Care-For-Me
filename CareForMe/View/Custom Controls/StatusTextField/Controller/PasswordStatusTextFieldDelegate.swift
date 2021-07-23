@@ -70,8 +70,12 @@ final class PasswordStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // TODO: Intercept bad password choices? i.e. stop character from being entered
         
         var text = textField.text ?? ""
         

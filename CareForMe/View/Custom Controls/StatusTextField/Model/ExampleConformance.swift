@@ -62,7 +62,10 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
 }
 
 extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -105,6 +108,11 @@ final class Foo: NSObject, StatusTextFieldDelegate {
     weak var statusTextField: StatusTextField<Foo>?
     
     typealias Error = FooError
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
