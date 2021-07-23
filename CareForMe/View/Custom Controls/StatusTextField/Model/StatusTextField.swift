@@ -67,4 +67,19 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         self.textFieldView.displayStatusMessage()
     }
     
+    /// removes a character from 1 position behind the cursor and returns the result
+    func backSpace() -> String {
+        let textField = textFieldView.textField
+        guard var text = text,
+              let selectedRange = textField.selectedTextRange,
+              !text.isEmpty
+        else { return "" }
+        
+        let offset = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
+        
+        let index = text.index(text.startIndex, offsetBy: offset-1)
+        text.remove(at: index)
+        return text
+    }
+    
 }
