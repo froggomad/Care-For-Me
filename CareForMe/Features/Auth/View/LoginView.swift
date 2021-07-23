@@ -16,7 +16,7 @@ class LoginView: UIView {
     weak var delegate: LoginProcessable?
     
     var passwordDelegate: PasswordStatusTextFieldDelegate?
-    var emailDelegate: Foo?
+    var emailDelegate: EmailStatusTextFieldDelegate?
     
     var emailAddress: String? {
         emailAddressTextField.text
@@ -38,7 +38,7 @@ class LoginView: UIView {
         
     private lazy var textFieldStack: UIStackView = .componentStack(elements: [emailAddressTextField, passwordTextField])
     
-    private lazy var emailAddressTextField = StatusTextField<Foo>(type: .information, exampleText: "Email Address", instructionText: "Please Enter an Email Address")
+    private lazy var emailAddressTextField = StatusTextField<EmailStatusTextFieldDelegate>(type: .information, exampleText: "Email Address", instructionText: "Please Enter an Email Address")
     
     private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
     
@@ -72,7 +72,7 @@ class LoginView: UIView {
         self.delegate = delegate
         backgroundColor = .systemBackground
         self.passwordDelegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
-        self.emailDelegate = Foo(textFields: [emailAddressTextField])
+        self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
         subViews()
     }
     
