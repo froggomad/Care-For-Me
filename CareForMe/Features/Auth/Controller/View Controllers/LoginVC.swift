@@ -12,14 +12,9 @@ class LoginViewController: UIViewController {
     private let authService = AuthService.shared
     
     private lazy var loginView: AuthView = {
-        var loginView = AuthView(type: .login, delegate: self)
+        var loginView = AuthView(type: .login, delegate: AuthDelegate(self))
         return loginView
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     override func loadView() {
         self.view = loginView
@@ -27,14 +22,7 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController: AuthProcessable {
-    func processRegistration(email: String, password: String) {
-        guard let emailAddress = loginView.emailAddress,
-              let password = loginView.password else { return }
-        authService.registerWithEmail(emailInput: emailAddress, password: password) { result in
-            print(result)
-        }
-    }
+extension LoginViewController: LoginProcessable {
     
     func processLogin(email: String, password: String) {
         guard let emailAddress = loginView.emailAddress,

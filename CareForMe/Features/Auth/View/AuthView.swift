@@ -12,7 +12,28 @@ enum AuthType {
     case login
 }
 
-typealias AuthProcessable = LoginProcessable & RegistrationProcessable
+protocol AuthProcessable: AnyObject {
+    var loginDelegate: LoginProcessable? { get }
+    var registrationDelegate: RegistrationProcessable? { get }
+}
+
+class AuthDelegate: AuthProcessable {
+    
+    weak var loginDelegate: LoginProcessable?
+    weak var registrationDelegate: RegistrationProcessable?
+    
+    required init(_ delegate: RegistrationProcessable) {
+        self.registrationDelegate = delegate
+    }
+    
+    required init(_ delegate: LoginProcessable) {
+        self.loginDelegate = delegate
+    }
+}
+
+protocol RegistrationProcessable: AnyObject {
+    func processRegistration(email: String, password: String)
+}
 
 protocol LoginProcessable: AnyObject {
     func processLogin(email: String, password: String)
@@ -83,15 +104,15 @@ class AuthView: UIView {
     
     @objc private func updateDelegate() {
         guard let emailAddress = emailAddress,
-              let password = password
+              let password = password,
+              let delegate = delegate
         else { return }
         
         switch type {
         case .login:
-            delegate?.processLogin(email: emailAddress, password: password)
+            delegate.loginDelegate?.processLogin(email: emailAddress, password: password)
         case .registration:
-            delegate?.processRegistration(email: emailAddress, password: password)
-            
+            delegate.registrationDelegate?.processRegistration(email: emailAddress, password: password)
         }
     }
     

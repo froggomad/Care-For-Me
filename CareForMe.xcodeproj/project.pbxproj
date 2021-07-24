@@ -41,7 +41,6 @@
 		AAC06D582693C34600408AE3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC06D572693C34600408AE3 /* LoginVC.swift */; };
 		AAC06D5A2693C7FB00408AE3 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC06D592693C7FB00408AE3 /* AuthView.swift */; };
 		AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC07F48267A497800ADD525 /* UIColor+named.swift */; };
-		AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */; };
 		AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD426A872B800019BE8 /* StatusTextField.swift */; };
 		AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */; };
 		AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7C8E626A53C820008EFFE /* TargetSelector.swift */; };
@@ -81,6 +80,7 @@
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
 		AAF7C8AD269AC41D00EB11EC /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AC269AC41D00EB11EC /* AddCategoryViewController.swift */; };
+		AAF9FBBD26ABE17000EFE06A /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9FBBC26ABE17000EFE06A /* RegistrationView.swift */; };
 		AAFFECED269CE03900847072 /* UIViewController+presentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */; };
 		AAFFECEF269D3AEA00847072 /* UIButton+fullWidthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECEE269D3AEA00847072 /* UIButton+fullWidthButton.swift */; };
 		AAFFECF1269D6AAB00847072 /* StockPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECF0269D6AAB00847072 /* StockPhotoViewController.swift */; };
@@ -155,7 +155,6 @@
 		AAC06D572693C34600408AE3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AAC06D592693C7FB00408AE3 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		AAC07F48267A497800ADD525 /* UIColor+named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+named.swift"; sourceTree = "<group>"; };
-		AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		AAC5CCD426A872B800019BE8 /* StatusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
 		AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
 		AAC7C8E626A53C820008EFFE /* TargetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSelector.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
 		AAF7C8AC269AC41D00EB11EC /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		AAF9FBBC26ABE17000EFE06A /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentAlert.swift"; sourceTree = "<group>"; };
 		AAFFECEE269D3AEA00847072 /* UIButton+fullWidthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+fullWidthButton.swift"; sourceTree = "<group>"; };
 		AAFFECF0269D6AAB00847072 /* StockPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhotoViewController.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 		AAC12AB926938C500084A1E2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AAC12ABA26938C5A0084A1E2 /* RegistrationView.swift */,
+				AAF9FBBC26ABE17000EFE06A /* RegistrationView.swift */,
 				AAC06D592693C7FB00408AE3 /* AuthView.swift */,
 			);
 			path = View;
@@ -1043,12 +1043,12 @@
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
 				AAFFECED269CE03900847072 /* UIViewController+presentAlert.swift in Sources */,
 				AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */,
-				AAC12ABB26938C5A0084A1E2 /* RegistrationView.swift in Sources */,
 				AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */,
 				AABF3D33269C0C22008A2CC2 /* AddNeedToCategoryViewControllerView.swift in Sources */,
 				AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */,
 				AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */,
 				AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */,
+				AAF9FBBD26ABE17000EFE06A /* RegistrationView.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,
 				AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */,

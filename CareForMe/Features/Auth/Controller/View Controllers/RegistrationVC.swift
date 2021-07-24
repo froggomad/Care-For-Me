@@ -11,15 +11,7 @@ class RegistrationViewController: UIViewController {
     
     private let authService = AuthService.shared
     
-    private lazy var registrationView: RegistrationView = {
-        var registrationView = RegistrationView(delegate: self)
-        return registrationView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    private lazy var registrationView = AuthView(type: .registration, delegate: AuthDelegate(self))
     
     override func loadView() {
         self.view = registrationView
@@ -35,3 +27,5 @@ extension RegistrationViewController: RegistrationProcessable {
         }
     }
 }
+
+
