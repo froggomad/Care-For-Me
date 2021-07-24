@@ -11,8 +11,8 @@ class LoginViewController: UIViewController {
     
     private let authService = AuthService.shared
     
-    private lazy var loginView: LoginView = {
-        var loginView = LoginView(delegate: self)
+    private lazy var loginView: AuthView = {
+        var loginView = AuthView(type: .login, delegate: self)
         return loginView
     }()
     
@@ -27,10 +27,19 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController: LoginProcessable {
+extension LoginViewController: AuthProcessable {
+    func processRegistration(email: String, password: String) {
+        guard let emailAddress = loginView.emailAddress,
+              let password = loginView.password else { return }
+        authService.registerWithEmail(emailInput: emailAddress, password: password) { result in
+            print(result)
+        }
+    }
+    
     func processLogin(email: String, password: String) {
-        guard let emailAddress = loginView.emailAddress else { return }
-        authService.loginWithEmail(emailAddress, password: "12345678") { result in
+        guard let emailAddress = loginView.emailAddress,
+              let password = loginView.password else { return }
+        authService.loginWithEmail(emailAddress, password: password) { result in
             print(result)
         }
     }

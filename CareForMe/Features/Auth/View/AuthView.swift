@@ -7,14 +7,21 @@
 
 import UIKit
 
+enum AuthType {
+    case registration
+    case login
+}
+
+typealias AuthProcessable = LoginProcessable & RegistrationProcessable
+
 protocol LoginProcessable: AnyObject {
     func processLogin(email: String, password: String)
 }
 
-class LoginView: UIView {
+class AuthView: UIView {
     
-    weak var delegate: LoginProcessable?
-    
+    var type: AuthType
+    weak var delegate: AuthProcessable?
     var passwordDelegate: PasswordStatusTextFieldDelegate?
     var emailDelegate: EmailStatusTextFieldDelegate?
     
@@ -27,7 +34,7 @@ class LoginView: UIView {
     }
     
     private lazy var mainStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [textFieldStack, loginButton])
+        let stack = UIStackView(arrangedSubviews: [textFieldStack, processAuthButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .fill
@@ -42,12 +49,26 @@ class LoginView: UIView {
     
     private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
     
-    private lazy var loginButton: UIButton = {
+    private lazy var processAuthButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
+        button.setTitle(type == .login ? "Login" : "Registration", for: .normal)
         button.addTarget(self, action: #selector(updateDelegate), for: .touchUpInside)
         return button
     }()
+    
+    init(type: AuthType, delegate: AuthProcessable) {
+        self.type = type
+        super.init(frame: .zero)
+        self.delegate = delegate
+        backgroundColor = .systemBackground
+        self.passwordDelegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
+        self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
+        subViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
     
     private func subViews() {
         addSubview(mainStack)
@@ -64,19 +85,14 @@ class LoginView: UIView {
         guard let emailAddress = emailAddress,
               let password = password
         else { return }
-        delegate?.processLogin(email: emailAddress, password: password)
+        
+        switch type {
+        case .login:
+            delegate?.processLogin(email: emailAddress, password: password)
+        case .registration:
+            delegate?.processRegistration(email: emailAddress, password: password)
+            
+        }
     }
     
-    init(delegate: LoginProcessable) {
-        super.init(frame: .zero)
-        self.delegate = delegate
-        backgroundColor = .systemBackground
-        self.passwordDelegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
-        self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
-        subViews()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("programmatic view")
-    }
 }
