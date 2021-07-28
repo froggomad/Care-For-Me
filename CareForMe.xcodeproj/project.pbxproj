@@ -82,7 +82,6 @@
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
 		AAF7C8AD269AC41D00EB11EC /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AC269AC41D00EB11EC /* AddCategoryViewController.swift */; };
-		AAF9FBBD26ABE17000EFE06A /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF9FBBC26ABE17000EFE06A /* RegistrationView.swift */; };
 		AAFFECED269CE03900847072 /* UIViewController+presentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */; };
 		AAFFECEF269D3AEA00847072 /* UIButton+fullWidthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECEE269D3AEA00847072 /* UIButton+fullWidthButton.swift */; };
 		AAFFECF1269D6AAB00847072 /* StockPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFFECF0269D6AAB00847072 /* StockPhotoViewController.swift */; };
@@ -202,7 +201,6 @@
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
 		AAF7C8AC269AC41D00EB11EC /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
-		AAF9FBBC26ABE17000EFE06A /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentAlert.swift"; sourceTree = "<group>"; };
 		AAFFECEE269D3AEA00847072 /* UIButton+fullWidthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+fullWidthButton.swift"; sourceTree = "<group>"; };
 		AAFFECF0269D6AAB00847072 /* StockPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhotoViewController.swift; sourceTree = "<group>"; };
@@ -426,7 +424,6 @@
 		AAC12AB926938C500084A1E2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AAF9FBBC26ABE17000EFE06A /* RegistrationView.swift */,
 				AAC06D592693C7FB00408AE3 /* AuthView.swift */,
 			);
 			path = View;
@@ -1055,7 +1052,6 @@
 				AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */,
 				AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */,
 				AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */,
-				AAF9FBBD26ABE17000EFE06A /* RegistrationView.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,
 				AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */,
