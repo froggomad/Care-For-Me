@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D3C425829EAD180867907B2 /* Pods_CareForMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF912FF59CF9073DC644768B /* Pods_CareForMeTests.framework */; };
 		84A2FF371C96ADB564A06AF5 /* Pods_Care_For_Me_Notifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFB6A4288E92145DB3DF9A /* Pods_Care_For_Me_Notifications.framework */; };
+		AA08787726B1BD4200AAFF3B /* CareTypeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08787626B1BD4200AAFF3B /* CareTypeable.swift */; };
 		AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21E89E26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift */; };
 		AA4D31E426817071004EF6A2 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D31E326817071004EF6A2 /* NotificationService.swift */; };
 		AA4D31E826817071004EF6A2 /* Care For Me Notifications.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -126,6 +127,7 @@
 		8EEFB6A4288E92145DB3DF9A /* Pods_Care_For_Me_Notifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Care_For_Me_Notifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3D66E0F53DF8EC9A253A8B /* Pods-Care For Me Notifications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Care For Me Notifications.release.xcconfig"; path = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications.release.xcconfig"; sourceTree = "<group>"; };
 		A1A1E052B3EB0C3BB014458C /* Pods-CareForMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareForMe.debug.xcconfig"; path = "Target Support Files/Pods-CareForMe/Pods-CareForMe.debug.xcconfig"; sourceTree = "<group>"; };
+		AA08787626B1BD4200AAFF3B /* CareTypeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareTypeable.swift; sourceTree = "<group>"; };
 		AA21E89E26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Care For Me Notifications.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4D31E326817071004EF6A2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 				AAE262EA2679539800ABC882 /* AlertType.swift */,
 				AAE262EE2679704F00ABC882 /* AlertTypeViewModel.swift */,
 				AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */,
+				AA08787626B1BD4200AAFF3B /* CareTypeable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				AAFFECEF269D3AEA00847072 /* UIButton+fullWidthButton.swift in Sources */,
 				AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */,
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
+				AA08787726B1BD4200AAFF3B /* CareTypeable.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
 				AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
