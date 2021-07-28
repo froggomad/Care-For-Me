@@ -7,14 +7,6 @@
 
 import UIKit
 
-protocol RegistrationProcessable: AnyObject {
-    func processRegistration(email: String, password: String)
-}
-
-protocol LoginProcessable: AnyObject {
-    func processLogin(email: String, password: String)
-}
-
 class AuthView: UIView {
     
     weak var delegate: AuthProcessable?

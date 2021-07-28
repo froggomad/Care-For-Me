@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol RegistrationProcessable: AnyObject {
+    func processRegistration(email: String, password: String)
+}
+
 class RegistrationViewController: UIViewController {
     
     private let authService = AuthService.shared
