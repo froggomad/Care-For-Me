@@ -9,7 +9,7 @@
 import Firebase
 
 class AuthService {
-    enum RegistrationError: Error {
+    enum AuthError: Error {
         case emailValidation
         case passwordValidation
         case firebaseAuthError
@@ -26,7 +26,7 @@ class AuthService {
     static let shared = AuthService()
     private init() { }
     
-    func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, RegistrationError>) -> Void) {
+    func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
         
         var emailValidation = EmailAuth(email: emailInput)
         
@@ -59,7 +59,7 @@ class AuthService {
         
     }
     
-    func loginWithEmail(_ email: String, password: String, completion: @escaping (Result<AuthDataResult?, RegistrationError>) -> Void) {
+    func loginWithEmail(_ email: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let self = self else { return }
             
@@ -88,6 +88,10 @@ class AuthService {
     
     func loginWithPhone() {
         
+    }
+    
+    func signOut() {
+        try? Auth.auth().signOut()
     }
     
 }

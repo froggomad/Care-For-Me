@@ -7,19 +7,16 @@
 
 import UIKit
 
+protocol RegistrationProcessable: AnyObject {
+    func processRegistration(email: String, password: String)
+}
+
 class RegistrationViewController: UIViewController {
     
     private let authService = AuthService.shared
+    private lazy var authDelegate = AuthDelegate(self)
     
-    private lazy var registrationView: RegistrationView = {
-        var registrationView = RegistrationView(delegate: self)
-        return registrationView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    private lazy var registrationView = AuthView(delegate: authDelegate)
     
     override func loadView() {
         self.view = registrationView
@@ -35,3 +32,5 @@ extension RegistrationViewController: RegistrationProcessable {
         }
     }
 }
+
+

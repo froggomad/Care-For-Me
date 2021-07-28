@@ -7,19 +7,16 @@
 
 import UIKit
 
+protocol LoginProcessable: AnyObject {
+    func processLogin(email: String, password: String)
+}
+
 class LoginViewController: UIViewController {
     
     private let authService = AuthService.shared
+    private lazy var authDelegate = AuthDelegate(self)
     
-    private lazy var loginView: LoginView = {
-        var loginView = LoginView(delegate: self)
-        return loginView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    private lazy var loginView: AuthView =  AuthView(delegate: authDelegate)
     
     override func loadView() {
         self.view = loginView
@@ -28,9 +25,11 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginProcessable {
+    
     func processLogin(email: String, password: String) {
-        guard let emailAddress = loginView.emailAddress else { return }
-        authService.loginWithEmail(emailAddress, password: "12345678") { result in
+        guard let emailAddress = loginView.emailAddress,
+              let password = loginView.password else { return }
+        authService.loginWithEmail(emailAddress, password: password) { result in
             print(result)
         }
     }

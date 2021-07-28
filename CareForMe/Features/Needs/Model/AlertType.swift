@@ -7,15 +7,6 @@
 
 import UIKit
 
-protocol CareTypeable: Codable {
-    var id: UUID { get }
-    var category: AlertCategorizable { get set }
-    var stockPhotoName: NamedPhoto { get set }
-    var title: String { get set }
-    var message: String { get set }
-    var viewModel: AlertTypeViewModel { get }
-}
-
 protocol AlertCategorizable: AnyObject, Codable {
     var id: UUID { get }
     var color: CodableColor { get set }
