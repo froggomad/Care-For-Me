@@ -15,6 +15,8 @@ enum AuthType {
 protocol AuthProcessable: AnyObject {
     var loginDelegate: LoginProcessable? { get }
     var registrationDelegate: RegistrationProcessable? { get }
+    init(_ delegate: LoginProcessable)
+    init(_ delegate: RegistrationProcessable)
 }
 
 class AuthDelegate: AuthProcessable {
@@ -41,10 +43,17 @@ protocol LoginProcessable: AnyObject {
 
 class AuthView: UIView {
     
-    var type: AuthType
     weak var delegate: AuthProcessable?
     var passwordDelegate: PasswordStatusTextFieldDelegate?
     var emailDelegate: EmailStatusTextFieldDelegate?
+    
+    private var isLogin: Bool {
+        delegate?.loginDelegate != nil
+    }
+    
+    private var isRegistration: Bool {
+        delegate?.registrationDelegate != nil
+    }
     
     var emailAddress: String? {
         emailAddressTextField.text
@@ -72,13 +81,12 @@ class AuthView: UIView {
     
     private lazy var processAuthButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(type == .login ? "Login" : "Registration", for: .normal)
+        button.setTitle(isLogin ? "Login" : "Registration", for: .normal)
         button.addTarget(self, action: #selector(updateDelegate), for: .touchUpInside)
         return button
     }()
     
-    init(type: AuthType, delegate: AuthProcessable) {
-        self.type = type
+    init(delegate: AuthProcessable) {
         super.init(frame: .zero)
         self.delegate = delegate
         backgroundColor = .systemBackground
@@ -107,13 +115,12 @@ class AuthView: UIView {
               let password = password,
               let delegate = delegate
         else { return }
-        
-        switch type {
-        case .login:
-            delegate.loginDelegate?.processLogin(email: emailAddress, password: password)
-        case .registration:
+        guard let loginDelegate = delegate.loginDelegate else {
             delegate.registrationDelegate?.processRegistration(email: emailAddress, password: password)
+            return
         }
+        
+        loginDelegate.processLogin(email: emailAddress, password: password)
     }
     
 }

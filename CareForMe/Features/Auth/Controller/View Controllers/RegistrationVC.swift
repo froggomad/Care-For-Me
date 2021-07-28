@@ -10,8 +10,9 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     private let authService = AuthService.shared
+    private lazy var authDelegate = AuthDelegate(self)
     
-    private lazy var registrationView = AuthView(type: .registration, delegate: AuthDelegate(self))
+    private lazy var registrationView = AuthView(delegate: authDelegate)
     
     override func loadView() {
         self.view = registrationView

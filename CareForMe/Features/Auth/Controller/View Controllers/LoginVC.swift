@@ -10,11 +10,9 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private let authService = AuthService.shared
+    private lazy var authDelegate = AuthDelegate(self)
     
-    private lazy var loginView: AuthView = {
-        var loginView = AuthView(type: .login, delegate: AuthDelegate(self))
-        return loginView
-    }()
+    private lazy var loginView: AuthView =  AuthView(delegate: authDelegate)
     
     override func loadView() {
         self.view = loginView
