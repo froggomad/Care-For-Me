@@ -90,6 +90,10 @@ class AuthService {
         
     }
     
+    func signOut() {
+        try? Auth.auth().signOut()
+    }
+    
 }
 
 struct EmailAuth {
