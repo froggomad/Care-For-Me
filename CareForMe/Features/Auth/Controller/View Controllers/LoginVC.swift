@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginProcessable: AnyObject {
+    func processLogin(email: String, password: String)
+}
+
 class LoginViewController: UIViewController {
     
     private let authService = AuthService.shared
