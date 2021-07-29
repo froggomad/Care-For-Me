@@ -8,7 +8,7 @@
 import XCTest
 @testable import CareForMe
 
-class CareForMeTests: XCTestCase {
+class TestRetainCycles: XCTestCase {
 
     func testCategory_andAlert_dontRetain() {
         let alertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .named(.highlight)), type: "")
