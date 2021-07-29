@@ -10,8 +10,8 @@ import UIKit
 class AuthView: UIView {
     
     weak var delegate: AuthProcessable?
-    var passwordDelegate: PasswordStatusTextFieldDelegate?
-    var emailDelegate: EmailStatusTextFieldDelegate?
+    private var passwordDelegate: PasswordStatusTextFieldDelegate?
+    private var emailDelegate: EmailStatusTextFieldDelegate?
     
     private var isLogin: Bool {
         delegate?.loginDelegate != nil
