@@ -30,7 +30,7 @@ class AuthView: UIView {
     }
     
     private lazy var mainStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [textFieldStack, processAuthButton])
+        let stack = UIStackView(arrangedSubviews: [textFieldStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .fill
@@ -46,7 +46,8 @@ class AuthView: UIView {
     private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
     
     private lazy var processAuthButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button: UIButton = .fullWidthButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(isLogin ? "Login" : "Registration", for: .normal)
         button.addTarget(self, action: #selector(updateDelegate), for: .touchUpInside)
         return button
@@ -67,11 +68,16 @@ class AuthView: UIView {
     
     private func subViews() {
         addSubview(mainStack)
+        addSubview(processAuthButton)
         
         NSLayoutConstraint.activate([
             mainStack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             mainStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            mainStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40)
+            mainStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            
+            processAuthButton.topAnchor.constraint(equalTo: mainStack.bottomAnchor, constant: 40),
+            processAuthButton.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor),
+            processAuthButton.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor)
         ])
         
     }
