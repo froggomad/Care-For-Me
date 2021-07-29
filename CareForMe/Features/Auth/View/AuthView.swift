@@ -69,7 +69,10 @@ class AuthView: UIView {
     private func subViews() {
         addSubview(mainStack)
         addSubview(processAuthButton)
-        
+        constraints()
+    }
+    
+    private func constraints() {
         NSLayoutConstraint.activate([
             mainStack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             mainStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
@@ -79,7 +82,6 @@ class AuthView: UIView {
             processAuthButton.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor),
             processAuthButton.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor)
         ])
-        
     }
     
     @objc private func updateDelegate() {
