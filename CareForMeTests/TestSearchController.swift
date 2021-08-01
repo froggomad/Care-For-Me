@@ -11,25 +11,30 @@ import XCTest
 class TestSearchController: XCTestCase {
     
     func testSearch() {
-        let test = Test()
-        test.foo()
-        XCTAssertEqual(test.results, ["A"])
+        let test = sut
+        test.delegate.mockSearch()
+        XCTAssertEqual(test.delegate.results, ["A"])
+    }
+    
+    var sut: (delegate: SearchDelegateSpy, searchController: SearchController) {
+        let delegate = SearchDelegateSpy()
+        let searchController = SearchController(delegate: delegate, searchArray: ["A", "B", "C"])
+        return (delegate, searchController)
     }
     
 }
 
-class Test: UIViewController {
+class SearchDelegateSpy: UIViewController {
     var results: [String] = []
+    weak var searchController: SearchController!
     
-    func foo() {
-        let searchController = SearchController(delegate: self)
-        searchController.searchSource = ["A", "B", "C"]
-        searchController.searchBar.text = "A"
-        searchController.updateSearchResults(for: searchController)
+    func mockSearch() {
+        searchController!.searchBar.text = "A"
+        searchController!.updateSearchResults(for: searchController!)
     }
 }
 
-extension Test: SearchDelegate {
+extension SearchDelegateSpy: SearchDelegate {
     func receiveSearchUpdate(_ results: [String]) {
         self.results = results
     }
