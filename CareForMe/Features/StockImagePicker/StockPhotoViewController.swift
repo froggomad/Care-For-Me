@@ -19,12 +19,26 @@ extension StockPhotoImageSelectionDelegate {
     }
 }
 
-class StockPhotoViewController: UIViewController {
-    weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
+class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
+    
     var alert: AlertCategory = NamedPhoto.category
+    var alerts: [CareAlertType]!
+    lazy var filteredAlerts: [CareTypeable] = []
+    weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
+    
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.definesPresentationContext = false
+        searchController.delegate = self
+        searchController.searchBar.searchBarStyle = .minimal
+        return searchController
+    }()
     
     lazy var collectionView: CareCollectionView = {
-        alert.alerts.append(contentsOf: NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title}))
+        alert.alerts = NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title})
+        self.alerts = alert.alerts as? [CareAlertType] ?? []
         let collectionView = CareCollectionView(alertType: alert, layout: CareCollectionView.PhotoTypeLayout())
         collectionView.cellSelectDelegate = self
         return collectionView
@@ -32,12 +46,20 @@ class StockPhotoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        definesPresentationContext = true
         subviews()
     }
     
     private func subviews() {
-        view.addSubview(collectionView)
-        constraints()
+        if !view.subviews.contains(collectionView) {
+            view.addSubview(collectionView)
+            constraints()
+        }
+        let navBarColor: UIColor = .tertiarySystemBackground
+        if navigationItem.searchController == nil {
+            navigationItem.searchController = searchController
+            navigationController?.view.backgroundColor = navBarColor
+        }
     }
     
     private func constraints() {
@@ -58,5 +80,21 @@ extension StockPhotoViewController: CareAlertSelectionDelegate {
         } else {
             dismiss(animated: true)
         }
+    }
+}
+
+extension StockPhotoViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text?.lowercased(),
+              !text.isEmpty else {
+            collectionView.alertType = self.alert
+            return
+        }
+        
+        filteredAlerts = alerts.filter { $0.title.lowercased().contains(text) }.sorted(by: {$0.title < $1.title})
+              
+        collectionView.alertType?.alerts = filteredAlerts
+        
+        collectionView.reloadData()
     }
 }

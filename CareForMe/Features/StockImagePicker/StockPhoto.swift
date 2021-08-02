@@ -68,7 +68,7 @@ extension UIImage {
 }
 
 enum NamedPhoto: String, Codable, CaseIterable {
-    static let category = AlertCategory(id: UUID(), color: .init(uiColor: .systemBackground), type: "")
+    static let category = AlertCategory(id: UUID(), color: .init(uiColor: .systemBackground), type: "", alerts: [])
     
     // MARK: - Activities -
     case playAmericanFootball

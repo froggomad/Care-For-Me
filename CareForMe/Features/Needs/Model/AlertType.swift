@@ -14,7 +14,11 @@ protocol AlertCategorizable: AnyObject, Codable {
     var alerts: [CareTypeable] { get set }
 }
 
-class AlertCategory: AlertCategorizable, CustomStringConvertible, Codable {
+class AlertCategory: AlertCategorizable, CustomStringConvertible, Codable, NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        AlertCategory(id: self.id, color: self.color, type: self.title, alerts: self.alerts as? [CareAlertType] ?? [])
+    }
+    
     
     enum CodingKeys: String, CodingKey {
         case id
