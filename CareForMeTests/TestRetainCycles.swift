@@ -39,14 +39,6 @@ class TestRetainCycles: XCTestCase {
         XCTAssertEqual(delegate.textFields.count, 1)
         XCTAssertNotNil(passwordTextField.statusTextFieldDelegate)
     }
-    
-    func testSearchController_andDelegate_dontRetain() {
-        let test = SearchDelegateSpy()
-        let searchController = SearchController(delegate: test, searchArray: [])
-        test.searchController = searchController
-        test.mockSearch()
-        assertNoMemoryLeak(test)
-    }
 
 }
 
