@@ -24,6 +24,7 @@
 		AA6B1978268D9923002B43BA /* CareUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B1977268D9923002B43BA /* CareUser.swift */; };
 		AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B197B268D9A2D002B43BA /* AuthService.swift */; };
 		AA73E32026B9805D006FAD08 /* UISearchController+initWithDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73E31F26B9805D006FAD08 /* UISearchController+initWithDelegate.swift */; };
+		AA73E32226B9E709006FAD08 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73E32126B9E709006FAD08 /* Searchable.swift */; };
 		AA79AD002697C68200786881 /* notificationsOff.gif in Resources */ = {isa = PBXBuildFile; fileRef = AA79ACFF2697C68200786881 /* notificationsOff.gif */; };
 		AA79AD032697CAFC00786881 /* notificationsOn.gif in Resources */ = {isa = PBXBuildFile; fileRef = AA79AD022697CAFC00786881 /* notificationsOn.gif */; };
 		AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD062697FD2F00786881 /* ColorPicker.swift */; };
@@ -142,6 +143,7 @@
 		AA6B1977268D9923002B43BA /* CareUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareUser.swift; sourceTree = "<group>"; };
 		AA6B197B268D9A2D002B43BA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AA73E31F26B9805D006FAD08 /* UISearchController+initWithDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchController+initWithDelegate.swift"; sourceTree = "<group>"; };
+		AA73E32126B9E709006FAD08 /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 		AA79ACFF2697C68200786881 /* notificationsOff.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = notificationsOff.gif; sourceTree = "<group>"; };
 		AA79AD022697CAFC00786881 /* notificationsOn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = notificationsOn.gif; sourceTree = "<group>"; };
 		AA79AD062697FD2F00786881 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				AA50685D2690AAA6006F1126 /* TapticFeedback.swift */,
 				AA5068B12691A150006F1126 /* TabBar.swift */,
 				AAC7C8E626A53C820008EFFE /* TargetSelector.swift */,
+				AA73E32126B9E709006FAD08 /* Searchable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				AABF3D33269C0C22008A2CC2 /* AddNeedToCategoryViewControllerView.swift in Sources */,
 				AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */,
 				AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */,
+				AA73E32226B9E709006FAD08 /* Searchable.swift in Sources */,
 				AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,

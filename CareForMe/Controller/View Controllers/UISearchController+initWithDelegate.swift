@@ -7,10 +7,8 @@
 
 import UIKit
 
-typealias SearchDelegate = UIViewController & UISearchBarDelegate & UISearchControllerDelegate & UISearchResultsUpdating
-
 extension UISearchController {
-    convenience init(with delegate: SearchDelegate) {
+    convenience init(with delegate: Searchable) {
         self.init()
         definesPresentationContext = false
         obscuresBackgroundDuringPresentation = false
@@ -21,3 +19,4 @@ extension UISearchController {
         searchBar.searchBarStyle = .minimal
     }
 }
+
