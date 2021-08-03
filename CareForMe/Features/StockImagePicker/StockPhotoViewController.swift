@@ -28,15 +28,7 @@ class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchC
     lazy var filteredAlerts: [CareTypeable] = []
     weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
     
-    lazy var searchController: UISearchController = {
-        let searchController = UISearchController()
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.definesPresentationContext = false
-        searchController.delegate = self
-        searchController.searchBar.searchBarStyle = .minimal
-        return searchController
-    }()
+    lazy var searchController: UISearchController = .init(with: self)
     
     lazy var collectionView: CareCollectionView = {
         alert.alerts = NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title})
@@ -79,6 +71,11 @@ class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchC
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isSearching = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        alert.alerts = alerts
+        collectionView.reloadData()
     }
 }
 
