@@ -21,6 +21,8 @@ extension StockPhotoImageSelectionDelegate {
 
 class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
     
+    var isSearching = false
+    
     var alert: AlertCategory = NamedPhoto.category
     var alerts: [CareAlertType]!
     lazy var filteredAlerts: [CareTypeable] = []
@@ -70,6 +72,14 @@ class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchC
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         ])
     }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        isSearching = false
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
 }
 
 extension StockPhotoViewController: CareAlertSelectionDelegate {
@@ -85,16 +95,20 @@ extension StockPhotoViewController: CareAlertSelectionDelegate {
 
 extension StockPhotoViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        guard isSearching else { return }
+        
         guard let text = searchController.searchBar.text?.lowercased(),
               !text.isEmpty else {
-            collectionView.alertType = self.alert
+            alert.alerts = alerts
+            collectionView.reloadData()
             return
         }
         
         filteredAlerts = alerts.filter { $0.title.lowercased().contains(text) }.sorted(by: {$0.title < $1.title})
               
-        collectionView.alertType?.alerts = filteredAlerts
+        alert.alerts = filteredAlerts
         
         collectionView.reloadData()
     }
+    
 }
