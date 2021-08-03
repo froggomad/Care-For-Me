@@ -142,8 +142,8 @@ xcuserdata
 
 ### Xcode Patch ###
 *.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
+!project.pbxproj
+!xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 *.xcodeproj/userdata
 **/xcshareddata/WorkspaceSettings.xcsettings
