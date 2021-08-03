@@ -50,15 +50,10 @@ class StockPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         subviews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         definesPresentationContext = true
     }
     
     private func subviews() {
-        
         view.addSubview(collectionView)
         constraints()
         
