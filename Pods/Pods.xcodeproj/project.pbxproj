@@ -1,0 +1,995 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D153F80D1A16E673B06E54F67025140 /* CGImageSource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7112F7FCDE1737C5AC1A389869F6359 /* CGImageSource+Extension.swift */; };
+		2F33A55877C85FB01428E3E8185595A3 /* Pods-Care For Me Notifications-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D38F6F372F013AF12FD313451F5EBFE /* Pods-Care For Me Notifications-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41DF8CEF1767030F17E9706B08CD8AD2 /* Pods-CareForMeTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C1BF10DC44E3479367EF71AFD2F1B4 /* Pods-CareForMeTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C5E64BFC64E7E28615A740B3ECABE3D /* Pods-CareForMe-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 290AB2C04D6E3A554329BEB7977735DF /* Pods-CareForMe-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C6E231D81DF4962722BD5898E1C54E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		5290DA14395256D5B0E06197DEAB87A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		5361734A8882C6A319F07C73C9FF8BB2 /* Pods-CareForMe-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E356FBA3A74973A760848925EFE8E68 /* Pods-CareForMe-dummy.m */; };
+		5720471FAFD91499151BF31A20E50EBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		5CA4CFC376951115C3C2EA382DF55352 /* JellyGif-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3040642F42661A1C3FE39716A6EA13F5 /* JellyGif-dummy.m */; };
+		751B49E7974B857B20289F30322DB286 /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F994333D8A7632D35DD73E8FA0E27D /* GifInfo.swift */; };
+		76CEDC991FDCD591A7677222B3110D21 /* JellyGif.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EF625C1707DCE24C0B9EA04DD529638 /* JellyGif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A434702DA8942498F3362778A51D974 /* GifAnimationQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B825A97429E1A24A97C11FF498B5E26 /* GifAnimationQuality.swift */; };
+		89DB76F5758916E7F96B0A8B5D5A708A /* JellyGifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5C7085A9C5B50F7D60319F0AF1D6F /* JellyGifImageView.swift */; };
+		A608D55CD6DEEE63CB9804A68F4A873D /* JellyGifAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBABF016747317DF94BF2ED4C8A0385 /* JellyGifAnimator.swift */; };
+		AA2A044EF93FCA45F4665DEEFCE111AC /* Pods-Care For Me Notifications-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E87021D4495B753E4EB8FF3591FC0BA /* Pods-Care For Me Notifications-dummy.m */; };
+		AAA33980E26FE5BEE696DDBD097CB4AA /* JellyGif-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F33AA4364D78517EECD8B276E4C05E47 /* JellyGif-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADB5B153A1B34CCB47EA26DF20DD0B81 /* Pods-CareForMeTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B46CE0BFC4C05066415731475CF0F /* Pods-CareForMeTests-dummy.m */; };
+		D8C6CF1DC952080336D0AB67D5B048BB /* GifPixelSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC4FEA8027AADC137C75C33828C5325 /* GifPixelSize.swift */; };
+		DCD7F44FFE1746C0E3DCAF37FA1453E6 /* JellyGifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87006FD7FF0054A7BBADFAB1499F9274 /* JellyGifOperation.swift */; };
+		E6F4E8584A08ABDD2C9E78F7F75EF9CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
+		F993F693431E3BAC7B40852FFD1A5221 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		903EF696C810D0D57CBE2C6726EEAD08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26A3CDBFCBF0D90C2CE32E4FEFC7B3E6;
+			remoteInfo = "Pods-CareForMe";
+		};
+		AFDCA6ADE49D527B7DF4146FB450E390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E17F285B813E8450E29E674801E7A916;
+			remoteInfo = JellyGif;
+		};
+		D4EBAB51A736FD97E2BF066CAE6DD849 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E17F285B813E8450E29E674801E7A916;
+			remoteInfo = JellyGif;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B825A97429E1A24A97C11FF498B5E26 /* GifAnimationQuality.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GifAnimationQuality.swift; path = JellyGif/Source/Models/GifAnimationQuality.swift; sourceTree = "<group>"; };
+		138FB3E44B33CB4C4FBE3CE6203E8A5E /* JellyGif.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JellyGif.debug.xcconfig; sourceTree = "<group>"; };
+		1EB71D68EA1A6F3A85E7CF4D77FBBBC4 /* Pods-CareForMeTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CareForMeTests-Info.plist"; sourceTree = "<group>"; };
+		1EF625C1707DCE24C0B9EA04DD529638 /* JellyGif.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JellyGif.h; path = JellyGif/JellyGif.h; sourceTree = "<group>"; };
+		20E1E44DAAE008E8CF2F5D582C9D58C7 /* Pods-Care For Me Notifications-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Care For Me Notifications-acknowledgements.plist"; sourceTree = "<group>"; };
+		290AB2C04D6E3A554329BEB7977735DF /* Pods-CareForMe-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CareForMe-umbrella.h"; sourceTree = "<group>"; };
+		3040642F42661A1C3FE39716A6EA13F5 /* JellyGif-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JellyGif-dummy.m"; sourceTree = "<group>"; };
+		35D435B691B960A5174AA68938D3E6CD /* Pods-CareForMeTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CareForMeTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		402ECBE2B7C05114289BFD944FF2FB10 /* Pods-Care For Me Notifications.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Care For Me Notifications.modulemap"; sourceTree = "<group>"; };
+		4059E01AE8F4A8ADD9AEF89F30899608 /* Pods-CareForMe-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CareForMe-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4E87021D4495B753E4EB8FF3591FC0BA /* Pods-Care For Me Notifications-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Care For Me Notifications-dummy.m"; sourceTree = "<group>"; };
+		4FD408208377649B8790FE7ABE1EDE42 /* Pods-CareForMeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CareForMeTests.modulemap"; sourceTree = "<group>"; };
+		5494A718C866A241508602237CC351D9 /* Pods-CareForMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CareForMeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6C23209A2442C5A0CC0510228D7EE9AD /* Pods-CareForMe-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CareForMe-frameworks.sh"; sourceTree = "<group>"; };
+		6D38F6F372F013AF12FD313451F5EBFE /* Pods-Care For Me Notifications-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Care For Me Notifications-umbrella.h"; sourceTree = "<group>"; };
+		70D4868FD959842B8F44065578CAEC72 /* Pods-Care For Me Notifications.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Care For Me Notifications.release.xcconfig"; sourceTree = "<group>"; };
+		724B46CE0BFC4C05066415731475CF0F /* Pods-CareForMeTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CareForMeTests-dummy.m"; sourceTree = "<group>"; };
+		7C588039BD08D5A5807B0F974488B25A /* Pods-CareForMe-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CareForMe-Info.plist"; sourceTree = "<group>"; };
+		7D71B574C3BA9587CDC62FFF4E0D1AAA /* JellyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JellyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EBABF016747317DF94BF2ED4C8A0385 /* JellyGifAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JellyGifAnimator.swift; path = JellyGif/Source/JellyGifAnimator.swift; sourceTree = "<group>"; };
+		87006FD7FF0054A7BBADFAB1499F9274 /* JellyGifOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JellyGifOperation.swift; path = JellyGif/Source/JellyGifOperation.swift; sourceTree = "<group>"; };
+		8E356FBA3A74973A760848925EFE8E68 /* Pods-CareForMe-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CareForMe-dummy.m"; sourceTree = "<group>"; };
+		99F3A2765FA2BE78352251A2D7A101C8 /* Pods-CareForMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CareForMe.release.xcconfig"; sourceTree = "<group>"; };
+		9AD1C2B912CBA3E48B760B76D8A4B7CD /* JellyGif.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JellyGif.modulemap; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A129D9F00B767EF91F08AF9B88646F49 /* Pods_CareForMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareForMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50AB0AEBD37135F1BC4AC5A89A5F370 /* JellyGif-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JellyGif-Info.plist"; sourceTree = "<group>"; };
+		AF4EDF9BEE5ED7F7DD68772295279702 /* Pods-Care For Me Notifications.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Care For Me Notifications.debug.xcconfig"; sourceTree = "<group>"; };
+		B2342173AADC32C1E8E62E70BECF578D /* Pods-Care For Me Notifications-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Care For Me Notifications-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B5B7CA3F6C216570767068C25F7FA761 /* Pods-CareForMe.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CareForMe.modulemap"; sourceTree = "<group>"; };
+		B81432F7CDE26DD31DE8021EC246DCBB /* Pods_CareForMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareForMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B961EB87DD27AC2614C5039740D8BB5B /* JellyGif.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JellyGif.release.xcconfig; sourceTree = "<group>"; };
+		C1BE473B96AAEBC0E32A61CF688494DF /* Pods-CareForMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CareForMe.debug.xcconfig"; sourceTree = "<group>"; };
+		C3BC83A500F095C2004C9C866886D812 /* Pods-CareForMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CareForMeTests.release.xcconfig"; sourceTree = "<group>"; };
+		CAB5C7085A9C5B50F7D60319F0AF1D6F /* JellyGifImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JellyGifImageView.swift; path = JellyGif/Source/Views/JellyGifImageView.swift; sourceTree = "<group>"; };
+		CCFDB3D83B0C24CEE6F1973A6D37C360 /* Pods-CareForMe-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CareForMe-acknowledgements.plist"; sourceTree = "<group>"; };
+		D1C1BF10DC44E3479367EF71AFD2F1B4 /* Pods-CareForMeTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CareForMeTests-umbrella.h"; sourceTree = "<group>"; };
+		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D7112F7FCDE1737C5AC1A389869F6359 /* CGImageSource+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGImageSource+Extension.swift"; path = "JellyGif/Source/Extensions/CGImageSource+Extension.swift"; sourceTree = "<group>"; };
+		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EEB87281FE88B7FBA1A19FC37B4B3AEE /* JellyGif-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JellyGif-prefix.pch"; sourceTree = "<group>"; };
+		F0328BBFD1DE38DA0C49911DB5785BC9 /* Pods_Care_For_Me_Notifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Care_For_Me_Notifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F253313009A88D6DFC09FCA6ECF11A00 /* Pods-Care For Me Notifications-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Care For Me Notifications-Info.plist"; sourceTree = "<group>"; };
+		F2F994333D8A7632D35DD73E8FA0E27D /* GifInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GifInfo.swift; path = JellyGif/Source/Models/GifInfo.swift; sourceTree = "<group>"; };
+		F33AA4364D78517EECD8B276E4C05E47 /* JellyGif-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JellyGif-umbrella.h"; sourceTree = "<group>"; };
+		FAC4FEA8027AADC137C75C33828C5325 /* GifPixelSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GifPixelSize.swift; path = JellyGif/Source/Models/GifPixelSize.swift; sourceTree = "<group>"; };
+		FCBDCD2CD93619D90907DE4A0031191B /* Pods-CareForMeTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CareForMeTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1AAC8AD3823C9EFD3700D90967E858CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5290DA14395256D5B0E06197DEAB87A7 /* Foundation.framework in Frameworks */,
+				E6F4E8584A08ABDD2C9E78F7F75EF9CC /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BBAB756E036359A0F4D76E760976C4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C6E231D81DF4962722BD5898E1C54E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACA13A7CD5AE9BEAD5C628DE9063BBE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5720471FAFD91499151BF31A20E50EBA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9C850A46661789525BE9F6E2F8BF580 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F993F693431E3BAC7B40852FFD1A5221 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		26EFC3FD0305E81CFA4AE4BE8372F4DB /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				99D8F2585A56DF04FE231B5E807C0DFD /* Pods-Care For Me Notifications */,
+				65B8CE49585AAE2E93AF74953944B332 /* Pods-CareForMe */,
+				AE732DD3CA6382E968CFB5A61600FC83 /* Pods-CareForMeTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		35B0B3B2BA29274E4DC466F315435978 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D71B574C3BA9587CDC62FFF4E0D1AAA /* JellyGif.framework */,
+				F0328BBFD1DE38DA0C49911DB5785BC9 /* Pods_Care_For_Me_Notifications.framework */,
+				B81432F7CDE26DD31DE8021EC246DCBB /* Pods_CareForMe.framework */,
+				A129D9F00B767EF91F08AF9B88646F49 /* Pods_CareForMeTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
+				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		65B8CE49585AAE2E93AF74953944B332 /* Pods-CareForMe */ = {
+			isa = PBXGroup;
+			children = (
+				B5B7CA3F6C216570767068C25F7FA761 /* Pods-CareForMe.modulemap */,
+				4059E01AE8F4A8ADD9AEF89F30899608 /* Pods-CareForMe-acknowledgements.markdown */,
+				CCFDB3D83B0C24CEE6F1973A6D37C360 /* Pods-CareForMe-acknowledgements.plist */,
+				8E356FBA3A74973A760848925EFE8E68 /* Pods-CareForMe-dummy.m */,
+				6C23209A2442C5A0CC0510228D7EE9AD /* Pods-CareForMe-frameworks.sh */,
+				7C588039BD08D5A5807B0F974488B25A /* Pods-CareForMe-Info.plist */,
+				290AB2C04D6E3A554329BEB7977735DF /* Pods-CareForMe-umbrella.h */,
+				C1BE473B96AAEBC0E32A61CF688494DF /* Pods-CareForMe.debug.xcconfig */,
+				99F3A2765FA2BE78352251A2D7A101C8 /* Pods-CareForMe.release.xcconfig */,
+			);
+			name = "Pods-CareForMe";
+			path = "Target Support Files/Pods-CareForMe";
+			sourceTree = "<group>";
+		};
+		99D8F2585A56DF04FE231B5E807C0DFD /* Pods-Care For Me Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				402ECBE2B7C05114289BFD944FF2FB10 /* Pods-Care For Me Notifications.modulemap */,
+				B2342173AADC32C1E8E62E70BECF578D /* Pods-Care For Me Notifications-acknowledgements.markdown */,
+				20E1E44DAAE008E8CF2F5D582C9D58C7 /* Pods-Care For Me Notifications-acknowledgements.plist */,
+				4E87021D4495B753E4EB8FF3591FC0BA /* Pods-Care For Me Notifications-dummy.m */,
+				F253313009A88D6DFC09FCA6ECF11A00 /* Pods-Care For Me Notifications-Info.plist */,
+				6D38F6F372F013AF12FD313451F5EBFE /* Pods-Care For Me Notifications-umbrella.h */,
+				AF4EDF9BEE5ED7F7DD68772295279702 /* Pods-Care For Me Notifications.debug.xcconfig */,
+				70D4868FD959842B8F44065578CAEC72 /* Pods-Care For Me Notifications.release.xcconfig */,
+			);
+			name = "Pods-Care For Me Notifications";
+			path = "Target Support Files/Pods-Care For Me Notifications";
+			sourceTree = "<group>";
+		};
+		9E39265403E447DB6B6E36E6D33F7EF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECF7854ECBBA9DD57A3DD6BFEFA872D9 /* JellyGif */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AE732DD3CA6382E968CFB5A61600FC83 /* Pods-CareForMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				4FD408208377649B8790FE7ABE1EDE42 /* Pods-CareForMeTests.modulemap */,
+				FCBDCD2CD93619D90907DE4A0031191B /* Pods-CareForMeTests-acknowledgements.markdown */,
+				35D435B691B960A5174AA68938D3E6CD /* Pods-CareForMeTests-acknowledgements.plist */,
+				724B46CE0BFC4C05066415731475CF0F /* Pods-CareForMeTests-dummy.m */,
+				1EB71D68EA1A6F3A85E7CF4D77FBBBC4 /* Pods-CareForMeTests-Info.plist */,
+				D1C1BF10DC44E3479367EF71AFD2F1B4 /* Pods-CareForMeTests-umbrella.h */,
+				5494A718C866A241508602237CC351D9 /* Pods-CareForMeTests.debug.xcconfig */,
+				C3BC83A500F095C2004C9C866886D812 /* Pods-CareForMeTests.release.xcconfig */,
+			);
+			name = "Pods-CareForMeTests";
+			path = "Target Support Files/Pods-CareForMeTests";
+			sourceTree = "<group>";
+		};
+		C9311366B4C73AFA16B3B59F63344CF4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AD1C2B912CBA3E48B760B76D8A4B7CD /* JellyGif.modulemap */,
+				3040642F42661A1C3FE39716A6EA13F5 /* JellyGif-dummy.m */,
+				A50AB0AEBD37135F1BC4AC5A89A5F370 /* JellyGif-Info.plist */,
+				EEB87281FE88B7FBA1A19FC37B4B3AEE /* JellyGif-prefix.pch */,
+				F33AA4364D78517EECD8B276E4C05E47 /* JellyGif-umbrella.h */,
+				138FB3E44B33CB4C4FBE3CE6203E8A5E /* JellyGif.debug.xcconfig */,
+				B961EB87DD27AC2614C5039740D8BB5B /* JellyGif.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JellyGif";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				9E39265403E447DB6B6E36E6D33F7EF2 /* Pods */,
+				35B0B3B2BA29274E4DC466F315435978 /* Products */,
+				26EFC3FD0305E81CFA4AE4BE8372F4DB /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		ECF7854ECBBA9DD57A3DD6BFEFA872D9 /* JellyGif */ = {
+			isa = PBXGroup;
+			children = (
+				D7112F7FCDE1737C5AC1A389869F6359 /* CGImageSource+Extension.swift */,
+				0B825A97429E1A24A97C11FF498B5E26 /* GifAnimationQuality.swift */,
+				F2F994333D8A7632D35DD73E8FA0E27D /* GifInfo.swift */,
+				FAC4FEA8027AADC137C75C33828C5325 /* GifPixelSize.swift */,
+				1EF625C1707DCE24C0B9EA04DD529638 /* JellyGif.h */,
+				7EBABF016747317DF94BF2ED4C8A0385 /* JellyGifAnimator.swift */,
+				CAB5C7085A9C5B50F7D60319F0AF1D6F /* JellyGifImageView.swift */,
+				87006FD7FF0054A7BBADFAB1499F9274 /* JellyGifOperation.swift */,
+				C9311366B4C73AFA16B3B59F63344CF4 /* Support Files */,
+			);
+			path = JellyGif;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1E18D9DFE93F26E62D977F4CD4039BD2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA33980E26FE5BEE696DDBD097CB4AA /* JellyGif-umbrella.h in Headers */,
+				76CEDC991FDCD591A7677222B3110D21 /* JellyGif.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99C54AD87A1FCE3A4F9938919BFC95B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5E64BFC64E7E28615A740B3ECABE3D /* Pods-CareForMe-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCEE7DBF2B62FDB58025127BA5E9FF33 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DF8CEF1767030F17E9706B08CD8AD2 /* Pods-CareForMeTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECBF107CC364D1430D7D728C36C854BD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F33A55877C85FB01428E3E8185595A3 /* Pods-Care For Me Notifications-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		26A3CDBFCBF0D90C2CE32E4FEFC7B3E6 /* Pods-CareForMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05A7A9EA61B04D45679352940610E819 /* Build configuration list for PBXNativeTarget "Pods-CareForMe" */;
+			buildPhases = (
+				B99C54AD87A1FCE3A4F9938919BFC95B /* Headers */,
+				BDEA6082023662BCF7549A306B742523 /* Sources */,
+				8BBAB756E036359A0F4D76E760976C4C /* Frameworks */,
+				C2A1258F73557B77D4D7EC06BDE0690A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0BE81EEC2E21CF467B4E1A7D7E6393C0 /* PBXTargetDependency */,
+			);
+			name = "Pods-CareForMe";
+			productName = "Pods-CareForMe";
+			productReference = B81432F7CDE26DD31DE8021EC246DCBB /* Pods_CareForMe.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8E3CDA9E17C2AA42866D2F4502A55F8A /* Pods-CareForMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91E4473A1FB6F951B119A74840829620 /* Build configuration list for PBXNativeTarget "Pods-CareForMeTests" */;
+			buildPhases = (
+				CCEE7DBF2B62FDB58025127BA5E9FF33 /* Headers */,
+				A2A21A213A1D546D2D5CF98CFE8E742A /* Sources */,
+				D9C850A46661789525BE9F6E2F8BF580 /* Frameworks */,
+				B83803E5C174FC27724CD066110D9CD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14FE448A3CA9A939D70687E336E86231 /* PBXTargetDependency */,
+			);
+			name = "Pods-CareForMeTests";
+			productName = "Pods-CareForMeTests";
+			productReference = A129D9F00B767EF91F08AF9B88646F49 /* Pods_CareForMeTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A579A3F98C916CBD759C025B7512026C /* Pods-Care For Me Notifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65D2D6A705D57E84F3C60A94CE249CF9 /* Build configuration list for PBXNativeTarget "Pods-Care For Me Notifications" */;
+			buildPhases = (
+				ECBF107CC364D1430D7D728C36C854BD /* Headers */,
+				106211ACE0521C873302108561E03C75 /* Sources */,
+				ACA13A7CD5AE9BEAD5C628DE9063BBE9 /* Frameworks */,
+				09DC2613EFFFB2A88F32217F62EF4E16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2F059FBE83FABF8EA708E2FCDA291E8 /* PBXTargetDependency */,
+			);
+			name = "Pods-Care For Me Notifications";
+			productName = "Pods-Care For Me Notifications";
+			productReference = F0328BBFD1DE38DA0C49911DB5785BC9 /* Pods_Care_For_Me_Notifications.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E17F285B813E8450E29E674801E7A916 /* JellyGif */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E14E3EB9C49A0F421618E993AFEB0CB3 /* Build configuration list for PBXNativeTarget "JellyGif" */;
+			buildPhases = (
+				1E18D9DFE93F26E62D977F4CD4039BD2 /* Headers */,
+				F47C4B81C475DB0A604A839554C5CE95 /* Sources */,
+				1AAC8AD3823C9EFD3700D90967E858CF /* Frameworks */,
+				DCA9016B1EA1596B95C4CD9CF792C987 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JellyGif;
+			productName = JellyGif;
+			productReference = 7D71B574C3BA9587CDC62FFF4E0D1AAA /* JellyGif.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1250;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 11.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 35B0B3B2BA29274E4DC466F315435978 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E17F285B813E8450E29E674801E7A916 /* JellyGif */,
+				A579A3F98C916CBD759C025B7512026C /* Pods-Care For Me Notifications */,
+				26A3CDBFCBF0D90C2CE32E4FEFC7B3E6 /* Pods-CareForMe */,
+				8E3CDA9E17C2AA42866D2F4502A55F8A /* Pods-CareForMeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		09DC2613EFFFB2A88F32217F62EF4E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83803E5C174FC27724CD066110D9CD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2A1258F73557B77D4D7EC06BDE0690A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCA9016B1EA1596B95C4CD9CF792C987 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		106211ACE0521C873302108561E03C75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA2A044EF93FCA45F4665DEEFCE111AC /* Pods-Care For Me Notifications-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2A21A213A1D546D2D5CF98CFE8E742A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADB5B153A1B34CCB47EA26DF20DD0B81 /* Pods-CareForMeTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDEA6082023662BCF7549A306B742523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5361734A8882C6A319F07C73C9FF8BB2 /* Pods-CareForMe-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47C4B81C475DB0A604A839554C5CE95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D153F80D1A16E673B06E54F67025140 /* CGImageSource+Extension.swift in Sources */,
+				7A434702DA8942498F3362778A51D974 /* GifAnimationQuality.swift in Sources */,
+				751B49E7974B857B20289F30322DB286 /* GifInfo.swift in Sources */,
+				D8C6CF1DC952080336D0AB67D5B048BB /* GifPixelSize.swift in Sources */,
+				5CA4CFC376951115C3C2EA382DF55352 /* JellyGif-dummy.m in Sources */,
+				A608D55CD6DEEE63CB9804A68F4A873D /* JellyGifAnimator.swift in Sources */,
+				89DB76F5758916E7F96B0A8B5D5A708A /* JellyGifImageView.swift in Sources */,
+				DCD7F44FFE1746C0E3DCAF37FA1453E6 /* JellyGifOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0BE81EEC2E21CF467B4E1A7D7E6393C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JellyGif;
+			target = E17F285B813E8450E29E674801E7A916 /* JellyGif */;
+			targetProxy = AFDCA6ADE49D527B7DF4146FB450E390 /* PBXContainerItemProxy */;
+		};
+		14FE448A3CA9A939D70687E336E86231 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-CareForMe";
+			target = 26A3CDBFCBF0D90C2CE32E4FEFC7B3E6 /* Pods-CareForMe */;
+			targetProxy = 903EF696C810D0D57CBE2C6726EEAD08 /* PBXContainerItemProxy */;
+		};
+		C2F059FBE83FABF8EA708E2FCDA291E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JellyGif;
+			target = E17F285B813E8450E29E674801E7A916 /* JellyGif */;
+			targetProxy = D4EBAB51A736FD97E2BF066CAE6DD849 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		066333D89A5CF68E421ECA36F8CBC53D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 138FB3E44B33CB4C4FBE3CE6203E8A5E /* JellyGif.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JellyGif/JellyGif-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JellyGif/JellyGif-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JellyGif/JellyGif.modulemap";
+				PRODUCT_MODULE_NAME = JellyGif;
+				PRODUCT_NAME = JellyGif;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0B7A947197495C6CAA6621518FF7DE80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1BE473B96AAEBC0E32A61CF688494DF /* Pods-CareForMe.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CareForMe/Pods-CareForMe-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CareForMe/Pods-CareForMe.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4570DFC3B6D07A56F91B0ABAAAA76C55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B961EB87DD27AC2614C5039740D8BB5B /* JellyGif.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JellyGif/JellyGif-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JellyGif/JellyGif-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JellyGif/JellyGif.modulemap";
+				PRODUCT_MODULE_NAME = JellyGif;
+				PRODUCT_NAME = JellyGif;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9283054069A9404DF8EA342740061A98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF4EDF9BEE5ED7F7DD68772295279702 /* Pods-Care For Me Notifications.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C6942F008241E7A1862FFDA6EAF6EC93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5494A718C866A241508602237CC351D9 /* Pods-CareForMeTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CareForMeTests/Pods-CareForMeTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CareForMeTests/Pods-CareForMeTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D6B3B4480691BF1841F1A5960C2842DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99F3A2765FA2BE78352251A2D7A101C8 /* Pods-CareForMe.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CareForMe/Pods-CareForMe-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CareForMe/Pods-CareForMe.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DFD3359B62A22D8C601E0D7A4D805D94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3BC83A500F095C2004C9C866886D812 /* Pods-CareForMeTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CareForMeTests/Pods-CareForMeTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CareForMeTests/Pods-CareForMeTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E49506E4673E204AB531BE1D65386C4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70D4868FD959842B8F44065578CAEC72 /* Pods-Care For Me Notifications.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Care For Me Notifications/Pods-Care For Me Notifications.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05A7A9EA61B04D45679352940610E819 /* Build configuration list for PBXNativeTarget "Pods-CareForMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B7A947197495C6CAA6621518FF7DE80 /* Debug */,
+				D6B3B4480691BF1841F1A5960C2842DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65D2D6A705D57E84F3C60A94CE249CF9 /* Build configuration list for PBXNativeTarget "Pods-Care For Me Notifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9283054069A9404DF8EA342740061A98 /* Debug */,
+				E49506E4673E204AB531BE1D65386C4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91E4473A1FB6F951B119A74840829620 /* Build configuration list for PBXNativeTarget "Pods-CareForMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6942F008241E7A1862FFDA6EAF6EC93 /* Debug */,
+				DFD3359B62A22D8C601E0D7A4D805D94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E14E3EB9C49A0F421618E993AFEB0CB3 /* Build configuration list for PBXNativeTarget "JellyGif" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				066333D89A5CF68E421ECA36F8CBC53D /* Debug */,
+				4570DFC3B6D07A56F91B0ABAAAA76C55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

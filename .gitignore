@@ -127,7 +127,7 @@ iOSInjectionProject/
 ### SwiftPackageManager ###
 Packages
 xcuserdata
-*.xcodeproj
+*.xcodeproj/*
 
 
 ### Xcode ###
@@ -141,11 +141,10 @@ xcuserdata
 /*.gcno
 
 ### Xcode Patch ###
-*.xcodeproj/*
 !project.pbxproj
 !xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
-*.xcodeproj/userdata
+*.xcodeproj/xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,macos,swift,swiftpackagemanager,firebase
