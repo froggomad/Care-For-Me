@@ -22,7 +22,7 @@ class AddNeedToCategoryViewControllerView: UIView {
     var selectedPhoto: NamedPhoto! = .firstAid
     
     lazy var parentStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [messageStack, imageLabel, imageStack])
+        let stack = UIStackView(arrangedSubviews: [titleStack, messageStack, imageLabel, imageStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .fillProportionally
