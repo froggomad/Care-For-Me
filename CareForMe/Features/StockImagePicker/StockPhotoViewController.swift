@@ -19,16 +19,25 @@ extension StockPhotoImageSelectionDelegate {
     }
 }
 
-class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
-    
-    var isSearching = false
+class StockPhotoViewController: UIViewController {
     
     var alert: AlertCategory = NamedPhoto.category
     var alerts: [CareAlertType]!
     lazy var filteredAlerts: [CareTypeable] = []
     weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
+    var searcher: SearchDelegate
     
-    lazy var searchController: UISearchController = .init(with: self)
+    init(searchDelegate: SearchDelegate  = SearchDelegate()) {
+        self.searcher = searchDelegate
+        super.init(nibName: nil, bundle: nil)
+        searcher.updater = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic View")
+    }
+    
+    lazy var searchController: UISearchController = .init(with: searcher)
     
     lazy var collectionView: CareCollectionView = {
         alert.alerts = NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title})
@@ -65,16 +74,24 @@ class StockPhotoViewController: UIViewController, UISearchBarDelegate, UISearchC
         ])
     }
     
-    func willDismissSearchController(_ searchController: UISearchController) {
-        isSearching = false
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearching = true
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         alert.alerts = alerts
+        collectionView.reloadData()
+    }
+}
+
+extension StockPhotoViewController: SearchableUpdatable {
+    func search(with text: String) {
+        guard !text.isEmpty else {
+            alert.alerts = alerts
+            collectionView.reloadData()
+            return
+        }
+        
+        filteredAlerts = alerts.filter { $0.title.lowercased().contains(text.lowercased()) }.sorted(by: {$0.title < $1.title})
+        
+        alert.alerts = filteredAlerts
+        
         collectionView.reloadData()
     }
 }
@@ -88,24 +105,4 @@ extension StockPhotoViewController: CareAlertSelectionDelegate {
             dismiss(animated: true)
         }
     }
-}
-
-extension StockPhotoViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard isSearching else { return }
-        
-        guard let text = searchController.searchBar.text?.lowercased(),
-              !text.isEmpty else {
-            alert.alerts = alerts
-            collectionView.reloadData()
-            return
-        }
-        
-        filteredAlerts = alerts.filter { $0.title.lowercased().contains(text) }.sorted(by: {$0.title < $1.title})
-              
-        alert.alerts = filteredAlerts
-        
-        collectionView.reloadData()
-    }
-    
 }
