@@ -20,11 +20,28 @@ extension StockPhotoImageSelectionDelegate {
 }
 
 class StockPhotoViewController: UIViewController {
-    weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
+    
     var alert: AlertCategory = NamedPhoto.category
+    var alerts: [CareAlertType]!
+    lazy var filteredAlerts: [CareTypeable] = []
+    weak var photoSelectionDelegate: StockPhotoImageSelectionDelegate?
+    var searcher: SearchDelegate
+    
+    init(searchDelegate: SearchDelegate  = SearchDelegate()) {
+        self.searcher = searchDelegate
+        super.init(nibName: nil, bundle: nil)
+        searcher.updater = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic View")
+    }
+    
+    lazy var searchController: UISearchController = .init(with: searcher)
     
     lazy var collectionView: CareCollectionView = {
-        alert.alerts.append(contentsOf: NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title}))
+        alert.alerts = NamedPhoto.allCases.map({$0.photoAlert}).sorted(by: {$0.title < $1.title})
+        self.alerts = alert.alerts as? [CareAlertType] ?? []
         let collectionView = CareCollectionView(alertType: alert, layout: CareCollectionView.PhotoTypeLayout())
         collectionView.cellSelectDelegate = self
         return collectionView
@@ -32,12 +49,20 @@ class StockPhotoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        definesPresentationContext = true
         subviews()
     }
     
     private func subviews() {
-        view.addSubview(collectionView)
-        constraints()
+        if !view.subviews.contains(collectionView) {
+            view.addSubview(collectionView)
+            constraints()
+        }
+        let navBarColor: UIColor = .tertiarySystemBackground
+        if navigationItem.searchController == nil {
+            navigationItem.searchController = searchController
+            navigationController?.view.backgroundColor = navBarColor
+        }
     }
     
     private func constraints() {
@@ -47,6 +72,27 @@ class StockPhotoViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         ])
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        alert.alerts = alerts
+        collectionView.reloadData()
+    }
+}
+
+extension StockPhotoViewController: SearchableUpdatable {
+    func search(with text: String) {
+        guard !text.isEmpty else {
+            alert.alerts = alerts
+            collectionView.reloadData()
+            return
+        }
+        
+        filteredAlerts = alerts.filter { $0.title.lowercased().contains(text.lowercased()) }.sorted(by: {$0.title < $1.title})
+        
+        alert.alerts = filteredAlerts
+        
+        collectionView.reloadData()
     }
 }
 

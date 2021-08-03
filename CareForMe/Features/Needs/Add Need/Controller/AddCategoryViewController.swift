@@ -57,7 +57,7 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
     @objc private func presentNeed() {
         let vc = AddNeedToCategoryViewController(category: categorySetupView.alertCategory, delegate: self)
-        present(vc, animated: true)
+        showDetailViewController(vc, sender: nil)
     }
 }
 

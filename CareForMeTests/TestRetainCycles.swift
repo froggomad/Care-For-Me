@@ -8,7 +8,7 @@
 import XCTest
 @testable import CareForMe
 
-class CareForMeTests: XCTestCase {
+class TestRetainCycles: XCTestCase {
 
     func testCategory_andAlert_dontRetain() {
         let alertCategory = AlertCategory(id: UUID(), color: .init(uiColor: .named(.highlight)), type: "")
@@ -39,6 +39,13 @@ class CareForMeTests: XCTestCase {
         XCTAssertEqual(delegate.textFields.count, 1)
         XCTAssertNotNil(passwordTextField.statusTextFieldDelegate)
     }
+    
+    func testSearcher_andDelegate_dontRetain() {
+        let delegate = SearchDelegate()
+        let searchableUpdateSpy = SearchableUpdatableSpy(with: delegate)
+        assertNoMemoryLeak(searchableUpdateSpy)
+        assertNoMemoryLeak(delegate)
+    }
 
 }
 
@@ -48,5 +55,22 @@ extension XCTestCase {
         addTeardownBlock { [weak instance] in
             XCTAssertNil(instance, "Instance should have been deallocated. Potential retain cycle.", file: file, line: line)
         }
+    }
+}
+
+class SearchableUpdatableSpy: NSObject, SearchableUpdatable {
+    var searcher: SearchDelegate
+    
+    init(with delegate: SearchDelegate) {
+        self.searcher = delegate
+        self.searchController = .init(with: delegate)
+        super.init()
+        searcher.updater = self
+    }
+    
+    var searchController: UISearchController
+    
+    func search(with text: String) {
+        
     }
 }
