@@ -47,7 +47,7 @@ extension AddNeedToCategoryViewController: AddNeedDelegate {
     func receivedNeed(_ need: CareTypeable) {
         if !need.title.isEmpty {
             delegate.receivedNeed(need)
-            dismiss(animated: true)
+            navigationController?.popViewController(animated: true)
         } else {
             presentAlert(title: "Missing Title", message: "Please enter a Name for this need.")
             addNeedView.titleTextField.becomeFirstResponder()
