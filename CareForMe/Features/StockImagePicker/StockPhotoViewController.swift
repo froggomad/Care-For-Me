@@ -72,6 +72,11 @@ class StockPhotoViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
         ])
     }
+    
+    func searchBarCancelButtonClicked() {
+        alert.alerts = alerts
+        collectionView.reloadData()
+    }
 }
 
 extension StockPhotoViewController: SearchableUpdatable {

@@ -30,11 +30,16 @@ class SearchDelegate: NSObject, Searchable {
         guard isSearching else { return }
         updater?.search(with: searchController.searchBar.text ?? "")
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updater?.searchBarCancelButtonClicked()
+    }
 }
 
 protocol SearchableUpdatable: AnyObject {
     var searcher: SearchDelegate { get set }
     var searchController: UISearchController { get set }
     func search(with text: String)
+    func searchBarCancelButtonClicked()
 }
 
