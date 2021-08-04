@@ -48,7 +48,6 @@ class MainViewController: ParentDetailViewController {
     }()
     
     init() {
-        self.searcher = SearchDelegate()
         super.init(nibName: nil, bundle: nil)
         // create copy of existing categories
         var categories: [NeedsCategory] = []
@@ -163,10 +162,10 @@ extension MainViewController: UITableViewDelegate {
 }
 
 extension MainViewController: NeedsSearchDelegate {
+    /// append saved categories to search categories
     func receivedCategory(category: NeedsCategory) {
         categories.append(category)
     }
-    
     
     func searchBarCancelButtonClicked() {
         needsController.categories = categories

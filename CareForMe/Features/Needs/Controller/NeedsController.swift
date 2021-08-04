@@ -23,7 +23,6 @@ class NeedsController: SearchDelegate {
     typealias NeedCompletion = (Result<Need, Error>) -> Void
     
     var categories: [NeedsCategory] = []
-    var filteredCategories: [NeedsCategory] = []
     var cellSelectDelegate: CareAlertSelectionDelegate?
     
     static var shared = NeedsController()
