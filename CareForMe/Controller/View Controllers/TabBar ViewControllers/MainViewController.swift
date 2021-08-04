@@ -157,7 +157,7 @@ struct CareNotification: Codable, Equatable {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        CareCollectionView.CareTypeLayout.heightConstant
+        CareCollectionView.CareTypeLayout.heightConstant + 16
     }
 }
 
@@ -179,7 +179,7 @@ extension MainViewController: NeedsSearchDelegate {
             needsController.categories = categories
             return
         }
-        let filteredCategories = categories.filter{ $0.needs.filter { $0.title.lowercased().contains(text.lowercased()) }.isEmpty == false}
+        let filteredCategories = categories.filter{ $0.title.contains(text) || $0.needs.filter { $0.title.lowercased().contains(text.lowercased()) }.isEmpty == false}
         needsController.categories = filteredCategories
     }
     
