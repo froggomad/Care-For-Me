@@ -8,7 +8,11 @@
 import UIKit
 
 class MainViewController: ParentDetailViewController {
+    var searcher: SearchDelegate = NeedsController.shared
+    lazy var searchController: UISearchController = .init(with: searcher)
     let needsController = NeedsController.shared
+    /// original categories from controller if any
+    var categories: [NeedsCategory]!
     
     lazy var addButton: UIButton = {
         let button = UIButton()
@@ -44,8 +48,19 @@ class MainViewController: ParentDetailViewController {
     }()
     
     init() {
+        self.searcher = SearchDelegate()
         super.init(nibName: nil, bundle: nil)
+        // create copy of existing categories
+        var categories: [NeedsCategory] = []
+        for category in needsController.categories {
+            categories.append(NeedsCategory(id: category.id, title: category.title, alerts: category.alerts, color: category.color))
+        }
+        self.categories = categories
+        
+        searcher.updater = self
         needsController.cellSelectDelegate = self
+        needsController.delegate = self
+        navigationItem.searchController = searchController
         setTab()
     }
     
@@ -145,4 +160,28 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CareCollectionView.CareTypeLayout.heightConstant
     }
+}
+
+extension MainViewController: NeedsSearchDelegate {
+    func receivedCategory(category: NeedsCategory) {
+        categories.append(category)
+    }
+    
+    
+    func searchBarCancelButtonClicked() {
+        needsController.categories = categories
+        tableView.reloadData()
+    }    
+    
+    func search(with text: String) {
+        defer { tableView.reloadData() }
+        
+        guard !text.isEmpty else {
+            needsController.categories = categories
+            return
+        }
+        let filteredCategories = categories.filter{ $0.needs.filter { $0.title.lowercased().contains(text.lowercased()) }.isEmpty == false}
+        needsController.categories = filteredCategories
+    }
+    
 }
