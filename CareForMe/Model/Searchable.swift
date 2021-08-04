@@ -17,6 +17,7 @@ protocol Searchable: UISearchBarDelegate, UISearchControllerDelegate, UISearchRe
 class SearchDelegate: NSObject, Searchable {
     var isSearching: Bool = false
     weak var updater: SearchableUpdatable?
+    var timer: Timer?
     
     func willDismissSearchController(_ searchController: UISearchController) {
         isSearching = false
@@ -27,8 +28,14 @@ class SearchDelegate: NSObject, Searchable {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard isSearching else { return }
-        updater?.search(with: searchController.searchBar.text ?? "")
+        timer?.invalidate()
+        guard let updater = updater,
+              isSearching
+        else { return }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            updater.search(with: searchController.searchBar.text ?? "")
+        })
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
