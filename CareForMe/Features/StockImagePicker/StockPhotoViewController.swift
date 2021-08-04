@@ -47,22 +47,21 @@ class StockPhotoViewController: UIViewController {
         return collectionView
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        definesPresentationContext = true
+    override func viewDidLoad() {
+        super.viewDidLoad()
         subviews()
+        definesPresentationContext = true
     }
     
     private func subviews() {
-        if !view.subviews.contains(collectionView) {
-            view.addSubview(collectionView)
-            constraints()
-        }
+        view.addSubview(collectionView)
+        constraints()
+        
         let navBarColor: UIColor = .tertiarySystemBackground
-        if navigationItem.searchController == nil {
-            navigationItem.searchController = searchController
-            navigationController?.view.backgroundColor = navBarColor
-        }
+    
+        navigationItem.searchController = searchController
+        navigationController?.view.backgroundColor = navBarColor
+    
     }
     
     private func constraints() {
@@ -74,7 +73,7 @@ class StockPhotoViewController: UIViewController {
         ])
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked() {
         alert.alerts = alerts
         collectionView.reloadData()
     }

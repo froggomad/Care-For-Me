@@ -7,7 +7,13 @@
 
 import UIKit
 
-class NeedsController: NSObject {
+protocol NeedsSearchDelegate: SearchableUpdatable {
+    func receivedCategory(category: NeedsCategory)
+}
+
+class NeedsController: SearchDelegate {
+    weak var delegate: NeedsSearchDelegate?
+    
     enum Error: Swift.Error {
         case exists
         case notExists
@@ -17,6 +23,7 @@ class NeedsController: NSObject {
     typealias NeedCompletion = (Result<Need, Error>) -> Void
     
     var categories: [NeedsCategory] = []
+    var filteredCategories: [NeedsCategory] = []
     var cellSelectDelegate: CareAlertSelectionDelegate?
     
     static var shared = NeedsController()
@@ -29,6 +36,7 @@ class NeedsController: NSObject {
             return
         }
         categories.append(category)
+        delegate?.receivedCategory(category: category)
         completion(.success(category))
     }
     
@@ -55,6 +63,7 @@ class NeedsController: NSObject {
     func addNeed(_ need: Need, to category: NeedsCategory, completion: @escaping NeedCompletion) {
         if let categoryIndex = categories.firstIndex(of: category) {
             self.categories[categoryIndex].addNeed(need)
+            
             completion(.success(need))
         } else {
             completion(.failure(.notExists))
