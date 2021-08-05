@@ -7,12 +7,13 @@
 
 import UIKit
 
-protocol NeedsSearchDelegate: SearchableUpdatable {
+protocol NeedsSearchDelegate: UIViewController {
     func receivedCategory(category: NeedsCategory)
+    func searchButtonClicked()
+    func cancelButtonClicked()
 }
 
-class NeedsController: SearchDelegate {
-    weak var delegate: NeedsSearchDelegate?
+class NeedsController: SearchDelegate, SearchableUpdatable {
     
     enum Error: Swift.Error {
         case exists
@@ -22,47 +23,70 @@ class NeedsController: SearchDelegate {
     typealias CategoryCompletion = (Result<NeedsCategory, Error>) -> Void
     typealias NeedCompletion = (Result<Need, Error>) -> Void
     
+    var searcher: SearchDelegate = SearchDelegate()
+    lazy var searchController: UISearchController = .init(with: self)
+    weak var delegate: NeedsSearchDelegate?
+    var searchCategories: [NeedsCategory] = []
     var categories: [NeedsCategory] = []
+    var filteredCategories: [NeedsCategory] = []
     var cellSelectDelegate: CareAlertSelectionDelegate?
     
     static var shared = NeedsController()
     
-    private override init() { super.init() }
+    private override init() {
+        super.init()
+        searcher = self
+        searchController = .init(with: searcher)
+        self.searcher.updater = self
+    }
     
     func addCategory(_ category: NeedsCategory, completion: @escaping CategoryCompletion) {
-        guard !categories.contains(category) else {
+        guard !searchCategories.contains(category) else {
             completion(.failure(.exists))
             return
         }
-        categories.append(category)
-        delegate?.receivedCategory(category: category)
+        searchCategories.append(category)
+        copyCategory(category: category)
         completion(.success(category))
     }
     
     func editCategory(_ oldCategory: NeedsCategory, title: String, completion: @escaping CategoryCompletion) {
-        guard let categoryIndex = categories.firstIndex(of: oldCategory) else {
+        guard let categoryIndex = searchCategories.firstIndex(of: oldCategory) else {
             addCategory(oldCategory, completion: completion)
             return
         }
-        self.categories[categoryIndex].title = title
-        completion(.success(self.categories[categoryIndex]))
+        self.searchCategories[categoryIndex].title = title
+        
+        if let searchIndex = categories.firstIndex(of: oldCategory) {
+            categories[searchIndex].title = title
+        }
+        
+        completion(.success(self.searchCategories[categoryIndex]))
     }
     
     func deleteCategory(_ category: NeedsCategory, completion: @escaping CategoryCompletion) {
-        guard let categoryIndex = categories.firstIndex(of: category) else {
+        guard let categoryIndex = searchCategories.firstIndex(of: category) else {
             completion(.failure(.notExists))
             return
         }
-        categories.remove(at: categoryIndex)
+        searchCategories.remove(at: categoryIndex)
+        
+        if let searchIndex = searchCategories.firstIndex(of: category) {
+            categories.remove(at: searchIndex)
+        }
+        
         completion(.success(category))
     }
     
     // MARK: - Needs -
     /// add a need to an existing category
     func addNeed(_ need: Need, to category: NeedsCategory, completion: @escaping NeedCompletion) {
-        if let categoryIndex = categories.firstIndex(of: category) {
-            self.categories[categoryIndex].addNeed(need)
+        if let categoryIndex = searchCategories.firstIndex(of: category) {
+            self.searchCategories[categoryIndex].addNeed(need)
             
+            if let searchIndex = categories.firstIndex(of: category) {
+                categories[searchIndex].addNeed(need)
+            }
             completion(.success(need))
         } else {
             completion(.failure(.notExists))
@@ -71,26 +95,58 @@ class NeedsController: SearchDelegate {
     
     func editNeed(_ oldNeed: Need, with newNeed: Need, in category: NeedsCategory, completion: @escaping NeedCompletion) {
         
-        guard let categoryIndex = categories.firstIndex(of: category),
-              let needIndex = categories[categoryIndex].needs.firstIndex(of: oldNeed)
+        guard let categoryIndex = searchCategories.firstIndex(of: category),
+              let needIndex = searchCategories[categoryIndex].needs.firstIndex(of: oldNeed)
         else {
             completion(.failure(.notExists))
             return
         }
         
-        categories[categoryIndex].alerts[needIndex] = newNeed
+        searchCategories[categoryIndex].alerts[needIndex] = newNeed
+        
+        if let searchIndex = categories.firstIndex(of: category) {
+            categories[searchIndex].alerts[needIndex] = newNeed
+        }
+        
         completion(.success(newNeed))
+    }
+    
+    func searchBarCancelButtonClicked() {
+        searchCategories = categories
+        delegate?.cancelButtonClicked()
+    }
+    
+    func search(with text: String) {
+        defer { delegate?.searchButtonClicked() }
+        
+        guard !text.isEmpty else {
+            searchCategories = categories
+            return
+        }
+        let filteredCategories = searchCategories.filter{ $0.title.contains(text) || $0.needs.filter { $0.title.lowercased().contains(text.lowercased()) }.isEmpty == false}
+        searchCategories = filteredCategories
+    }
+    
+    private func copyCategory(category: NeedsCategory) {
+        
+        self.categories.append(
+            NeedsCategory(id: category.id,
+                          title: category.title,
+                          alerts: category.alerts,
+                          color: category.color)
+        )
+        
     }
     
 }
 
 extension NeedsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categories.count
+        searchCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = AlertCategoryTableViewCell(alertCategory: categories[indexPath.row], cellSelectDelegate: cellSelectDelegate)
+        let cell = AlertCategoryTableViewCell(alertCategory: searchCategories[indexPath.row], cellSelectDelegate: cellSelectDelegate)
         return cell
     }
 }
