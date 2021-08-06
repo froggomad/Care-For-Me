@@ -20,7 +20,8 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
     private var instructionText: String?
     
     var text: String? {
-        textFieldView.textField.text
+        get { textFieldView.textField.text }
+        set { textFieldView.textField.text = newValue }
     }
     
     var error: StatusErrorable? {
