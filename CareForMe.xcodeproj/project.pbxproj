@@ -80,6 +80,7 @@
 		AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */; };
 		AAEB516226826D0900A0B741 /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */; };
 		AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516326826DBC00A0B741 /* FirebaseDatabase */; };
+		AAEE98A826BCA91100C51ABC /* KeychainOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */; };
 		AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */; };
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
@@ -201,6 +202,7 @@
 		AAEACFA9268069F5007E9511 /* FirebaseMessagingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingController.swift; sourceTree = "<group>"; };
 		AAEACFAB26807317007E9511 /* CareForMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CareForMe.entitlements; sourceTree = "<group>"; };
 		AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseController.swift; sourceTree = "<group>"; };
+		AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperator.swift; sourceTree = "<group>"; };
 		AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhoto.swift; sourceTree = "<group>"; };
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				AA5068B12691A150006F1126 /* TabBar.swift */,
 				AAC7C8E626A53C820008EFFE /* TargetSelector.swift */,
 				AA73E32126B9E709006FAD08 /* Searchable.swift */,
+				AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1059,6 +1062,7 @@
 				AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */,
 				AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */,
 				AA73E32226B9E709006FAD08 /* Searchable.swift in Sources */,
+				AAEE98A826BCA91100C51ABC /* KeychainOperator.swift in Sources */,
 				AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,
