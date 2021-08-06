@@ -17,9 +17,9 @@ class KeychainOperator {
         case firebase = "com.google.firebase.kennydubroff.careforme"
     }
     
-    static func setPassword(for username: String, with password: String, at server: String = Server.firebase.rawValue) -> OSStatus {
+    @discardableResult static func setPassword(for username: String, with password: String, at server: String = Server.firebase.rawValue) -> OSStatus {
         let item = [
-            kSecValueData: username.data(using: .utf8) ?? Data(),
+            kSecValueData: password.data(using: .utf8) ?? Data(),
             kSecAttrAccount: username,
             kSecAttrServer: server,
             kSecClass: kSecClassInternetPassword,
@@ -30,6 +30,21 @@ class KeychainOperator {
         var ref: AnyObject?
         
         let status = SecItemAdd(item, &ref)
+        
+        if ref == nil {
+            let passwordStatus = retrieveSignInInfo(for: username)
+            var oldPassword: String
+            
+            switch passwordStatus {
+            case let .success(signInInfo):
+                oldPassword = signInInfo.password
+            case .failure:
+                oldPassword = ""
+            }
+            
+            // password was likely already set
+            updatePassword(for: username, with: oldPassword, using: password)
+        }
         
         return status
     }
@@ -63,7 +78,6 @@ class KeychainOperator {
         let query = [
             kSecClass: kSecClassInternetPassword,
             kSecAttrAccount: username,
-            kSecValueData: oldPassword,
             kSecAttrServer: server,
         ] as CFDictionary
         
