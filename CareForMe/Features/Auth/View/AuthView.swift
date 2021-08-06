@@ -59,6 +59,15 @@ class AuthView: UIView {
         backgroundColor = .systemBackground
         self.passwordDelegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
         self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
+        self.emailAddressTextField.text = UserDefaultsConfig.lastLoggedInUsername
+        let credentialResult = KeychainOperator.retrieveSignInInfo(for: emailAddressTextField.text ?? "")
+        switch credentialResult {
+        case let .success(info):
+            passwordTextField.text = info.password
+        case let .failure(error):
+            print(error)
+        }
+        // TODO: retrieve keychain credentials for last logged in user
         subViews()
     }
     
@@ -89,10 +98,14 @@ class AuthView: UIView {
               let password = password,
               let delegate = delegate
         else { return }
+        
         guard let loginDelegate = delegate.loginDelegate else {
             delegate.registrationDelegate?.processRegistration(email: emailAddress, password: password)
             return
         }
+        
+        UserDefaultsConfig.lastLoggedInUsername = emailAddress
+        KeychainOperator.setPassword(for: emailAddress, with: password)
         
         loginDelegate.processLogin(email: emailAddress, password: password)
     }
