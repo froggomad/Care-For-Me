@@ -81,6 +81,7 @@
 		AAEB516226826D0900A0B741 /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516126826D0900A0B741 /* FirebaseDatabaseSwift-Beta */; };
 		AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516326826DBC00A0B741 /* FirebaseDatabase */; };
 		AAEE98A826BCA91100C51ABC /* KeychainOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */; };
+		AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */; };
 		AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */; };
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
@@ -203,6 +204,7 @@
 		AAEACFAB26807317007E9511 /* CareForMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CareForMe.entitlements; sourceTree = "<group>"; };
 		AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseController.swift; sourceTree = "<group>"; };
 		AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperator.swift; sourceTree = "<group>"; };
+		AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhoto.swift; sourceTree = "<group>"; };
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				AAC7C8E626A53C820008EFFE /* TargetSelector.swift */,
 				AA73E32126B9E709006FAD08 /* Searchable.swift */,
 				AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */,
+				AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1032,6 +1035,7 @@
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
 				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
+				AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
