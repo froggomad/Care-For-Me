@@ -92,9 +92,11 @@ class StatusTextFieldView: UIView {
         switch textFieldType {
         case .email:
             textField.keyboardType = .emailAddress
+            textField.textContentType = .emailAddress
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
         case .secure:
+            textField.textContentType = .password
             textField.isSecureTextEntry = true
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
