@@ -12,6 +12,11 @@ enum StatusType {
     case error(StatusErrorable)
 }
 
+enum TextFieldType {
+    case secure
+    case email
+}
+
 class StatusTextFieldView: UIView {
     
     // MARK: - Properties -
@@ -27,6 +32,12 @@ class StatusTextFieldView: UIView {
         }
     }
     
+    var textFieldType: TextFieldType {
+        didSet {
+            setupTextField()
+        }
+    }
+    
     
     let exampleText: String?
     let textFieldPlaceholderText: String?
@@ -38,12 +49,13 @@ class StatusTextFieldView: UIView {
     lazy var textField: UITextField = .borderedTextField(placeholderText: textFieldPlaceholderText)
     lazy var instructionLabel: UILabel = .captionLabel(text: instructionText)
     
-    init(type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
+    init(textFieldType: TextFieldType, type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
         
         self.exampleText = exampleText
         self.textFieldPlaceholderText = textFieldPlaceholderText
         self.instructionText = instructionText
         self.type = type
+        self.textFieldType = textFieldType
         super.init(frame: .zero)
         setupLabels(by: type)
         setupViews()
@@ -61,6 +73,7 @@ class StatusTextFieldView: UIView {
     }
     // MARK: - View Lifecycle -
     private func setupViews() {
+        setupTextField()
         addSubview(parentStack)
         constraints()
     }
@@ -73,6 +86,19 @@ class StatusTextFieldView: UIView {
             parentStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             parentStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
         ])
+    }
+    
+    private func setupTextField() {
+        switch textFieldType {
+        case .email:
+            textField.keyboardType = .emailAddress
+            textField.autocapitalizationType = .none
+            textField.autocorrectionType = .no
+        case .secure:
+            textField.isSecureTextEntry = true
+            textField.autocapitalizationType = .none
+            textField.autocorrectionType = .no
+        }
     }
     
     func displayErrorMessage(for error: StatusErrorable) {

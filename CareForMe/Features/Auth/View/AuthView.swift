@@ -41,9 +41,9 @@ class AuthView: UIView {
         
     private lazy var textFieldStack: UIStackView = .componentStack(elements: [emailAddressTextField, passwordTextField])
     
-    private lazy var emailAddressTextField = StatusTextField<EmailStatusTextFieldDelegate>(type: .information, exampleText: "Email Address", instructionText: "Please Enter an Email Address")
+    private lazy var emailAddressTextField = StatusTextField<EmailStatusTextFieldDelegate>(textFieldType: .email, type: .information, exampleText: "Email Address", instructionText: "Please Enter an Email Address")
     
-    private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
+    private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(textFieldType: .secure, type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
     
     private lazy var processAuthButton: UIButton = {
         let button: UIButton = .fullWidthButton()
