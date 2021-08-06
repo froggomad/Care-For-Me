@@ -67,7 +67,6 @@ class AuthView: UIView {
         case let .failure(error):
             print(error)
         }
-        // TODO: retrieve keychain credentials for last logged in user
         subViews()
     }
     
@@ -99,13 +98,13 @@ class AuthView: UIView {
               let delegate = delegate
         else { return }
         
+        UserDefaultsConfig.lastLoggedInUsername = emailAddress
+        KeychainOperator.setPassword(for: emailAddress, with: password)
+        
         guard let loginDelegate = delegate.loginDelegate else {
             delegate.registrationDelegate?.processRegistration(email: emailAddress, password: password)
             return
         }
-        
-        UserDefaultsConfig.lastLoggedInUsername = emailAddress
-        KeychainOperator.setPassword(for: emailAddress, with: password)
         
         loginDelegate.processLogin(email: emailAddress, password: password)
     }
