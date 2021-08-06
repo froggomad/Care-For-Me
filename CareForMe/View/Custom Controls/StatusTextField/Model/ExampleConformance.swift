@@ -31,9 +31,9 @@ final class ExampleStatusTextFieldPasswordDelegate: UIViewController {
     
     var fooController: Foo?
     
-    var textField2: StatusTextField<Foo> = StatusTextField<Foo>(type: .information, exampleText: "Example2", textFieldPlaceholderText: "Test2", instructionText: "Instructions 2")
+    var textField2: StatusTextField<Foo> = StatusTextField<Foo>(textFieldType: .email, type: .information, exampleText: "Example2", textFieldPlaceholderText: "Test2", instructionText: "Instructions 2")
     
-    var textField: StatusTextField = StatusTextField<ExampleStatusTextFieldPasswordDelegate>(type: .information, exampleText: "Example", textFieldPlaceholderText: "Test", instructionText: "Instructions")
+    var textField: StatusTextField = StatusTextField<ExampleStatusTextFieldPasswordDelegate>(textFieldType: .email, type: .information, exampleText: "Example", textFieldPlaceholderText: "Test", instructionText: "Instructions")
     
     lazy var stack: UIStackView = .componentStack(elements: [textField, textField2])
     

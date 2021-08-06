@@ -25,7 +25,7 @@ class TestRetainCycles: XCTestCase {
     }
     
     func testStatusTextField_andDelegate_dontRetain() {
-        let textField = StatusTextField<Foo>(type: .information)
+        let textField = StatusTextField<Foo>(textFieldType: .email, type: .information)
         let foo = Foo(textFields: [textField])
         
         XCTAssertNotNil(textField.statusTextFieldDelegate)
@@ -34,7 +34,7 @@ class TestRetainCycles: XCTestCase {
     }
     
     func testStatusTextFieldDelegate_NotNil_AfterInit() {
-        let passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(type: .information)
+        let passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(textFieldType: .email, type: .information)
         let delegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
         XCTAssertEqual(delegate.textFields.count, 1)
         XCTAssertNotNil(passwordTextField.statusTextFieldDelegate)
@@ -59,6 +59,10 @@ extension XCTestCase {
 }
 
 class SearchableUpdatableSpy: NSObject, SearchableUpdatable {
+    func searchBarCancelButtonClicked() {
+        
+    }
+    
     var searcher: SearchDelegate
     
     init(with delegate: SearchDelegate) {

@@ -15,6 +15,7 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         }
     }
     private var type: StatusType
+    private var textFieldType: TextFieldType
     private var exampleText: String?
     private var textFieldPlaceholderText: String?
     private var instructionText: String?
@@ -33,9 +34,10 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         }
     }
     
-    lazy var textFieldView: StatusTextFieldView = StatusTextFieldView(type: type, exampleText: exampleText, textFieldPlaceholderText: textFieldPlaceholderText, instructionText: instructionText)
+    lazy var textFieldView: StatusTextFieldView = StatusTextFieldView(textFieldType: textFieldType, type: type, exampleText: exampleText, textFieldPlaceholderText: textFieldPlaceholderText, instructionText: instructionText)
     
-    required init(type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
+    required init(textFieldType: TextFieldType, type: StatusType, exampleText: String? = nil, textFieldPlaceholderText: String? = nil, instructionText: String? = nil) {
+        self.textFieldType = textFieldType
         self.type = type
         self.exampleText = exampleText
         self.textFieldPlaceholderText = textFieldPlaceholderText
