@@ -10,6 +10,7 @@ import Foundation
 enum UserDefaultKey: String {
     case hasOnboarded = "has_onboarded"
     case lastLoggedInUser = "last_logged_in_user"
+    case savePasswords = "save_passwords"
 }
 
 @propertyWrapper
@@ -39,4 +40,7 @@ struct UserDefaultsConfig {
     
     @UserDefault(.lastLoggedInUser, defaultValue: "")
     static var lastLoggedInUsername: String
+    
+    @UserDefault(.savePasswords, defaultValue: nil)
+    static var savePasswords: Bool?
 }
