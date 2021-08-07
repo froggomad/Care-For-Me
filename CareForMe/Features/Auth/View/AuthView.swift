@@ -60,12 +60,17 @@ class AuthView: UIView {
         self.passwordDelegate = PasswordStatusTextFieldDelegate(textFields: [passwordTextField])
         self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
         self.emailAddressTextField.text = UserDefaultsConfig.lastLoggedInUsername
-        let credentialResult = KeychainOperator.retrieveSignInInfo(for: emailAddressTextField.text ?? "")
-        switch credentialResult {
-        case let .success(info):
-            passwordTextField.text = info.password
-        case let .failure(error):
-            print(error)
+        
+        if let savePasswordSetting = UserDefaultsConfig.savePasswords {
+            if savePasswordSetting {
+            let credentialResult = KeychainOperator.retrieveSignInInfo(for: emailAddressTextField.text ?? "")
+            switch credentialResult {
+            case let .success(info):
+                passwordTextField.text = info.password
+            case let .failure(error):
+                print(error)
+            }
+            }
         }
         subViews()
     }
@@ -99,7 +104,7 @@ class AuthView: UIView {
         else { return }
         
         UserDefaultsConfig.lastLoggedInUsername = emailAddress
-        KeychainOperator.setPassword(for: emailAddress, with: password)
+        setPassword(emailAddress, password)
         
         guard let loginDelegate = delegate.loginDelegate else {
             delegate.registrationDelegate?.processRegistration(email: emailAddress, password: password)
@@ -107,6 +112,17 @@ class AuthView: UIView {
         }
         
         loginDelegate.processLogin(email: emailAddress, password: password)
+    }
+    
+    private func setPassword(_ emailAddress: String, _ password: String) {
+        if let savePasswordSetting = UserDefaultsConfig.savePasswords {
+            if savePasswordSetting {
+                KeychainOperator.setPassword(for: emailAddress, with: password)
+            }
+        } else {
+            // TODO: alert user, ask if they want to save password
+            // maybe delegate of delegate can handle
+        }
     }
     
 }
