@@ -11,8 +11,6 @@ class SettingsViewController: ParentDetailViewController {
 
     lazy var stack: UIStackView = {
         let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle], spacing: 20)
-//        stack.axis = .vertical
-//        stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
