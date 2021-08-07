@@ -106,6 +106,7 @@ enum NamedPhoto: String, Codable, CaseIterable {
     case footballSoccerGoalPost = "football+soccerGoalpost"
     case tennisCourt
     case tennisRacquet
+    case fallback = "exclamationmark.circle.fill"
     
     var photoModel: StockPhoto {
         StockPhoto(category: Self.category, name: self)
@@ -121,6 +122,12 @@ enum NamedPhoto: String, Codable, CaseIterable {
     
     var image: UIImage {
         // TODO: Replace with fallback image
-        photoModel.image ?? UIImage()
+        switch self {
+        case .fallback:
+            return .init(systemName: Self.fallback.rawValue) ?? UIImage()
+        default:
+            return photoModel.image ?? Self.fallback.image
+        }
+        
     }
 }
