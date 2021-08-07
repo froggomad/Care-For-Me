@@ -10,15 +10,17 @@ import UIKit
 class SettingsViewController: ParentDetailViewController {
 
     lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [notificationToggle])
-        stack.axis = .vertical
-        stack.distribution = .fillProportionally
+        let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle], spacing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     lazy var notificationToggle: LabeledToggleSwitch = {
         LabeledToggleSwitch(title: "Notifications", toggleFunction: #selector(toggleNotifications), target: self)
+    }()
+    
+    lazy var savePasswordsToggle: LabeledToggleSwitch = {
+        LabeledToggleSwitch(title: "Save Passwords", toggleFunction: #selector(toggleSavePasswords), target: self)
     }()
         
     init(toggles: LabeledToggleSwitch...) {        
@@ -65,6 +67,7 @@ class SettingsViewController: ParentDetailViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setNotificationSwitchState()
+        setSavePasswordsSwitchState()
     }
     
     private func setNotificationSwitchState() {
@@ -76,6 +79,10 @@ class SettingsViewController: ParentDetailViewController {
                 self?.notificationToggle.setSwitchState(on: false)
             }
         }
+    }
+    
+    private func setSavePasswordsSwitchState() {
+        savePasswordsToggle.setSwitchState(on: UserDefaultsConfig.savePasswords ?? false)
     }
     
     @objc private func toggleNotifications(_ sender: UISwitch) {
@@ -97,6 +104,10 @@ class SettingsViewController: ParentDetailViewController {
                                                buttonTitle: "Open Settings")
             showDetailViewController(vc, sender: nil)
         }
+    }
+    
+    @objc private func toggleSavePasswords(_ sender: UISwitch) {
+        UserDefaultsConfig.savePasswords = sender.isOn
     }
     
     func addToggle(toggle: LabeledToggleSwitch) {
