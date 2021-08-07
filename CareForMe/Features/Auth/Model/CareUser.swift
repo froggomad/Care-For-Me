@@ -11,12 +11,50 @@ class CareUser: Codable {
     
     let userId: String
     let displayName: String
-    weak var companion: CareUser?
     
-    init(userId: String, displayName: String, companion: CareUser? = nil) {
+    init(userId: String, displayName: String) {
         self.userId = userId
         self.displayName = displayName
-        self.companion = companion
     }
     
+}
+
+class ClientUser: CareUser {
+    weak var caregiver: CaregiverUser?
+    /// init user without caregiver
+    required override init(userId: String, displayName: String) {
+        super.init(userId: userId, displayName: displayName)
+    }
+    /// init user with caregiver
+    required init(userId: String, displayName: String, caregiver: CaregiverUser) {
+        super.init(userId: userId, displayName: displayName)
+        self.caregiver = caregiver
+    }
+    /// init user from Firebase
+    required init(from decoder: Decoder) throws {
+        #warning("This isn't tested")
+        try super.init(from: decoder)
+    }
+}
+
+class CaregiverUser: CareUser {
+    weak var client: ClientUser?
+    /// init user without client
+    required override init(userId: String, displayName: String) {
+        super.init(userId: userId, displayName: displayName)
+    }
+    /// init user with client
+    required init(userId: String, displayName: String, client: ClientUser) {
+        super.init(userId: userId, displayName: displayName)
+        self.client = client
+    }
+    /// init user from Firebase
+    required init(from decoder: Decoder) throws {
+        #warning("This isn't tested")
+        try super.init(from: decoder)
+    }
+}
+
+func foo() {
+    CaregiverUser(userId: "String", displayName: "String")
 }
