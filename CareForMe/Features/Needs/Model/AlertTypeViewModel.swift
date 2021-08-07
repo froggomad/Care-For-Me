@@ -12,7 +12,7 @@ class AlertTypeViewModel: Codable {
     var message: String
     var data: Data
     var image: UIImage {
-        .init(data: data) ?? UIImage()
+        .init(data: data) ?? NamedPhoto.fallback.image
     }
     
     init(title: String, message: String, data: Data) {
