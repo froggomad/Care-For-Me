@@ -182,7 +182,7 @@ extension FirebaseMessagingController: UNUserNotificationCenterDelegate {
         let category = userInfo["category"] as? String ?? ""
         let userId = userInfo["forUserId"] as? String ?? ""
 
-        let notification = CareNotification(id: UUID(uuidString: id)!,
+        let notification = CareNotification(id: UUID(uuidString: id) ?? UUID(),
                                             category: category,
                                             title: title,
                                             text: message,
