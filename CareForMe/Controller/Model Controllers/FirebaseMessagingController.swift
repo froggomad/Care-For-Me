@@ -40,7 +40,7 @@ class FirebaseMessagingController: NSObject {
         let apiTokenDict = ["token": token]
         if AuthService.shared.isLoggedIn {
             guard let user = AuthService.shared.user else { return }
-            FirebaseDatabaseController().updateValues(for: APIRef.userRef(userId: user.userId).endpoint, with: apiTokenDict)
+            FirebaseDatabaseController().updateValues(for: .userRef(userId: user.userId), with: apiTokenDict)
         }
         
     }
@@ -101,12 +101,23 @@ class FirebaseMessagingController: NSObject {
         
     }
     
-    func postMessage(category: String, title: String, text: String, toUserId: String) {
-        let unreadNotificationRef = APIRef.userUnreadNotifications(userId: toUserId).endpoint
-        
-        let careNotificationId = UUID()
-        let endpoint = unreadNotificationRef + "\(careNotificationId)"
-        dbController.setValue(for: endpoint, with: CareNotification(id: careNotificationId, category: category, title: title, text: text, forUserId: toUserId, date: Date()))
+    enum NotificationType {
+        case read
+        case unread
+    }
+    
+    func postMessage(type: NotificationType, notification: CareNotification) {
+        switch type {
+        case .read:
+            let readNotificationRef = APIRef.postReadNotification(userId: notification.forUserId, notificationId: notification.id.uuidString)
+            
+            dbController.setValue(for: readNotificationRef, with: notification)
+        case .unread:
+            let unreadNotificationRef = APIRef.postUnreadNotification(userId: notification.forUserId, notificationId: notification.id.uuidString)
+            
+            dbController.setValue(for: unreadNotificationRef, with: notification)
+            
+        }
         
     }
     
@@ -165,12 +176,13 @@ extension FirebaseMessagingController: UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         let message = notification.request.content.body
         
+        let id = userInfo["id"] as? String ?? ""
         let title = userInfo["title"] as? String ?? ""
         let date = userInfo["date"] as? Date ?? notification.date
         let category = userInfo["category"] as? String ?? ""
         let userId = userInfo["forUserId"] as? String ?? ""
 
-        let notification = CareNotification(id: UUID(),
+        let notification = CareNotification(id: UUID(uuidString: id)!,
                                             category: category,
                                             title: title,
                                             text: message,

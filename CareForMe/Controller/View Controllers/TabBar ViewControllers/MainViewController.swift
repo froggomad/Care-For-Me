@@ -107,7 +107,8 @@ extension MainViewController: CareAlertSelectionDelegate {
             case let .failure(error):
                 print("Error with notification permissions: \(error)")
             }
-            FirebaseMessagingController.shared.postMessage(category: need.category.title, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
+            let notification = CareNotification(id: UUID(), category: need.category.title, title: need.title, text: need.message, forUserId: AuthService.shared.user!.userId, date: Date())
+            FirebaseMessagingController.shared.postMessage(type: .unread, notification: notification)
         }
     }
     

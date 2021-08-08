@@ -15,24 +15,24 @@ class FirebaseDatabaseController {
     /// - Parameters:
     ///   - childRef: The path to the database entry
     ///   - value: a Codable instance used to set keys and values
-    func createReferenceWithId<T: Codable>(for childRef: String, using value: T, completion: @escaping (Error?) -> Void) {
+    func createReferenceWithId<T: Codable>(for childRef: APIRef, using value: T, completion: @escaping (Error?) -> Void) {
         do {
-            try Self.db.child(childRef).childByAutoId().setValue(from: value, completion: completion)
+            try Self.db.child(childRef.endpoint).childByAutoId().setValue(from: value, completion: completion)
         } catch {
             completion(error)
         }
     }
     
-    func setValue<T: Encodable>(for ref: String, with value: T) {
-        try? Self.db.child(ref).setValue(from: value)
+    func setValue<T: Encodable>(for ref: APIRef, with value: T) {
+        try? Self.db.child(ref.endpoint).setValue(from: value)
     }
     
-    func updateValues(for ref: String, with dictionary: [String: Encodable]) {
-        Self.db.child(ref).updateChildValues(dictionary)
+    func updateValues(for ref: APIRef, with dictionary: [String: Encodable]) {
+        Self.db.child(ref.endpoint).updateChildValues(dictionary)
     }
     
-    func observe(endpoint: String, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
-        let ref = Self.db.child(endpoint)
+    func observe(endpoint: APIRef, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
+        let ref = Self.db.child(endpoint.endpoint)
         ref.observe(event, with: completion)
     }
     
@@ -43,6 +43,9 @@ enum APIRef {
     case userNotifications(userId: String)
     case userReadNotifications(userId: String)
     case userUnreadNotifications(userId: String)
+    case postUnreadNotification(userId: String, notificationId: String)
+    case postReadNotification(userId: String, notificationId: String)
+    case userLink
     
     var endpoint: String {
         switch self {
@@ -54,6 +57,12 @@ enum APIRef {
             return self.userNotificationsEndpoint(userId: userId) + "read/"
         case let .userUnreadNotifications(userId):
             return self.userNotificationsEndpoint(userId: userId) + "unread/"
+        case .userLink:
+            return "/users/toLink"
+        case let .postUnreadNotification(userId, notificationId):
+            return Self.userUnreadNotifications(userId: userId).endpoint + notificationId
+        case let .postReadNotification(userId, notificationId):
+            return Self.userReadNotifications(userId: userId).endpoint + notificationId
         }
     }
     
