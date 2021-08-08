@@ -82,6 +82,8 @@
 		AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAEB516326826DBC00A0B741 /* FirebaseDatabase */; };
 		AAEE98A826BCA91100C51ABC /* KeychainOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */; };
 		AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */; };
+		AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1825126BF951C00D73651 /* Int+randomString.swift */; };
+		AAF1825526BFACD300D73651 /* UserLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1825426BFACD300D73651 /* UserLink.swift */; };
 		AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */; };
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
@@ -205,6 +207,8 @@
 		AAEB515F268267B000A0B741 /* FirebaseDatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseController.swift; sourceTree = "<group>"; };
 		AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperator.swift; sourceTree = "<group>"; };
 		AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		AAF1825126BF951C00D73651 /* Int+randomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+randomString.swift"; sourceTree = "<group>"; };
+		AAF1825426BFACD300D73651 /* UserLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLink.swift; sourceTree = "<group>"; };
 		AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhoto.swift; sourceTree = "<group>"; };
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
@@ -621,6 +625,7 @@
 				AA73E32126B9E709006FAD08 /* Searchable.swift */,
 				AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */,
 				AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */,
+				AAF1825126BF951C00D73651 /* Int+randomString.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 		AAE9189D268EF961003A8278 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AAF1825326BFAC9B00D73651 /* Connect Users */,
 				AAF7C8A4269AB72D00EB11EC /* Needs */,
 				AAE9189E268EF974003A8278 /* Notifications */,
 				AAF7C8A0269A091B00EB11EC /* StockImagePicker */,
@@ -708,6 +714,38 @@
 				AAE918A5268EFBC3003A8278 /* CareNotificationTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AAF1825326BFAC9B00D73651 /* Connect Users */ = {
+			isa = PBXGroup;
+			children = (
+				AAF1825626BFACD800D73651 /* Model */,
+				AAF1825726BFAD7B00D73651 /* View */,
+				AAF1825826BFAD7F00D73651 /* Controller */,
+			);
+			path = "Connect Users";
+			sourceTree = "<group>";
+		};
+		AAF1825626BFACD800D73651 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAF1825426BFACD300D73651 /* UserLink.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AAF1825726BFAD7B00D73651 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AAF1825826BFAD7F00D73651 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		AAF7C8A0269A091B00EB11EC /* StockImagePicker */ = {
@@ -1028,6 +1066,7 @@
 				AAFFECEF269D3AEA00847072 /* UIButton+fullWidthButton.swift in Sources */,
 				AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */,
 				AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */,
+				AAF1825526BFACD300D73651 /* UserLink.swift in Sources */,
 				AA08787726B1BD4200AAFF3B /* CareTypeable.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
 				AA73E32026B9805D006FAD08 /* UISearchController+initWithDelegate.swift in Sources */,
@@ -1051,6 +1090,7 @@
 				AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */,
 				AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */,
 				AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */,
+				AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */,
 				AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */,
