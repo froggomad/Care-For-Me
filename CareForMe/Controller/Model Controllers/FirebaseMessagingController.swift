@@ -158,9 +158,9 @@ extension FirebaseMessagingController: UNUserNotificationCenterDelegate {
         NotificationCenter.default.post(name: .newUnreadNotification, object: nil, userInfo: ["careNotification": careNotification])
         
         if #available(iOS 14, *) {
-            completionHandler([[.banner, .sound, .badge]])
+            completionHandler([.banner, .sound, .badge])
         } else {
-            completionHandler([[.alert, .sound, .badge]])
+            completionHandler([.alert, .sound, .badge])
         }
     }
     
