@@ -48,6 +48,8 @@
 		AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD426A872B800019BE8 /* StatusTextField.swift */; };
 		AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */; };
 		AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7C8E626A53C820008EFFE /* TargetSelector.swift */; };
+		AAC8EBE926C09A2A005FC455 /* ConfirmPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC8EBE826C09A2A005FC455 /* ConfirmPinView.swift */; };
+		AAC8EBEB26C0F3EB005FC455 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC8EBEA26C0F3EB005FC455 /* Pin.swift */; };
 		AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */; };
 		AAC9D17B269656D700DB3FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */; };
 		AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D1802696A86200DB3FA5 /* InstructionView.swift */; };
@@ -169,6 +171,8 @@
 		AAC5CCD426A872B800019BE8 /* StatusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
 		AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
 		AAC7C8E626A53C820008EFFE /* TargetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSelector.swift; sourceTree = "<group>"; };
+		AAC8EBE826C09A2A005FC455 /* ConfirmPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinView.swift; sourceTree = "<group>"; };
+		AAC8EBEA26C0F3EB005FC455 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledToggle.swift; sourceTree = "<group>"; };
 		AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AAC9D1802696A86200DB3FA5 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
@@ -730,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF1825426BFACD300D73651 /* UserLink.swift */,
+				AAC8EBEA26C0F3EB005FC455 /* Pin.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 		AAF1825726BFAD7B00D73651 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AAC8EBE826C09A2A005FC455 /* ConfirmPinView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1077,6 +1083,7 @@
 				AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */,
+				AAC8EBE926C09A2A005FC455 /* ConfirmPinView.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
@@ -1127,6 +1134,7 @@
 				AABF3D2C269BC04E008A2CC2 /* UILabel+title3Label.swift in Sources */,
 				AACA591D269881660090CAF2 /* UIColor+isDarkColor.swift in Sources */,
 				AABF3D35269C1218008A2CC2 /* AddNeedToCategoryViewController.swift in Sources */,
+				AAC8EBEB26C0F3EB005FC455 /* Pin.swift in Sources */,
 				AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */,
 				AA5068B22691A150006F1126 /* TabBar.swift in Sources */,
 			);
