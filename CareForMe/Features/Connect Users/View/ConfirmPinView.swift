@@ -8,7 +8,7 @@
 import UIKit
 
 class ConfirmPINViewController: UIViewController {
-    lazy var myView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap the button", imageFilename: nil, buttonTitle: "Tap Me", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
+    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap the button", imageFilename: nil, buttonTitle: "Tap Me", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
     
     let pinLength: Int = 6
     
@@ -20,14 +20,14 @@ class ConfirmPINViewController: UIViewController {
     }()
     
     override func loadView() {
-        view = myView
+        view = confirmPINView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         statusTextField.statusTextFieldDelegate = pinCodeTextfieldDelegate
         statusTextField.textFieldView.textField.placeholder = "Enter \(pinCodeTextfieldDelegate.pinLength) Digit Code"
-        myView.addView(statusTextField)
+        confirmPINView.addView(statusTextField)
     }
     
     @objc func foo() {
