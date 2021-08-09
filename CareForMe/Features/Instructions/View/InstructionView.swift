@@ -18,7 +18,7 @@ class InstructionView: UIView {
     private var selectionDelegate: TargetSelector
     
     private lazy var mainStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleLabel, instructionLabel, imageStack, viewStack, button])
+        let stack: UIStackView = .componentStack(elements: [titleLabel, instructionLabel, imageStack, viewStack, button])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.distribution = .equalCentering
