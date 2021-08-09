@@ -8,7 +8,7 @@
 import UIKit
 
 class ConfirmPINViewController: UIViewController {
-    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap the button", imageFilename: nil, buttonTitle: "Tap Me", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
+    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap Confirm", imageFilename: nil, buttonTitle: "Confirm", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
     
     let pinLength: Int = 6
     
@@ -88,9 +88,9 @@ final class PinCodeStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         var message: String {
             switch self {
             case .tooShort:
-                return "Too Short"
+                return "Code too Short"
             case .tooLong:
-                return "Too Long"
+                return "Code too Long"
             case .invalidChar:
                 return "Invalid Character"
             }
@@ -99,7 +99,7 @@ final class PinCodeStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         var instructions: String {
             switch self {
             case let .tooShort(pinLength), let .tooLong(pinLength):
-                return "Please enter \(pinLength) digits, matching the code your companion provided to you"
+                return "Please enter \(pinLength) digits, matching the code your companion provided to you and tap confirm"
             case .invalidChar:
                 return "Please enter a digit 0-9"
             }
