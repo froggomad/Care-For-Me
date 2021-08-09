@@ -24,6 +24,12 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
         view = categorySetupView
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // dismiss keyboard so this isn't the first responder when the view comes back
+        categorySetupView.titleTextField.resignFirstResponder()
+    }
+    
     @objc func presentColorChoice() {
         let vc = ColorPickerViewController(color: categorySetupView.alertCategory.color.uiColor, delegate: self)
         showDetailViewController(vc, sender: nil)
