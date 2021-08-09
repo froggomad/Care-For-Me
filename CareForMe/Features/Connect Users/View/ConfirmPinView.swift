@@ -16,7 +16,6 @@ class ConfirmPINViewController: UIViewController {
     
     lazy var statusTextField: StatusTextField<PinCodeStatusTextFieldDelegate> = {
         let textField: StatusTextField = StatusTextField<PinCodeStatusTextFieldDelegate>(textFieldType: .email, type: .information, exampleText: "Please enter link code:", instructionText: "Please enter the \(pinLength) digit code your companion provided")
-        textField.tintColor = .black
         return textField
     }()
     

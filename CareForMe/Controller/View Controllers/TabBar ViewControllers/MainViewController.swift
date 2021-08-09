@@ -58,6 +58,8 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        let vc = ConfirmPINViewController()
+        present(vc, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
