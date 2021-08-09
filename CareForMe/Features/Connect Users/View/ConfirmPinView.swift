@@ -10,10 +10,12 @@ import UIKit
 class ConfirmPINViewController: UIViewController {
     lazy var myView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap the button", imageFilename: nil, buttonTitle: "Tap Me", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
     
-    lazy var pinCodeTextfieldDelegate = PinCodeStatusTextFieldDelegate(textFields: [statusTextField], pinLength: 6)
+    let pinLength: Int = 6
+    
+    lazy var pinCodeTextfieldDelegate = PinCodeStatusTextFieldDelegate(textFields: [statusTextField], pinLength: pinLength)
     
     lazy var statusTextField: StatusTextField<PinCodeStatusTextFieldDelegate> = {
-        let textField: StatusTextField = StatusTextField<PinCodeStatusTextFieldDelegate>(textFieldType: .email, type: .information, exampleText: "Please enter the code your companion sent to you")
+        let textField: StatusTextField = StatusTextField<PinCodeStatusTextFieldDelegate>(textFieldType: .email, type: .information, exampleText: "Please enter link code:", instructionText: "Please enter the \(pinLength) digit code your companion provided")
         textField.tintColor = .black
         return textField
     }()
