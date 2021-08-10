@@ -92,7 +92,8 @@ class SettingsViewController: ParentDetailViewController {
                                                instructions: "In order to disable notifications, it's necessary to visit the settings app",
                                                image: .notificationsOff,
                                                caption: "To open your iOS Settings App, tap below",
-                                               buttonTitle: "Open Settings")
+                                               buttonTitle: "Open Settings",
+                                               selectionDelegate: TargetSelector(target: self, selector: #selector(openSettings)))
             showDetailViewController(vc, sender: nil)
         } else {
             FirebaseMessagingController.shared.registerForRemoteNotifications()
@@ -101,7 +102,8 @@ class SettingsViewController: ParentDetailViewController {
                                                instructions: "In order to enable notifications for the app, it's necessary to visit your settings app and enable notifications manually.",
                                                image: .notificationsOn,
                                                caption: "To open your iOS Settings App, tap below",
-                                               buttonTitle: "Open Settings")
+                                               buttonTitle: "Open Settings",
+                                               selectionDelegate: TargetSelector(target: self, selector: #selector(openSettings)))
             showDetailViewController(vc, sender: nil)
         }
     }
@@ -112,6 +114,10 @@ class SettingsViewController: ParentDetailViewController {
     
     func addToggle(toggle: LabeledToggleSwitch) {
         stack.addArrangedSubview(toggle)
+    }
+    
+    @objc private func openSettings() {
+        AppSettingsController.openSettings()
     }
     
 }
