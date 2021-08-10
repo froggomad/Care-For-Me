@@ -81,7 +81,7 @@ class InstructionView: UIView {
         return label
     }()
     
-    private lazy var button: UIButton = {
+    lazy var button: UIButton = {
         let targetSelector = TargetSelector(target: selectionDelegate.target, selector: selectionDelegate.selector)
         let button: UIButton = .fullWidthButton(with: buttonTitle, targetAndSelector: targetSelector)
         return button
