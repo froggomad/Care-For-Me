@@ -89,7 +89,7 @@ class SettingsViewController: ParentDetailViewController {
         
         if !sender.isOn {
             let vc = InstructionViewController(title: "About Disabling Notifications",
-                                               instructions: "In order to disable notifications for the app, it's necessary to visit your settings app and disable notifications manually.",
+                                               instructions: "In order to disable notifications, it's necessary to visit the settings app",
                                                image: .notificationsOff,
                                                caption: "To open your iOS Settings App, tap below",
                                                buttonTitle: "Open Settings")
