@@ -41,12 +41,4 @@ class InstructionViewController: UIViewController {
         view = instructionView
     }
     
-    @objc private func openSettings() {
-        AppSettingsController.openSettings()
-    }
-    
-    deinit {
-        print("deinit")
-    }
-    
 }
