@@ -18,19 +18,22 @@ class InstructionView: UIView {
     private var selectionDelegate: TargetSelector
     
     private lazy var mainStack: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [titleLabel, instructionLabel, imageStack, viewStack, button])
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        let stack: UIStackView = .init(arrangedSubviews: [titleLabel, instructionLabel, imageStack, viewStack, button])
         stack.axis = .vertical
         stack.distribution = .equalCentering
         stack.alignment = .center
         stack.spacing = 8
-        return stack
+        let hStack = UIStackView(arrangedSubviews: [stack])
+        hStack.alignment = .top
+        hStack.distribution = .fill
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        return hStack
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .preferredFont(for: .title1)
+        label.font = .preferredFont(for: .body, weight: .bold)
         label.text = titleString
         label.numberOfLines = 0
         return label
@@ -39,7 +42,7 @@ class InstructionView: UIView {
     private lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .preferredFont(for: .body, weight: .bold)
+        label.font = .preferredFont(for: .body)
         label.text = instructions
         label.numberOfLines = 0
         return label
@@ -79,9 +82,8 @@ class InstructionView: UIView {
     }()
     
     private lazy var button: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle(buttonTitle, for: .normal)
-        button.addTarget(selectionDelegate.target, action: selectionDelegate.selector, for: .touchUpInside)
+        let targetSelector = TargetSelector(target: selectionDelegate.target, selector: selectionDelegate.selector)
+        let button: UIButton = .fullWidthButton(with: buttonTitle, targetAndSelector: targetSelector)
         return button
     }()
     
