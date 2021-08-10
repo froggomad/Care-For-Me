@@ -11,7 +11,7 @@ class InstructionViewController: UIViewController {
     
     var titleText: String
     var instructions: String
-    var image: Gif
+    var image: Gif?
     var caption: String?
     var buttonTitle: String
     
