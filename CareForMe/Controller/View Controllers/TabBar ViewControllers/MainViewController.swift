@@ -58,16 +58,24 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        let vc = ConfirmPINViewController()
-        present(vc, animated: true)
+        let vc = OnboardingPagedViewController()
+        
+        showDetailViewController(vc, sender: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
     
     @objc func presentAddNeed() {
         let vc = AddCategoryViewController()
+        vc.providesPresentationContextTransitionStyle = true
         showDetailViewController(vc, sender: nil)
     }
     
