@@ -36,6 +36,16 @@ class OnboardingPagedViewController: PagingViewController {
         instruction2.instructionView.button.tag = 1
         instruction3.instructionView.button.tag = 2
         
+        let linkButton: UIButton = .fullWidthButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
+        
+        let codeLabel: UILabel = UILabel()
+        codeLabel.text = Int.randomString()
+        codeLabel.font = .boldSystemFont(ofSize: 36)
+        codeLabel.textAlignment = .center
+        
+        instruction3.instructionView.addView(codeLabel)
+        instruction3.instructionView.addView(linkButton)
+        
         return [
             instruction1,
             instruction2,
@@ -54,6 +64,11 @@ class OnboardingPagedViewController: PagingViewController {
         menuPosition = .bottom
         
         view.backgroundColor = .white
+    }
+    
+    @objc private func displayCodeConfirmationViewController() {
+        let vc = ConfirmPINViewController()
+        showDetailViewController(vc, sender: nil)
     }
     
 }
