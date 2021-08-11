@@ -18,6 +18,23 @@ struct ParchmentCellTest: PagingItem, Hashable, Comparable {
     
 }
 
+class OnboardingViewController: InstructionViewController {
+    
+    let indicatorTitle: String
+    let id: Int
+    
+    init(id: Int, indicatorText: String, title: String, instructions: String, image: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
+        
+        self.indicatorTitle = indicatorText
+        self.id = id
+        super.init(title: title, instructions: instructions, image: image, buttonTitle: buttonTitle, selectionDelegate: selectionDelegate)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic ViewController")
+    }
+}
+
 class OnboardingPagedViewController: PagingViewController {
     var titles: [String] = [
         "Welcome",
@@ -25,13 +42,13 @@ class OnboardingPagedViewController: PagingViewController {
         "Link"
     ]
     
-    lazy var onboardingWelcomeVC: InstructionViewController = InstructionViewController(title: "Welcome To Care For Me", instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have", image: nil, buttonTitle: "Next: Your Account", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
+    lazy var onboardingWelcomeVC: OnboardingViewController = OnboardingViewController(id: 0, indicatorText: "Welcome", title: "Welcome To Care For Me", instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have", image: nil, buttonTitle: "Next: Your Account", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
     
-    lazy var onboardingAccountVC: InstructionViewController = InstructionViewController(title: "Welcome To Account Setup", instructions: "Setting up your account is easy and allows for you to securely communicate with your companion", image: nil, buttonTitle: "Next: Link Companion", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
+    lazy var onboardingAccountVC: OnboardingViewController = OnboardingViewController(id: 1, indicatorText: "Account", title: "Welcome To Account Setup", instructions: "Setting up your account is easy and allows for you to securely communicate with your companion", image: nil, buttonTitle: "Next: Link Companion", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
     
-    lazy var onboardingCompanionVC: InstructionViewController = InstructionViewController(title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: TargetSelector(target: self, selector: #selector( activateViewController(_:))))
+    lazy var onboardingCompanionVC: OnboardingViewController = OnboardingViewController(id: 2, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: TargetSelector(target: self, selector: #selector( activateViewController(_:))))
     
-    lazy var viewControllers: [UIViewController] = {
+    lazy var viewControllers: [OnboardingViewController] = {
         onboardingWelcomeVC.instructionView.button.tag = 0
         onboardingAccountVC.instructionView.button.tag = 1
         onboardingCompanionVC.instructionView.button.tag = 2
