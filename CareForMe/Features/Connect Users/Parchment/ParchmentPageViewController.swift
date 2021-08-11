@@ -28,6 +28,8 @@ class OnboardingViewController: InstructionViewController {
         self.indicatorTitle = indicatorText
         self.id = id
         super.init(title: title, instructions: instructions, image: image, buttonTitle: buttonTitle, selectionDelegate: selectionDelegate)
+        
+        instructionView.button.tag = id
     }
     
     required init?(coder: NSCoder) {
@@ -36,11 +38,6 @@ class OnboardingViewController: InstructionViewController {
 }
 
 class OnboardingPagedViewController: PagingViewController {
-    var titles: [String] = [
-        "Welcome",
-        "Account",
-        "Link"
-    ]
     
     lazy var onboardingWelcomeVC: OnboardingViewController = OnboardingViewController(id: 0, indicatorText: "Welcome", title: "Welcome To Care For Me", instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have", image: nil, buttonTitle: "Next: Your Account", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
     
@@ -49,9 +46,6 @@ class OnboardingPagedViewController: PagingViewController {
     lazy var onboardingCompanionVC: OnboardingViewController = OnboardingViewController(id: 2, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: TargetSelector(target: self, selector: #selector( activateViewController(_:))))
     
     lazy var viewControllers: [OnboardingViewController] = {
-        onboardingWelcomeVC.instructionView.button.tag = 0
-        onboardingAccountVC.instructionView.button.tag = 1
-        onboardingCompanionVC.instructionView.button.tag = 2
         
         let linkButton: UIButton = .fullWidthButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
         
@@ -96,7 +90,7 @@ extension OnboardingPagedViewController: PagingViewControllerDataSource {
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        PagingIndexItem(index: index, title: titles[index])
+        PagingIndexItem(index: index, title: viewControllers[index].indicatorTitle)
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
