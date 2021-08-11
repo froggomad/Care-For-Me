@@ -58,7 +58,9 @@ class InstructionView: UIView {
     }()
     
     private lazy var viewStack: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [])
+        let stack: UIStackView = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fillProportionally
         return stack
     }()
     
