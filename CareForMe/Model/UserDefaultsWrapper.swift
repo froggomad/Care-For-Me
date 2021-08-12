@@ -36,7 +36,7 @@ struct UserDefault<T> {
 struct UserDefaultsConfig {
     
     @UserDefault(.hasOnboarded, defaultValue: false)
-    static var hasSeenAppIntroduction: Bool
+    static var hasOnboarded: Bool
     
     @UserDefault(.lastLoggedInUser, defaultValue: "")
     static var lastLoggedInUsername: String
