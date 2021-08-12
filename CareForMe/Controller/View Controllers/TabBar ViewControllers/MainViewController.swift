@@ -58,14 +58,24 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        let vc = OnboardingPagedViewController()
+        
+        showDetailViewController(vc, sender: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
     
     @objc func presentAddNeed() {
         let vc = AddCategoryViewController()
+        vc.providesPresentationContextTransitionStyle = true
         showDetailViewController(vc, sender: nil)
     }
     
@@ -107,7 +117,8 @@ extension MainViewController: CareAlertSelectionDelegate {
             case let .failure(error):
                 print("Error with notification permissions: \(error)")
             }
-            FirebaseMessagingController.shared.postMessage(category: need.category.title, title: need.title, text: need.message, toUserId: AuthService.shared.user!.userId)
+            let notification = CareNotification(id: UUID(), category: need.category.title, title: need.title, text: need.message, forUserId: AuthService.shared.user!.userId, date: Date())
+            FirebaseMessagingController.shared.postMessage(type: .unread, notification: notification)
         }
     }
     

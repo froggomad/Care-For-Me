@@ -12,25 +12,28 @@ class InstructionView: UIView {
     
     private var titleString: String
     private var instructions: String
-    private var image: Gif
+    private var image: Gif?
     private var caption: String?
     private var buttonTitle: String
     private var selectionDelegate: TargetSelector
     
     private lazy var mainStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleLabel, instructionLabel, imageStack, button])
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        let stack: UIStackView = .init(arrangedSubviews: [titleLabel, instructionLabel, imageStack, viewStack, button])
         stack.axis = .vertical
         stack.distribution = .equalCentering
         stack.alignment = .center
         stack.spacing = 8
-        return stack
+        let hStack = UIStackView(arrangedSubviews: [stack])
+        hStack.alignment = .top
+        hStack.distribution = .fill
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        return hStack
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .preferredFont(for: .title1)
+        label.font = .preferredFont(for: .body, weight: .bold)
         label.text = titleString
         label.numberOfLines = 0
         return label
@@ -39,7 +42,7 @@ class InstructionView: UIView {
     private lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .preferredFont(for: .body, weight: .bold)
+        label.font = .preferredFont(for: .body)
         label.text = instructions
         label.numberOfLines = 0
         return label
@@ -54,12 +57,21 @@ class InstructionView: UIView {
         return stack
     }()
     
+    private lazy var viewStack: UIStackView = {
+        let stack: UIStackView = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fillProportionally
+        return stack
+    }()
+    
     private lazy var imageView: JellyGifImageView = {
         let imageView = JellyGifImageView()
         imageView.frame.size.height = 100
         imageView.frame.size.width = imageView.frame.height
         imageView.contentMode = .scaleAspectFit
-        imageView.startGif(with: .name(image.rawValue))
+        if let image = image {
+            imageView.startGif(with: .name(image.rawValue))
+        }
         return imageView
     }()
     
@@ -71,14 +83,13 @@ class InstructionView: UIView {
         return label
     }()
     
-    private lazy var button: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle(buttonTitle, for: .normal)
-        button.addTarget(selectionDelegate.target, action: selectionDelegate.selector, for: .touchUpInside)
+    lazy var button: UIButton = {
+        let targetSelector = TargetSelector(target: selectionDelegate.target, selector: selectionDelegate.selector)
+        let button: UIButton = .fullWidthButton(with: buttonTitle, targetAndSelector: targetSelector)
         return button
     }()
     
-    init(title: String, instructions: String, imageFilename: Gif, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
+    init(title: String, instructions: String, imageFilename: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
         self.titleString = title
         self.instructions = instructions
         self.image = imageFilename
@@ -108,6 +119,10 @@ class InstructionView: UIView {
             mainStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding),
             mainStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
         ])
+    }
+    
+    func addView(_ view: UIView) {
+        viewStack.addArrangedSubview(view)
     }
     
 }

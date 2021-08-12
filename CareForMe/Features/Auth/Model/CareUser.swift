@@ -54,7 +54,3 @@ class CaregiverUser: CareUser {
         try super.init(from: decoder)
     }
 }
-
-func foo() {
-    CaregiverUser(userId: "String", displayName: "String")
-}

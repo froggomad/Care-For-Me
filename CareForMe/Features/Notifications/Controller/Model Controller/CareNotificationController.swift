@@ -38,7 +38,7 @@ class CareNotificationController: NSObject {
     }
     
     func getNotificationsFromAPI(for userId: String) {
-        dbController.observe(endpoint: APIRef.userNotifications(userId: userId).endpoint, event: .value) { [weak self] snapshot in
+        dbController.observe(endpoint: .userNotifications(userId: userId), event: .value) { [weak self] snapshot in
             guard let notification = try? snapshot.data(as: NotificationData.self) else {
                 return
             }

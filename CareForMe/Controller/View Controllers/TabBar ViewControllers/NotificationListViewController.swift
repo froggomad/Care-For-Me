@@ -101,6 +101,8 @@ extension NotificationListViewController: UITableViewDelegate {
         }
         
         guard let notification = notification else { return }
+        FirebaseMessagingController.shared.postMessage(type: .read, notification: notification)
+        
         NotificationCenter.default.post(name: .newReadNotification, object: nil, userInfo: ["careNotification": notification])
         let vc = NotificationDetailViewController(notification: notification)
         self.showDetailViewController(vc, sender: nil)

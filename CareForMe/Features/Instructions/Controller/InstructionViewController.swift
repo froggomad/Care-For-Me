@@ -11,23 +11,25 @@ class InstructionViewController: UIViewController {
     
     var titleText: String
     var instructions: String
-    var image: Gif
+    var image: Gif?
     var caption: String?
     var buttonTitle: String
+    var selectionDelegate: TargetSelector
     
     lazy var instructionView: InstructionView = InstructionView(title: titleText,
                                                                 instructions: instructions,
                                                                 imageFilename: image,
                                                                 caption: caption,
                                                                 buttonTitle: buttonTitle,
-                                                                selectionDelegate: TargetSelector(target: self, selector: #selector(openSettings)))
+                                                                selectionDelegate: selectionDelegate)
     
-    init(title: String, instructions: String, image: Gif, caption: String? = nil, buttonTitle: String) {
+    init(title: String, instructions: String, image: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
         self.titleText = title
         self.instructions = instructions
         self.image = image
         self.caption = caption
         self.buttonTitle = buttonTitle
+        self.selectionDelegate = selectionDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,14 +39,6 @@ class InstructionViewController: UIViewController {
     
     override func loadView() {
         view = instructionView
-    }
-    
-    @objc private func openSettings() {
-        AppSettingsController.openSettings()
-    }
-    
-    deinit {
-        print("deinit")
     }
     
 }
