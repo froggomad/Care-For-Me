@@ -40,26 +40,44 @@ class OnboardingViewController: InstructionViewController {
     }
 }
 
-class OnboardingPagedViewController: PagingViewController {
+final class OnboardingLinkVC: OnboardingViewController {
+    lazy var linkButton: UIButton = .fullWidthButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
     
-    lazy var onboardingWelcomeVC: OnboardingViewController = OnboardingViewController(id: 0, indicatorText: "Welcome", title: "Welcome To Care For Me", instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have", image: nil, buttonTitle: "Next: Your Account", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
-    
-    lazy var onboardingAccountVC: OnboardingViewController = OnboardingViewController(id: 1, indicatorText: "Account", title: "Welcome To Account Setup", instructions: "Setting up your account is easy and allows for you to securely communicate with your companion", image: nil, buttonTitle: "Next: Link Companion", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
-    
-    lazy var onboardingCompanionVC: OnboardingViewController = OnboardingViewController(id: 2, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: TargetSelector(target: self, selector: #selector( activateViewController(_:))))
-    
-    lazy var viewControllers: [OnboardingViewController] = {
-        
-        let linkButton: UIButton = .fullWidthButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
-        
-        let codeLabel: UILabel = UILabel()
+    lazy var codeLabel: UILabel = {
+        let codeLabel = UILabel()
         codeLabel.text = Int.randomString()
         codeLabel.font = .boldSystemFont(ofSize: 36)
         codeLabel.textAlignment = .center
+        return codeLabel
+    }()
+    
+    @objc private func displayCodeConfirmationViewController() {
+        let vc = ConfirmPINViewController()
+        showDetailViewController(vc, sender: nil)
+    }
+    
+    init(selectionDelegate: TargetSelector, additionalViews: [UIView] = []) {
         
-        onboardingCompanionVC.instructionView.addView(codeLabel)
-        onboardingCompanionVC.instructionView.addView(linkButton)
+        super.init(id: 2, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: selectionDelegate, additionalViews: additionalViews)
         
+        instructionView.addView(codeLabel)
+        instructionView.addView(linkButton)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view controller")
+    }
+}
+
+class OnboardingPagedViewController: PagingViewController {
+    
+    lazy var onboardingWelcomeVC: OnboardingViewController = OnboardingViewController(id: 0, indicatorText: "Welcome", title: "Welcome To Care For Me", instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have", image: nil, buttonTitle: "Next: Your Account", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))), additionalViews: [])
+    
+    lazy var onboardingAccountVC: OnboardingViewController = OnboardingViewController(id: 1, indicatorText: "Account", title: "Welcome To Account Setup", instructions: "Setting up your account is easy and allows for you to securely communicate with your companion", image: nil, buttonTitle: "Next: Link Companion", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))), additionalViews: [])
+    
+    lazy var onboardingCompanionVC: OnboardingLinkVC = OnboardingLinkVC(selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
+    
+    lazy var viewControllers: [OnboardingViewController] = {
         return [
             onboardingWelcomeVC,
             onboardingAccountVC,
@@ -78,11 +96,6 @@ class OnboardingPagedViewController: PagingViewController {
         menuPosition = .bottom
         
         view.backgroundColor = .white
-    }
-    
-    @objc private func displayCodeConfirmationViewController() {
-        let vc = ConfirmPINViewController()
-        showDetailViewController(vc, sender: nil)
     }
     
 }
