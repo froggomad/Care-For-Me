@@ -35,12 +35,12 @@ struct UserDefault<T> {
 
 struct UserDefaultsConfig {
     
-    @UserDefault(.hasOnboarded, defaultValue: false)
-    static var hasOnboarded: Bool
+    @UserDefault(.hasOnboarded, defaultValue: [AuthService.shared.user?.userId ?? "": false])
+    static var hasOnboarded: [String: Bool]
     
     @UserDefault(.lastLoggedInUser, defaultValue: "")
     static var lastLoggedInUsername: String
     
-    @UserDefault(.savePasswords, defaultValue: nil)
-    static var savePasswords: Bool?
+    @UserDefault(.savePasswords, defaultValue: [AuthService.shared.user?.userId ?? "": nil])
+    static var savePasswords: [String: Bool?]
 }

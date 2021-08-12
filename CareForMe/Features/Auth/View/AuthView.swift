@@ -61,8 +61,9 @@ class AuthView: UIView {
         self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
         self.emailAddressTextField.text = UserDefaultsConfig.lastLoggedInUsername
         
-        if let savePasswordSetting = UserDefaultsConfig.savePasswords {
-            if savePasswordSetting {
+        if let savePasswordSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""],
+           let setting = savePasswordSetting {
+            if setting {
             let credentialResult = KeychainOperator.retrieveSignInInfo(for: emailAddressTextField.text ?? "")
             switch credentialResult {
             case let .success(info):
@@ -115,8 +116,9 @@ class AuthView: UIView {
     }
     
     private func setPassword(_ emailAddress: String, _ password: String) {
-        if let savePasswordSetting = UserDefaultsConfig.savePasswords {
-            if savePasswordSetting {
+        if let savePasswordSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""],
+           let setting = savePasswordSetting {
+            if setting {
                 KeychainOperator.setPassword(for: emailAddress, with: password)
             }
         } else {

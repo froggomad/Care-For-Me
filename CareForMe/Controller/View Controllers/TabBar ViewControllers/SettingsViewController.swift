@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: ParentDetailViewController {
-
+    
     lazy var stack: UIStackView = {
         let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle], spacing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ class SettingsViewController: ParentDetailViewController {
     lazy var savePasswordsToggle: LabeledToggleSwitch = {
         LabeledToggleSwitch(title: "Save Passwords", toggleFunction: #selector(toggleSavePasswords), target: self)
     }()
-        
+    
     init(toggles: LabeledToggleSwitch...) {        
         
         super.init(nibName: nil, bundle: nil)
@@ -82,7 +82,9 @@ class SettingsViewController: ParentDetailViewController {
     }
     
     private func setSavePasswordsSwitchState() {
-        savePasswordsToggle.setSwitchState(on: UserDefaultsConfig.savePasswords ?? false)
+        guard let userDefaultsSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""] else { return }
+    
+        savePasswordsToggle.setSwitchState(on: userDefaultsSetting ?? false)
     }
     
     @objc private func toggleNotifications(_ sender: UISwitch) {
@@ -109,7 +111,8 @@ class SettingsViewController: ParentDetailViewController {
     }
     
     @objc private func toggleSavePasswords(_ sender: UISwitch) {
-        UserDefaultsConfig.savePasswords = sender.isOn
+        print()
+        UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""] = sender.isOn
     }
     
     func addToggle(toggle: LabeledToggleSwitch) {
