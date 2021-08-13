@@ -8,6 +8,8 @@
 import Foundation
 
 struct CalendarMonth {
+    private let monthsArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
     var numDaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
     /// represents current month
     var currentMonthIndex = Calendar.current.component(.month, from: Date())
@@ -21,6 +23,10 @@ struct CalendarMonth {
     var todaysDate = Calendar.current.component(.day, from: Date())
     /// value should be 0-6 (Sunday through Saturday)
     lazy var firstWeekDayOfMonth = getFirstWeekDay()
+    
+    var name: String {
+        monthsArr[currentMonthIndex]
+    }
     
     private func getFirstWeekDay() -> Int {
         let day = ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
@@ -38,6 +44,7 @@ struct CalendarMonth {
     init() {
         calculateLeapYear()
     }
+    
 }
 
 

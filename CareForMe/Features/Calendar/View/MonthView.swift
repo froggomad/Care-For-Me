@@ -8,9 +8,42 @@
 import UIKit
 
 class MonthView: UIView {
-    required init(_ month: Int) {
+    
+    private var month: CalendarMonth {
+        didSet {
+            monthLabel.text = month.name
+        }
+    }
+    
+    private lazy var hStack: UIStackView = {
+        let hStack = UIStackView(arrangedSubviews: [leftButton, monthLabel, rightButton])
+        hStack.distribution = .equalSpacing
+        hStack.alignment = .center
+        return hStack
+    }()
+    
+    private lazy var leftButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.init(systemName: "chevron.left.circle.fill"), for: .normal)
+        return button
+    }()
+    
+    private lazy var monthLabel: UILabel = {
+        let label = UILabel()
+        label.text = month.name
+        label.font = .preferredFont(for: .body, weight: .bold)
+        return label
+    }()
+    
+    private lazy var rightButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.init(systemName: "chevron.right.circle.fill"), for: .normal)
+        return button
+    }()
+    
+    required init(_ month: CalendarMonth) {
+        self.month = month
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
