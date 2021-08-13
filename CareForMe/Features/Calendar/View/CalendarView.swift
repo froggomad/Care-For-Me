@@ -8,7 +8,9 @@
 import UIKit
 
 class CalendarView: UIView {
-    private let month = CalendarMonth()
+    private var month: CalendarMonth
+    
+    private lazy var stack: UIStackView = .componentStack(elements: [monthView, weekView, dateCollectionView])
     
     private lazy var monthView = MonthView(month.currentMonthIndex)
     
@@ -20,14 +22,29 @@ class CalendarView: UIView {
     private unowned var dataSource: UICollectionViewDataSource!
     
     
-    required init(collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
+    required init(month: CalendarMonth, collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
+        self.month = month
         super.init(frame: .zero)
         self.delegate = collectionViewDelegate
         self.dataSource = collectionViewDataSource
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("programmatic view")
+    }
+    
+    private func setupViews() {
+        addSubview(stack)
+        constraints()
+    }
+    
+    private func constraints() {
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40)
+        ])
     }
     
 }
