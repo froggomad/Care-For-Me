@@ -8,6 +8,14 @@
 import UIKit
 
 class CalendarView: UIView {
+    private let month = CalendarMonth()
+    
+    private lazy var monthView = MonthView(month.currentMonthIndex)
+    
+    private lazy var weekView = WeekdayView()
+    
+    lazy var dateCollectionView = DateCollectionView(delegate: delegate, dataSource: dataSource)
+    
     private unowned var delegate: UICollectionViewDelegate!
     private unowned var dataSource: UICollectionViewDataSource!
     
@@ -22,11 +30,4 @@ class CalendarView: UIView {
         fatalError("programmatic view")
     }
     
-    private let month = CalendarMonth()
-    
-    private lazy var monthView = MonthView(month.currentMonthIndex)
-    
-    private lazy var weekView = WeekdayView()
-    
-    lazy var dateCollectionView = DateCollectionView(delegate: delegate, dataSource: dataSource)
 }
