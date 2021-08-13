@@ -56,8 +56,8 @@ class DateCollectionView: UIView {
         fatalError("programmatic view")
     }
     
-    weak var delegate: UICollectionViewDelegate?
-    weak var datasource: UICollectionViewDataSource?
+    private weak var delegate: UICollectionViewDelegate?
+    private weak var datasource: UICollectionViewDataSource?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
