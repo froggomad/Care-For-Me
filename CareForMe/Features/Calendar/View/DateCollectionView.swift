@@ -43,7 +43,6 @@ class DateCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    
 }
 
 class DateCollectionView: UIView {

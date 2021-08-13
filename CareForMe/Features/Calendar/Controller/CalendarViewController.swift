@@ -10,7 +10,7 @@ import UIKit
 class CalendarViewController: UIViewController {
     var month: CalendarMonth!
     
-    lazy var calView = CalendarView(collectionViewDelegate: self, collectionViewDataSource: self)
+    lazy var calView = CalendarView(month: month, collectionViewDelegate: self, collectionViewDataSource: self)
     
     override func loadView() {
         super.loadView()
