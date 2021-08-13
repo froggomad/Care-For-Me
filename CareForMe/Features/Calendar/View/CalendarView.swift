@@ -12,7 +12,7 @@ class CalendarView: UIView {
     
     private lazy var stack: UIStackView = .componentStack(elements: [monthView, weekView, dateCollectionView])
     
-    private lazy var monthView = MonthView(month.currentMonthIndex)
+    private lazy var monthView = MonthView(month)
     
     private lazy var weekView = WeekdayView()
     
