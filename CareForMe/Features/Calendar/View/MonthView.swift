@@ -32,7 +32,7 @@ class MonthView: UIView {
     private lazy var hStack: UIStackView = {
         let hStack = UIStackView(arrangedSubviews: [leftButton, monthLabel, rightButton])
         hStack.translatesAutoresizingMaskIntoConstraints = false
-        hStack.distribution = .fillEqually
+        hStack.distribution = .equalSpacing
         hStack.alignment = .center
         return hStack
     }()
@@ -78,9 +78,9 @@ class MonthView: UIView {
     private func constraints() {
         NSLayoutConstraint.activate([
             hStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
     }
     
