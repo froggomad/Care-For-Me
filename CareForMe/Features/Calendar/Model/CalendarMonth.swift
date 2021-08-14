@@ -35,7 +35,9 @@ struct CalendarMonth {
     }
     
     private func getFirstWeekDay() -> Int {
-        let day = ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
+        // currentMonthIndex is set to retrieve values from array
+        // this needs to be +1 to match the actual month's integer value
+        let day = ("\(currentYear)-\(currentMonthIndex + 1)-01".date?.firstDayOfTheMonth.weekday)!
         return day
     }
     
