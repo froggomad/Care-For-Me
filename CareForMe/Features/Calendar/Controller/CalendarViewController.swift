@@ -25,14 +25,14 @@ class CalendarViewController: UIViewController, DateChangeDelegate {
 
 // MARK: - Collection View Conformance -
 extension CalendarViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let date = indexPath.item + 1
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+        print(month.date(from: indexPath))
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = .red
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let date = indexPath.item + 1
+        print(month.date(from: indexPath))
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = .clear
     }
@@ -52,7 +52,7 @@ extension CalendarViewController: UICollectionViewDataSource {
             cell.isHidden = true
         } else {
             cell.isHidden = false
-            let calcDate = indexPath.item - month.firstWeekDayOfMonth + 2
+            let calcDate = month.day(from: indexPath)
             cell.text = "\(calcDate)"
             
             if calcDate < month.todaysDate && month.currentYear == month.presentYear && month.currentMonthIndex == month.presentMonthIndex {
