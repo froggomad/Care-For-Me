@@ -18,28 +18,42 @@ struct CalendarMonth {
     static let daysArr = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
     
     var numDaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
-    /// represents current month
+    /// represents month view is set to
     var currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
-    /// represents month in view
-    lazy var presentMonthIndex = currentMonthIndex
-    /// represents current year
+    /// represents current month from today's date
+    lazy var presentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
+    /// represents year view is set to
     var currentYear = Calendar.current.component(.year, from: Date())
-    /// represents year in view
-    lazy var presentYear = currentYear
+    /// represents the year from today's date
+    lazy var presentYear = Calendar.current.component(.year, from: Date())
     
     var todaysDate = Calendar.current.component(.day, from: Date())
     /// value should be 0-6 (Sunday through Saturday)
     lazy var firstWeekDayOfMonth = getFirstWeekDay()
     
+    func date(from indexPath: IndexPath) -> Date {
+        let date = date(from: day(from: indexPath))
+        return date
+    }
+    
+    func day(from indexPath: IndexPath) -> Int {
+        indexPath.item - getFirstWeekDay() + 2
+    }
+    
+    private func date(from day: Int) -> Date {
+        let date = Calendar.current.date(from: DateComponents(year: currentYear, month: currentMonthIndex + 1, day: day))
+        return date ?? Date()
+    }
+    
     var name: String {
-        Self.monthsArr[currentMonthIndex]
+        "\(Self.monthsArr[currentMonthIndex]) \(currentYear)"
     }
     
     init() {
         calculateLeapYear()
     }
     
-    private func getFirstWeekDay() -> Int {
+    func getFirstWeekDay() -> Int {
         // currentMonthIndex is set to retrieve values from array
         // this needs to be +1 to match the actual month's integer value
         let day = ("\(currentYear)-\(currentMonthIndex + 1)-01".date?.firstDayOfTheMonth.weekday)!
@@ -68,6 +82,8 @@ struct CalendarMonth {
                 currentYear -= 1
             }
         }
+        firstWeekDayOfMonth = getFirstWeekDay()
+        calculateLeapYear()
     }
     
 }
