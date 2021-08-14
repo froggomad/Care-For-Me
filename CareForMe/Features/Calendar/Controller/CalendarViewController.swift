@@ -21,7 +21,15 @@ class CalendarViewController: UIViewController {
 // MARK: - Collection View Conformance -
 extension CalendarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        let date = indexPath.item + 1
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = .red
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let date = indexPath.item + 1
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = .clear
     }
 }
 
@@ -57,7 +65,7 @@ extension CalendarViewController: UICollectionViewDataSource {
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width/7 - 8
+        let width = collectionView.frame.width/7 - 10
         let height: CGFloat = 40
         return CGSize(width: width, height: height)
     }
