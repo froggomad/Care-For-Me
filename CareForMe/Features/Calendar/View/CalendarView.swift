@@ -22,7 +22,7 @@ class CalendarView: UIView {
     private unowned var dataSource: UICollectionViewDataSource!
     
     
-    required init(month: CalendarMonth, collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
+    required init(month: CalendarMonth = .init(), collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
         self.month = month
         super.init(frame: .zero)
         self.delegate = collectionViewDelegate
