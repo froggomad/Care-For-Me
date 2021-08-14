@@ -28,7 +28,7 @@ extension CalendarViewController: UICollectionViewDelegate {
 extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numDays = month.numDaysInMonth[month.currentMonthIndex - 1] + month.firstWeekDayOfMonth - 1
+        let numDays = month.numDaysInMonth[month.currentMonthIndex] + month.firstWeekDayOfMonth - 1
         return numDays
     }
     
