@@ -29,7 +29,6 @@ extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numDays = month.numDaysInMonth[month.currentMonthIndex - 1] + month.firstWeekDayOfMonth - 1
-        print("days: \(numDays)")
         return numDays
     }
     
@@ -40,7 +39,7 @@ extension CalendarViewController: UICollectionViewDataSource {
             cell.isHidden = true
         } else {
             cell.isHidden = false
-            let calcDate = indexPath.item - month.firstWeekDayOfMonth - 2
+            let calcDate = indexPath.item - month.firstWeekDayOfMonth + 2
             cell.text = "\(calcDate)"
             
             if calcDate < month.todaysDate && month.currentYear == month.presentYear && month.currentMonthIndex == month.presentMonthIndex {
@@ -55,6 +54,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width/7 - 8

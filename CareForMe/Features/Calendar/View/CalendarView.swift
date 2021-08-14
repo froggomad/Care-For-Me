@@ -50,10 +50,9 @@ class CalendarView: UIView {
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            stack.heightAnchor.constraint(equalToConstant: 120),
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
             
-            dateCollectionView.topAnchor.constraint(equalTo: stack.bottomAnchor),
+            dateCollectionView.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 10),
             dateCollectionView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
             dateCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
             dateCollectionView.leadingAnchor.constraint(equalTo: stack.leadingAnchor)

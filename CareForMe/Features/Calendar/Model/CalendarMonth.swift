@@ -14,7 +14,7 @@ struct CalendarMonth {
     
     var numDaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
     /// represents current month
-    var currentMonthIndex = Calendar.current.component(.month, from: Date())
+    var currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
     /// represents month in view
     lazy var presentMonthIndex = currentMonthIndex
     /// represents current year
@@ -30,9 +30,12 @@ struct CalendarMonth {
         Self.monthsArr[currentMonthIndex]
     }
     
+    init() {
+        calculateLeapYear()
+    }
+    
     private func getFirstWeekDay() -> Int {
         let day = ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
-        //return day == 7 ? 1 : day
         return day
     }
     
@@ -41,10 +44,6 @@ struct CalendarMonth {
         if currentMonthIndex == 2 && currentYear % 4 == 0 {
             numDaysInMonth[currentMonthIndex-1] = 29
         }
-    }
-    
-    init() {
-        calculateLeapYear()
     }
     
 }

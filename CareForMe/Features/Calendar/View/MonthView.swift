@@ -18,7 +18,7 @@ class MonthView: UIView {
     private lazy var hStack: UIStackView = {
         let hStack = UIStackView(arrangedSubviews: [leftButton, monthLabel, rightButton])
         hStack.translatesAutoresizingMaskIntoConstraints = false
-        hStack.distribution = .equalSpacing
+        hStack.distribution = .fillEqually
         hStack.alignment = .center
         return hStack
     }()
@@ -33,6 +33,7 @@ class MonthView: UIView {
         let label = UILabel()
         label.text = month.name
         label.font = .preferredFont(for: .body, weight: .bold)
+        label.textAlignment = .center
         return label
     }()
     

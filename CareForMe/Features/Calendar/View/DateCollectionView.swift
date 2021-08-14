@@ -16,7 +16,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints=false
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -60,6 +60,8 @@ class DateCollectionView: UIView {
         cv.dataSource = datasource
         cv.backgroundColor = .clear
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.showsHorizontalScrollIndicator = false
+        cv.allowsMultipleSelection = false
         return cv
     }()
 

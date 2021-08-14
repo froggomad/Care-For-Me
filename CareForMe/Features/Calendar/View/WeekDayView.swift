@@ -11,7 +11,7 @@ class WeekdayView: UIView {
     
     var stack: UIStackView = {
         let stack = UIStackView()
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
