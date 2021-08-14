@@ -8,7 +8,9 @@
 import Foundation
 
 struct CalendarMonth {
-    private let monthsArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    static let monthsArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
+    static let daysArr = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
     
     var numDaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
     /// represents current month
@@ -25,7 +27,7 @@ struct CalendarMonth {
     lazy var firstWeekDayOfMonth = getFirstWeekDay()
     
     var name: String {
-        monthsArr[currentMonthIndex]
+        Self.monthsArr[currentMonthIndex]
     }
     
     private func getFirstWeekDay() -> Int {
