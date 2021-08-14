@@ -61,6 +61,7 @@ class DateCollectionView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = .zero
         layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(DateCollectionViewCell.self, forCellWithReuseIdentifier: DateCollectionViewCell.reuseIdentifier)

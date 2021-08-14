@@ -32,7 +32,7 @@ class WeekdayView: UIView {
             label.text = day
             label.textAlignment = .center
             label.textColor = .label
-            label.frame.size.width = frame.size.width/7 - 10
+            label.frame.size.width = frame.width/7
             stack.addArrangedSubview(label)
         }
         constraints()
