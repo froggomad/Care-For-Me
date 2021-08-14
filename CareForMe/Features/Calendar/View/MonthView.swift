@@ -7,9 +7,23 @@
 
 import UIKit
 
+protocol DateChangeDelegate: AnyObject {
+    var month: CalendarMonth { get set }
+    var calView: CalendarView { get }
+    func changeDate(direction: CalendarMonth.MonthDirection)
+}
+
+extension DateChangeDelegate {
+    func changeDate(direction: CalendarMonth.MonthDirection) {
+        month.changeDate(direction: direction)
+        calView.dateCollectionView.collectionView.reloadData()
+    }
+}
+
 class MonthView: UIView {
+    private unowned var delegate: DateChangeDelegate!
     
-    private var month: CalendarMonth {
+    var month: CalendarMonth {
         didSet {
             monthLabel.text = month.name
         }
@@ -26,6 +40,7 @@ class MonthView: UIView {
     private lazy var leftButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(.init(systemName: "chevron.left.circle.fill"), for: .normal)
+        button.addTarget(self, action: #selector(changeDate(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -40,11 +55,13 @@ class MonthView: UIView {
     private lazy var rightButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(.init(systemName: "chevron.right.circle.fill"), for: .normal)
+        button.addTarget(self, action: #selector(changeDate(_:)), for: .touchUpInside)
         return button
     }()
     
-    required init(_ month: CalendarMonth) {
+    required init(_ month: CalendarMonth, delegate: DateChangeDelegate) {
         self.month = month
+        self.delegate = delegate
         super.init(frame: .zero)
         setupViews()
     }
@@ -65,5 +82,14 @@ class MonthView: UIView {
             hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
         ])
+    }
+    
+    @objc private func changeDate(_ sender: UIButton) {
+        if sender == leftButton {
+            delegate.changeDate(direction: .backward)
+        } else {
+            delegate.changeDate(direction: .forward)
+        }
+        monthLabel.text = month.name
     }
 }

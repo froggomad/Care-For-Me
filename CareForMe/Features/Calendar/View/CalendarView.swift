@@ -8,7 +8,12 @@
 import UIKit
 
 class CalendarView: UIView {
-    private var month: CalendarMonth
+    var month: CalendarMonth {
+        didSet {
+            monthView.month = month
+        }
+    }
+    private unowned var monthChangeDelegate: DateChangeDelegate!
     
     private unowned var delegate: UICollectionViewDelegate!
     private unowned var dataSource: UICollectionViewDataSource!
@@ -18,7 +23,7 @@ class CalendarView: UIView {
         return stack
     }()
     
-    private lazy var monthView = MonthView(month)
+    private lazy var monthView = MonthView(month, delegate: monthChangeDelegate)
     
     private lazy var weekView = WeekdayView()
     
@@ -28,7 +33,8 @@ class CalendarView: UIView {
         return dateView
     }()
         
-    required init(month: CalendarMonth = .init(), collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
+    required init(month: CalendarMonth = .init(), collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource, monthChangeDelegate: DateChangeDelegate) {
+        self.monthChangeDelegate = monthChangeDelegate
         self.month = month
         super.init(frame: .zero)
         self.delegate = collectionViewDelegate

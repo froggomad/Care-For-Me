@@ -7,10 +7,15 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
-    var month: CalendarMonth = .init()
+class CalendarViewController: UIViewController, DateChangeDelegate {
     
-    lazy var calView = CalendarView(month: month, collectionViewDelegate: self, collectionViewDataSource: self)
+    var month: CalendarMonth = .init() {
+        didSet {
+            calView.month = month
+        }
+    }
+    
+    lazy var calView = CalendarView(month: month, collectionViewDelegate: self, collectionViewDataSource: self, monthChangeDelegate: self)
     
     override func loadView() {
         super.loadView()

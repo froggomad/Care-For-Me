@@ -8,6 +8,11 @@
 import Foundation
 
 struct CalendarMonth {
+    enum MonthDirection {
+        case forward
+        case backward
+    }
+    
     static let monthsArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     static let daysArr = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
@@ -48,9 +53,24 @@ struct CalendarMonth {
         }
     }
     
+    mutating func changeDate(direction: MonthDirection) {
+        switch direction {
+        case .forward:
+            currentMonthIndex += 1
+            if currentMonthIndex > 11 {
+                currentMonthIndex = 0
+                currentYear += 1
+            }
+        case .backward:
+            currentMonthIndex -= 1
+            if currentMonthIndex < 0 {
+                currentMonthIndex = 11
+                currentYear -= 1
+            }
+        }
+    }
+    
 }
-
-
 
 extension Date {
     var weekday: Int {
