@@ -20,13 +20,13 @@ class DateCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    required init() {
-        super.init(frame: .zero)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("programmatic view")
+    var text: String? {
+        didSet {
+            if oldValue == nil {
+                setupViews()
+            }
+            label.text = text
+        }
     }
     
     private func setupViews() {
@@ -37,9 +37,9 @@ class DateCollectionViewCell: UICollectionViewCell {
         addSubview(label)
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            label.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             label.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            label.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            label.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
         ])
     }
     
@@ -58,8 +58,8 @@ class DateCollectionView: UIView {
         cv.register(DateCollectionViewCell.self, forCellWithReuseIdentifier: DateCollectionViewCell.reuseIdentifier)
         cv.delegate = delegate
         cv.dataSource = datasource
-        cv.translatesAutoresizingMaskIntoConstraints = false
         cv.backgroundColor = .clear
+        cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
 
@@ -67,6 +67,21 @@ class DateCollectionView: UIView {
         super.init(frame: .zero)
         self.delegate = delegate
         self.datasource = dataSource
+        setupViews()
+    }
+    
+    private func setupViews() {
+        addSubview(collectionView)
+        constraints()
+    }
+    
+    private func constraints() {
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
+        ])
     }
     
     required init?(coder: NSCoder) {

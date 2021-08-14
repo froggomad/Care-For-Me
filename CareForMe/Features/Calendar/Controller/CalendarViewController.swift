@@ -8,7 +8,7 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    var month: CalendarMonth!
+    var month: CalendarMonth = .init()
     
     lazy var calView = CalendarView(month: month, collectionViewDelegate: self, collectionViewDataSource: self)
     
@@ -18,14 +18,19 @@ class CalendarViewController: UIViewController {
     }
 }
 
+// MARK: - Collection View Conformance -
 extension CalendarViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+    }
 }
 
 extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        month.numDaysInMonth[month.currentMonthIndex - 1] + month.firstWeekDayOfMonth - 1
+        let numDays = month.numDaysInMonth[month.currentMonthIndex - 1] + month.firstWeekDayOfMonth - 1
+        print("days: \(numDays)")
+        return numDays
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,7 +41,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         } else {
             cell.isHidden = false
             let calcDate = indexPath.item - month.firstWeekDayOfMonth - 2
-            cell.label.text = "\(calcDate)"
+            cell.text = "\(calcDate)"
             
             if calcDate < month.todaysDate && month.currentYear == month.presentYear && month.currentMonthIndex == month.presentMonthIndex {
                 cell.isUserInteractionEnabled = false
@@ -48,5 +53,12 @@ extension CalendarViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+}
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width/7 - 8
+        let height: CGFloat = 40
+        return CGSize(width: width, height: height)
     }
 }

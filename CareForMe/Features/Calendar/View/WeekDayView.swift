@@ -9,16 +9,16 @@ import UIKit
 
 class WeekdayView: UIView {
     
-    var stack: UIStackView {
+    var stack: UIStackView = {
         let stack = UIStackView()
         stack.distribution = .equalSpacing
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
-    }
+    }()
     
     required init() {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -26,6 +26,7 @@ class WeekdayView: UIView {
     }
     
     private func setupViews() {
+        addSubview(stack)
         for day in CalendarMonth.daysArr {
             let label = UILabel()
             label.text = day
@@ -33,7 +34,6 @@ class WeekdayView: UIView {
             label.textColor = .label
             stack.addArrangedSubview(label)
         }
-        addSubview(stack)
         constraints()
     }
     

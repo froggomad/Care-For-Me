@@ -17,6 +17,7 @@ class MonthView: UIView {
     
     private lazy var hStack: UIStackView = {
         let hStack = UIStackView(arrangedSubviews: [leftButton, monthLabel, rightButton])
+        hStack.translatesAutoresizingMaskIntoConstraints = false
         hStack.distribution = .equalSpacing
         hStack.alignment = .center
         return hStack
@@ -44,9 +45,24 @@ class MonthView: UIView {
     required init(_ month: CalendarMonth) {
         self.month = month
         super.init(frame: .zero)
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("programmatic view")
+    }
+    
+    private func setupViews() {
+        addSubview(hStack)
+        constraints()
+    }
+    
+    private func constraints() {
+        NSLayoutConstraint.activate([
+            hStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+        ])
     }
 }
