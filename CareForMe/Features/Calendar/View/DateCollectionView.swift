@@ -20,11 +20,18 @@ class DateCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupViews()
+        layer.cornerRadius = 5
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
+    
     var text: String? {
         didSet {
-            if oldValue == nil {
-                setupViews()
-            }
             label.text = text
         }
     }
@@ -53,6 +60,7 @@ class DateCollectionView: UIView {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = .zero
+        layout.minimumInteritemSpacing = 0
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(DateCollectionViewCell.self, forCellWithReuseIdentifier: DateCollectionViewCell.reuseIdentifier)

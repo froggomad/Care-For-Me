@@ -58,7 +58,7 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        let vc = OnboardingPagedViewController()
+        let vc = CalendarViewController()
         
         showDetailViewController(vc, sender: nil)
     }

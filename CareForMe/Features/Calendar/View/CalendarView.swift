@@ -13,7 +13,10 @@ class CalendarView: UIView {
     private unowned var delegate: UICollectionViewDelegate!
     private unowned var dataSource: UICollectionViewDataSource!
     
-    private lazy var stack: UIStackView = .componentStack(elements: [monthView, weekView])
+    private lazy var stack: UIStackView = {
+        let stack: UIStackView = .componentStack(elements: [monthView, weekView], spacing: 20)
+        return stack
+    }()
     
     private lazy var monthView = MonthView(month)
     
@@ -24,7 +27,6 @@ class CalendarView: UIView {
         dateView.translatesAutoresizingMaskIntoConstraints = false
         return dateView
     }()
-    
         
     required init(month: CalendarMonth = .init(), collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
         self.month = month
