@@ -70,7 +70,13 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         self.textFieldView.displayStatusMessage()
     }
     
-    /// removes a character from 1 position behind the cursor and returns the result
+    /// handles when backspace is tapped in textField
+    /// - no text selected
+    ///   - removes a character from 1 position behind the
+    ///   cursor and returns the result
+    /// - text selected
+    ///   - removes all of selected string, leaving
+    ///   remaining string intact and returns the result
     func backSpace() -> String {
         let textField = textFieldView.textField
         guard var text = text,
@@ -80,9 +86,18 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         
         let offset = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
         
-        let index = text.index(text.startIndex, offsetBy: offset-1)
-        #warning("Intermittent crash here when selecting all text and using backspace")
-        text.remove(at: index)
+        if selectedRange.isEmpty {
+            let index = text.index(text.startIndex, offsetBy: offset-1)
+            text.remove(at: index)
+        } else {
+            let beginningIndex = text.index(text.startIndex, offsetBy: offset)
+            
+            let endingOffset = textField.offset(from: selectedRange.start, to: selectedRange.end)
+            let endingIndex = text.index(beginningIndex, offsetBy: endingOffset - 1)
+            
+            text.removeSubrange(beginningIndex...endingIndex)
+        }
+        
         return text
     }
     
