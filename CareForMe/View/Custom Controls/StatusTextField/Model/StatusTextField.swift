@@ -81,6 +81,7 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         let offset = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
         
         let index = text.index(text.startIndex, offsetBy: offset-1)
+        #warning("Intermittent crash here when selecting all text and using backspace")
         text.remove(at: index)
         return text
     }
