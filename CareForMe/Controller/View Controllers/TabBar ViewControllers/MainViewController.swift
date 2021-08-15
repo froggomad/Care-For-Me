@@ -58,9 +58,6 @@ class MainViewController: ParentDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        let vc = CalendarViewController()
-        
-        showDetailViewController(vc, sender: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
