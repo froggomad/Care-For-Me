@@ -31,6 +31,10 @@ struct CalendarMonth {
     /// value should be 0-6 (Sunday through Saturday)
     lazy var firstWeekDayOfMonth = getFirstWeekDay()
     
+    private var month: Int {
+        currentMonthIndex + 1
+    }
+    
     func date(from indexPath: IndexPath) -> Date {
         let date = date(from: day(from: indexPath))
         return date
@@ -41,7 +45,7 @@ struct CalendarMonth {
     }
     
     private func date(from day: Int) -> Date {
-        let date = Calendar.current.date(from: DateComponents(year: currentYear, month: currentMonthIndex + 1, day: day))
+        let date = Calendar.current.date(from: DateComponents(year: currentYear, month: month, day: day))
         return date ?? Date()
     }
     
@@ -54,9 +58,7 @@ struct CalendarMonth {
     }
     
     func getFirstWeekDay() -> Int {
-        // currentMonthIndex is set to retrieve values from array
-        // this needs to be +1 to match the actual month's integer value
-        let day = ("\(currentYear)-\(currentMonthIndex + 1)-01".date?.firstDayOfTheMonth.weekday)!
+        let day = ("\(currentYear)-\(month)-01".date?.firstDayOfTheMonth.weekday)!
         return day
     }
     
