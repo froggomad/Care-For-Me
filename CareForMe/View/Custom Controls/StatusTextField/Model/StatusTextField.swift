@@ -70,7 +70,13 @@ class StatusTextField<T: StatusTextFieldDelegate>: UIControl {
         self.textFieldView.displayStatusMessage()
     }
     
-    /// removes a character from 1 position behind the cursor and returns the result
+    /// handles when backspace is tapped in textField
+    /// - no text selected
+    ///   - removes a character from 1 position behind the
+    ///   cursor and returns the result
+    /// - text selected
+    ///   - removes all of selected string, leaving
+    ///   remaining string intact and returns the result
     func backSpace() -> String {
         let textField = textFieldView.textField
         guard var text = text,
