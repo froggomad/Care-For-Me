@@ -23,6 +23,11 @@ class SettingsViewController: ParentDetailViewController {
         LabeledToggleSwitch(title: "Save Passwords", toggleFunction: #selector(toggleSavePasswords), target: self)
     }()
     
+    lazy var signOutButton: UIButton = {
+        let targetSelector = TargetSelector(target: self, selector: #selector(signOut))
+        return .fullWidthButton(with: "Sign Out", targetAndSelector: targetSelector)
+    }()
+    
     init(toggles: LabeledToggleSwitch...) {        
         
         super.init(nibName: nil, bundle: nil)
@@ -38,6 +43,7 @@ class SettingsViewController: ParentDetailViewController {
     
     private func subviews() {
         view.addSubview(stack)
+        view.addSubview(signOutButton)
         constraints()
     }
     
@@ -46,8 +52,12 @@ class SettingsViewController: ParentDetailViewController {
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+            stack.bottomAnchor.constraint(equalTo: signOutButton.safeAreaLayoutGuide.topAnchor, constant: -padding),
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            
+            signOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            signOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            signOutButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20)
         ])
     }
     
@@ -55,6 +65,10 @@ class SettingsViewController: ParentDetailViewController {
         title = "Settings"
         tabBarItem.image = UIImage(systemName: "gearshape")
         tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
+    }
+    
+    @objc private func signOut() {
+        AuthService.shared.signOut()
     }
     
     override func viewDidLoad() {
