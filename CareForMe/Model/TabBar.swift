@@ -62,7 +62,9 @@ class MainTabController: UITabBarController {
     }
     
     private func listenForLogout() {
-        NotificationCenter.default.addObserver(forName: .userLoggedOut, object: nil, queue: .main) { _ in
+        NotificationCenter.default.addObserver(forName: .userLoggedOut, object: nil, queue: .main) { [weak self] _ in
+            guard let self = self else { return }
+            
             let loginVC = LoginViewController()
             loginVC.modalPresentationStyle = .fullScreen
             loginVC.modalTransitionStyle = .flipHorizontal
