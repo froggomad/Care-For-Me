@@ -31,9 +31,11 @@ class AuthService {
     func listenForAuthStateChanges() {
            Auth.auth().addStateDidChangeListener { _, user in
              if let user = user {
-               print(user.displayName ?? "anonymous user", "is logged in")
+                NotificationCenter.default.post(name: .userLoggedIn, object: nil)
+                print(user.displayName ?? "anonymous user", "is logged in")
              } else {
-               print("nobody is logged in")
+                NotificationCenter.default.post(name: .userLoggedOut, object: nil)
+                print("nobody is logged in")
              }
            }
        }
@@ -157,5 +159,15 @@ class EmailInput {
         let absoluteString = url.absoluteString
         guard let index = absoluteString.range(of: "mailto:") else { return nil }
         return String(url.absoluteString.suffix(from: index.upperBound))
+    }
+}
+
+extension Notification.Name {
+    static var userLoggedOut: Notification.Name {
+        .init("loggedOut")
+    }
+    
+    static var userLoggedIn: Notification.Name {
+        .init("loggedIn")
     }
 }
