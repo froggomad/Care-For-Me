@@ -22,6 +22,13 @@ class LoginViewController: UIViewController {
         self.view = loginView
     }
     
+    private func presentTabBar() {
+        let tbc = TabBar.createMainTabBar()
+        tbc.modalTransitionStyle = .flipHorizontal
+        tbc.modalPresentationStyle = .fullScreen
+        self.present(tbc, animated: true)
+    }
+    
 }
 
 extension LoginViewController: LoginProcessable {
@@ -30,7 +37,12 @@ extension LoginViewController: LoginProcessable {
         guard let emailAddress = loginView.emailAddress,
               let password = loginView.password else { return }
         authService.loginWithEmail(emailAddress, password: password) { result in
-            print(result)
+            switch result {
+            case .success:
+                self.presentTabBar()
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
         }
     }
 }
