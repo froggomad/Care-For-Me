@@ -28,29 +28,6 @@ enum TabBar: Int {
     }
 }
 
-enum NavigationViewController {
-    
-    case main
-    case notifications
-    case settings
-    
-    var rootViewController: UIViewController {
-        switch self {
-        case .main:
-            return MainViewController()
-        case .notifications:
-            return NotificationListViewController()
-        case .settings:
-            return SettingsViewController()
-        }
-    }
-    
-    var navigationController: UINavigationController {
-        UINavigationController(rootViewController: rootViewController)
-    }
-    
-}
-
 class MainTabController: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -71,4 +48,27 @@ class MainTabController: UITabBarController {
             self.present(loginVC, animated: true)
         }
     }
+}
+
+private enum NavigationViewController {
+    
+    case main
+    case notifications
+    case settings
+    
+    var rootViewController: UIViewController {
+        switch self {
+        case .main:
+            return MainViewController()
+        case .notifications:
+            return NotificationListViewController()
+        case .settings:
+            return SettingsViewController()
+        }
+    }
+    
+    var navigationController: UINavigationController {
+        UINavigationController(rootViewController: rootViewController)
+    }
+    
 }
