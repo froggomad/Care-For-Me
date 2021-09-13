@@ -24,7 +24,19 @@ class AuthService {
     
     // MARK: - Singleton -
     static let shared = AuthService()
-    private init() { }
+    private init() {
+        listenForAuthStateChanges()
+    }
+    
+    func listenForAuthStateChanges() {
+           Auth.auth().addStateDidChangeListener { _, user in
+             if let user = user {
+               print(user.displayName ?? "anonymous user", "is logged in")
+             } else {
+               print("nobody is logged in")
+             }
+           }
+       }
     
     func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
         
