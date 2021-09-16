@@ -32,10 +32,9 @@ class LoginViewController: UIViewController {
     }
     
     private func presentTabBar() {
-        let tbc = TabBar.createMainTabBar()
-        tbc.modalTransitionStyle = .flipHorizontal
-        tbc.modalPresentationStyle = .fullScreen
-        self.present(tbc, animated: true)
+        let tabBarController = TabBar.createMainTabBar()
+        tabBarController.modalTransitionStyle = .flipHorizontal
+        self.present(tabBarController, animated: true)
     }
     
 }
