@@ -22,6 +22,15 @@ class LoginViewController: UIViewController {
         self.view = loginView
     }
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .fullScreen
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
+    
     private func presentTabBar() {
         let tbc = TabBar.createMainTabBar()
         tbc.modalTransitionStyle = .flipHorizontal

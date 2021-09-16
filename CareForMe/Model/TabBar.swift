@@ -14,6 +14,7 @@ enum TabBar: Int {
     
     static func createMainTabBar() -> MainTabController {
         let tabBar = MainTabController()
+        tabBar.modalPresentationStyle = .fullScreen
         tabBar.viewControllers = [
             NavigationViewController.main.navigationController,
             NavigationViewController.notifications.navigationController,
