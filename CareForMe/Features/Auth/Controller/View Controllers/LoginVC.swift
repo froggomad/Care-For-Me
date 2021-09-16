@@ -11,12 +11,12 @@ protocol LoginProcessable: AnyObject {
     func processLogin(email: String, password: String)
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, AuthControllable {
     
     private let authService = AuthService.shared
-    private lazy var authDelegate = AuthDelegate(self)
+    lazy var authDelegate = AuthDelegate(self)
     
-    private lazy var loginView: AuthView =  AuthView(delegate: authDelegate)
+    lazy var loginView: AuthView =  AuthView(delegate: authDelegate)
     
     override func loadView() {
         self.view = loginView

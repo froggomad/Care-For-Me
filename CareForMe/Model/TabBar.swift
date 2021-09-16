@@ -43,7 +43,7 @@ class MainTabController: UITabBarController {
         NotificationCenter.default.addObserver(forName: .userLoggedOut, object: nil, queue: .main) { [weak self] _ in
             guard let self = self else { return }
             
-            let loginVC = LoginViewController()
+            let loginVC = AuthViewController(authType: .login)
             loginVC.modalTransitionStyle = .flipHorizontal
             self.present(loginVC, animated: true)
         }

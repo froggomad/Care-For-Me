@@ -11,10 +11,10 @@ protocol RegistrationProcessable: AnyObject {
     func processRegistration(email: String, password: String)
 }
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, AuthControllable {
     
     private let authService = AuthService.shared
-    private lazy var authDelegate = AuthDelegate(self)
+    lazy var authDelegate = AuthDelegate(self)
     
     private lazy var registrationView = AuthView(delegate: authDelegate)
     

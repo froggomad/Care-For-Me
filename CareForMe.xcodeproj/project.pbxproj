@@ -48,6 +48,7 @@
 		AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD426A872B800019BE8 /* StatusTextField.swift */; };
 		AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */; };
 		AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7C8E626A53C820008EFFE /* TargetSelector.swift */; };
+		AAC86EE626F3C44C00FB4A14 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC86EE526F3C44C00FB4A14 /* AuthViewController.swift */; };
 		AAC8EBE926C09A2A005FC455 /* ConfirmPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC8EBE826C09A2A005FC455 /* ConfirmPinView.swift */; };
 		AAC8EBEB26C0F3EB005FC455 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC8EBEA26C0F3EB005FC455 /* Pin.swift */; };
 		AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */; };
@@ -181,6 +182,7 @@
 		AAC5CCD426A872B800019BE8 /* StatusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
 		AAC5CCD726A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
 		AAC7C8E626A53C820008EFFE /* TargetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSelector.swift; sourceTree = "<group>"; };
+		AAC86EE526F3C44C00FB4A14 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		AAC8EBE826C09A2A005FC455 /* ConfirmPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinView.swift; sourceTree = "<group>"; };
 		AAC8EBEA26C0F3EB005FC455 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		AAC9D176269652E200DB3FA5 /* LabeledToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledToggle.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			children = (
 				AA5068AF26918F00006F1126 /* RegistrationVC.swift */,
 				AAC06D572693C34600408AE3 /* LoginVC.swift */,
+				AAC86EE526F3C44C00FB4A14 /* AuthViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1186,6 +1189,7 @@
 				AAC07F49267A497800ADD525 /* UIColor+named.swift in Sources */,
 				AAE262BE2679530500ABC882 /* MainViewController.swift in Sources */,
 				AABF3D33269C0C22008A2CC2 /* AddNeedToCategoryViewControllerView.swift in Sources */,
+				AAC86EE626F3C44C00FB4A14 /* AuthViewController.swift in Sources */,
 				AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */,
 				AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */,
 				AAD6D14326C5FC03007595CA /* CalendarView.swift in Sources */,
