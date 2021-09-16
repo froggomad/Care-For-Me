@@ -46,7 +46,7 @@ class AuthView: UIView {
     private lazy var passwordTextField = StatusTextField<PasswordStatusTextFieldDelegate>(textFieldType: .secure, type: .information, exampleText: "Password", instructionText: "Please Enter a Password")
     
     private lazy var processAuthButton: UIButton = {
-        let button: UIButton = .fullWidthButton()
+        let button: UIButton = .standardCFMButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(isLogin ? "Login" : "Registration", for: .normal)
         button.addTarget(self, action: #selector(updateDelegate), for: .touchUpInside)

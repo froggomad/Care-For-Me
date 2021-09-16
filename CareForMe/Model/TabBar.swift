@@ -44,7 +44,6 @@ class MainTabController: UITabBarController {
             guard let self = self else { return }
             
             let loginVC = LoginViewController()
-            loginVC.modalPresentationStyle = .fullScreen
             loginVC.modalTransitionStyle = .flipHorizontal
             self.present(loginVC, animated: true)
         }

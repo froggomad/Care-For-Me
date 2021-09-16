@@ -18,6 +18,15 @@ class RegistrationViewController: UIViewController {
     
     private lazy var registrationView = AuthView(delegate: authDelegate)
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .fullScreen
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
+    
     override func loadView() {
         self.view = registrationView
     }

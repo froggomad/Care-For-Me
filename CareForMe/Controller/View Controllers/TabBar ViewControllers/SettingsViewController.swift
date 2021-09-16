@@ -25,7 +25,7 @@ class SettingsViewController: ParentDetailViewController {
     
     lazy var signOutButton: UIButton = {
         let targetSelector = TargetSelector(target: self, selector: #selector(signOut))
-        return .fullWidthButton(with: "Sign Out", targetAndSelector: targetSelector)
+        return .standardCFMButton(with: "Sign Out", targetAndSelector: targetSelector)
     }()
     
     init(toggles: LabeledToggleSwitch...) {        

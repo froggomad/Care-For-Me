@@ -8,13 +8,10 @@
 import UIKit
 
 extension UIButton {
-    static func fullWidthButton(horizontalPadding: CGFloat = 20, with title: String? = nil, color: UIColor = .named(.link), targetAndSelector: TargetSelector? = nil) -> UIButton {
+    static func standardCFMButton(horizontalPadding: CGFloat = 20, with title: String? = nil, color: UIColor = .named(.link), targetAndSelector: TargetSelector? = nil) -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
-        let width = UIScreen.main.bounds.width - horizontalPadding - 20
-        button.widthAnchor.constraint(equalToConstant: width - horizontalPadding).isActive = true
         
         button.layer.cornerRadius = 10
         button.setTitle(title, for: .normal)
