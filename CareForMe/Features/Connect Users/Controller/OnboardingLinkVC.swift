@@ -8,7 +8,7 @@
 import UIKit
 
 final class OnboardingLinkVC: OnboardingViewController {
-    lazy var linkButton: UIButton = .fullWidthButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
+    lazy var linkButton: UIButton = .standardCFMButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
     
     lazy var codeLabel: UILabel = {
         let codeLabel = UILabel()

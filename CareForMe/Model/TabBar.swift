@@ -12,8 +12,9 @@ enum TabBar: Int {
     case notifications
     case settings
     
-    static func createMainTabBar() -> UITabBarController {
-        let tabBar = UITabBarController()
+    static func createMainTabBar() -> MainTabController {
+        let tabBar = MainTabController()
+        tabBar.modalPresentationStyle = .fullScreen
         tabBar.viewControllers = [
             NavigationViewController.main.navigationController,
             NavigationViewController.notifications.navigationController,
@@ -28,7 +29,28 @@ enum TabBar: Int {
     }
 }
 
-enum NavigationViewController {
+class MainTabController: UITabBarController {
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        listenForLogout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic controller")
+    }
+    
+    private func listenForLogout() {
+        NotificationCenter.default.addObserver(forName: .userLoggedOut, object: nil, queue: .main) { [weak self] _ in
+            guard let self = self else { return }
+            
+            let loginVC = LoginViewController()
+            loginVC.modalTransitionStyle = .flipHorizontal
+            self.present(loginVC, animated: true)
+        }
+    }
+}
+
+private enum NavigationViewController {
     
     case main
     case notifications

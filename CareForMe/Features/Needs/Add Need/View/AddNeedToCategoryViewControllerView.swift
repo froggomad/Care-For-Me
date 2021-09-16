@@ -74,7 +74,7 @@ class AddNeedToCategoryViewControllerView: UIView {
         return label
     }()
     
-    lazy var addButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(addNeed(_:))))
+    lazy var addButton: UIButton = .standardCFMButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(addNeed(_:))))
     
     init(category: NeedsCategory, photoPresentationTarget: Any?, photoPresentationSelector: Selector, addNeedDelegate: AddNeedDelegate) {
         self.presentPhotoTarget = photoPresentationTarget
@@ -107,15 +107,15 @@ class AddNeedToCategoryViewControllerView: UIView {
     }
     
     func constraints() {
-        
+        let padding: CGFloat = 40
         NSLayoutConstraint.activate([
-            parentStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            parentStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            parentStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),            
+            parentStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
+            parentStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            parentStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             
             addButton.trailingAnchor.constraint(equalTo: parentStack.trailingAnchor),
             addButton.topAnchor.constraint(equalTo: parentStack.bottomAnchor, constant: 20),
-            addButton.leadingAnchor.constraint(equalTo: parentStack.leadingAnchor)            
+            addButton.leadingAnchor.constraint(equalTo: parentStack.leadingAnchor)
         ])
     }
     

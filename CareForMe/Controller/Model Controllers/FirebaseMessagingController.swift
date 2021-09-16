@@ -109,13 +109,13 @@ class FirebaseMessagingController: NSObject {
     func postMessage(type: NotificationType, notification: CareNotification) {
         switch type {
         case .read:
-            let readNotificationRef = APIRef.postReadNotification(userId: notification.forUserId, notificationId: notification.id.uuidString)
+            let readNotificationRef = NotificationAPIRef.postReadNotification(userId: notification.forUserId, notificationId: notification.id.uuidString)
             
-            dbController.setValue(for: readNotificationRef, with: notification)
+            dbController.setNotificationValue(for: readNotificationRef, with: notification)
         case .unread:
-            let unreadNotificationRef = APIRef.postUnreadNotification(userId: notification.forUserId, notificationId: notification.id.uuidString)
+            let unreadNotificationRef = NotificationAPIRef.postUnreadNotification(userId: notification.forUserId, notificationId: notification.id.uuidString)
             
-            dbController.setValue(for: unreadNotificationRef, with: notification)
+            dbController.setNotificationValue(for: unreadNotificationRef, with: notification)
             
         }
         

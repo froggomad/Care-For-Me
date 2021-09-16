@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class CareNotificationController: NSObject {
     static let shared = CareNotificationController()
     
@@ -143,14 +142,11 @@ enum CareNotificationDataSource: Int, CaseIterable {
     
     var title: String {
         switch self {
-        
         case .read:
             return "Read"
         case .unread:
             return "Unread"
-            
         }
-        
     }
 }
 

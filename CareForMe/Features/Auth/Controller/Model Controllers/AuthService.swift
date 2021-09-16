@@ -24,7 +24,21 @@ class AuthService {
     
     // MARK: - Singleton -
     static let shared = AuthService()
-    private init() { }
+    private init() {
+        listenForAuthStateChanges()
+    }
+    
+    func listenForAuthStateChanges() {
+           Auth.auth().addStateDidChangeListener { _, user in
+             if let user = user {
+                NotificationCenter.default.post(name: .userLoggedIn, object: nil)
+                print(user.displayName ?? "anonymous user", "is logged in")
+             } else {
+                NotificationCenter.default.post(name: .userLoggedOut, object: nil)
+                print("nobody is logged in")
+             }
+           }
+       }
     
     func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
         
@@ -49,7 +63,7 @@ class AuthService {
                     let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
                     
                     self.user = careUser
-                    self.dbController.setValue(for: .userRef(userId: careUser.userId), with: careUser)
+                    self.dbController.setUserValue(for: .userRef(userId: careUser.userId), with: careUser)
                     
                     completion(.success(authResult))
                     
@@ -145,5 +159,15 @@ class EmailInput {
         let absoluteString = url.absoluteString
         guard let index = absoluteString.range(of: "mailto:") else { return nil }
         return String(url.absoluteString.suffix(from: index.upperBound))
+    }
+}
+
+extension Notification.Name {
+    static var userLoggedOut: Notification.Name {
+        .init("loggedOut")
+    }
+    
+    static var userLoggedIn: Notification.Name {
+        .init("loggedIn")
     }
 }

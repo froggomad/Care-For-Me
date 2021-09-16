@@ -48,15 +48,15 @@ class AddCategoryViewControllerView: UIView {
     
     private lazy var colorLabel: UILabel = .subHeadlineLabel(text: "Background Color")
     
-    private lazy var colorButton: UIButton = .fullWidthButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: colorButtonTargetSelector)
+    private lazy var colorButton: UIButton = .standardCFMButton(with: "Change Background Color", color: .named(.secondaryLink), targetAndSelector: colorButtonTargetSelector)
         
     private lazy var needStack: UIStackView = .componentStack(elements: [needLabel, needButton])
     
     lazy var needLabel: UILabel = .subHeadlineLabel(text: "Needs")
     
-    private lazy var needButton: UIButton = .fullWidthButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: addNeedPresentationTargetSelector)
+    private lazy var needButton: UIButton = .standardCFMButton(with: "Add Need", color: .named(.secondaryLink), targetAndSelector: addNeedPresentationTargetSelector)
     
-    private lazy var nextButton: UIButton = .fullWidthButton(with: "Done", targetAndSelector: TargetSelector(target: self, selector: #selector(updateViewController)))
+    private lazy var nextButton: UIButton = .standardCFMButton(with: "Done", targetAndSelector: TargetSelector(target: self, selector: #selector(updateViewController)))
     
     init(addNeedPresentationTargetSelector: TargetSelector, colorButtonTargetSelector: TargetSelector, delegate: CategoryUpdatable) {
         self.addNeedPresentationTargetSelector = addNeedPresentationTargetSelector
