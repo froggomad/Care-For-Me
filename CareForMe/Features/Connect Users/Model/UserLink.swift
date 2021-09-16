@@ -17,6 +17,6 @@ struct UserLinkController {
     private static let dbController = FirebaseDatabaseController()
     
     static func sendLinkToDatabase(link: UserLink) {
-        dbController.setValue(for: .userLink, with: link)
+        dbController.setUserValue(for: .userLink, with: link)
     }
 }
