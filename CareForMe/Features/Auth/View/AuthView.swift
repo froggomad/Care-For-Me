@@ -48,7 +48,7 @@ class AuthView: UIView {
     private lazy var processAuthButton: UIButton = {
         let button: UIButton = .standardCFMButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(isLogin ? "Login" : "Registration", for: .normal)
+        button.setTitle(isLogin ? "Login" : "Register Account", for: .normal)
         button.addTarget(self, action: #selector(updateDelegate), for: .touchUpInside)
         return button
     }()
@@ -87,12 +87,13 @@ class AuthView: UIView {
     }
     
     private func constraints() {
+        let spacing: CGFloat = 40
         NSLayoutConstraint.activate([
             mainStack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            mainStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            mainStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            mainStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -spacing),
+            mainStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: spacing),
             
-            processAuthButton.topAnchor.constraint(equalTo: mainStack.bottomAnchor, constant: 40),
+            processAuthButton.topAnchor.constraint(equalTo: mainStack.bottomAnchor, constant: spacing),
             processAuthButton.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor),
             processAuthButton.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor)
         ])

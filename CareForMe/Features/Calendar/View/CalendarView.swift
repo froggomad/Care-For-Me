@@ -54,15 +54,17 @@ class CalendarView: UIView {
     }
     
     private func constraints() {
+        let verticalPadding: CGFloat = 40
+        let horizontalPadding: CGFloat = 20
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: verticalPadding),
+            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
             
             dateCollectionView.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 10),
             dateCollectionView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
-            dateCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            dateCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -verticalPadding),
             dateCollectionView.leadingAnchor.constraint(equalTo: stack.leadingAnchor)
         ])
     }

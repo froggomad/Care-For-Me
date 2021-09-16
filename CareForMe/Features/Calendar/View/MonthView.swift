@@ -76,11 +76,12 @@ class MonthView: UIView {
     }
     
     private func constraints() {
+        let padding: CGFloat = 16
         NSLayoutConstraint.activate([
             hStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
         ])
     }
     
