@@ -33,6 +33,7 @@
 		AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */; };
 		AA8B6D1826F4C9A700D500A3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA8B6D1726F4C9A700D500A3 /* IQKeyboardManagerSwift */; };
 		AA8B6D1A26F4CB1300D500A3 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B6D1926F4CB1300D500A3 /* ActivityIndicatorViewController.swift */; };
+		AA8B6D1D26F4F91100D500A3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B6D1C26F4F91100D500A3 /* AlertViewController.swift */; };
 		AAB5574F2684053A0022D47D /* BadgeGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = AAB5574E2684053A0022D47D /* BadgeGenerator */; };
 		AABB53E0268FAC0A00EF7ABC /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */; };
 		AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */; };
@@ -170,6 +171,7 @@
 		AA79AD0A2697FDAF00786881 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AA79AD0C2697FDDB00786881 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		AA8B6D1926F4CB1300D500A3 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
+		AA8B6D1C26F4F91100D500A3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModel.swift; sourceTree = "<group>"; };
 		AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+preferredFont(for style, weight).swift"; sourceTree = "<group>"; };
 		AABF3D25269BBF69008A2CC2 /* AddCategoryViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewControllerView.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 			children = (
 				AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */,
 				AA8B6D1926F4CB1300D500A3 /* ActivityIndicatorViewController.swift */,
+				AA8B6D1C26F4F91100D500A3 /* AlertViewController.swift */,
 			);
 			path = "Base VCs";
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
+				AA8B6D1D26F4F91100D500A3 /* AlertViewController.swift in Sources */,
 				AA4D31FC26817DF2004EF6A2 /* FirebaseMessagingController.swift in Sources */,
 				AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */,
 				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
