@@ -91,6 +91,7 @@ class AuthViewController: UIViewController {
     
     required init(authType: AuthType) {
         super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .fullScreen
         createAuthView(of: authType)
         setupViews()
     }
