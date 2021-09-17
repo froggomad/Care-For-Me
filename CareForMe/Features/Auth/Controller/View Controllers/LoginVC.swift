@@ -11,12 +11,14 @@ protocol LoginProcessable: AnyObject {
     func processLogin(email: String, password: String)
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, AuthControllable {
+    
+    var activityViewController: ActivityIndicatorViewController?
     
     private let authService = AuthService.shared
-    private lazy var authDelegate = AuthDelegate(self)
+    lazy var authDelegate = AuthDelegate(self)
     
-    private lazy var loginView: AuthView =  AuthView(delegate: authDelegate)
+    lazy var loginView: AuthView =  AuthView(delegate: authDelegate)
     
     override func loadView() {
         self.view = loginView
@@ -42,9 +44,17 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginProcessable {
     
     func processLogin(email: String, password: String) {
+        
+        activityViewController = createActivityView()
+        
         guard let emailAddress = loginView.emailAddress,
-              let password = loginView.password else { return }
-        authService.loginWithEmail(emailAddress, password: password) { result in
+              let password = loginView.password else {
+            removeActivityView(child: activityViewController!)
+            return
+        }
+        authService.loginWithEmail(emailAddress, password: password) { [weak self] result in
+            guard let self = self else { return }
+            self.removeActivityView(child: self.activityViewController!)
             switch result {
             case .success:
                 self.presentTabBar()

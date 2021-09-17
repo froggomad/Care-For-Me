@@ -29,16 +29,14 @@ class AuthService {
     }
     
     func listenForAuthStateChanges() {
-           Auth.auth().addStateDidChangeListener { _, user in
-             if let user = user {
-                NotificationCenter.default.post(name: .userLoggedIn, object: nil)
-                print(user.displayName ?? "anonymous user", "is logged in")
-             } else {
-                NotificationCenter.default.post(name: .userLoggedOut, object: nil)
-                print("nobody is logged in")
-             }
-           }
+       Auth.auth().addStateDidChangeListener { _, user in
+         if user != nil {
+            NotificationCenter.default.post(name: .userLoggedIn, object: nil)
+         } else {
+            NotificationCenter.default.post(name: .userLoggedOut, object: nil)
+         }
        }
+   }
     
     func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
         
