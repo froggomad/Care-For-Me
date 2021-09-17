@@ -101,30 +101,35 @@ class AlertView: UIView {
         return button
     }
     
+    lazy var separatorLine: UIView = {
+        let line = UIView()
+        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        line.backgroundColor = .label
+        return line
+    }()
+    
+    lazy var titleStackView: UIStackView = {
+        let stack: UIStackView = .componentStack(elements: [titleLabel, separatorLine])
+        stack.spacing = 8
+        return stack
+    }()
+    
+    lazy var buttonStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [okButton])
+        stack.distribution = .equalSpacing
+        stack.spacing = 16
+        return stack
+    }()
+    
+    lazy var parentStackView: UIStackView = {
+        let stack: UIStackView = .componentStack(elements: [titleStackView, messageLabel, buttonStackView], spacing: 20)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     private func layout() {
         let innerSpacing: CGFloat = 8
         let outerSpacing: CGFloat = 40
-        
-        let separatorLine = UIView()
-        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        separatorLine.backgroundColor = .label
-        
-        let titleStackView: UIStackView = .componentStack(elements: [titleLabel, separatorLine])
-        titleStackView.spacing = innerSpacing
-        
-        let buttonStackView = UIStackView(arrangedSubviews: [okButton])
-        buttonStackView.distribution = .equalSpacing
-        buttonStackView.spacing = 16
-        
-        let parentStackView: UIStackView = .componentStack(elements: [titleStackView, messageLabel, buttonStackView], spacing: 20)
-        parentStackView.translatesAutoresizingMaskIntoConstraints = false
-
-        if yesNoMode {
-            okButton.setTitle("Yes", for: .normal)
-            buttonStackView.addArrangedSubview(noButton)
-        } else {
-            okButton.setTitle("Ok", for: .normal)
-        }
         
         addSubview(parentStackView)
         NSLayoutConstraint.activate([
@@ -133,17 +138,25 @@ class AlertView: UIView {
             parentStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -innerSpacing*2),
             parentStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: outerSpacing)
         ])
+        
+        if yesNoMode {
+            okButton.setTitle("Yes", for: .normal)
+            buttonStackView.addArrangedSubview(noButton)
+        } else {
+            okButton.setTitle("Ok", for: .normal)
+        }
+        
     }
- 
+    
     @objc private func okTapped() {
         delegate?.dismissMe()
         closure(true)
     }
     
     
-       @objc private func cancelTapped() {
-           delegate?.dismissMe()
-           closure(false)
-       }
+    @objc private func cancelTapped() {
+        delegate?.dismissMe()
+        closure(false)
+    }
     
 }
