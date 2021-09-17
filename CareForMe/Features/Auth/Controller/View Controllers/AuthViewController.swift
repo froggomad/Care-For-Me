@@ -62,8 +62,8 @@ class AuthViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             authVC.view.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            authVC.view.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor),
-            authVC.view.topAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor),
+            authVC.view.topAnchor.constraint(lessThanOrEqualTo: containerView.topAnchor),
+            authVC.view.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor),
             authVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             authVC.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         ])
@@ -111,9 +111,9 @@ class AuthViewController: UIViewController {
         let spacing: CGFloat = 20
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: spacing*3),
+            containerView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: 400),
             containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -spacing),
-            containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -spacing),
             containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: spacing),
             
             authTypeSegmentedControl.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: -spacing),
