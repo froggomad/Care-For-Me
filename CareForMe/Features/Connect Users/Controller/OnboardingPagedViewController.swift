@@ -24,17 +24,42 @@ class OnboardingPagedViewController: PagingViewController {
         ]
     }()
     
+    lazy var pagingVC: PagingViewController = {
+        let vc = PagingViewController()
+        vc.dataSource = self
+        vc.indicatorColor = .named(.link)
+        vc.borderOptions = .visible(height: 1, zIndex: 1, insets: .zero)
+        vc.borderColor = .black
+        vc.menuInteraction = .none
+        vc.collectionView.isUserInteractionEnabled = false
+        return vc
+    }()
+    
+    @objc private func register() {
+        let vc = RegistrationViewController()
+        present(vc, animated: true)
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .white
+        
+        addChild(pagingVC)
+        view.addSubview(pagingVC.view)
+        pagingVC.didMove(toParent: self)
+        pagingVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pagingVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pagingVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pagingVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            // library isn't accounting for safe area
+            pagingVC.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
+        ])
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
-        select(index: 0)
-        indicatorColor = .named(.link)
-        self.navigationController?.navigationBar.isTranslucent = false
-        borderOptions = .visible(height: 1, zIndex: 1, insets: .zero)
-        borderColor = .black
-        menuPosition = .bottom
-        
-        view.backgroundColor = .white
+        setupViews()
     }
     
 }
@@ -58,7 +83,7 @@ extension OnboardingPagedViewController: PagingViewControllerDataSource {
             if index == viewControllers.count - 1 { navigationController?.popViewController(animated: true) }
             return
         }
-        select(index: index + 1)
+        pagingVC.select(index: index + 1)
     }
     
 }
