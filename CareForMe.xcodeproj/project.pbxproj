@@ -577,6 +577,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		AAD0AAA526F7B30100F0321B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2B60D26C4A0C80070BC7D /* OnboardingViewController.swift */,
+				AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		AAD1150426A7E02B0010A9D7 /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,9 +730,7 @@
 		AAE2B60C26C4A0B90070BC7D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AAE2B60D26C4A0C80070BC7D /* OnboardingViewController.swift */,
 				AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */,
-				AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -768,6 +775,7 @@
 		AAE9189D268EF961003A8278 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AAD0AAA526F7B30100F0321B /* Onboarding */,
 				AAD6D13C26C5FA6D007595CA /* Calendar */,
 				AAF1825326BFAC9B00D73651 /* Connect Users */,
 				AAF7C8A4269AB72D00EB11EC /* Needs */,
