@@ -35,8 +35,8 @@ struct UserDefault<T> {
 
 struct UserDefaultsConfig {
     
-    @UserDefault(.hasOnboarded, defaultValue: [AuthService.shared.user?.userId ?? "": false])
-    static var hasOnboarded: [String: Bool]
+    @UserDefault(.hasOnboarded, defaultValue: false)
+    static var hasOnboarded: Bool
     
     @UserDefault(.lastLoggedInUser, defaultValue: "")
     static var lastLoggedInUsername: String
