@@ -97,7 +97,10 @@ extension OnboardingPagedViewController: PagingViewControllerDataSource {
     @objc func activateViewController(_ sender: UIButton) {
         let index = sender.tag
         guard index < viewControllers.count - 1 else {
-            if index == viewControllers.count - 1 { navigationController?.popViewController(animated: true) }
+            if index == viewControllers.count - 1 {
+                let tab = TabBar.createMainTabBar()
+                present(tab, animated: true)
+            }
             return
         }
         pagingVC.select(index: index + 1)
