@@ -17,8 +17,10 @@ class RegistrationViewController: UIViewController, AuthControllable {
     lazy var authDelegate = AuthDelegate(self)
     
     private lazy var registrationView = AuthView(delegate: authDelegate)
+    private var completionClosure: () -> Void
     
-    init() {
+    init(completionClosure: @escaping () -> Void) {
+        self.completionClosure = completionClosure
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .fullScreen
     }
@@ -36,8 +38,12 @@ class RegistrationViewController: UIViewController, AuthControllable {
 extension RegistrationViewController: RegistrationProcessable {
     func processRegistration(email: String, password: String) {
         guard let emailAddress = registrationView.emailAddress else { return }
-        authService.registerWithEmail(emailInput: emailAddress, password: "12345678") { result in
+        authService.registerWithEmail(emailInput: emailAddress, password: "12345678") { [weak self] result in
+            guard let self = self else { return }
             print(result)
+            self.dismiss(animated: false) {
+                self.completionClosure()
+            }
         }
     }
 }

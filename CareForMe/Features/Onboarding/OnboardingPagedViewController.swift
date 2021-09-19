@@ -36,8 +36,7 @@ class OnboardingPagedViewController: UIViewController {
     lazy var viewControllers: [OnboardingViewController] = {
         return [
             onboardingWelcomeVC,
-            onboardingLinkInfoVC,
-            onboardingCompanionVC
+            onboardingLinkInfoVC
         ]
     }()
     
@@ -53,8 +52,19 @@ class OnboardingPagedViewController: UIViewController {
     }()
     
     @objc private func register() {
-        let vc = RegistrationViewController()
+        let vc = RegistrationViewController() { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.perform(#selector(self.presentLink), with: nil, afterDelay: 0)
+            }
+        }
+        
         present(vc, animated: true)
+    }
+    
+    @objc private func presentLink() {
+        self.onboardingCompanionVC.modalPresentationStyle = .fullScreen
+        self.present(self.onboardingCompanionVC, animated: true)
     }
     
     private func setupViews() {
