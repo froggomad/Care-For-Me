@@ -23,9 +23,9 @@ final class OnboardingLinkVC: OnboardingViewController {
         showDetailViewController(vc, sender: nil)
     }
     
-    init(selectionDelegate: TargetSelector, additionalViews: [UIView] = []) {
+    init(id: Int, selectionDelegate: TargetSelector, additionalViews: [UIView] = []) {
         
-        super.init(id: 2, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: selectionDelegate, additionalViews: additionalViews)
+        super.init(id: id, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: selectionDelegate, additionalViews: additionalViews)
         
         instructionView.addView(codeLabel)
         instructionView.addView(linkButton)

@@ -8,18 +8,35 @@
 import UIKit
 import Parchment
 
-class OnboardingPagedViewController: PagingViewController {
+class OnboardingPagedViewController: UIViewController {
     
-    lazy var onboardingWelcomeVC: OnboardingViewController = OnboardingViewController(id: 0, indicatorText: "Welcome", title: "Welcome To Care For Me", instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have", image: nil, buttonTitle: "Next: Your Account", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))), additionalViews: [])
+    lazy var onboardingWelcomeVC: OnboardingViewController =
+        OnboardingViewController(id: 0,
+                                 indicatorText: "Welcome",
+                                 title: "Welcome To Care For Me",
+                                 instructions: "Care For Me is designed to help caregivers and those they care for.\n\nIf you're a caregiver, we'll help you keep your companion's needs organized and link you securely to your companion so they can alert you when they have needs you can meet.\n\nIf you're a companion, we'll help you by making it really easy to tell your caregiver what you need, when you need it. Once your needs are set up by you or your caregiver, you just tap a button, and they'll know you need help!",
+                                 image: nil,
+                                 buttonTitle: "Next: Learn About Accounts",
+                                 selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))),
+                                 additionalViews: [])
     
-    lazy var onboardingAccountVC: OnboardingViewController = OnboardingViewController(id: 1, indicatorText: "Account", title: "Welcome To Account Setup", instructions: "Setting up your account is easy and allows for you to securely communicate with your companion", image: nil, buttonTitle: "Next: Link Companion", selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))), additionalViews: [])
+    lazy var onboardingLinkInfoVC: OnboardingViewController =
+        OnboardingViewController(id: 1,
+                                 indicatorText: "Account",
+                                 title: "Secure Account Creation",
+                                 instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have",
+                                 image: nil,
+                                 buttonTitle: "Register Account",
+                                 selectionDelegate: TargetSelector(target: self, selector: #selector(register)),
+                                 additionalViews: [])
     
-    lazy var onboardingCompanionVC: OnboardingLinkVC = OnboardingLinkVC(selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
+    lazy var onboardingCompanionVC: OnboardingLinkVC =
+        OnboardingLinkVC(id: 2, selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
     
     lazy var viewControllers: [OnboardingViewController] = {
         return [
             onboardingWelcomeVC,
-            onboardingAccountVC,
+            onboardingLinkInfoVC,
             onboardingCompanionVC
         ]
     }()
