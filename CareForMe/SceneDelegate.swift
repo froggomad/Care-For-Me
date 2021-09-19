@@ -17,17 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
       
         let window = UIWindow(windowScene: windowScene)
+        
         if let authUser = Auth.auth().currentUser {
-            
             AuthService.shared.user = CareUser(userId: authUser.uid, displayName: authUser.displayName ?? "Anonymous")
             let tabBar = TabBar.createMainTabBar()
             window.rootViewController = tabBar
-            
+        } else if !UserDefaultsConfig.hasOnboarded {
+            let vc = OnboardingPagedViewController()
+            window.rootViewController = vc
         } else {
-            
             let vc = AuthViewController(authType: .login)
             window.rootViewController = vc
-            
         }
         
         window.makeKeyAndVisible()
