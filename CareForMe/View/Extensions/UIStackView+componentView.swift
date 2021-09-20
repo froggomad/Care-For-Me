@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIStackView {
-    static func componentStack(elements: [UIView], distribution: UIStackView.Distribution = .fillProportionally, verticalAlignment: UIStackView.Alignment = .fill, horizontalAlignment: UIStackView.Alignment = .top, spacing: CGFloat = 2) -> UIStackView {
+    static func componentStack(elements: [UIView], distribution: UIStackView.Distribution = .fillProportionally, verticalAlignment: UIStackView.Alignment = .fill, horizontalAlignment: UIStackView.Alignment = .top, spacing: CGFloat = 2, horizontalDistribution: UIStackView.Distribution = .fill) -> UIStackView {
         let stack = UIStackView(arrangedSubviews: elements)
         stack.axis = .vertical
         stack.distribution = distribution
@@ -17,6 +17,7 @@ extension UIStackView {
         
         let horizontalStack = UIStackView(arrangedSubviews: [stack])
         horizontalStack.alignment = horizontalAlignment
+        horizontalStack.distribution = horizontalDistribution
         return horizontalStack
     }
 }

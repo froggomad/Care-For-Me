@@ -18,11 +18,7 @@ class InstructionView: UIView {
     private var selectionDelegate: TargetSelector
     
     private lazy var mainStack: UIStackView = {
-        let stack: UIStackView = .init(arrangedSubviews: [titleLabel, instructionLabel, imageStack, viewStack, button])
-        stack.axis = .vertical
-        stack.distribution = .equalCentering
-        stack.alignment = .center
-        stack.spacing = 8
+        let stack: UIStackView = .componentStack(elements: [titleLabel, instructionLabel, imageStack, viewStack, button])
         let hStack = UIStackView(arrangedSubviews: [stack])
         hStack.alignment = .top
         hStack.distribution = .fill
