@@ -14,7 +14,7 @@ class InstructionViewController: UIViewController {
     var image: Gif?
     var caption: String?
     var buttonTitle: String
-    var selectionDelegate: TargetSelector
+    var selectionDelegate: TargetSelector?
     
     lazy var instructionView: InstructionView = InstructionView(title: titleText,
                                                                 instructions: instructions,
@@ -23,13 +23,14 @@ class InstructionViewController: UIViewController {
                                                                 buttonTitle: buttonTitle,
                                                                 selectionDelegate: selectionDelegate)
     
-    init(title: String, instructions: String, image: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
+    init(title: String, instructions: String, image: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector?) {
         self.titleText = title
         self.instructions = instructions
         self.image = image
         self.caption = caption
         self.buttonTitle = buttonTitle
         self.selectionDelegate = selectionDelegate
+        
         super.init(nibName: nil, bundle: nil)
     }
     

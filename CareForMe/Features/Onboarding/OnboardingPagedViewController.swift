@@ -30,8 +30,7 @@ class OnboardingPagedViewController: UIViewController {
                                  selectionDelegate: TargetSelector(target: self, selector: #selector(register)),
                                  additionalViews: [])
     
-    lazy var onboardingCompanionVC: OnboardingLinkVC =
-        OnboardingLinkVC(id: 2, selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))))
+    lazy var onboardingCompanionVC: OnboardingLinkVC = OnboardingLinkVC(id: 2)
     
     lazy var viewControllers: [OnboardingViewController] = {
         return [
