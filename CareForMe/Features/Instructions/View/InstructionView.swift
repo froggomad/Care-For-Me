@@ -19,11 +19,8 @@ class InstructionView: UIView {
     
     private lazy var mainStack: UIStackView = {
         let stack: UIStackView = .componentStack(elements: [titleLabel, instructionLabel, imageStack, viewStack, button])
-        let hStack = UIStackView(arrangedSubviews: [stack])
-        hStack.alignment = .top
-        hStack.distribution = .fill
-        hStack.translatesAutoresizingMaskIntoConstraints = false
-        return hStack
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private lazy var titleLabel: UILabel = {
