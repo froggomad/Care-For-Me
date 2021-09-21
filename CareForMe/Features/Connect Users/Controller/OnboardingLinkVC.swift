@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LinkProcessable {
+    func linkConnected()
+}
+
 final class OnboardingLinkVC: OnboardingViewController {
     lazy var linkButton: UIButton = .standardCFMButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
     
@@ -23,15 +27,23 @@ final class OnboardingLinkVC: OnboardingViewController {
         showDetailViewController(vc, sender: nil)
     }
     
-    init(selectionDelegate: TargetSelector, additionalViews: [UIView] = []) {
+    init(id: Int, additionalViews: [UIView] = []) {
         
-        super.init(id: 2, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app", image: nil, buttonTitle: "Let's Get Started!", selectionDelegate: selectionDelegate, additionalViews: additionalViews)
-        
+        super.init(id: id, indicatorText: "Link", title: "Link To Your Companion", instructions: "Linking to a companion is easy. Just provide them with this 6 digit code and ask them to download the app. You can find this code later in your settings.", image: nil, buttonTitle: "Let's Get Started!", additionalViews: additionalViews)
+        instructionView.button.addTarget(self, action: #selector(linkConnected), for: .touchUpInside)
         instructionView.addView(codeLabel)
         instructionView.addView(linkButton)
     }
     
     required init?(coder: NSCoder) {
         fatalError("programmatic view controller")
+    }
+    
+}
+
+extension OnboardingLinkVC: LinkProcessable {
+    @objc func linkConnected() {
+        let tab = TabBar.createMainTabBar()
+        present(tab, animated: false)
     }
 }

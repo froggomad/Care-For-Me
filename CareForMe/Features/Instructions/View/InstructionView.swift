@@ -15,19 +15,12 @@ class InstructionView: UIView {
     private var image: Gif?
     private var caption: String?
     private var buttonTitle: String
-    private var selectionDelegate: TargetSelector
+    private var selectionDelegate: TargetSelector?
     
     private lazy var mainStack: UIStackView = {
-        let stack: UIStackView = .init(arrangedSubviews: [titleLabel, instructionLabel, imageStack, viewStack, button])
-        stack.axis = .vertical
-        stack.distribution = .equalCentering
-        stack.alignment = .center
-        stack.spacing = 8
-        let hStack = UIStackView(arrangedSubviews: [stack])
-        hStack.alignment = .top
-        hStack.distribution = .fill
-        hStack.translatesAutoresizingMaskIntoConstraints = false
-        return hStack
+        let stack: UIStackView = .componentStack(elements: [titleLabel, instructionLabel, imageStack, viewStack, button])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private lazy var titleLabel: UILabel = {
@@ -84,12 +77,18 @@ class InstructionView: UIView {
     }()
     
     lazy var button: UIButton = {
-        let targetSelector = TargetSelector(target: selectionDelegate.target, selector: selectionDelegate.selector)
-        let button: UIButton = .standardCFMButton(with: buttonTitle, targetAndSelector: targetSelector)
+        var button: UIButton
+        
+        if let selectionDelegate = selectionDelegate {
+            let targetSelector = TargetSelector(target: selectionDelegate.target, selector: selectionDelegate.selector)
+            button = .standardCFMButton(with: buttonTitle, targetAndSelector: targetSelector)
+        } else {
+            button = .standardCFMButton(with: buttonTitle)
+        }
         return button
     }()
     
-    init(title: String, instructions: String, imageFilename: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector) {
+    init(title: String, instructions: String, imageFilename: Gif?, caption: String? = nil, buttonTitle: String, selectionDelegate: TargetSelector?) {
         self.titleString = title
         self.instructions = instructions
         self.image = imageFilename

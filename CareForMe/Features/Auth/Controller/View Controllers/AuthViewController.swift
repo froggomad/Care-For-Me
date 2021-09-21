@@ -31,7 +31,9 @@ class AuthViewController: UIViewController {
         case .login:
             vc = LoginViewController()
         case .registration:
-            vc = RegistrationViewController()
+            vc = RegistrationViewController() {
+                print("registered")
+            }
         }
         
         self.authVC = vc
@@ -41,7 +43,9 @@ class AuthViewController: UIViewController {
         removeContainedVC()
         
         if isLogin {
-            self.authVC = RegistrationViewController()
+            self.authVC = RegistrationViewController() {
+                print("registered")
+            }
         } else {
             self.authVC = LoginViewController()
         }
