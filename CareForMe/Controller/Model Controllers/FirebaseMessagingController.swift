@@ -95,7 +95,9 @@ class FirebaseMessagingController: NSObject {
                 print("Error fetching FCM registration token: \(error)")
             } else if let token = token {
                 let dataDict:[Notification.Name: String] = [.tokenKey: token]
-                NotificationCenter.default.post(name: .tokenKey, object: nil, userInfo: dataDict)
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .tokenKey, object: nil, userInfo: dataDict)
+                }
             }
         }
         
@@ -155,7 +157,9 @@ extension FirebaseMessagingController: UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         let careNotification = parseUNNotification(notification: notification)
-        NotificationCenter.default.post(name: .newUnreadNotification, object: nil, userInfo: ["careNotification": careNotification])
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .newUnreadNotification, object: nil, userInfo: ["careNotification": careNotification])
+        }
         
         if #available(iOS 14, *) {
             completionHandler([.banner, .sound, .badge])
