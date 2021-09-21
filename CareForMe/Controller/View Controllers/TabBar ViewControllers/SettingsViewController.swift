@@ -10,7 +10,7 @@ import UIKit
 class SettingsViewController: ParentDetailViewController {
     
     lazy var stack: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle], spacing: 20)
+        let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle, tableView], spacing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -21,6 +21,15 @@ class SettingsViewController: ParentDetailViewController {
     
     lazy var savePasswordsToggle: LabeledToggleSwitch = {
         LabeledToggleSwitch(title: "Save Passwords", toggleFunction: #selector(toggleSavePasswords), target: self)
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "SettingsTableViewCell")
+        tv.dataSource = self
+        tv.delegate = self
+        tv.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return tv
     }()
     
     lazy var signOutButton: UIButton = {
@@ -137,6 +146,29 @@ class SettingsViewController: ParentDetailViewController {
         AppSettingsController.openSettings()
     }
     
+}
+
+extension SettingsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") else {
+            fatalError("bad cell mojo")
+        }
+        cell.textLabel?.text = "Secure Companion Link Code"
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = OnboardingLinkVC(id: 0)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
 }
 
 enum Gif: String {
