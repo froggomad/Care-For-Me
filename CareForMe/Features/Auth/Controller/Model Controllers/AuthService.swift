@@ -30,11 +30,13 @@ class AuthService {
     
     func listenForAuthStateChanges() {
        Auth.auth().addStateDidChangeListener { _, user in
-         if user != nil {
-            NotificationCenter.default.post(name: .userLoggedIn, object: nil)
-         } else {
-            NotificationCenter.default.post(name: .userLoggedOut, object: nil)
-         }
+        DispatchQueue.main.async {
+             if user != nil {
+                NotificationCenter.default.post(name: .userLoggedIn, object: nil)
+             } else {
+                NotificationCenter.default.post(name: .userLoggedOut, object: nil)
+             }
+        }
        }
    }
     
