@@ -46,6 +46,13 @@ class TestRetainCycles: XCTestCase {
         assertNoMemoryLeak(searchableUpdateSpy)
         assertNoMemoryLeak(delegate)
     }
+    
+    func testOnboard_andView_dontRetain() {
+        let vc = OnboardingLinkVC(id: 2)
+        let view = vc.instructionView
+        assertNoMemoryLeak(view)
+        assertNoMemoryLeak(vc)
+    }
 
 }
 
