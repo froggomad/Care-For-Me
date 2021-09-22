@@ -9,7 +9,7 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 
 class FirebaseDatabaseController {
-    static let db = Database.database().reference()
+    private static let db = Database.database().reference()
     
     /// Create a new database entry with an auto-created ID
     /// - Parameters:
