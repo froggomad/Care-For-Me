@@ -60,7 +60,7 @@ class AuthService {
                 
                 if let user = authResult?.user {
                     
-                    let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
+                    let careUser = CareUser(authUser: user)
                     
                     self.user = careUser
                     self.dbController.setUserValue(for: .userRef(userId: careUser.userId), with: careUser)
@@ -83,7 +83,7 @@ class AuthService {
             }
             
             if let user = authResult?.user {
-                let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
+                let careUser = CareUser(authUser: user)
                 self.user = careUser
                 completion(.success(authResult))
             } else { completion(.failure(.firebaseAuthError)) }

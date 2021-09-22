@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import Firebase
 
 class CareUser: Codable {
     
     let userId: String
     let displayName: String
+    
+    convenience init(authUser: User) {
+        self.init(userId: authUser.uid, displayName: authUser.displayName ?? "")
+    }
     
     init(userId: String, displayName: String) {
         self.userId = userId
