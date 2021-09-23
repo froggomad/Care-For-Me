@@ -376,6 +376,7 @@
 		AA79AD012697C68500786881 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				AAE262C22679530600ABC882 /* Assets.xcassets */,
 				AA79AD022697CAFC00786881 /* notificationsOn.gif */,
 				AA79ACFF2697C68200786881 /* notificationsOff.gif */,
 			);
@@ -461,7 +462,6 @@
 				AAE262B92679530500ABC882 /* AppDelegate.swift */,
 				AAE262BB2679530500ABC882 /* SceneDelegate.swift */,
 				AA79AD012697C68500786881 /* Media */,
-				AAE262C22679530600ABC882 /* Assets.xcassets */,
 				AAE262C72679530600ABC882 /* Info.plist */,
 			);
 			name = App;
