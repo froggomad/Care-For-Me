@@ -10,17 +10,17 @@ import AudioToolbox.AudioServices
 
 
 enum TapticEngine: UInt32 {
-    // DOCUMENT THIS
+    /// Single Weak Boom
     case peek = 1519
-    // DOCUMENT THIS
+    /// Single Strong Boom
     case pop = 1520
-    // DOCUMENT THIS
+    /// Three Sequential Weak Booms
     case cancelled = 1521
-    // DOCUMENT THIS
+    // Single Weak Boom Followed by Single Strong Boom
     case tryAgain = 1102
-    // DOCUMENT THIS
+    // Three Sequential Strong Booms
     case failed = 1107
-    // DOCUMENT THIS
+    // Send haptic feedback signal to user's device
     func tapUser() {
         AudioServicesPlaySystemSound(rawValue)
     }
