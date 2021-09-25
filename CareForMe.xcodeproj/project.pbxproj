@@ -686,9 +686,7 @@
 			children = (
 				AAEACFAB26807317007E9511 /* CareForMe.entitlements */,
 				AAC07F4C267A7E2600ADD525 /* App */,
-				AAE262F02679715700ABC882 /* View */,
-				AAE262E92679537100ABC882 /* Model */,
-				AAC07F4A267A7E0F00ADD525 /* Controller */,
+				AAEBCB9726FC32E6001F9A4E /* Core */,
 				AAE9189D268EF961003A8278 /* Features */,
 			);
 			path = CareForMe;
@@ -813,6 +811,16 @@
 				AAE918A5268EFBC3003A8278 /* CareNotificationTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AAEBCB9726FC32E6001F9A4E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AAE262F02679715700ABC882 /* View */,
+				AAE262E92679537100ABC882 /* Model */,
+				AAC07F4A267A7E0F00ADD525 /* Controller */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		AAF1825326BFAC9B00D73651 /* Connect Users */ = {
