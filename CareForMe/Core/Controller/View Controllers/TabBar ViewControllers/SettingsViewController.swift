@@ -105,7 +105,7 @@ class SettingsViewController: ParentDetailViewController {
     }
     
     private func setSavePasswordsSwitchState() {
-        guard let userDefaultsSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""] else { return }
+        guard let userDefaultsSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.privateDetails.userId ?? ""] else { return }
     
         savePasswordsToggle.setSwitchState(on: userDefaultsSetting ?? false)
     }
@@ -135,7 +135,7 @@ class SettingsViewController: ParentDetailViewController {
     
     @objc private func toggleSavePasswords(_ sender: UISwitch) {
         print()
-        UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""] = sender.isOn
+        UserDefaultsConfig.savePasswords[AuthService.shared.user?.privateDetails.userId ?? ""] = sender.isOn
     }
     
     func addToggle(toggle: LabeledToggleSwitch) {

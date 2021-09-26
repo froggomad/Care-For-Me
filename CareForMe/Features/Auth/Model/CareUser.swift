@@ -8,18 +8,26 @@
 import Foundation
 import Firebase
 
+struct PublicUserDetails: Codable {
+    let displayName: String
+}
+
+struct PrivateUserDetails: Codable {
+    let userId: String
+}
+
 class CareUser: Codable {
     
-    let userId: String
-    let displayName: String
+    let privateDetails: PrivateUserDetails
+    let publicDetails: PublicUserDetails
     
     convenience init(authUser: User) {
-        self.init(userId: authUser.uid, displayName: authUser.displayName ?? "")
+        self.init(userId: authUser.uid, displayName: authUser.displayName ?? "Anonymous")
     }
     
     init(userId: String, displayName: String) {
-        self.userId = userId
-        self.displayName = displayName
+        self.privateDetails = PrivateUserDetails(userId: userId)
+        self.publicDetails = PublicUserDetails(displayName: displayName)
     }
     
 }

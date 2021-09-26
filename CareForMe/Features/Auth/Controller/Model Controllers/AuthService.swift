@@ -63,7 +63,7 @@ class AuthService {
                     let careUser = CareUser(authUser: user)
                     
                     self.user = careUser
-                    self.dbController.setUserValue(for: .userRef(userId: careUser.userId), with: careUser)
+                    self.dbController.setUserValue(for: .userRef(userId: careUser.privateDetails.userId), with: careUser)
                     
                     completion(.success(authResult))
                     
