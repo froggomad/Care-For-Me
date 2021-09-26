@@ -10,11 +10,6 @@ import UIKit
 class CareNotificationController: NSObject {
     static let shared = CareNotificationController()
     
-    private struct NotificationData: Codable {
-        var read: [CareNotification]
-        var unread: [CareNotification]
-    }
-    
     private let dbController = FirebaseDatabaseController()
     
     var read: [String: CareNotification]
@@ -36,25 +31,31 @@ class CareNotificationController: NSObject {
                                                object: nil)
     }
     
-    func getNotificationsFromAPI(for userId: String) {
-        dbController.observe(endpoint: .userNotifications(userId: userId), event: .value) { [weak self] snapshot in
-            guard let notification = try? snapshot.data(as: NotificationData.self) else {
-                print("unable to parse notifications as NotificationData")
-                return
+    func getNotificationsFromAPI(for userId: String, completion: @escaping () -> Void) {
+            dbController.observe(endpoint: .userNotifications(userId: userId), event: .value) { [weak self] snapshot in
+                defer {
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+                            
+                let unreadNotficationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
+                guard let unreadNotifications = try? unreadNotficationData.data(as: [String: CareNotification].self) else {
+                    print("unable to parse unreadNotifications")
+                    return
+                }
+                self?.unread = unreadNotifications
+                
+                let readNotficationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.read.rawValue)
+                
+                guard let readNotifications = try? readNotficationData.data(as: [String: CareNotification].self) else {
+                    print("unable to parse readNotifications")
+                    return
+                }
+                
+                self?.read = readNotifications
             }
-            var readHashMap: Dictionary<String, CareNotification> = [:]
-            for notification in notification.read {
-                readHashMap[notification.id.uuidString] = notification
-            }
-            self?.read = readHashMap
-                        
-            var unreadHashMap: Dictionary<String, CareNotification> = [:]
-            for notification in notification.unread {
-                unreadHashMap[notification.id.uuidString] = notification
-            }
-            self?.unread = unreadHashMap
         }
-    }
     
     @objc private func receiveUnreadNotification(_ notification: Notification) {
         let userInfo = notification.userInfo
