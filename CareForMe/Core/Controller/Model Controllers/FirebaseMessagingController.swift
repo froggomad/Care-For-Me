@@ -103,7 +103,7 @@ class FirebaseMessagingController: NSObject {
         
     }
     
-    enum NotificationType {
+    enum NotificationType: String {
         case read
         case unread
     }
