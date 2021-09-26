@@ -17,7 +17,9 @@ class NotificationListTableView: UITableView {
         super.init(frame: .zero, style: .plain)
         translatesAutoresizingMaskIntoConstraints = false
         self.dataSource = dataSource
-        register(CareNotificationTableViewCell.self, forCellReuseIdentifier: CareNotificationTableViewCell.identifier)        
+        register(CareNotificationTableViewCell.self, forCellReuseIdentifier: CareNotificationTableViewCell.identifier)
+//        let user = AuthService.shared.user
+//        dataSource.getNotificationsFromAPI(for: user?.privateDetails.userId ?? "")
     }
     
     required init?(coder: NSCoder) {
