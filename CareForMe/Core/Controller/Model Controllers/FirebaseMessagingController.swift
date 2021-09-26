@@ -40,7 +40,7 @@ class FirebaseMessagingController: NSObject {
         let apiTokenDict = ["token": token]
         if AuthService.shared.isLoggedIn {
             guard let user = AuthService.shared.user else { return }
-            FirebaseDatabaseController().updateValues(for: .userRef(userId: user.privateDetails.userId), with: apiTokenDict)
+            FirebaseDatabaseController().updateValues(for: .tokenRef(userId: user.privateDetails.userId), with: apiTokenDict)
         }
         
     }
