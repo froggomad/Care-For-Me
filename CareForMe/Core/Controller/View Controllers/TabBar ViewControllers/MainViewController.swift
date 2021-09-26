@@ -140,15 +140,6 @@ struct CareNotification: Codable, Equatable {
     var categoryTitle: String {
         "\(category): \(title)"
     }
-    
-    init(id: UUID, category: String, title: String, text: String, forUserId: String, date: Date) {
-        self.id = id
-        self.category = category
-        self.title = title
-        self.text = text
-        self.forUserId = forUserId
-        self.date = date
-    }
 }
 
 extension MainViewController: UITableViewDelegate {
