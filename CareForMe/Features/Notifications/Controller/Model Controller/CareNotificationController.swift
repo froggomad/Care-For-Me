@@ -39,6 +39,7 @@ class CareNotificationController: NSObject {
     func getNotificationsFromAPI(for userId: String) {
         dbController.observe(endpoint: .userNotifications(userId: userId), event: .value) { [weak self] snapshot in
             guard let notification = try? snapshot.data(as: NotificationData.self) else {
+                print("unable to parse notifications as NotificationData")
                 return
             }
             var readHashMap: Dictionary<String, CareNotification> = [:]
