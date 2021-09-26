@@ -44,19 +44,26 @@ class FirebaseDatabaseController {
 
 enum UserDatabaseAPIRef {
     case userRef(userId: String)
-    case userLink
+    case tokenRef(userId: String)
+    case userLinkRef
     
     var endpoint: String {
         switch self {
         case let .userRef(userId):
             return Self.userRefEndpoint(userId: userId)
-        case .userLink:
+        case let .tokenRef(userId):
+            return Self.privateUserDetails(userId: userId)
+        case .userLinkRef:
             return "/users/toLink"
         }
     }
     
     static func userRefEndpoint(userId: String) -> String {
         return "/users/\(userId)/"
+    }
+    
+    static func privateUserDetails(userId: String) -> String {
+        return userRefEndpoint(userId: userId) + "privateDetails"
     }
 }
 
