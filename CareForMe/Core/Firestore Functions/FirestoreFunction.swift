@@ -8,20 +8,20 @@ import FirebaseFunctions
 
 enum FirestoreFunction {
     
-    case saveJoinCode(userId: String, joincode: String)
+    case generateJoinCode(userId: String, joincode: String)
     
     /// The name of the Firebase Function (must equate to the name in Firebase)
     private var name: String {
         switch self {
-        case .saveJoinCode:
-            return "saveCode"
+        case .generateJoinCode:
+            return "generateCode"
         }
     }
     /// - Used to send data to the Firebase Function
     private var parameters: [String: Any]? {
         
         switch self {
-        case .saveJoinCode(let userId, let joinCode):
+        case .generateJoinCode(let userId, let joinCode):
             return ["userId": userId, "joinCode": joinCode]
         }
     }
