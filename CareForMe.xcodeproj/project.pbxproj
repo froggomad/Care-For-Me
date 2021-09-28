@@ -102,6 +102,7 @@
 		AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */; };
 		AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1825126BF951C00D73651 /* Int+randomString.swift */; };
 		AAF1825526BFACD300D73651 /* UserLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1825426BFACD300D73651 /* UserLink.swift */; };
+		AAF4F09F27038D2A0002CC38 /* DateFormatter+firebaseDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */; };
 		AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */; };
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
@@ -242,6 +243,7 @@
 		AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		AAF1825126BF951C00D73651 /* Int+randomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+randomString.swift"; sourceTree = "<group>"; };
 		AAF1825426BFACD300D73651 /* UserLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLink.swift; sourceTree = "<group>"; };
+		AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+firebaseDate.swift"; sourceTree = "<group>"; };
 		AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhoto.swift; sourceTree = "<group>"; };
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 				AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */,
 				AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */,
 				AAF1825126BF951C00D73651 /* Int+randomString.swift */,
+				AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 				AAF7C8AD269AC41D00EB11EC /* AddCategoryViewController.swift in Sources */,
 				AAC9D1842696AB9100DB3FA5 /* InstructionViewController.swift in Sources */,
 				AAC06D582693C34600408AE3 /* LoginVC.swift in Sources */,
+				AAF4F09F27038D2A0002CC38 /* DateFormatter+firebaseDate.swift in Sources */,
 				AABF3D28269BBFFC008A2CC2 /* UIButton+underlinedTitle.swift in Sources */,
 				AAD6D14126C5FBD4007595CA /* CalendarViewController.swift in Sources */,
 				AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */,
