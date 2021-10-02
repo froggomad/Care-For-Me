@@ -90,6 +90,7 @@
 		AAE2B61026C4A0F00070BC7D /* OnboardingLinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */; };
 		AAE2B61226C4A1100070BC7D /* OnboardingPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */; };
 		AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */; };
+		AAE6CE6C27092215001207D2 /* CareNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE6CE6B27092215001207D2 /* CareNotification.swift */; };
 		AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */; };
 		AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A1268EF9AA003A8278 /* NotificationListTableView.swift */; };
 		AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A3268EF9E7003A8278 /* CareNotificationController.swift */; };
@@ -231,6 +232,7 @@
 		AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLinkVC.swift; sourceTree = "<group>"; };
 		AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPagedViewController.swift; sourceTree = "<group>"; };
 		AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDetailViewController.swift; sourceTree = "<group>"; };
+		AAE6CE6B27092215001207D2 /* CareNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareNotification.swift; sourceTree = "<group>"; };
 		AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		AAE918A1268EF9AA003A8278 /* NotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListTableView.swift; sourceTree = "<group>"; };
 		AAE918A3268EF9E7003A8278 /* CareNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareNotificationController.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */,
+				AAE6CE6B27092215001207D2 /* CareNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1264,6 +1267,7 @@
 				AA8B6D1A26F4CB1300D500A3 /* ActivityIndicatorViewController.swift in Sources */,
 				AABF3D2C269BC04E008A2CC2 /* UILabel+title3Label.swift in Sources */,
 				AACA591D269881660090CAF2 /* UIColor+isDarkColor.swift in Sources */,
+				AAE6CE6C27092215001207D2 /* CareNotification.swift in Sources */,
 				AABF3D35269C1218008A2CC2 /* AddNeedToCategoryViewController.swift in Sources */,
 				AAC8EBEB26C0F3EB005FC455 /* Pin.swift in Sources */,
 				AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */,
