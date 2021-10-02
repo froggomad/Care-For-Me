@@ -8,27 +8,19 @@
 import Foundation
 
 struct UserLink: Codable {
-    let caregiver: CaregiverUser
-    let client: ClientUser
+    let caregiverId: String?
+    let clientId: String?
     var joinCode: String?
     var expiresOn: Date
     
-    init(caregiver: CaregiverUser, client: ClientUser, joinCode: String? = nil, expiresOn: Date = Date().adding(days: 7) ?? Date()) {
-        self.caregiver = caregiver
-        self.client = client
+    init(caregiverId: String?, clientId: String?, joinCode: String? = nil, expiresOn: Date = Date().adding(days: 7) ?? Date()) {
+        self.caregiverId = caregiverId
+        self.clientId = clientId
         if joinCode == nil {
             self.joinCode = Int.randomString()
-            // TODO: save joinCode
         } else {
             self.joinCode = joinCode
         }
-        self.expiresOn = expiresOn
-    }
-    
-    init(caregiver: CaregiverUser, client: ClientUser, joinCode: String, expiresOn: Date) {
-        self.caregiver = caregiver
-        self.client = client
-        self.joinCode = joinCode
         self.expiresOn = expiresOn
     }
 }
