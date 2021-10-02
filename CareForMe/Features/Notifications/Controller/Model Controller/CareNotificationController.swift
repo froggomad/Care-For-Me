@@ -41,6 +41,11 @@ class CareNotificationController: NSObject {
                             
                 let unreadNotficationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
                 guard let unreadNotifications = try? unreadNotficationData.data(as: [String: CareNotification].self) else {
+                    do {
+                        let _ = try unreadNotficationData.data(as: [String: CareNotification].self)
+                    } catch {
+                        print(error)
+                    }
                     print("unable to parse unreadNotifications")
                     return
                 }
