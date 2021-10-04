@@ -8,7 +8,6 @@
 import UIKit
 
 class NotificationListViewController: ParentDetailViewController {
-    
     var dataSource: CareNotificationController
     
     lazy var tableView: NotificationListTableView = {
@@ -47,12 +46,12 @@ class NotificationListViewController: ParentDetailViewController {
     
     private func addObservers() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(receiveNotification(_:)),
+                                               selector: #selector(receiveNotification),
                                                name: .newUnreadNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(receiveNotification(_:)),
+                                               selector: #selector(receiveNotification),
                                                name: .newReadNotification,
                                                object: nil)
     }
@@ -71,7 +70,7 @@ class NotificationListViewController: ParentDetailViewController {
         ])
     }
     
-    @objc private func receiveNotification(_ notification: Notification) {
+    @objc func receiveNotification() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
@@ -102,8 +101,10 @@ extension NotificationListViewController: UITableViewDelegate {
         
         guard let notification = notification else { return }
         FirebaseMessagingController.shared.postMessage(type: .read, notification: notification)
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: .newReadNotification, object: nil, userInfo: ["careNotification": notification])
+        if indexPath.section == CareNotificationDataSource.unread.rawValue {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .newReadNotification, object: nil, userInfo: ["careNotification": notification])
+            }
         }
         let vc = NotificationDetailViewController(notification: notification)
         self.showDetailViewController(vc, sender: nil)
