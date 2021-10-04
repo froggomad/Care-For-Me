@@ -8,6 +8,7 @@
 import Foundation
 
 struct CareNotification: Codable, Equatable {
+    
     let id: UUID
     let category: String
     let title: String

@@ -5,11 +5,12 @@
 //  Created by Kenneth Dubroff on 9/25/21.
 //
 import FirebaseFunctions
+import UIKit
 
 enum FirestoreFunction {
     
     case generateJoinCode(userId: String, joinCode: String, userType: String)
-    case linkRequest(userId: String, joinCode: String)
+    case linkRequest(userId: String, joinCode: String, userType: String)
     
     /// The name of the Firebase Function (must equate to the name in Firebase)
     private var name: String {
@@ -26,8 +27,8 @@ enum FirestoreFunction {
         switch self {
         case .generateJoinCode(let userId, let joinCode, let userType):
             return ["userId": userId, "joinCode": joinCode, "userType": userType]
-        case .linkRequest(let userId, let joinCode):
-            return ["userId": userId, "joinCode": joinCode]
+        case .linkRequest(let userId, let joinCode, let userType):
+            return ["userId": userId, "joinCode": joinCode, "userType": userType]
         }
     }
     

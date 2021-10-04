@@ -33,32 +33,18 @@ class CareNotificationController: NSObject {
     
     func getNotificationsFromAPI(for userId: String, completion: @escaping () -> Void) {
             dbController.observe(endpoint: .userNotifications(userId: userId), event: .value) { [weak self] snapshot in
-                defer {
-                    DispatchQueue.main.async {
-                        completion()
-                    }
-                }
                             
-                let unreadNotficationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
-                guard let unreadNotifications = try? unreadNotficationData.data(as: [String: CareNotification].self) else {
-                    do {
-                        let _ = try unreadNotficationData.data(as: [String: CareNotification].self)
-                    } catch {
-                        print(error)
-                    }
-                    print("unable to parse unreadNotifications")
-                    return
+                let unreadNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
+                let unreadNotifications = try? unreadNotificationData.data(as: [String: CareNotification].self)
+                self?.unread = unreadNotifications ?? [:]
+                
+                let readNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.read.rawValue)
+                let readNotifications = try? readNotificationData.data(as: [String: CareNotification].self)
+                self?.read = readNotifications ?? [:]
+                
+                DispatchQueue.main.async {
+                    completion()
                 }
-                self?.unread = unreadNotifications
-                
-                let readNotficationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.read.rawValue)
-                
-                guard let readNotifications = try? readNotficationData.data(as: [String: CareNotification].self) else {
-                    print("unable to parse readNotifications")
-                    return
-                }
-                
-                self?.read = readNotifications
             }
         }
     
@@ -72,10 +58,6 @@ class CareNotificationController: NSObject {
     @objc private func receiveReadNotification(_ notification: Notification) {
         let userInfo = notification.userInfo
         guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
-        
-        if let unreadNotification = unread[careNotification.id.uuidString] {
-            unread.removeValue(forKey: unreadNotification.id.uuidString)
-        }
         
         read[careNotification.id.uuidString] = careNotification
     }
