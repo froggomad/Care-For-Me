@@ -12,6 +12,7 @@
 		AA08787726B1BD4200AAFF3B /* CareTypeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08787626B1BD4200AAFF3B /* CareTypeable.swift */; };
 		AA08787926B1C1ED00AAFF3B /* AuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08787826B1C1ED00AAFF3B /* AuthDelegate.swift */; };
 		AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21E89E26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift */; };
+		AA2BB8E8270E206C0052DD0B /* JoinRequestAcceptResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */; };
 		AA4D31E426817071004EF6A2 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D31E326817071004EF6A2 /* NotificationService.swift */; };
 		AA4D31E826817071004EF6A2 /* Care For Me Notifications.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA4D31F62681747B004EF6A2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F52681747B004EF6A2 /* FirebaseAnalytics */; };
@@ -156,6 +157,7 @@
 		AA08787626B1BD4200AAFF3B /* CareTypeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareTypeable.swift; sourceTree = "<group>"; };
 		AA08787826B1C1ED00AAFF3B /* AuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDelegate.swift; sourceTree = "<group>"; };
 		AA21E89E26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequestAcceptResponse.swift; sourceTree = "<group>"; };
 		AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Care For Me Notifications.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4D31E326817071004EF6A2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		AA4D31E526817071004EF6A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -671,7 +673,8 @@
 		AADADDD826FFD97B00923708 /* Firestore Functions */ = {
 			isa = PBXGroup;
 			children = (
-				AADADDD926FFD98900923708 /* FirestoreFunction.swift */,
+				AADADDD926FFD98900923708 /* CloudFunction.swift */,
+				AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */,
 			);
 			path = "Firestore Functions";
 			sourceTree = "<group>";
@@ -1216,6 +1219,7 @@
 				AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */,
 				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
 				AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */,
+				AA2BB8E8270E206C0052DD0B /* JoinRequestAcceptResponse.swift in Sources */,
 				AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */,
 				AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */,
 				AAFFECF1269D6AAB00847072 /* StockPhotoViewController.swift in Sources */,
