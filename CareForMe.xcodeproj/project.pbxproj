@@ -73,7 +73,7 @@
 		AAD6D14826C60323007595CA /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14726C60323007595CA /* WeekDayView.swift */; };
 		AAD6D14A26C60343007595CA /* DateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14926C60343007595CA /* DateCollectionView.swift */; };
 		AAD6D14C26C6058E007595CA /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14B26C6058E007595CA /* MonthView.swift */; };
-		AADADDDA26FFD98900923708 /* FirestoreFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADADDD926FFD98900923708 /* FirestoreFunction.swift */; };
+		AADADDDA26FFD98900923708 /* CloudFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADADDD926FFD98900923708 /* CloudFunction.swift */; };
 		AADADDDC26FFDB4F00923708 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = AADADDDB26FFDB4F00923708 /* FirebaseFunctions */; };
 		AADE209C26C2FAAA0042CBA6 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = AADE209B26C2FAAA0042CBA6 /* Parchment */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
@@ -214,7 +214,7 @@
 		AAD6D14726C60323007595CA /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
 		AAD6D14926C60343007595CA /* DateCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionView.swift; sourceTree = "<group>"; };
 		AAD6D14B26C6058E007595CA /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
-		AADADDD926FFD98900923708 /* FirestoreFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFunction.swift; sourceTree = "<group>"; };
+		AADADDD926FFD98900923708 /* CloudFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFunction.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE262BB2679530500ABC882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1206,7 +1206,7 @@
 				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AAD6D14C26C6058E007595CA /* MonthView.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
-				AADADDDA26FFD98900923708 /* FirestoreFunction.swift in Sources */,
+				AADADDDA26FFD98900923708 /* CloudFunction.swift in Sources */,
 				AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */,
