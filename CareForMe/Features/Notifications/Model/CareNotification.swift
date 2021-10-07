@@ -27,4 +27,24 @@ struct CareNotification: Codable, Equatable {
     var categoryTitle: String {
         "\(category): \(title)"
     }
+    
+    init(id: UUID, category: String, title: String, text: String, forUserId: String, date: Date) {
+        self.id = id
+        self.category = category
+        self.title = title
+        self.text = text
+        self.forUserId = forUserId
+        self.date = date
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        category = try container.decode(String.self, forKey: .category)
+        title = try container.decode(String.self, forKey: .title)
+        text = try container.decode(String.self, forKey: .text)
+        forUserId = try container.decode(String.self, forKey: .forUserId)
+        let seconds = Double(try container.decode(Int.self, forKey: .date))
+        date = Date(timeIntervalSince1970: seconds)
+    }
 }
