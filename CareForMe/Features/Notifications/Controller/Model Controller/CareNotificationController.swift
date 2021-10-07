@@ -36,11 +36,13 @@ class CareNotificationController: NSObject {
                             
                 let unreadNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
                 let unreadNotifications = try? unreadNotificationData.data(as: [String: CareNotification].self)
-                self?.unread = unreadNotifications ?? [:]
+                let sortedUnreadNotifications = Dictionary(uniqueKeysWithValues: (unreadNotifications?.sorted(by: {$0.value.date < $1.value.date})) ?? [])
+                self?.unread = sortedUnreadNotifications
                 
                 let readNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.read.rawValue)
                 let readNotifications = try? readNotificationData.data(as: [String: CareNotification].self)
-                self?.read = readNotifications ?? [:]
+                let sortedReadNotifications = Dictionary(uniqueKeysWithValues: readNotifications?.sorted(by: {$0.value.date < $1.value.date}) ?? [])
+                self?.read = sortedReadNotifications
                 
                 DispatchQueue.main.async {
                     completion()
@@ -53,6 +55,7 @@ class CareNotificationController: NSObject {
         guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
         
         unread[careNotification.id.uuidString] = careNotification
+        unread = Dictionary(uniqueKeysWithValues: unread.sorted(by: {$0.value.date < $1.value.date}))
     }
     
     @objc private func receiveReadNotification(_ notification: Notification) {
@@ -60,6 +63,7 @@ class CareNotificationController: NSObject {
         guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
         
         read[careNotification.id.uuidString] = careNotification
+        read = Dictionary(uniqueKeysWithValues: unread.sorted(by: {$0.value.date < $1.value.date}))
     }
     
     deinit {
