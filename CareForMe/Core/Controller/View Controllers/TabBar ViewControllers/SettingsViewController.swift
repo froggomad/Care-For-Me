@@ -166,7 +166,7 @@ extension SettingsViewController: UITableViewDataSource {
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = OnboardingLinkVC(id: 0)
+        let vc = OnboardingLinkVC(id: 0, continueButtonTitle: "Continue")
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
