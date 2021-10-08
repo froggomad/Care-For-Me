@@ -18,10 +18,17 @@ class NotificationDetailViewController: UIViewController, AuthenticableViewContr
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
         return scrollView
     }()
     
-    private lazy var contentView: UIStackView = {
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel, textLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
@@ -71,6 +78,7 @@ class NotificationDetailViewController: UIViewController, AuthenticableViewContr
         if !view.subviews.contains(scrollView) {
             view.addSubview(scrollView)
             scrollView.addSubview(contentView)
+            contentView.addSubview(stackView)
             constraints()
         }
     }
@@ -86,8 +94,17 @@ class NotificationDetailViewController: UIViewController, AuthenticableViewContr
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
+        
+        for view in stackView.arrangedSubviews {
+            view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - scrollViewPadding*2).isActive = true
+        }
     }
     
     private func displayNotification() {
@@ -96,4 +113,12 @@ class NotificationDetailViewController: UIViewController, AuthenticableViewContr
         textLabel.text = notification.text
     }
     
+}
+
+extension NotificationDetailViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if(scrollView.contentOffset.x != 0) {
+            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y), animated: false)
+        }
+    }
 }

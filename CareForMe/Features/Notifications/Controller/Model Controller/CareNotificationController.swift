@@ -12,12 +12,10 @@ class CareNotificationController: NSObject {
     
     private let dbController = FirebaseDatabaseController()
     
-    var read: [String: CareNotification]
-    var unread: [String: CareNotification]
+    var read: [String: CareNotification] = [:]
+    var unread: [String: CareNotification] = [:]
     
     override private init() {
-        self.read = [:]
-        self.unread = [:]
         super.init()
         
         NotificationCenter.default.addObserver(self,
