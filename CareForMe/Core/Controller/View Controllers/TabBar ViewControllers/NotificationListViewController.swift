@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotificationListViewController: ParentDetailViewController {
+class NotificationListViewController: ParentDetailViewController, AuthenticableViewController {
     var dataSource: CareNotificationController
     
     lazy var tableView: NotificationListTableView = {
@@ -23,6 +23,7 @@ class NotificationListViewController: ParentDetailViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        authenticate()
         FirebaseMessagingController.shared.requestNotificationPermissions(completion: {_ in })
         tableView.reloadData()
     }

@@ -19,7 +19,7 @@ extension StockPhotoImageSelectionDelegate {
     }
 }
 
-class StockPhotoViewController: UIViewController {
+class StockPhotoViewController: UIViewController, AuthenticableViewController {
     
     var alert: AlertCategory = NamedPhoto.category
     var alerts: [CareAlertType]!
@@ -51,6 +51,11 @@ class StockPhotoViewController: UIViewController {
         super.viewDidLoad()
         subviews()
         definesPresentationContext = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        authenticate()
     }
     
     private func subviews() {

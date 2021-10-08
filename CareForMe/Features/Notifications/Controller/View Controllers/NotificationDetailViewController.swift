@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotificationDetailViewController: UIViewController {
+class NotificationDetailViewController: UIViewController, AuthenticableViewController {
     // MARK: - Properties -
     var notification: CareNotification {
         didSet {
@@ -58,6 +58,11 @@ class NotificationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        authenticate()
     }
     
     private func setupViews() {

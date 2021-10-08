@@ -11,7 +11,7 @@ protocol CategoryUpdatable: AnyObject {
     func updateCategory(title: String?)
 }
 
-class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
+class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable, AuthenticableViewController {
     
     private let controller = NeedsController.shared
     
@@ -22,6 +22,11 @@ class AddCategoryViewController: ParentDetailViewController, CategoryUpdatable {
     
     override func loadView() {
         view = categorySetupView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        authenticate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

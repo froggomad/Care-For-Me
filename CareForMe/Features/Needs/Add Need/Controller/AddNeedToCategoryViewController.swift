@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoImageSelectionDelegate {
+class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoImageSelectionDelegate, AuthenticableViewController {
     weak var delegate: AddNeedDelegate!
     
     var selectedImage: StockPhoto? {
@@ -33,6 +33,11 @@ class AddNeedToCategoryViewController: ParentDetailViewController, StockPhotoIma
     override func loadView() {
         super.loadView()
         view = addNeedView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        authenticate()
     }
     
     @objc private func presentPhotos() {

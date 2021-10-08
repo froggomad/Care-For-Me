@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: ParentDetailViewController {
+class SettingsViewController: ParentDetailViewController, AuthenticableViewController {
     
     lazy var stack: UIStackView = {
         let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle, tableView], spacing: 20)
@@ -89,6 +89,7 @@ class SettingsViewController: ParentDetailViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        authenticate()
         setNotificationSwitchState()
         setSavePasswordsSwitchState()
     }
