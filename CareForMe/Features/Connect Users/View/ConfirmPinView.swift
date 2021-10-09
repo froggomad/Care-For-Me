@@ -8,7 +8,7 @@
 import UIKit
 
 class ConfirmPINViewController: UIViewController {
-    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap Confirm", imageFilename: nil, buttonTitle: "Confirm", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
+    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap Confirm", imageFilename: nil, buttonTitle: "Confirm", selectionDelegate: TargetSelector(target: self, selector: #selector(confirmCode)))
     
     let pinLength: Int = 6
     
@@ -38,7 +38,9 @@ class ConfirmPINViewController: UIViewController {
 final class PinCodeStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
     var pinLength: Int
     var textFields: [StatusTextField<PinCodeStatusTextFieldDelegate>]
-    
+    var text: String {
+        textFields[0].text ?? ""
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard string != "" else { // handles backspace char
             textFieldDictionary[textField]?.displayStatusMessage()
