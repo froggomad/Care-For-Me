@@ -145,3 +145,8 @@ extension Notification.Name {
     static let newUnreadNotification = Notification.Name("NewUnreadNotification")
     static let newReadNotification = Notification.Name("NewReadNotification")
 }
+
+enum NotificationCategory: String {
+    case need
+    case joinRequest = "Join Request"
+}
