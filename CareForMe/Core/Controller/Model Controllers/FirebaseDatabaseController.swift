@@ -35,12 +35,12 @@ class FirebaseDatabaseController {
         Self.db.child(ref.endpoint).updateChildValues(dictionary)
     }
     
-    func observe(endpoint: NotificationAPIRef, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
+    func observe(endpoint: NotificationAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
         let ref = Self.db.child(endpoint.endpoint)
         ref.observe(event, with: completion)
     }
     
-    func observe(endpoint: UserDatabaseAPIRef, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
+    func observe(endpoint: UserDatabaseAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
         let ref = Self.db.child(endpoint.endpoint)
         ref.observe(event, with: completion)
     }
