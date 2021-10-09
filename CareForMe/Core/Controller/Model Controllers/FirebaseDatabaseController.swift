@@ -40,6 +40,11 @@ class FirebaseDatabaseController {
         ref.observe(event, with: completion)
     }
     
+    func observe(endpoint: UserDatabaseAPIRef, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
+        let ref = Self.db.child(endpoint.endpoint)
+        ref.observe(event, with: completion)
+    }
+    
 }
 
 enum UserDatabaseAPIRef {
