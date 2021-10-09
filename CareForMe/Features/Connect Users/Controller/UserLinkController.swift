@@ -14,6 +14,8 @@ class UserLinkController {
     func getLinkFromAPI() {
         guard let user = user else { return }
         dbController.observe(endpoint: .userLinkRef(userId: user.privateDetails.userId)) { snapshot in
+            guard snapshot.exists() else { return }
+            
             do {
                 let userLink = try snapshot.data(as: UserLink.self)
                 user.privateDetails.linkedUser = userLink

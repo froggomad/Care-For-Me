@@ -20,7 +20,8 @@ class UserController {
     
     private func getJoinRequests() {
         guard let user = user else { return }
-        db.observe(endpoint: .joinRequests(userId: user.privateDetails.userId), event: .value) { snapshot in
+        db.observe(endpoint: .joinRequests(userId: user.privateDetails.userId)) { snapshot in
+            guard snapshot.exists() else { return }
             do {
                 let snapshotData = try snapshot.data(as: [String: JoinRequest].self)
                 let joinRequests = Array(snapshotData.values)
