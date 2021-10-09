@@ -47,10 +47,10 @@ final class PinCodeStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         
         if let num = Int(string) {
             guard let text = textField.text,
-                  text.count <= 5 else { // 5 plus the replacement string
-                textFieldDictionary[textField]?.displayErrorMessage(for: Error.tooLong(pinLength: pinLength))
-                return false
-            }
+                  text.count <= pinLength - 1 else { // 5 plus the replacement string
+                      textFieldDictionary[textField]?.displayErrorMessage(for: Error.tooLong(pinLength: pinLength))
+                      return false
+                  }
             
             textFieldDictionary[textField]?.displayStatusMessage()
             return num <= 9 && num >= 0
