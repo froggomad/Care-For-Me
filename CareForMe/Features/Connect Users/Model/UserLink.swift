@@ -38,14 +38,6 @@ struct UserLink: Codable {
     }
 }
 
-struct UserLinkController {
-    private static let dbController = FirebaseDatabaseController()
-    
-    static func sendLinkToDatabase(link: UserLink) {
-        dbController.setUserValue(for: .userLinkRef, with: link)
-    }
-}
-
 extension Date {
     func adding(days: Int) -> Date? {
         return Calendar.current.date(byAdding: .day, value: days, to: self)

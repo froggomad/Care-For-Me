@@ -77,6 +77,7 @@
 		AAD7DA07270FD4B500046BD7 /* AuthenticableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD7DA06270FD4B500046BD7 /* AuthenticableViewController.swift */; };
 		AADADDDA26FFD98900923708 /* CloudFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADADDD926FFD98900923708 /* CloudFunction.swift */; };
 		AADADDDC26FFDB4F00923708 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = AADADDDB26FFDB4F00923708 /* FirebaseFunctions */; };
+		AADB36E927120433009871ED /* UserLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADB36E827120433009871ED /* UserLinkController.swift */; };
 		AADE209C26C2FAAA0042CBA6 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = AADE209B26C2FAAA0042CBA6 /* Parchment */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
 		AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BB2679530500ABC882 /* SceneDelegate.swift */; };
@@ -219,6 +220,7 @@
 		AAD6D14B26C6058E007595CA /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		AAD7DA06270FD4B500046BD7 /* AuthenticableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticableViewController.swift; sourceTree = "<group>"; };
 		AADADDD926FFD98900923708 /* CloudFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFunction.swift; sourceTree = "<group>"; };
+		AADB36E827120433009871ED /* UserLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLinkController.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE262BB2679530500ABC882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -755,6 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */,
+				AADB36E827120433009871ED /* UserLinkController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
 				AA8B6D1D26F4F91100D500A3 /* AlertViewController.swift in Sources */,
 				AA4D31FC26817DF2004EF6A2 /* FirebaseMessagingController.swift in Sources */,
+				AADB36E927120433009871ED /* UserLinkController.swift in Sources */,
 				AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */,
 				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
 				AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */,
