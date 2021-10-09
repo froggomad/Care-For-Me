@@ -20,6 +20,8 @@ struct PublicUserDetails: Codable {
 
 struct PrivateUserDetails: Codable {
     let userId: String
+    var joinRequests: [JoinRequest]?
+    var linkedUser: UserLink?
 }
 
 class CareUser: Codable {
