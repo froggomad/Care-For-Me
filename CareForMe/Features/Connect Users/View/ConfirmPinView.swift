@@ -30,8 +30,29 @@ class ConfirmPINViewController: UIViewController {
         confirmPINView.addView(statusTextField)
     }
     
-    @objc func foo() {
-        print("foo")
+    @objc func confirmCode() {
+        guard let user = AuthService.shared.user else {
+            let vc = AuthViewController(authType: .login)
+            present(vc, animated: true)
+            return
+        }
+        CloudFunction.linkRequest(userId: user.privateDetails.userId, joinCode: pinCodeTextfieldDelegate.text, userType: user.publicDetails.userType).callLinkRequest { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let status):
+                DispatchQueue.main.async {
+                    if status {
+                        self.presentAlert(title: "Join Request Sent", message: "You've successfully requested to link your account!") { _ in
+                            self.dismiss(animated: true)
+                        }
+                    } else {
+                        self.presentAlert(title: "Invalid Join Code", message: "Code not found or code is expired. Please verify the code or ask the other user to generate a new join code in their settings.")
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
