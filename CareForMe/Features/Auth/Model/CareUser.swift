@@ -26,7 +26,7 @@ struct PrivateUserDetails: Codable {
 
 class CareUser: Codable {
     
-    let privateDetails: PrivateUserDetails
+    var privateDetails: PrivateUserDetails
     let publicDetails: PublicUserDetails
     
     convenience init(authUser: User) {
