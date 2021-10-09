@@ -11,7 +11,7 @@ protocol LinkProcessable {
     func linkConnected()
 }
 
-final class OnboardingLinkVC: OnboardingViewController {    
+final class OnboardingLinkVC: OnboardingViewController {
     lazy var linkButton: UIButton = .standardCFMButton(with: "I want to confirm a code instead", color: .named(.secondaryLink), targetAndSelector: TargetSelector(target: self, selector: #selector(displayCodeConfirmationViewController)))
     
     lazy var codeLabel: UILabel = {
@@ -42,6 +42,10 @@ final class OnboardingLinkVC: OnboardingViewController {
 
 extension OnboardingLinkVC: LinkProcessable {
     @objc func linkConnected() {
+        guard presentingViewController as? MainTabController == nil else {
+            dismiss(animated: true)
+            return
+        }
         let tab = TabBar.createMainTabBar()
         present(tab, animated: false)
     }
