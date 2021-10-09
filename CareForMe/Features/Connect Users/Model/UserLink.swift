@@ -26,6 +26,13 @@ struct UserLink: Codable {
     var joinCode: String?
     var expiresOn: Date
     
+    enum CodingKeys: String, CodingKey {
+        case caregiverId = "caregiver"
+        case clientId = "client"
+        case joinCode = "code"
+        case expiresOn
+    }
+    
     init(caregiverId: String?, clientId: String?, joinCode: String? = nil, expiresOn: Date = Date().adding(days: 7) ?? Date()) {
         self.caregiverId = caregiverId
         self.clientId = clientId
