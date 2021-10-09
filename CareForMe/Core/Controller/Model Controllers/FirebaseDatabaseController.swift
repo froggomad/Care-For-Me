@@ -50,7 +50,8 @@ class FirebaseDatabaseController {
 enum UserDatabaseAPIRef {
     case userRef(userId: String)
     case tokenRef(userId: String)
-    case userLinkRef
+    case joinRequests(userId: String)
+    case userLinkRef(userId: String)
     
     var endpoint: String {
         switch self {
@@ -58,8 +59,10 @@ enum UserDatabaseAPIRef {
             return Self.userRefEndpoint(userId: userId)
         case let .tokenRef(userId):
             return Self.privateUserDetails(userId: userId)
-        case .userLinkRef:
-            return "/users/toLink"
+        case let .joinRequests(userId):
+            return Self.privateUserDetails(userId: userId) + "/joinRequests"
+        case let  .userLinkRef(userId):
+            return Self.privateUserDetails(userId: userId) + "/joinCode"
         }
     }
     
