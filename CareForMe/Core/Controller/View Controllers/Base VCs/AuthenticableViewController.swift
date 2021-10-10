@@ -9,6 +9,7 @@ import UIKit
 
 protocol AuthenticableViewController: UIViewController {
     var isAuthenticated: Bool { get }
+    func authenticate()
 }
 
 extension AuthenticableViewController {
