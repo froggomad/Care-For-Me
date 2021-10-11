@@ -10,6 +10,8 @@ import Parchment
 
 class OnboardingPagedViewController: UIViewController {
     
+    var userType: UserType = .client
+    
     lazy var onboardingWelcomeVC: OnboardingViewController =
         OnboardingViewController(id: 0,
                                  indicatorText: "Welcome",
@@ -20,8 +22,24 @@ class OnboardingPagedViewController: UIViewController {
                                  selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))),
                                  additionalViews: [])
     
-    lazy var onboardingLinkInfoVC: OnboardingViewController =
+    lazy var selectionController: UserTypeSelectionController = {
+        let controller = UserTypeSelectionController()
+        controller.delegate = self
+        return controller
+    }()
+    
+    lazy var appUseViewController: OnboardingViewController =
         OnboardingViewController(id: 1,
+                                 indicatorText: "App Use",
+                                 title: "How Will You Use Care For Me?",
+                                 instructions: "Are you a client needing assistance, or a caregiver providing assistance?",
+                                 image: nil,
+                                 buttonTitle: "Next: Account Creation",
+                                 selectionDelegate: TargetSelector(target: self, selector: #selector(activateViewController(_:))),
+                                 additionalViews: [selectionController.userTypePickerView])
+    
+    lazy var onboardingLinkInfoVC: OnboardingViewController =
+        OnboardingViewController(id: 2,
                                  indicatorText: "Account",
                                  title: "Secure Account Creation",
                                  instructions: "Our goal is to safely and convenienently link you with your companion so you can plan, organize, and connect all in one place. To do that, you'll set up a secure account, and give your companion a unique join code that only you have",
@@ -30,11 +48,12 @@ class OnboardingPagedViewController: UIViewController {
                                  selectionDelegate: TargetSelector(target: self, selector: #selector(register)),
                                  additionalViews: [])
     
-    lazy var onboardingCompanionVC: OnboardingLinkVC = OnboardingLinkVC(id: 2)
+    lazy var onboardingCompanionVC: OnboardingLinkVC = OnboardingLinkVC(id: 3)
     
     lazy var viewControllers: [OnboardingViewController] = {
         return [
             onboardingWelcomeVC,
+            appUseViewController,
             onboardingLinkInfoVC
         ]
     }()
@@ -51,7 +70,7 @@ class OnboardingPagedViewController: UIViewController {
     }()
     
     @objc private func register() {
-        let vc = RegistrationViewController() { [weak self] in
+        let vc = RegistrationViewController(userType: userType) { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.perform(#selector(self.presentLink), with: nil, afterDelay: 0)
@@ -115,4 +134,10 @@ extension OnboardingPagedViewController: PagingViewControllerDataSource {
         pagingVC.select(index: index + 1)
     }
     
+}
+
+extension OnboardingPagedViewController: UserTypeSelectionDelegate {
+    func typeSelected(_ userType: UserType) {
+        self.userType = userType
+    }
 }
