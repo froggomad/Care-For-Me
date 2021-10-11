@@ -8,6 +8,7 @@
 import UIKit
 
 class NotificationDetailViewController: UIViewController, AuthenticableViewController {
+    
     // MARK: - Properties -
     var notification: CareNotification {
         didSet {
