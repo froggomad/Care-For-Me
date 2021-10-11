@@ -13,13 +13,16 @@ protocol RegistrationProcessable: AnyObject {
 
 class RegistrationViewController: UIViewController, AuthControllable {
     
+    var userType: UserType
+    
     private let authService = AuthService.shared
     lazy var authDelegate = AuthDelegate(self)
     
     private lazy var registrationView = AuthView(delegate: authDelegate)
     private var completionClosure: () -> Void
     
-    init(completionClosure: @escaping () -> Void) {
+    init(userType: UserType, completionClosure: @escaping () -> Void) {
+        self.userType = userType
         self.completionClosure = completionClosure
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .fullScreen
@@ -38,9 +41,14 @@ class RegistrationViewController: UIViewController, AuthControllable {
 extension RegistrationViewController: RegistrationProcessable {
     func processRegistration(email: String, password: String) {
         guard let emailAddress = registrationView.emailAddress else { return }
-        authService.registerWithEmail(emailInput: emailAddress, password: "12345678") { [weak self] result in
+        authService.registerWithEmail(userType: userType, emailInput: emailAddress, password: password) { [weak self] result in
             guard let self = self else { return }
-            print(result)
+            switch result {
+            case .success:
+                UserDefaultsConfig.hasOnboarded = true
+            case .failure:
+                return
+            }
             self.dismiss(animated: false) {
                 self.completionClosure()
             }

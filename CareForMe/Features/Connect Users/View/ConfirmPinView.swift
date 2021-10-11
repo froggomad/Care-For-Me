@@ -36,7 +36,7 @@ class ConfirmPINViewController: UIViewController {
             present(vc, animated: true)
             return
         }
-        CloudFunction.linkRequest(userId: user.privateDetails.userId, joinCode: pinCodeTextfieldDelegate.text, userType: user.publicDetails.userType).callLinkRequest { [weak self] result in
+        CloudFunction.linkRequest(userId: user.privateDetails.userId, joinCode: pinCodeTextfieldDelegate.text).callLinkRequest { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let status):

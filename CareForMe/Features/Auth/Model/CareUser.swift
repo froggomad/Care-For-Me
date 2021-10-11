@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-enum UserType: String, Codable {
+enum UserType: String, Codable, CaseIterable {
     case client
     case caregiver
 }
