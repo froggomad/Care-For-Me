@@ -26,9 +26,6 @@ extension AuthenticableViewController {
 }
 
 class AuthenticatedViewController: UIViewController, AuthenticableViewController {
-    var isAuthenticated: Bool {
-        return AuthService.shared.isLoggedIn
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         authenticate()
