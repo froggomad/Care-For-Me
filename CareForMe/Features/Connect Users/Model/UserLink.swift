@@ -37,16 +37,20 @@ struct UserLink: Codable {
         case expiresOn
     }
     
-    init(caregiverId: String?, clientId: String?, joinCode: String? = nil, expiresOn: Date = Date().adding(days: 7) ?? Date()) {
-        self.caregiverId = caregiverId
-        self.clientId = clientId
-        if joinCode == nil {
-            self.joinCode = Int.randomString()
-        } else {
-            self.joinCode = joinCode
-        }
-        self.expiresOn = expiresOn
+    init(from dictionary: [String: Any]) {
+        self.caregiverId = dictionary[CodingKeys.caregiverId.rawValue] as? String
+        self.clientId = dictionary[CodingKeys.clientId.rawValue] as? String
+        self.joinCode = dictionary[CodingKeys.joinCode.rawValue] as? String
+        let date = dictionary[CodingKeys.expiresOn.rawValue] as? String ?? ""
+        self.expiresOn = DateFormatter.firebaseStringToDate(from: date)
     }
+    
+//    init(caregiverId: String?, clientId: String?, joinCode: String? = nil, expiresOn: Date = Date().adding(days: 7) ?? Date()) {
+//        self.caregiverId = caregiverId
+//        self.clientId = clientId
+//        self.joinCode = joinCode
+//        self.expiresOn = expiresOn
+//    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

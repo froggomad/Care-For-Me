@@ -57,13 +57,12 @@ enum CloudFunction {
                     return
                 }
                 
-                let data = result?.data as? [String: String] ?? [:]
-                let careGiverId = data["caregiver"]
-                let clientId = data["client"]
-                let expirationDateString = data["expiresOn"] ?? ""
-                let joinCode = data["code"]
-                
-                let userLink = UserLink(caregiverId: careGiverId, clientId: clientId, joinCode: joinCode, expiresOn: DateFormatter.firebaseStringToDate(from: expirationDateString))
+                guard let data = result?.data as? [String:String] else {
+                    print("couldn't convert data to UserLink")
+                    completion(.failure(CloudFunctionError.badResponse))
+                    return
+                }
+                let userLink = UserLink(from: data)
                 completion(.success(userLink))
             default: completion(.failure(CloudFunctionError.wrongCall))
             }
