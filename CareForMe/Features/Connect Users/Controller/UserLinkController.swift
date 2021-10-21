@@ -11,11 +11,11 @@ class UserLinkController {
     private let dbController = FirebaseDatabaseController()
     private let user = AuthService.shared.user
     
-    func getLinkFromAPI() {
+    func getLinkFromAPI(completion: @escaping () -> Void) {
         guard let user = user else { return }
         dbController.observe(endpoint: .userLinkRef(userId: user.privateDetails.userId)) { snapshot in
             guard snapshot.exists() else { return }
-            
+            defer { completion() }
             do {
                 let userLink = try snapshot.data(as: UserLink.self)
                 user.privateDetails.linkedUser = userLink

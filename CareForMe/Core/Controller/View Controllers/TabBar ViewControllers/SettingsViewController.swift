@@ -28,7 +28,7 @@ class SettingsViewController: ParentDetailViewController, AuthenticableViewContr
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "SettingsTableViewCell")
         tv.dataSource = self
         tv.delegate = self
-        tv.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        tv.heightAnchor.constraint(equalToConstant: 200).isActive = true
         return tv
     }()
     
@@ -150,25 +150,56 @@ class SettingsViewController: ParentDetailViewController, AuthenticableViewContr
 }
 
 extension SettingsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            guard let user = AuthService.shared.user else { return 0 }
+            return user.privateDetails.joinRequests?.count ?? 0
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") else {
             fatalError("bad cell mojo")
         }
-        cell.textLabel?.text = "Secure Companion Link Code"
         cell.accessoryType = .disclosureIndicator
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "Link With a Companion"
+        } else if indexPath.section == 1 {
+            guard let user = AuthService.shared.user else { return cell }
+            cell.textLabel?.text = user.privateDetails.joinRequests?[indexPath.row].username
+        }
         return cell
     }
 }
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = OnboardingLinkVC(id: 0, continueButtonTitle: "Continue")
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        if indexPath.section == 0 {
+            let vc = OnboardingLinkVC(id: 0, continueButtonTitle: "Continue")
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        } else if indexPath.section == 1 {
+            // TODO: accept/deny link request VC
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Actions"
+        }
+        if section == 1 {
+            return "Join Requests"
+        }
+        return nil
     }
 }
 

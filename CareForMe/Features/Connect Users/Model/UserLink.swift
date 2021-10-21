@@ -54,8 +54,8 @@ struct UserLink: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        caregiverId = try container.decode(String.self, forKey: .caregiverId)
-        clientId = try container.decode(String.self, forKey: .clientId)
+        caregiverId = try container.decodeIfPresent(String.self, forKey: .caregiverId)
+        clientId = try container.decodeIfPresent(String.self, forKey: .clientId)
         joinCode = try container.decode(String.self, forKey: .joinCode)
         let dateString = try container.decode(String.self, forKey: .expiresOn)
         expiresOn = DateFormatter.firebaseStringToDate(from: dateString)
