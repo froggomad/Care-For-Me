@@ -21,75 +21,93 @@ class FirebaseMessagingController: NSObject {
     
     override private init() {
         super.init()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(receiveToken(_:)),
-            name: .tokenKey,
-            object: nil)
-        
-        registerForRemoteNotifications()
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
+        #if targetEnvironment(simulator)
+            return
+        #else
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(receiveToken(_:)),
+                name: .tokenKey,
+                object: nil)
+            
+            registerForRemoteNotifications()
+            Messaging.messaging().delegate = self
+            UNUserNotificationCenter.current().delegate = self
+        #endif
     }
     
     @objc private func receiveToken(_ notification: Notification) {
-        
-        guard let tokenDict = notification.userInfo as? [Notification.Name: String],
-              let token = tokenDict[.tokenKey] else { return }
-        self.token = token
-        let apiTokenDict = ["token": token]
-        if AuthService.shared.isLoggedIn {
-            guard let user = AuthService.shared.user else { return }
-            FirebaseDatabaseController().updateValues(for: .userRef(userId: user.userId), with: apiTokenDict)
-        }
-        
+        #if targetEnvironment(simulator)
+            return
+        #else
+            guard let tokenDict = notification.userInfo as? [Notification.Name: String],
+                  let token = tokenDict[.tokenKey] else { return }
+            self.token = token
+            let apiTokenDict = ["token": token]
+            if AuthService.shared.isLoggedIn {
+                guard let user = AuthService.shared.user else { return }
+                FirebaseDatabaseController().updateValues(for: .tokenRef(userId: user.privateDetails.userId), with: apiTokenDict)
+            }
+        #endif
     }
     
     func registerForRemoteNotifications(_ application: UIApplication = UIApplication.shared) {
-        application.registerForRemoteNotifications()
+        #if targetEnvironment(simulator)
+            return
+        #else
+            application.registerForRemoteNotifications()
+        #endif
     }
     
     func getNotificationSettings(completion: @escaping (NotificationPermissionStatus) -> Void) {
-        let current = UNUserNotificationCenter.current()
-        current.getNotificationSettings(completionHandler: { permission in
-            DispatchQueue.main.async {
-                switch permission.authorizationStatus  {
-                case .authorized, .provisional, .ephemeral:
-                    completion(.authorized)
-                case .denied:
-                    completion(.denied)
-                case .notDetermined:
-                    completion(.needPermission)
-                @unknown default:
-                    completion(.needPermission)
+        #if targetEnvironment(simulator)
+            return
+        #else
+            let current = UNUserNotificationCenter.current()
+            current.getNotificationSettings(completionHandler: { permission in
+                DispatchQueue.main.async {
+                    switch permission.authorizationStatus  {
+                    case .authorized, .provisional, .ephemeral:
+                        completion(.authorized)
+                    case .denied:
+                        completion(.denied)
+                    case .notDetermined:
+                        completion(.needPermission)
+                    @unknown default:
+                        completion(.needPermission)
+                    }
                 }
-            }
-        })
+            })
+        #endif
     }
     
     func requestNotificationPermissions(completion: @escaping (Result<Bool, Error>) -> Void) {
-        
-        let authOptions: UNAuthorizationOptions = [.alert, .badge]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { [weak self] success, error in
-                if success {
-                    self?.retrieveMessagingToken()
-                    completion(.success(success))
-                } else if let error = error {
-                    completion(.failure(error))
-                } else {
-                    let error = NSError(domain: #function, code: 0)
-                    completion(.failure(error))
+        #if targetEnvironment(simulator)
+            return
+        #else
+            let authOptions: UNAuthorizationOptions = [.alert, .badge]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: { [weak self] success, error in
+                    if success {
+                        self?.retrieveMessagingToken()
+                        completion(.success(success))
+                    } else if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        let error = NSError(domain: #function, code: 0)
+                        completion(.failure(error))
+                    }
                 }
-            }
-        )
-        
+            )
+        #endif
     }
     
     /// use this to retrieve a messaging token directly and send a notification (fallback)
     func retrieveMessagingToken() {
-        
+        #if targetEnvironment(simulator)
+            return
+        #else
         Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching FCM registration token: \(error)")
@@ -100,10 +118,10 @@ class FirebaseMessagingController: NSObject {
                 }
             }
         }
-        
+        #endif
     }
     
-    enum NotificationType {
+    enum NotificationType: String {
         case read
         case unread
     }

@@ -10,19 +10,12 @@ import UIKit
 class CareNotificationController: NSObject {
     static let shared = CareNotificationController()
     
-    private struct NotificationData: Codable {
-        var read: [CareNotification]
-        var unread: [CareNotification]
-    }
-    
     private let dbController = FirebaseDatabaseController()
     
-    var read: [String: CareNotification]
-    var unread: [String: CareNotification]
+    var read: [String: CareNotification] = [:]
+    var unread: [String: CareNotification] = [:]
     
     override private init() {
-        self.read = [:]
-        self.unread = [:]
         super.init()
         
         NotificationCenter.default.addObserver(self,
@@ -36,41 +29,40 @@ class CareNotificationController: NSObject {
                                                object: nil)
     }
     
-    func getNotificationsFromAPI(for userId: String) {
-        dbController.observe(endpoint: .userNotifications(userId: userId), event: .value) { [weak self] snapshot in
-            guard let notification = try? snapshot.data(as: NotificationData.self) else {
-                return
+    func getNotificationsFromAPI(for userId: String, completion: @escaping () -> Void) {
+            dbController.observe(endpoint: .userNotifications(userId: userId)) { [weak self] snapshot in
+                guard snapshot.exists() else { return }
+                
+                let unreadNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
+                let unreadNotifications = try? unreadNotificationData.data(as: [String: CareNotification].self)
+                let sortedUnreadNotifications = Dictionary(uniqueKeysWithValues: (unreadNotifications?.sorted(by: {$0.value.date < $1.value.date})) ?? [])
+                self?.unread = sortedUnreadNotifications
+                
+                let readNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.read.rawValue)
+                let readNotifications = try? readNotificationData.data(as: [String: CareNotification].self)
+                let sortedReadNotifications = Dictionary(uniqueKeysWithValues: readNotifications?.sorted(by: {$0.value.date < $1.value.date}) ?? [])
+                self?.read = sortedReadNotifications
+                
+                DispatchQueue.main.async {
+                    completion()
+                }
             }
-            var readHashMap: Dictionary<String, CareNotification> = [:]
-            for notification in notification.read {
-                readHashMap[notification.id.uuidString] = notification
-            }
-            self?.read = readHashMap
-                        
-            var unreadHashMap: Dictionary<String, CareNotification> = [:]
-            for notification in notification.unread {
-                unreadHashMap[notification.id.uuidString] = notification
-            }
-            self?.unread = unreadHashMap
         }
-    }
     
     @objc private func receiveUnreadNotification(_ notification: Notification) {
         let userInfo = notification.userInfo
         guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
         
         unread[careNotification.id.uuidString] = careNotification
+        unread = Dictionary(uniqueKeysWithValues: unread.sorted(by: {$0.value.date < $1.value.date}))
     }
     
     @objc private func receiveReadNotification(_ notification: Notification) {
         let userInfo = notification.userInfo
         guard let careNotification = userInfo?["careNotification"] as? CareNotification else { return }
         
-        if let unreadNotification = unread[careNotification.id.uuidString] {
-            unread.removeValue(forKey: unreadNotification.id.uuidString)
-        }
-        
         read[careNotification.id.uuidString] = careNotification
+        read = Dictionary(uniqueKeysWithValues: unread.sorted(by: {$0.value.date < $1.value.date}))
     }
     
     deinit {
@@ -153,4 +145,9 @@ enum CareNotificationDataSource: Int, CaseIterable {
 extension Notification.Name {
     static let newUnreadNotification = Notification.Name("NewUnreadNotification")
     static let newReadNotification = Notification.Name("NewReadNotification")
+}
+
+enum NotificationCategory: String {
+    case need
+    case joinRequest = "Join Request"
 }

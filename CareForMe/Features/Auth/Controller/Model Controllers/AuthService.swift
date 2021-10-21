@@ -40,7 +40,7 @@ class AuthService {
        }
    }
     
-    func registerWithEmail(emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
+    func registerWithEmail(userType: UserType, emailInput: String, password: String, completion: @escaping (Result<AuthDataResult?, AuthError>) -> Void) {
         
         var emailValidation = EmailAuth(email: emailInput)
         
@@ -60,10 +60,15 @@ class AuthService {
                 
                 if let user = authResult?.user {
                     
-                    let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
-                    
-                    self.user = careUser
-                    self.dbController.setUserValue(for: .userRef(userId: careUser.userId), with: careUser)
+                    if userType == .client {
+                        let client = ClientUser(userId: user.uid, displayName: user.displayName ?? "Anonymous Client")
+                        self.user = client
+                        self.dbController.setUserValue(for: .userRef(userId: client.privateDetails.userId), with: client)
+                    } else if userType == .caregiver {
+                        let caregiver = CaregiverUser(userId: user.uid, displayName: user.displayName ?? "Anonymous Caregiver")
+                        self.user = caregiver
+                        self.dbController.setUserValue(for: .userRef(userId: caregiver.privateDetails.userId), with: caregiver)
+                    }
                     
                     completion(.success(authResult))
                     
@@ -83,7 +88,7 @@ class AuthService {
             }
             
             if let user = authResult?.user {
-                let careUser = CareUser(userId: user.uid, displayName: user.displayName ?? "Anonymous")
+                let careUser = CareUser(authUser: user)
                 self.user = careUser
                 completion(.success(authResult))
             } else { completion(.failure(.firebaseAuthError)) }

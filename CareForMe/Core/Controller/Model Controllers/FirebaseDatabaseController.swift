@@ -9,7 +9,7 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 
 class FirebaseDatabaseController {
-    static let db = Database.database().reference()
+    private static let db = Database.database().reference()
     
     /// Create a new database entry with an auto-created ID
     /// - Parameters:
@@ -35,7 +35,12 @@ class FirebaseDatabaseController {
         Self.db.child(ref.endpoint).updateChildValues(dictionary)
     }
     
-    func observe(endpoint: NotificationAPIRef, event: DataEventType = .childAdded, completion: @escaping (DataSnapshot) -> Void) {
+    func observe(endpoint: NotificationAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
+        let ref = Self.db.child(endpoint.endpoint)
+        ref.observe(event, with: completion)
+    }
+    
+    func observe(endpoint: UserDatabaseAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
         let ref = Self.db.child(endpoint.endpoint)
         ref.observe(event, with: completion)
     }
@@ -44,19 +49,29 @@ class FirebaseDatabaseController {
 
 enum UserDatabaseAPIRef {
     case userRef(userId: String)
-    case userLink
+    case tokenRef(userId: String)
+    case joinRequests(userId: String)
+    case userLinkRef(userId: String)
     
     var endpoint: String {
         switch self {
         case let .userRef(userId):
             return Self.userRefEndpoint(userId: userId)
-        case .userLink:
-            return "/users/toLink"
+        case let .tokenRef(userId):
+            return Self.privateUserDetails(userId: userId)
+        case let .joinRequests(userId):
+            return Self.privateUserDetails(userId: userId) + "/joinRequests"
+        case let  .userLinkRef(userId):
+            return Self.privateUserDetails(userId: userId) + "/joinCode"
         }
     }
     
     static func userRefEndpoint(userId: String) -> String {
         return "/users/\(userId)/"
+    }
+    
+    static func privateUserDetails(userId: String) -> String {
+        return userRefEndpoint(userId: userId) + "privateDetails"
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, DateChangeDelegate {
+class CalendarViewController: UIViewController, DateChangeDelegate, AuthenticableViewController {
     
     var month: CalendarMonth = .init() {
         didSet {
@@ -20,6 +20,11 @@ class CalendarViewController: UIViewController, DateChangeDelegate {
     override func loadView() {
         super.loadView()
         view = calView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        authenticate()
     }
 }
 

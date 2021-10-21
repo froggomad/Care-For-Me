@@ -15,6 +15,7 @@ class CareNotificationTableViewCell: UITableViewCell {
             self.categoryLabel.text = viewModel?.category
             self.titleLabel.text = viewModel?.title
             self.bodyLabel.text = viewModel?.message
+            subviews()
         }
     }
     

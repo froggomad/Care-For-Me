@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: ParentDetailViewController {
+class MainViewController: ParentDetailViewController, AuthenticableViewController {
     let needsController = NeedsController.shared
     
     lazy var addButton: UIButton = {
@@ -63,10 +63,41 @@ class MainViewController: ParentDetailViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isTranslucent = true
+        
+        guard let user = AuthService.shared.user else { return }
+        let joinCode = "126345"
+//        CloudFunction.generateJoinCode(userId: user.privateDetails.userId, joinCode: joinCode, userType: .client).callGenerateJoinCode { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let userLink):
+//                print(userLink)
+//            }
+//        }
+        
+//        CloudFunction.linkRequest(userId: user.privateDetails.userId, joinCode: joinCode, userType: user.publicDetails.userType).callLinkRequest { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let status):
+//                print(status)
+//            }
+//        }
+
+//        CloudFunction.acceptLinkRequest(requestingUserId: user.privateDetails.userId, joinCode: joinCode, requestingUserType: user.publicDetails.userType).callAcceptJoinRequest { result in
+//            switch result {
+//            case .success(let response):
+//                print(response)
+//            case.failure(let error):
+//                print(error)
+//            }
+//        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        authenticate()
         tableView.reloadData()
     }
     
@@ -114,41 +145,11 @@ extension MainViewController: CareAlertSelectionDelegate {
             case let .failure(error):
                 print("Error with notification permissions: \(error)")
             }
-            let notification = CareNotification(id: UUID(), category: need.category.title, title: need.title, text: need.message, forUserId: AuthService.shared.user!.userId, date: Date())
+            let notification = CareNotification(id: UUID(), category: need.category.title, title: need.title, text: need.message, forUserId: AuthService.shared.user!.privateDetails.userId, date: Date())
             FirebaseMessagingController.shared.postMessage(type: .unread, notification: notification)
         }
     }
     
-}
-
-struct CareNotification: Codable, Equatable {
-    let id: UUID
-    let category: String
-    let title: String
-    let text: String
-    let forUserId: String
-    let date: Date
-    
-    static func ==(lhs: CareNotification, rhs: CareNotification) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    var viewModel: NotificationCellViewModel {
-        NotificationCellViewModel(id: id, category: category, title: title, message: text)
-    }
-    
-    var categoryTitle: String {
-        "\(category): \(title)"
-    }
-    
-    init(id: UUID, category: String, title: String, text: String, forUserId: String, date: Date) {
-        self.id = id
-        self.category = category
-        self.title = title
-        self.text = text
-        self.forUserId = forUserId
-        self.date = date
-    }
 }
 
 extension MainViewController: UITableViewDelegate {

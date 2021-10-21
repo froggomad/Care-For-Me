@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SettingsViewController: ParentDetailViewController {
+class SettingsViewController: ParentDetailViewController, AuthenticableViewController {
     
     lazy var stack: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle], spacing: 20)
+        let stack: UIStackView = .componentStack(elements: [notificationToggle, savePasswordsToggle, tableView], spacing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -21,6 +21,15 @@ class SettingsViewController: ParentDetailViewController {
     
     lazy var savePasswordsToggle: LabeledToggleSwitch = {
         LabeledToggleSwitch(title: "Save Passwords", toggleFunction: #selector(toggleSavePasswords), target: self)
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "SettingsTableViewCell")
+        tv.dataSource = self
+        tv.delegate = self
+        tv.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        return tv
     }()
     
     lazy var signOutButton: UIButton = {
@@ -80,6 +89,7 @@ class SettingsViewController: ParentDetailViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        authenticate()
         setNotificationSwitchState()
         setSavePasswordsSwitchState()
     }
@@ -96,7 +106,7 @@ class SettingsViewController: ParentDetailViewController {
     }
     
     private func setSavePasswordsSwitchState() {
-        guard let userDefaultsSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""] else { return }
+        guard let userDefaultsSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.privateDetails.userId ?? ""] else { return }
     
         savePasswordsToggle.setSwitchState(on: userDefaultsSetting ?? false)
     }
@@ -126,7 +136,7 @@ class SettingsViewController: ParentDetailViewController {
     
     @objc private func toggleSavePasswords(_ sender: UISwitch) {
         print()
-        UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""] = sender.isOn
+        UserDefaultsConfig.savePasswords[AuthService.shared.user?.privateDetails.userId ?? ""] = sender.isOn
     }
     
     func addToggle(toggle: LabeledToggleSwitch) {
@@ -137,6 +147,64 @@ class SettingsViewController: ParentDetailViewController {
         AppSettingsController.openSettings()
     }
     
+}
+
+extension SettingsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            guard let user = AuthService.shared.user else { return 0 }
+            return user.privateDetails.joinRequests?.count ?? 0
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") else {
+            fatalError("bad cell mojo")
+        }
+        cell.accessoryType = .disclosureIndicator
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "Link With a Companion"
+        } else if indexPath.section == 1 {
+            guard let user = AuthService.shared.user else { return cell }
+            cell.textLabel?.text = user.privateDetails.joinRequests?[indexPath.row].username
+        }
+        return cell
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let vc = OnboardingLinkVC(id: 0, continueButtonTitle: "Continue")
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        } else if indexPath.section == 1 {
+            guard let joinRequest = AuthService.shared.user?.privateDetails.joinRequests?[indexPath.row]
+            else { return }
+            
+            let vc = LinkRequestViewController(request: joinRequest)
+            present(vc, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Actions"
+        }
+        if section == 1 {
+            return "Join Requests"
+        }
+        return nil
+    }
 }
 
 enum Gif: String {

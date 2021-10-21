@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         if let authUser = Auth.auth().currentUser {
-            AuthService.shared.user = CareUser(userId: authUser.uid, displayName: authUser.displayName ?? "Anonymous")
+            AuthService.shared.user = CareUser(authUser: authUser)
             let tabBar = TabBar.createMainTabBar()
             window.rootViewController = tabBar
         } else if !UserDefaultsConfig.hasOnboarded {

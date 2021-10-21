@@ -41,6 +41,6 @@ struct UserDefaultsConfig {
     @UserDefault(.lastLoggedInUser, defaultValue: "")
     static var lastLoggedInUsername: String
     
-    @UserDefault(.savePasswords, defaultValue: [AuthService.shared.user?.userId ?? "": nil])
+    @UserDefault(.savePasswords, defaultValue: [AuthService.shared.user?.privateDetails.userId ?? "": nil])
     static var savePasswords: [String: Bool?]
 }

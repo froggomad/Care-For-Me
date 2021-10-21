@@ -38,7 +38,7 @@ class AuthView: UIView {
         stack.spacing = 4
         return stack
     }()
-        
+    
     private lazy var textFieldStack: UIStackView = .componentStack(elements: [emailAddressTextField, passwordTextField])
     
     private lazy var emailAddressTextField = StatusTextField<EmailStatusTextFieldDelegate>(textFieldType: .email, type: .information, exampleText: "Email Address", instructionText: "Please Enter an Email Address")
@@ -61,16 +61,16 @@ class AuthView: UIView {
         self.emailDelegate = EmailStatusTextFieldDelegate(textFields: [emailAddressTextField])
         self.emailAddressTextField.text = UserDefaultsConfig.lastLoggedInUsername
         
-        if let savePasswordSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""],
+        if let savePasswordSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.privateDetails.userId ?? ""],
            let setting = savePasswordSetting {
             if setting {
-            let credentialResult = KeychainOperator.retrieveSignInInfo(for: emailAddressTextField.text ?? "")
-            switch credentialResult {
-            case let .success(info):
-                passwordTextField.text = info.password
-            case let .failure(error):
-                print(error)
-            }
+                let credentialResult = KeychainOperator.retrieveSignInInfo(for: emailAddressTextField.text ?? "")
+                switch credentialResult {
+                case let .success(info):
+                    passwordTextField.text = info.password
+                case let .failure(error):
+                    print(error)
+                }
             }
         }
         subViews()
@@ -117,7 +117,7 @@ class AuthView: UIView {
     }
     
     private func setPassword(_ emailAddress: String, _ password: String) {
-        if let savePasswordSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.userId ?? ""],
+        if let savePasswordSetting = UserDefaultsConfig.savePasswords[AuthService.shared.user?.privateDetails.userId ?? ""],
            let setting = savePasswordSetting {
             if setting {
                 KeychainOperator.setPassword(for: emailAddress, with: password)

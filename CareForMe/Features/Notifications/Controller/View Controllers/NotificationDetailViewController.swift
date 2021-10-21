@@ -7,7 +7,8 @@
 
 import UIKit
 
-class NotificationDetailViewController: UIViewController {
+class NotificationDetailViewController: UIViewController, AuthenticableViewController {
+    
     // MARK: - Properties -
     var notification: CareNotification {
         didSet {
@@ -18,10 +19,17 @@ class NotificationDetailViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
         return scrollView
     }()
     
-    private lazy var contentView: UIStackView = {
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel, textLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
@@ -60,12 +68,18 @@ class NotificationDetailViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        authenticate()
+    }
+    
     private func setupViews() {
         displayNotification()
         
         if !view.subviews.contains(scrollView) {
-            scrollView.addSubview(contentView)
             view.addSubview(scrollView)
+            scrollView.addSubview(contentView)
+            contentView.addSubview(stackView)
             constraints()
         }
     }
@@ -73,16 +87,25 @@ class NotificationDetailViewController: UIViewController {
     private func constraints() {
         let scrollViewPadding: CGFloat = 10
         NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scrollViewPadding),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -scrollViewPadding),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -scrollViewPadding),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: scrollViewPadding),
+            
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-        
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scrollViewPadding),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -scrollViewPadding),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -scrollViewPadding),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: scrollViewPadding)
+            
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
+        
+        for view in stackView.arrangedSubviews {
+            view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - scrollViewPadding*2).isActive = true
+        }
     }
     
     private func displayNotification() {
@@ -91,4 +114,12 @@ class NotificationDetailViewController: UIViewController {
         textLabel.text = notification.text
     }
     
+}
+
+extension NotificationDetailViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if(scrollView.contentOffset.x != 0) {
+            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y), animated: false)
+        }
+    }
 }

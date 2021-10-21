@@ -12,6 +12,7 @@
 		AA08787726B1BD4200AAFF3B /* CareTypeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08787626B1BD4200AAFF3B /* CareTypeable.swift */; };
 		AA08787926B1C1ED00AAFF3B /* AuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08787826B1C1ED00AAFF3B /* AuthDelegate.swift */; };
 		AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21E89E26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift */; };
+		AA2BB8E8270E206C0052DD0B /* JoinRequestAcceptResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */; };
 		AA4D31E426817071004EF6A2 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D31E326817071004EF6A2 /* NotificationService.swift */; };
 		AA4D31E826817071004EF6A2 /* Care For Me Notifications.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA4D31F62681747B004EF6A2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AA4D31F52681747B004EF6A2 /* FirebaseAnalytics */; };
@@ -62,16 +63,23 @@
 		AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591E2698A5920090CAF2 /* ColorPickerView.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
+		AACE9341271110A80030083A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE9340271110A80030083A /* UserController.swift */; };
 		AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */; };
 		AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150826A7E05C0010A9D7 /* Protocols.swift */; };
 		AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */; };
 		AAD468ED26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD468EC26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift */; };
+		AAD4CF0E27140A73003E36BE /* UserTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD4CF0D27140A73003E36BE /* UserTypeSelectionView.swift */; };
 		AAD6D14126C5FBD4007595CA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14026C5FBD4007595CA /* CalendarViewController.swift */; };
 		AAD6D14326C5FC03007595CA /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14226C5FC03007595CA /* CalendarView.swift */; };
 		AAD6D14626C5FCB2007595CA /* CalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14526C5FCB2007595CA /* CalendarMonth.swift */; };
 		AAD6D14826C60323007595CA /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14726C60323007595CA /* WeekDayView.swift */; };
 		AAD6D14A26C60343007595CA /* DateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14926C60343007595CA /* DateCollectionView.swift */; };
 		AAD6D14C26C6058E007595CA /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D14B26C6058E007595CA /* MonthView.swift */; };
+		AAD7DA07270FD4B500046BD7 /* AuthenticableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD7DA06270FD4B500046BD7 /* AuthenticableViewController.swift */; };
+		AADA72232722036E00EAD2A8 /* LinkRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADA72222722036E00EAD2A8 /* LinkRequestViewController.swift */; };
+		AADADDDA26FFD98900923708 /* CloudFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADADDD926FFD98900923708 /* CloudFunction.swift */; };
+		AADADDDC26FFDB4F00923708 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = AADADDDB26FFDB4F00923708 /* FirebaseFunctions */; };
+		AADB36E927120433009871ED /* UserLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADB36E827120433009871ED /* UserLinkController.swift */; };
 		AADE209C26C2FAAA0042CBA6 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = AADE209B26C2FAAA0042CBA6 /* Parchment */; };
 		AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262B92679530500ABC882 /* AppDelegate.swift */; };
 		AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE262BB2679530500ABC882 /* SceneDelegate.swift */; };
@@ -88,6 +96,7 @@
 		AAE2B61026C4A0F00070BC7D /* OnboardingLinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */; };
 		AAE2B61226C4A1100070BC7D /* OnboardingPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */; };
 		AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */; };
+		AAE6CE6C27092215001207D2 /* CareNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE6CE6B27092215001207D2 /* CareNotification.swift */; };
 		AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */; };
 		AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A1268EF9AA003A8278 /* NotificationListTableView.swift */; };
 		AAE918A4268EF9E7003A8278 /* CareNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE918A3268EF9E7003A8278 /* CareNotificationController.swift */; };
@@ -100,6 +109,8 @@
 		AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */; };
 		AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1825126BF951C00D73651 /* Int+randomString.swift */; };
 		AAF1825526BFACD300D73651 /* UserLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1825426BFACD300D73651 /* UserLink.swift */; };
+		AAF1971B2714F3C80057D511 /* UserTypeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1971A2714F3C80057D511 /* UserTypeSelectionController.swift */; };
+		AAF4F09F27038D2A0002CC38 /* DateFormatter+firebaseDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */; };
 		AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */; };
 		AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */; };
 		AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */; };
@@ -152,6 +163,7 @@
 		AA08787626B1BD4200AAFF3B /* CareTypeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareTypeable.swift; sourceTree = "<group>"; };
 		AA08787826B1C1ED00AAFF3B /* AuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDelegate.swift; sourceTree = "<group>"; };
 		AA21E89E26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequestAcceptResponse.swift; sourceTree = "<group>"; };
 		AA4D31E126817071004EF6A2 /* Care For Me Notifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Care For Me Notifications.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4D31E326817071004EF6A2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		AA4D31E526817071004EF6A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,16 +210,22 @@
 		AACA591E2698A5920090CAF2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
+		AACE9340271110A80030083A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextFieldView.swift; sourceTree = "<group>"; };
 		AAD1150826A7E05C0010A9D7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		AAD1150A26A7E0D40010A9D7 /* ExampleConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleConformance.swift; sourceTree = "<group>"; };
 		AAD468EC26AA6F0100ED9A7E /* EmailStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
+		AAD4CF0D27140A73003E36BE /* UserTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionView.swift; sourceTree = "<group>"; };
 		AAD6D14026C5FBD4007595CA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		AAD6D14226C5FC03007595CA /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		AAD6D14526C5FCB2007595CA /* CalendarMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonth.swift; sourceTree = "<group>"; };
 		AAD6D14726C60323007595CA /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
 		AAD6D14926C60343007595CA /* DateCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionView.swift; sourceTree = "<group>"; };
 		AAD6D14B26C6058E007595CA /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		AAD7DA06270FD4B500046BD7 /* AuthenticableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticableViewController.swift; sourceTree = "<group>"; };
+		AADA72222722036E00EAD2A8 /* LinkRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRequestViewController.swift; sourceTree = "<group>"; };
+		AADADDD926FFD98900923708 /* CloudFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFunction.swift; sourceTree = "<group>"; };
+		AADB36E827120433009871ED /* UserLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLinkController.swift; sourceTree = "<group>"; };
 		AAE262B62679530500ABC882 /* CareForMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareForMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE262B92679530500ABC882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE262BB2679530500ABC882 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +245,7 @@
 		AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLinkVC.swift; sourceTree = "<group>"; };
 		AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPagedViewController.swift; sourceTree = "<group>"; };
 		AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDetailViewController.swift; sourceTree = "<group>"; };
+		AAE6CE6B27092215001207D2 /* CareNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareNotification.swift; sourceTree = "<group>"; };
 		AAE9189A268EF6F6003A8278 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		AAE918A1268EF9AA003A8278 /* NotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListTableView.swift; sourceTree = "<group>"; };
 		AAE918A3268EF9E7003A8278 /* CareNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareNotificationController.swift; sourceTree = "<group>"; };
@@ -239,6 +258,8 @@
 		AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		AAF1825126BF951C00D73651 /* Int+randomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+randomString.swift"; sourceTree = "<group>"; };
 		AAF1825426BFACD300D73651 /* UserLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLink.swift; sourceTree = "<group>"; };
+		AAF1971A2714F3C80057D511 /* UserTypeSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionController.swift; sourceTree = "<group>"; };
+		AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+firebaseDate.swift"; sourceTree = "<group>"; };
 		AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPhoto.swift; sourceTree = "<group>"; };
 		AAF7C8A8269AB91E00EB11EC /* NeedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsController.swift; sourceTree = "<group>"; };
 		AAF7C8AA269ABA2500EB11EC /* NeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsModel.swift; sourceTree = "<group>"; };
@@ -271,6 +292,7 @@
 				AA4D31F82681747B004EF6A2 /* FirebaseMessaging in Frameworks */,
 				AA8B6D1826F4C9A700D500A3 /* IQKeyboardManagerSwift in Frameworks */,
 				AAEB516426826DBC00A0B741 /* FirebaseDatabase in Frameworks */,
+				AADADDDC26FFDB4F00923708 /* FirebaseFunctions in Frameworks */,
 				AA4D31F62681747B004EF6A2 /* FirebaseAnalytics in Frameworks */,
 				B208D1FBD1D55209A54FCFCC /* Pods_CareForMe.framework in Frameworks */,
 			);
@@ -341,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6B197B268D9A2D002B43BA /* AuthService.swift */,
+				AACE9340271110A80030083A /* UserController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -376,6 +399,7 @@
 		AA79AD012697C68500786881 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				AAE262C22679530600ABC882 /* Assets.xcassets */,
 				AA79AD022697CAFC00786881 /* notificationsOn.gif */,
 				AA79ACFF2697C68200786881 /* notificationsOff.gif */,
 			);
@@ -404,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */,
+				AAE6CE6B27092215001207D2 /* CareNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -461,7 +486,6 @@
 				AAE262B92679530500ABC882 /* AppDelegate.swift */,
 				AAE262BB2679530500ABC882 /* SceneDelegate.swift */,
 				AA79AD012697C68500786881 /* Media */,
-				AAE262C22679530600ABC882 /* Assets.xcassets */,
 				AAE262C72679530600ABC882 /* Info.plist */,
 			);
 			name = App;
@@ -580,8 +604,9 @@
 		AAD0AAA526F7B30100F0321B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				AAE2B60D26C4A0C80070BC7D /* OnboardingViewController.swift */,
-				AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */,
+				AAD4CF0C27140A4A003E36BE /* View */,
+				AAD4CF0B27140A3C003E36BE /* View Controllers */,
+				AAF197192714F34A0057D511 /* Model Controllers */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -612,6 +637,23 @@
 				AAD1150726A7E03C0010A9D7 /* Model */,
 			);
 			path = StatusTextField;
+			sourceTree = "<group>";
+		};
+		AAD4CF0B27140A3C003E36BE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2B60D26C4A0C80070BC7D /* OnboardingViewController.swift */,
+				AAE2B61126C4A1100070BC7D /* OnboardingPagedViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AAD4CF0C27140A4A003E36BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAD4CF0D27140A73003E36BE /* UserTypeSelectionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AAD6D13C26C5FA6D007595CA /* Calendar */ = {
@@ -659,6 +701,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AADADDD826FFD97B00923708 /* Firestore Functions */ = {
+			isa = PBXGroup;
+			children = (
+				AADADDD926FFD98900923708 /* CloudFunction.swift */,
+				AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */,
+			);
+			path = "Firestore Functions";
+			sourceTree = "<group>";
+		};
 		AAE262AD2679530500ABC882 = {
 			isa = PBXGroup;
 			children = (
@@ -686,9 +737,7 @@
 			children = (
 				AAEACFAB26807317007E9511 /* CareForMe.entitlements */,
 				AAC07F4C267A7E2600ADD525 /* App */,
-				AAE262F02679715700ABC882 /* View */,
-				AAE262E92679537100ABC882 /* Model */,
-				AAC07F4A267A7E0F00ADD525 /* Controller */,
+				AAEBCB9726FC32E6001F9A4E /* Core */,
 				AAE9189D268EF961003A8278 /* Features */,
 			);
 			path = CareForMe;
@@ -713,6 +762,7 @@
 				AAEE98A726BCA91100C51ABC /* KeychainOperator.swift */,
 				AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */,
 				AAF1825126BF951C00D73651 /* Int+randomString.swift */,
+				AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -731,6 +781,8 @@
 			isa = PBXGroup;
 			children = (
 				AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */,
+				AADB36E827120433009871ED /* UserLinkController.swift */,
+				AADA72222722036E00EAD2A8 /* LinkRequestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -741,6 +793,7 @@
 				AAE59FE626975B34008BF7FE /* ParentDetailViewController.swift */,
 				AA8B6D1926F4CB1300D500A3 /* ActivityIndicatorViewController.swift */,
 				AA8B6D1C26F4F91100D500A3 /* AlertViewController.swift */,
+				AAD7DA06270FD4B500046BD7 /* AuthenticableViewController.swift */,
 			);
 			path = "Base VCs";
 			sourceTree = "<group>";
@@ -815,6 +868,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AAEBCB9726FC32E6001F9A4E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AADADDD826FFD97B00923708 /* Firestore Functions */,
+				AAE262F02679715700ABC882 /* View */,
+				AAE262E92679537100ABC882 /* Model */,
+				AAC07F4A267A7E0F00ADD525 /* Controller */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		AAF1825326BFAC9B00D73651 /* Connect Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,12 +906,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AAF197192714F34A0057D511 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AAF1971A2714F3C80057D511 /* UserTypeSelectionController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		AAF7C8A0269A091B00EB11EC /* StockImagePicker */ = {
 			isa = PBXGroup;
 			children = (
 				AAFFECF2269D717D00847072 /* Controller */,
 				AAF7C8A1269A0A8600EB11EC /* StockPhoto.swift */,
-				AAFFECF0269D6AAB00847072 /* StockPhotoViewController.swift */,
 			);
 			path = StockImagePicker;
 			sourceTree = "<group>";
@@ -895,6 +966,7 @@
 		AAFFECF2269D717D00847072 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AAFFECF0269D6AAB00847072 /* StockPhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -961,6 +1033,7 @@
 				AABB53E3269025C000EF7ABC /* FirebaseAuth */,
 				AADE209B26C2FAAA0042CBA6 /* Parchment */,
 				AA8B6D1726F4C9A700D500A3 /* IQKeyboardManagerSwift */,
+				AADADDDB26FFDB4F00923708 /* FirebaseFunctions */,
 			);
 			productName = CareForMe;
 			productReference = AAE262B62679530500ABC882 /* CareForMe.app */;
@@ -1175,6 +1248,7 @@
 				AA79AD092697FD7200786881 /* ColorWheel.swift in Sources */,
 				AAD6D14C26C6058E007595CA /* MonthView.swift in Sources */,
 				AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */,
+				AADADDDA26FFD98900923708 /* CloudFunction.swift in Sources */,
 				AAEE98AA26BCEE5600C51ABC /* UserDefaultsWrapper.swift in Sources */,
 				AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */,
 				AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */,
@@ -1184,21 +1258,27 @@
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
 				AA8B6D1D26F4F91100D500A3 /* AlertViewController.swift in Sources */,
 				AA4D31FC26817DF2004EF6A2 /* FirebaseMessagingController.swift in Sources */,
+				AADB36E927120433009871ED /* UserLinkController.swift in Sources */,
 				AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */,
 				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
 				AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */,
+				AA2BB8E8270E206C0052DD0B /* JoinRequestAcceptResponse.swift in Sources */,
 				AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */,
+				AAD7DA07270FD4B500046BD7 /* AuthenticableViewController.swift in Sources */,
 				AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */,
 				AAFFECF1269D6AAB00847072 /* StockPhotoViewController.swift in Sources */,
 				AAE918A6268EFBC3003A8278 /* CareNotificationTableViewCell.swift in Sources */,
 				AAD6D14826C60323007595CA /* WeekDayView.swift in Sources */,
 				AA79AD072697FD2F00786881 /* ColorPicker.swift in Sources */,
+				AACE9341271110A80030083A /* UserController.swift in Sources */,
 				AAF7C8A9269AB91E00EB11EC /* NeedsController.swift in Sources */,
 				AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */,
 				AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */,
+				AAD4CF0E27140A73003E36BE /* UserTypeSelectionView.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */,
 				AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */,
+				AADA72232722036E00EAD2A8 /* LinkRequestViewController.swift in Sources */,
 				AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
 				AAD6D14A26C60343007595CA /* DateCollectionView.swift in Sources */,
@@ -1217,6 +1297,7 @@
 				AAF7C8A2269A0A8600EB11EC /* StockPhoto.swift in Sources */,
 				AAE262BA2679530500ABC882 /* AppDelegate.swift in Sources */,
 				AAE2B60E26C4A0C80070BC7D /* OnboardingViewController.swift in Sources */,
+				AAF1971B2714F3C80057D511 /* UserTypeSelectionController.swift in Sources */,
 				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,
 				AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */,
 				AAE262F22679716500ABC882 /* CareCollectionView.swift in Sources */,
@@ -1231,12 +1312,14 @@
 				AAF7C8AD269AC41D00EB11EC /* AddCategoryViewController.swift in Sources */,
 				AAC9D1842696AB9100DB3FA5 /* InstructionViewController.swift in Sources */,
 				AAC06D582693C34600408AE3 /* LoginVC.swift in Sources */,
+				AAF4F09F27038D2A0002CC38 /* DateFormatter+firebaseDate.swift in Sources */,
 				AABF3D28269BBFFC008A2CC2 /* UIButton+underlinedTitle.swift in Sources */,
 				AAD6D14126C5FBD4007595CA /* CalendarViewController.swift in Sources */,
 				AA6B197C268D9A2D002B43BA /* AuthService.swift in Sources */,
 				AA8B6D1A26F4CB1300D500A3 /* ActivityIndicatorViewController.swift in Sources */,
 				AABF3D2C269BC04E008A2CC2 /* UILabel+title3Label.swift in Sources */,
 				AACA591D269881660090CAF2 /* UIColor+isDarkColor.swift in Sources */,
+				AAE6CE6C27092215001207D2 /* CareNotification.swift in Sources */,
 				AABF3D35269C1218008A2CC2 /* AddNeedToCategoryViewController.swift in Sources */,
 				AAC8EBEB26C0F3EB005FC455 /* Pin.swift in Sources */,
 				AAE262BC2679530500ABC882 /* SceneDelegate.swift in Sources */,
@@ -1642,6 +1725,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		AADADDDB26FFDB4F00923708 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA4D31F42681747B004EF6A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
 		};
 		AADE209B26C2FAAA0042CBA6 /* Parchment */ = {
 			isa = XCSwiftPackageProductDependency;

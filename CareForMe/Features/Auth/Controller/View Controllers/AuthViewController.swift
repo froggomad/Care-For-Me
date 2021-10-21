@@ -7,9 +7,9 @@
 
 import UIKit
 
-enum AuthType: String, CaseIterable {
+enum AuthType {
     case login
-    case registration
+    case registration(userType: UserType)
 }
 
 protocol AuthControllable: UIViewController {
@@ -17,6 +17,8 @@ protocol AuthControllable: UIViewController {
 }
 
 class AuthViewController: UIViewController {
+    
+    let authType: AuthType
     
     var authVC: AuthControllable! {
         didSet {
@@ -30,8 +32,8 @@ class AuthViewController: UIViewController {
         switch type {
         case .login:
             vc = LoginViewController()
-        case .registration:
-            vc = RegistrationViewController() {
+        case .registration(let userType):
+            vc = RegistrationViewController(userType: userType) {
                 print("registered")
             }
         }
@@ -43,8 +45,15 @@ class AuthViewController: UIViewController {
         removeContainedVC()
         
         if isLogin {
-            self.authVC = RegistrationViewController() {
-                print("registered")
+            var userType: UserType
+            switch authType {
+            case .login:
+                break
+            case .registration(let type):
+                userType = type
+                self.authVC = RegistrationViewController(userType: userType) {
+                    print("registered")
+                }
             }
         } else {
             self.authVC = LoginViewController()
@@ -78,7 +87,7 @@ class AuthViewController: UIViewController {
     private lazy var isLogin: Bool = authVC as? LoginViewController != nil
     
     lazy var authTypeSegmentedControl: UISegmentedControl = {
-        let items = AuthType.allCases.map { $0.rawValue.capitalized }
+        let items = ["login", "registration"]
         let control = UISegmentedControl(items: items)
         control.translatesAutoresizingMaskIntoConstraints = false
         control.selectedSegmentIndex = isLogin ? 0 : 1
@@ -94,6 +103,7 @@ class AuthViewController: UIViewController {
     }()
     
     required init(authType: AuthType) {
+        self.authType = authType
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
         createAuthView(of: authType)

@@ -8,7 +8,7 @@
 import UIKit
 
 class ConfirmPINViewController: UIViewController {
-    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap Confirm", imageFilename: nil, buttonTitle: "Confirm", selectionDelegate: TargetSelector(target: self, selector: #selector(foo)))
+    lazy var confirmPINView: InstructionView = InstructionView(title: "Confirm PIN", instructions: "Enter the PIN your companion provided and tap Confirm", imageFilename: nil, buttonTitle: "Confirm", selectionDelegate: TargetSelector(target: self, selector: #selector(confirmCode)))
     
     let pinLength: Int = 6
     
@@ -30,15 +30,38 @@ class ConfirmPINViewController: UIViewController {
         confirmPINView.addView(statusTextField)
     }
     
-    @objc func foo() {
-        print("foo")
+    @objc func confirmCode() {
+        guard let user = AuthService.shared.user else {
+            let vc = AuthViewController(authType: .login)
+            present(vc, animated: true)
+            return
+        }
+        CloudFunction.linkRequest(userId: user.privateDetails.userId, joinCode: pinCodeTextfieldDelegate.text).callLinkRequest { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let status):
+                DispatchQueue.main.async {
+                    if status {
+                        self.presentAlert(title: "Join Request Sent", message: "You've successfully requested to link your account!") { _ in
+                            self.dismiss(animated: true)
+                        }
+                    } else {
+                        self.presentAlert(title: "Invalid Join Code", message: "Code not found or code is expired. Please verify the code or ask the other user to generate a new join code in their settings.")
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
 final class PinCodeStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
     var pinLength: Int
     var textFields: [StatusTextField<PinCodeStatusTextFieldDelegate>]
-    
+    var text: String {
+        textFields[0].text ?? ""
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard string != "" else { // handles backspace char
             textFieldDictionary[textField]?.displayStatusMessage()
@@ -47,10 +70,10 @@ final class PinCodeStatusTextFieldDelegate: NSObject, StatusTextFieldDelegate {
         
         if let num = Int(string) {
             guard let text = textField.text,
-                  text.count <= 5 else { // 5 plus the replacement string
-                textFieldDictionary[textField]?.displayErrorMessage(for: Error.tooLong(pinLength: pinLength))
-                return false
-            }
+                  text.count <= pinLength - 1 else { // 5 plus the replacement string
+                      textFieldDictionary[textField]?.displayErrorMessage(for: Error.tooLong(pinLength: pinLength))
+                      return false
+                  }
             
             textFieldDictionary[textField]?.displayStatusMessage()
             return num <= 9 && num >= 0
