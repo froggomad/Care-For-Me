@@ -11,6 +11,7 @@ struct JoinRequest: Codable {
     let userId: String
     let userType: UserType
     let username: String
+    let code: String
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -21,6 +22,8 @@ struct JoinRequest: Codable {
         self.userType = userType
         
         self.username = try container.decode(String.self, forKey: .username)
+        
+        self.code = decoder.codingPath.first?.stringValue ?? ""
     }
 }
 

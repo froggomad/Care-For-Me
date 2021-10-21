@@ -188,7 +188,11 @@ extension SettingsViewController: UITableViewDelegate {
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         } else if indexPath.section == 1 {
-            // TODO: accept/deny link request VC
+            guard let joinRequest = AuthService.shared.user?.privateDetails.joinRequests?[indexPath.row]
+            else { return }
+            
+            let vc = LinkRequestViewController(request: joinRequest)
+            present(vc, animated: true)
         }
     }
     
