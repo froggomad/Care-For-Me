@@ -11,7 +11,7 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var userController: UserController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             AuthService.shared.user = CareUser(authUser: authUser)
             let tabBar = TabBar.createMainTabBar()
             window.rootViewController = tabBar
+            userController = UserController()
         } else if !UserDefaultsConfig.hasOnboarded {
             let vc = OnboardingPagedViewController()
             window.rootViewController = vc
