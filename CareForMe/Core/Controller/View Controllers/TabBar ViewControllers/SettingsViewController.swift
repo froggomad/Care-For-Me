@@ -184,15 +184,15 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let vc = OnboardingLinkVC(id: 0, continueButtonTitle: "Continue")
+            let vc = SettingsLinkVC()
             vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            showDetailViewController(vc, sender: nil)
         } else if indexPath.section == 1 {
             guard let joinRequest = AuthService.shared.user?.privateDetails.joinRequests?[indexPath.row]
             else { return }
             
             let vc = LinkRequestViewController(request: joinRequest)
-            present(vc, animated: true)
+            showDetailViewController(vc, sender: nil)
         }
     }
     
