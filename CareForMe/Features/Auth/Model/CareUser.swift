@@ -14,8 +14,8 @@ enum UserType: String, Codable, CaseIterable {
 }
 
 struct PublicUserDetails: Codable {
-    let userType: UserType
-    let displayName: String
+    var userType: UserType
+    var displayName: String
 }
 
 struct PrivateUserDetails: Codable {
@@ -27,7 +27,7 @@ struct PrivateUserDetails: Codable {
 class CareUser: Codable {
     
     var privateDetails: PrivateUserDetails
-    let publicDetails: PublicUserDetails
+    var publicDetails: PublicUserDetails
     
     convenience init(authUser: User) {
         self.init(userId: authUser.uid, displayName: authUser.displayName ?? "Anonymous", userType: .client)
