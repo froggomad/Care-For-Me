@@ -8,10 +8,10 @@
 import Foundation
 
 class UserLinkController {
-    private let dbController = FirebaseDatabaseController()
-    private let user = AuthService.shared.user
+    private static let dbController = FirebaseDatabaseController()
+    private static let user = AuthService.shared.user
     
-    func getLinkFromAPI(completion: @escaping () -> Void) {
+    static func getLinkFromAPI(completion: @escaping () -> Void) {
         guard let user = user else { return }
         dbController.observe(ref: .userLinkRef(userId: user.privateDetails.userId)) { snapshot in
             defer { completion() }
@@ -23,5 +23,55 @@ class UserLinkController {
                 print(error)
             }
         }
+    }
+    
+    static func joinRequest(userId: String, joinCode: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        CloudFunction.linkRequest(userId: userId, joinCode: joinCode)
+            .call { result, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                let data = result?.data as? Bool
+                completion(.success(data ?? false))
+            }
+    }
+    
+    static func denyJoinRequest(userId: String, joinCode: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        CloudFunction.denyLinkRequest(userId: userId, joinCode: joinCode)
+            .call { result, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                let data = result?.data as? Bool ?? false
+                completion(.success(data))
+            }
+    }
+    
+    static func acceptJoinRequest(userId: String, joinCode: String, userType: UserType, completion: @escaping (Result<JoinRequestResponse, Error>) -> Void) {
+        CloudFunction.acceptLinkRequest(userId: userId, joinCode: joinCode, userType: userType)
+            .call { result, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                let data = result?.data as? [String: Any]
+                
+                if let acceptedField = data?["accepted"] as? Bool,
+                   acceptedField == false {
+                    completion(.failure(CloudFunction.CloudFunctionError.declined))
+                } else {
+                    guard let requestingUserType = data?["requestingUserType"] as? String,
+                          let joinCode = data?["code"] as? String,
+                          let requestingUserId = data?["requestingUserId"] as? String else {
+                              completion(.failure(CloudFunction.CloudFunctionError.badResponse))
+                              return
+                          }
+                    
+                    let joinRequestResponse = JoinRequestResponse(code: joinCode, requestingUserType: requestingUserType, requestingUserId: requestingUserId)
+                    completion(.success(joinRequestResponse))
+                }
+            }
     }
 }

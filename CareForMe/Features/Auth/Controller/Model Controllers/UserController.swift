@@ -10,7 +10,6 @@ import UIKit
 
 class UserController {
     let user = AuthService.shared.user
-    let linkController = UserLinkController()
     let db = FirebaseDatabaseController()
     
     init() {
@@ -39,7 +38,7 @@ class UserController {
     }
     
     private func getPrivateUserDetails(completion: @escaping () -> Void = { }) {
-        linkController.getLinkFromAPI() { [weak self] in
+        UserLinkController.getLinkFromAPI() { [weak self] in
             self?.getJoinRequests() {
                 completion()
             }

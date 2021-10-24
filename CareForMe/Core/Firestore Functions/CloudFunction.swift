@@ -47,7 +47,7 @@ enum CloudFunction {
         }
     }
     
-    private func call(completion: @escaping (HTTPSCallableResult?, Error?) -> Void)  {
+    func call(completion: @escaping (HTTPSCallableResult?, Error?) -> Void)  {
         let function = self
         Functions.functions().httpsCallable(function.name)
             .call(function.parameters, completion: completion)
@@ -75,63 +75,5 @@ enum CloudFunction {
         }
     }
     
-    func callLinkRequest(completion: @escaping (Result<Bool, Error>) -> Void) {
-        switch self {
-        case .linkRequest:
-            call { result, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                let data = result?.data as? Bool
-                completion(.success(data ?? false))
-            }
-        default: completion(.failure(CloudFunctionError.wrongCall))
-        }
-    }
     
-    func callRemoveJoinRequest(completion: @escaping (Result<Bool, Error>) -> Void) {
-        switch self {
-        case .denyLinkRequest:
-            call { result, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                let data = result?.data as? Bool ?? false
-                completion(.success(data))
-            }
-        default: completion(.failure(CloudFunctionError.wrongCall))
-        }
-    }
-    
-    func callAcceptJoinRequest(completion: @escaping (Result<JoinRequestResponse, Error>) -> Void) {
-        switch self {
-        case .acceptLinkRequest:
-            call { result, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                let data = result?.data as? [String: Any]
-                
-                if let acceptedField = data?["accepted"] as? Bool,
-                   acceptedField == false {
-                    completion(.failure(CloudFunctionError.declined))
-                } else {
-                    guard let requestingUserType = data?["requestingUserType"] as? String,
-                          let joinCode = data?["code"] as? String,
-                          let requestingUserId = data?["requestingUserId"] as? String else {
-                              completion(.failure(CloudFunctionError.badResponse))
-                              return
-                          }
-                    
-                    let joinRequestResponse = JoinRequestResponse(code: joinCode, requestingUserType: requestingUserType, requestingUserId: requestingUserId)
-                    completion(.success(joinRequestResponse))
-                }
-            }
-        default:
-            completion(.failure(CloudFunctionError.wrongCall))
-        }
-    }
 }
