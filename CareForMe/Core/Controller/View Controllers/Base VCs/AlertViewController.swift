@@ -62,6 +62,7 @@ class AlertView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(for: .title1, weight: .bold)
         label.textColor = .label
@@ -71,6 +72,7 @@ class AlertView: UIView {
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         label.font = .preferredFont(for: .body, weight: .regular)
         label.textColor = .label
         return label
@@ -131,7 +133,7 @@ class AlertView: UIView {
     }()
     
     lazy var parentStackView: UIStackView = {
-        let stack: UIStackView = .componentStack(elements: [titleStackView, messageLabel, buttonStackView], spacing: 20)
+        let stack: UIStackView = .componentStack(elements: [titleStackView, messageLabel, buttonStackView], distribution: .fill, verticalAlignment: .center, spacing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
