@@ -25,8 +25,8 @@ class JoinUsersController {
         }
     }
     
-    static func generateJoinCode(userId: String, joinCode: String, userType: UserType, completion: @escaping (Result<UserLink, Error>) -> Void) {
-        CloudFunction.generateJoinCode(userId: userId, joinCode: joinCode, userType: userType)
+    static func generateJoinCode(userId: String, joinCode: String, completion: @escaping (Result<UserLink, Error>) -> Void) {
+        CloudFunction.generateJoinCode(userId: userId, joinCode: joinCode)
             .call { result, error in
                 if let error = error {
                     completion(.failure(error))
@@ -67,8 +67,8 @@ class JoinUsersController {
             }
     }
     
-    static func acceptJoinRequest(userId: String, joinCode: String, userType: UserType, completion: @escaping (Result<JoinRequestResponse, Error>) -> Void) {
-        CloudFunction.acceptLinkRequest(userId: userId, joinCode: joinCode, userType: userType)
+    static func acceptJoinRequest(userId: String, joinCode: String, completion: @escaping (Result<JoinRequestResponse, Error>) -> Void) {
+        CloudFunction.acceptLinkRequest(userId: userId, joinCode: joinCode)
             .call { result, error in
                 if let error = error {
                     completion(.failure(error))

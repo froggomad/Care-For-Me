@@ -15,9 +15,9 @@ enum CloudFunction {
         case badResponse
     }
     
-    case generateJoinCode(userId: String, joinCode: String, userType: UserType)
+    case generateJoinCode(userId: String, joinCode: String)
     case linkRequest(userId: String, joinCode: String)
-    case acceptLinkRequest(userId: String, joinCode: String, userType: UserType)
+    case acceptLinkRequest(userId: String, joinCode: String)
     case denyLinkRequest(userId: String, joinCode: String)
     
     /// The name of the Firebase Function (must equate to the name in Firebase)
@@ -36,12 +36,12 @@ enum CloudFunction {
     /// - Used to send data to the Firebase Function
     private var parameters: [String: Any]? {
         switch self {
-        case .generateJoinCode(let userId, let joinCode, let userType):
-            return ["userId": userId, "joinCode": joinCode, "userType": userType.rawValue]
+        case .generateJoinCode(let userId, let joinCode):
+            return ["userId": userId, "joinCode": joinCode]
         case .linkRequest(let userId, let joinCode):
             return ["userId": userId, "joinCode": joinCode]
-        case .acceptLinkRequest(userId: let userId, joinCode: let joinCode, userType: let userType):
-            return ["userId": userId, "joinCode": joinCode, "userType": userType.rawValue]
+        case .acceptLinkRequest(userId: let userId, joinCode: let joinCode):
+            return ["userId": userId, "joinCode": joinCode]
         case .denyLinkRequest(userId: let userId, joinCode: let joinCode):
             return ["userId": userId, "requestId": joinCode]
         }

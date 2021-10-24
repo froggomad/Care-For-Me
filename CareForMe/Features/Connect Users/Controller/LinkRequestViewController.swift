@@ -51,7 +51,7 @@ class LinkRequestViewController: UIViewController {
     
     @objc private func acceptRequest() {
         guard let user = AuthService.shared.user else { return }
-        JoinUsersController.acceptJoinRequest(userId: user.privateDetails.userId, joinCode: request.code, userType: user.publicDetails.userType) { [weak self] result in
+        JoinUsersController.acceptJoinRequest(userId: user.privateDetails.userId, joinCode: request.code) { [weak self] result in
             switch result {
             case .success(let response):
                 print(response)
