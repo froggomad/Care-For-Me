@@ -22,8 +22,20 @@ class UserController {
         getPrivateUserDetails()
     }
     
-    private func getPublicUserDetails() {
-        
+    private func getPublicUserDetails(completion: @escaping () -> Void = { }) {
+        guard let user = AuthService.shared.user else { return }
+        db.observe(ref: .publicDetailsRef(userId: user.privateDetails.userId)) { snapshot in
+            defer { completion() }
+            guard snapshot.exists() else { return }
+            
+            do {
+                let data = try snapshot.data(as: PublicUserDetails.self)
+                user.publicDetails = data
+            } catch {
+                print("error converting publicDetails: \(error)")
+            }
+            
+        }
     }
     
     private func getPrivateUserDetails(completion: @escaping () -> Void = { }) {
