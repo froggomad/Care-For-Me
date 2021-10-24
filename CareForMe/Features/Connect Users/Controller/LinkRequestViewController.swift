@@ -51,28 +51,21 @@ class LinkRequestViewController: UIViewController {
     
     @objc private func acceptRequest() {
         guard let user = AuthService.shared.user else { return }
-        CloudFunction
-            .acceptLinkRequest(userId:
-                                user.privateDetails.userId,
-                               joinCode:
-                                request.code,
-                               userType: user.publicDetails.userType)
-            .callAcceptJoinRequest { [weak self] result in
-                
-                switch result {
-                case .success(let response):
-                    print(response)
-                    self?.navigationController?.popViewController(animated: true)
-                case .failure(let error):
-                    print(error)
-                    self?.presentAlert(title: "Error accepting request", message: "We have been notified. Please try again. If the error persists, please try generating a new join code in your settings")
-                }
+        JoinUsersController.acceptJoinRequest(userId: user.privateDetails.userId, joinCode: request.code, userType: user.publicDetails.userType) { [weak self] result in
+            switch result {
+            case .success(let response):
+                print(response)
+                self?.navigationController?.popViewController(animated: true)
+            case .failure(let error):
+                print(error)
+                self?.presentAlert(title: "Error accepting request", message: "We have been notified. Please try again. If the error persists, please try generating a new join code in your settings")
             }
+        }
     }
     
     @objc private func denyRequest() {
         guard let user = AuthService.shared.user else { return }
-        CloudFunction.denyLinkRequest(userId: user.privateDetails.userId, joinCode: request.code).callRemoveJoinRequest { [weak self] cloudResult in
+        JoinUsersController.denyJoinRequest(userId: user.privateDetails.userId, joinCode: request.code) { [weak self] cloudResult in
             guard let self = self else { return }
             switch cloudResult {
             case .success(let result):
