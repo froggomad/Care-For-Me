@@ -80,9 +80,9 @@ class AlertView: UIView {
         let button = button()
         
         if yesNoMode {
-            okButton.setTitle("Yes", for: .normal)
+            button.setTitle("Yes", for: .normal)
         } else {
-            okButton.setTitle("Ok", for: .normal)
+            button.setTitle("Ok", for: .normal)
         }
         
         button.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
