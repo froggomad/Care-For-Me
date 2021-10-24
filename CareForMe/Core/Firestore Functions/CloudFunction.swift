@@ -48,9 +48,8 @@ enum CloudFunction {
     }
     
     func call(completion: @escaping (HTTPSCallableResult?, Error?) -> Void)  {
-        let function = self
-        Functions.functions().httpsCallable(function.name)
-            .call(function.parameters, completion: completion)
+        Functions.functions().httpsCallable(name)
+            .call(parameters, completion: completion)
     }
     
 }
