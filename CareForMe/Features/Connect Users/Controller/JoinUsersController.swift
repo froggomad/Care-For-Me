@@ -11,6 +11,20 @@ class JoinUsersController {
     private static let dbController = FirebaseDatabaseController()
     private static let user = AuthService.shared.user
     
+    static func getLinkFromAPI(completion: @escaping () -> Void) {
+        guard let user = user else { return }
+        dbController.observe(ref: .userLinkRef(userId: user.privateDetails.userId)) { snapshot in
+            defer { completion() }
+            guard snapshot.exists() else { return }
+            do {
+                let userLink = try snapshot.data(as: UserLink.self)
+                user.privateDetails.linkedUser = userLink
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     static func generateJoinCode(userId: String, joinCode: String, userType: UserType, completion: @escaping (Result<UserLink, Error>) -> Void) {
         CloudFunction.generateJoinCode(userId: userId, joinCode: joinCode, userType: userType)
             .call { result, error in
@@ -28,19 +42,6 @@ class JoinUsersController {
             }
     }
     
-    static func getLinkFromAPI(completion: @escaping () -> Void) {
-        guard let user = user else { return }
-        dbController.observe(ref: .userLinkRef(userId: user.privateDetails.userId)) { snapshot in
-            defer { completion() }
-            guard snapshot.exists() else { return }
-            do {
-                let userLink = try snapshot.data(as: UserLink.self)
-                user.privateDetails.linkedUser = userLink
-            } catch {
-                print(error)
-            }
-        }
-    }
     
     static func joinRequest(userId: String, joinCode: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         CloudFunction.linkRequest(userId: userId, joinCode: joinCode)
