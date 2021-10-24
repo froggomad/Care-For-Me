@@ -62,7 +62,7 @@ class LinkRequestViewController: UIViewController {
                 switch result {
                 case .success(let response):
                     print(response)
-                    self?.dismiss(animated: true)
+                    self?.navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     print(error)
                     self?.presentAlert(title: "Error accepting request", message: "We have been notified. Please try again. If the error persists, please try generating a new join code in your settings")
