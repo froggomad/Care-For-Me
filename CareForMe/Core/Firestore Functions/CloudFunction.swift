@@ -53,27 +53,4 @@ enum CloudFunction {
             .call(function.parameters, completion: completion)
     }
     
-    func callGenerateJoinCode(completion: @escaping (Result<UserLink, Error>) -> Void) {
-        call { result, error in
-            switch self {
-            case .generateJoinCode:
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let data = result?.data as? [String:String] else {
-                    print("couldn't convert data to UserLink")
-                    completion(.failure(CloudFunctionError.badResponse))
-                    return
-                }
-                let userLink = UserLink(from: data)
-                completion(.success(userLink))
-            default: completion(.failure(CloudFunctionError.wrongCall))
-            }
-            
-        }
-    }
-    
-    
 }

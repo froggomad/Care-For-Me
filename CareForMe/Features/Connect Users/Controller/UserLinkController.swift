@@ -11,6 +11,23 @@ class UserLinkController {
     private static let dbController = FirebaseDatabaseController()
     private static let user = AuthService.shared.user
     
+    static func generateJoinCode(userId: String, joinCode: String, userType: UserType, completion: @escaping (Result<UserLink, Error>) -> Void) {
+        CloudFunction.generateJoinCode(userId: userId, joinCode: joinCode, userType: userType)
+            .call { result, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                guard let data = result?.data as? [String:String] else {
+                    print("couldn't convert data to UserLink")
+                    completion(.failure(CloudFunction.CloudFunctionError.badResponse))
+                    return
+                }
+                let userLink = UserLink(from: data)
+                completion(.success(userLink))
+            }
+    }
+    
     static func getLinkFromAPI(completion: @escaping () -> Void) {
         guard let user = user else { return }
         dbController.observe(ref: .userLinkRef(userId: user.privateDetails.userId)) { snapshot in
