@@ -140,7 +140,6 @@ class AlertView: UIView {
         if yesNoMode {
             buttonStackView.addArrangedSubview(noButton)
         }
-        
         addSubview(parentStackView)
         constraints()
     }
@@ -157,12 +156,10 @@ class AlertView: UIView {
         ])
     }
     
-    
     @objc private func okTapped() {
         delegate?.dismissMe()
         closure(true)
     }
-    
     
     @objc private func cancelTapped() {
         delegate?.dismissMe()
