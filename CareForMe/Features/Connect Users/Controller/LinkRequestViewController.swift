@@ -51,7 +51,7 @@ class LinkRequestViewController: UIViewController {
     
     @objc private func acceptRequest() {
         guard let user = AuthService.shared.user else { return }
-        UserLinkController.acceptJoinRequest(userId: user.privateDetails.userId, joinCode: request.code, userType: user.publicDetails.userType) { [weak self] result in
+        JoinUsersController.acceptJoinRequest(userId: user.privateDetails.userId, joinCode: request.code, userType: user.publicDetails.userType) { [weak self] result in
             switch result {
             case .success(let response):
                 print(response)
@@ -65,7 +65,7 @@ class LinkRequestViewController: UIViewController {
     
     @objc private func denyRequest() {
         guard let user = AuthService.shared.user else { return }
-        UserLinkController.denyJoinRequest(userId: user.privateDetails.userId, joinCode: request.code) { [weak self] cloudResult in
+        JoinUsersController.denyJoinRequest(userId: user.privateDetails.userId, joinCode: request.code) { [weak self] cloudResult in
             guard let self = self else { return }
             switch cloudResult {
             case .success(let result):

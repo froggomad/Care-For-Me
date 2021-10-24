@@ -36,7 +36,7 @@ class ConfirmPINViewController: UIViewController {
             present(vc, animated: true)
             return
         }
-        UserLinkController.joinRequest(userId: user.privateDetails.userId, joinCode: pinCodeTextfieldDelegate.text) { [weak self] result in
+        JoinUsersController.joinRequest(userId: user.privateDetails.userId, joinCode: pinCodeTextfieldDelegate.text) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let status):

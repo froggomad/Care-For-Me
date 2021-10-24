@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserLinkController {
+class JoinUsersController {
     private static let dbController = FirebaseDatabaseController()
     private static let user = AuthService.shared.user
     

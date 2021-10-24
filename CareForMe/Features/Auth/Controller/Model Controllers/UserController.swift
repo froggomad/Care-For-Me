@@ -38,7 +38,7 @@ class UserController {
     }
     
     private func getPrivateUserDetails(completion: @escaping () -> Void = { }) {
-        UserLinkController.getLinkFromAPI() { [weak self] in
+        JoinUsersController.getLinkFromAPI() { [weak self] in
             self?.getJoinRequests() {
                 completion()
             }
