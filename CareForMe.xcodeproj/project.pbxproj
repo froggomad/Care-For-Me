@@ -705,7 +705,6 @@
 			isa = PBXGroup;
 			children = (
 				AADADDD926FFD98900923708 /* CloudFunction.swift */,
-				AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */,
 			);
 			path = "Firestore Functions";
 			sourceTree = "<group>";
@@ -892,6 +891,7 @@
 		AAF1825626BFACD800D73651 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA2BB8E7270E206C0052DD0B /* JoinRequestAcceptResponse.swift */,
 				AAF1825426BFACD300D73651 /* UserLink.swift */,
 				AAC8EBEA26C0F3EB005FC455 /* Pin.swift */,
 			);
