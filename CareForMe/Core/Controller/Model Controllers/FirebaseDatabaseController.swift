@@ -35,13 +35,13 @@ class FirebaseDatabaseController {
         Self.db.child(ref.endpoint).updateChildValues(dictionary)
     }
     
-    func observe(endpoint: NotificationAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
-        let ref = Self.db.child(endpoint.endpoint)
+    func observe(ref: NotificationAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
+        let ref = Self.db.child(ref.endpoint)
         ref.observe(event, with: completion)
     }
     
-    func observe(endpoint: UserDatabaseAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
-        let ref = Self.db.child(endpoint.endpoint)
+    func observe(ref: UserDatabaseAPIRef, event: DataEventType = .value, completion: @escaping (DataSnapshot) -> Void) {
+        let ref = Self.db.child(ref.endpoint)
         ref.observe(event, with: completion)
     }
     
@@ -52,6 +52,7 @@ enum UserDatabaseAPIRef {
     case tokenRef(userId: String)
     case joinRequests(userId: String)
     case userLinkRef(userId: String)
+    case publicDetailsRef(userId: String)
     
     var endpoint: String {
         switch self {
@@ -63,6 +64,8 @@ enum UserDatabaseAPIRef {
             return Self.privateUserDetails(userId: userId) + "/joinRequests"
         case let  .userLinkRef(userId):
             return Self.privateUserDetails(userId: userId) + "/joinCode"
+        case let .publicDetailsRef(userId: userId):
+            return Self.publicUserDetails(userId: userId)
         }
     }
     
@@ -72,6 +75,10 @@ enum UserDatabaseAPIRef {
     
     static func privateUserDetails(userId: String) -> String {
         return userRefEndpoint(userId: userId) + "privateDetails"
+    }
+    
+    static func publicUserDetails(userId: String) -> String {
+        return userRefEndpoint(userId: userId) + "publicDetails"
     }
 }
 

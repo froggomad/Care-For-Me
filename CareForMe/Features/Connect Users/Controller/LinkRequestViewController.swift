@@ -52,11 +52,11 @@ class LinkRequestViewController: UIViewController {
     @objc private func acceptRequest() {
         guard let user = AuthService.shared.user else { return }
         CloudFunction
-            .acceptLinkRequest(requestingUserId:
+            .acceptLinkRequest(userId:
                                 user.privateDetails.userId,
                                joinCode:
                                 request.code,
-                               requestingUserType: user.publicDetails.userType)
+                               userType: user.publicDetails.userType)
             .callAcceptJoinRequest { [weak self] result in
                 
                 switch result {
