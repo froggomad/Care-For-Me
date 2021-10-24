@@ -12,7 +12,16 @@ protocol AlertControllerDelegate: AnyObject {
 }
 
 class AlertViewController: UIViewController, AlertControllerDelegate {
-    var yesNoMode: Bool = false
+    private var yesNoMode: Bool
+    
+    init(yesNoMode: Bool = false) {
+        self.yesNoMode = yesNoMode
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -31,8 +31,7 @@ extension UIViewController {
     ///   - message: The Alert's Message
     ///   - complete: Returns a bool (false if no was pressed, true if yes)
     func presentAlertWithYesNoPrompt(title: String, message: String, handler: @escaping (Bool) -> Void) {
-        let alert = AlertViewController()
-        alert.yesNoMode = true
+        let alert = AlertViewController(yesNoMode: true)
         alert.modalPresentationStyle = .overCurrentContext
         
         DispatchQueue.main.async { [weak self] in
