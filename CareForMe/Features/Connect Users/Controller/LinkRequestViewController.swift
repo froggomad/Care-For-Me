@@ -52,17 +52,17 @@ class LinkRequestViewController: UIViewController {
     @objc private func acceptRequest() {
         guard let user = AuthService.shared.user else { return }
         CloudFunction
-            .acceptLinkRequest(requestingUserId:
+            .acceptLinkRequest(userId:
                                 user.privateDetails.userId,
                                joinCode:
                                 request.code,
-                               requestingUserType: user.publicDetails.userType)
+                               userType: user.publicDetails.userType)
             .callAcceptJoinRequest { [weak self] result in
                 
                 switch result {
                 case .success(let response):
                     print(response)
-                    self?.dismiss(animated: true)
+                    self?.navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     print(error)
                     self?.presentAlert(title: "Error accepting request", message: "We have been notified. Please try again. If the error persists, please try generating a new join code in your settings")
@@ -71,7 +71,34 @@ class LinkRequestViewController: UIViewController {
     }
     
     @objc private func denyRequest() {
-        self.dismiss(animated: true)
+        guard let user = AuthService.shared.user else { return }
+        CloudFunction.denyLinkRequest(userId: user.privateDetails.userId, joinCode: request.code).callRemoveJoinRequest { [weak self] cloudResult in
+            guard let self = self else { return }
+            switch cloudResult {
+            case .success(let result):
+                if result {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.presentAlertWithYesNoPrompt(title: "Retry?", message: "There was an error denying the request. Try again?") { result in
+                        if result {
+                            self.denyRequest()
+                        } else {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                self.presentAlertWithYesNoPrompt(title: "Retry?", message: "There was an error denying the request. Try again?") { result in
+                    if result {
+                        self.denyRequest()
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        }
+        
     }
     
     private func setupViews() {

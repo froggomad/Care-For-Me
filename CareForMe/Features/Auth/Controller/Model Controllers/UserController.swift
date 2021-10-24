@@ -22,8 +22,20 @@ class UserController {
         getPrivateUserDetails()
     }
     
-    private func getPublicUserDetails() {
-        
+    private func getPublicUserDetails(completion: @escaping () -> Void = { }) {
+        guard let user = AuthService.shared.user else { return }
+        db.observe(ref: .publicDetailsRef(userId: user.privateDetails.userId)) { snapshot in
+            defer { completion() }
+            guard snapshot.exists() else { return }
+            
+            do {
+                let data = try snapshot.data(as: PublicUserDetails.self)
+                user.publicDetails = data
+            } catch {
+                print("error converting publicDetails: \(error)")
+            }
+            
+        }
     }
     
     private func getPrivateUserDetails(completion: @escaping () -> Void = { }) {
@@ -36,9 +48,16 @@ class UserController {
     
     private func getJoinRequests(completion: @escaping () -> Void) {
         guard let user = user else { return }
-        db.observe(endpoint: .joinRequests(userId: user.privateDetails.userId)) { snapshot in
-            guard snapshot.exists() else { return }
-            defer { completion() }
+        db.observe(ref: .joinRequests(userId: user.privateDetails.userId)) { snapshot in
+            defer {
+                NotificationCenter.default.post(name: .joinRequestChanged, object: nil)
+                completion()
+            }
+            
+            guard snapshot.exists() else {
+                user.privateDetails.joinRequests = nil
+                return
+            }
             do {
                 let snapshotData = try snapshot.data(as: [String: JoinRequest].self)
                 let joinRequests = Array(snapshotData.values)
@@ -48,4 +67,8 @@ class UserController {
             }
         }
     }
+}
+
+extension Notification.Name {
+    static let joinRequestChanged = Notification.Name(rawValue: "joinRequestChanged")
 }

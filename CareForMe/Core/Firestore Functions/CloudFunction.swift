@@ -17,7 +17,8 @@ enum CloudFunction {
     
     case generateJoinCode(userId: String, joinCode: String, userType: UserType)
     case linkRequest(userId: String, joinCode: String)
-    case acceptLinkRequest(requestingUserId: String, joinCode: String, requestingUserType: UserType)
+    case acceptLinkRequest(userId: String, joinCode: String, userType: UserType)
+    case denyLinkRequest(userId: String, joinCode: String)
     
     /// The name of the Firebase Function (must equate to the name in Firebase)
     private var name: String {
@@ -28,6 +29,8 @@ enum CloudFunction {
             return "linkRequest"
         case .acceptLinkRequest:
             return "acceptLinkRequest"
+        case .denyLinkRequest:
+            return "removeJoinRequest"
         }
     }
     /// - Used to send data to the Firebase Function
@@ -37,8 +40,10 @@ enum CloudFunction {
             return ["userId": userId, "joinCode": joinCode, "userType": userType.rawValue]
         case .linkRequest(let userId, let joinCode):
             return ["userId": userId, "joinCode": joinCode]
-        case .acceptLinkRequest(requestingUserId: let requestingUserId, joinCode: let joinCode, requestingUserType: let requestingUserType):
-            return ["requestingUserId": requestingUserId, "joinCode": joinCode, "requestingUserType": requestingUserType.rawValue]
+        case .acceptLinkRequest(userId: let userId, joinCode: let joinCode, userType: let userType):
+            return ["userId": userId, "joinCode": joinCode, "userType": userType.rawValue]
+        case .denyLinkRequest(userId: let userId, joinCode: let joinCode):
+            return ["userId": userId, "requestId": joinCode]
         }
     }
     
@@ -80,6 +85,21 @@ enum CloudFunction {
                 }
                 let data = result?.data as? Bool
                 completion(.success(data ?? false))
+            }
+        default: completion(.failure(CloudFunctionError.wrongCall))
+        }
+    }
+    
+    func callRemoveJoinRequest(completion: @escaping (Result<Bool, Error>) -> Void) {
+        switch self {
+        case .denyLinkRequest:
+            call { result, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                let data = result?.data as? Bool ?? false
+                completion(.success(data))
             }
         default: completion(.failure(CloudFunctionError.wrongCall))
         }

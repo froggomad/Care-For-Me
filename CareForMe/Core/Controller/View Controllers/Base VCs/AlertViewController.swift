@@ -77,19 +77,28 @@ class AlertView: UIView {
     }()
     
     private lazy var okButton: UIButton = {
-        return button()
+        let button = button()
+        
+        if yesNoMode {
+            okButton.setTitle("Yes", for: .normal)
+        } else {
+            okButton.setTitle("Ok", for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
+        return button
     }()
     
     private lazy var noButton: UIButton = {
         let button = button()
         button.setTitle("No", for: .normal)
+        button.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
         return button
     }()
     
     private func button() -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
         button.backgroundColor = .link
         button.tintColor = .white
         button.layer.shadowColor = UIColor.label.cgColor
@@ -128,31 +137,29 @@ class AlertView: UIView {
     }()
     
     private func layout() {
+        if yesNoMode {
+            buttonStackView.addArrangedSubview(noButton)
+        }
+        addSubview(parentStackView)
+        constraints()
+    }
+    
+    func constraints() {
         let innerSpacing: CGFloat = 8
         let outerSpacing: CGFloat = 40
         
-        addSubview(parentStackView)
         NSLayoutConstraint.activate([
             parentStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: innerSpacing*2),
             parentStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -outerSpacing),
             parentStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -innerSpacing*2),
             parentStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: outerSpacing)
         ])
-        
-        if yesNoMode {
-            okButton.setTitle("Yes", for: .normal)
-            buttonStackView.addArrangedSubview(noButton)
-        } else {
-            okButton.setTitle("Ok", for: .normal)
-        }
-        
     }
     
     @objc private func okTapped() {
         delegate?.dismissMe()
         closure(true)
     }
-    
     
     @objc private func cancelTapped() {
         delegate?.dismissMe()

@@ -44,6 +44,9 @@ class SettingsViewController: ParentDetailViewController, AuthenticableViewContr
             addToggle(toggle: toggle)
         }
         setTab()
+        NotificationCenter.default.addObserver(forName: .joinRequestChanged, object: nil, queue: .main) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -197,10 +200,11 @@ extension SettingsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let user = AuthService.shared.user else { return nil }
         if section == 0 {
             return "Actions"
         }
-        if section == 1 {
+        if section == 1 && user.privateDetails.joinRequests != nil && !user.privateDetails.joinRequests!.isEmpty {
             return "Join Requests"
         }
         return nil

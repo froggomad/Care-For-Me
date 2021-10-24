@@ -30,7 +30,7 @@ class CareNotificationController: NSObject {
     }
     
     func getNotificationsFromAPI(for userId: String, completion: @escaping () -> Void) {
-            dbController.observe(endpoint: .userNotifications(userId: userId)) { [weak self] snapshot in
+            dbController.observe(ref: .userNotifications(userId: userId)) { [weak self] snapshot in
                 guard snapshot.exists() else { return }
                 
                 let unreadNotificationData = snapshot.childSnapshot(forPath: FirebaseMessagingController.NotificationType.unread.rawValue)
