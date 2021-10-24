@@ -781,10 +781,9 @@
 		AAE2B60C26C4A0B90070BC7D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */,
+				AAF2346027250BB7005A940C /* View Controllers */,
 				AADB36E827120433009871ED /* UserLinkController.swift */,
 				AADA72222722036E00EAD2A8 /* LinkRequestViewController.swift */,
-				AAF2345E27250B82005A940C /* SettingsLinkVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -915,6 +914,15 @@
 				AAF1971A2714F3C80057D511 /* UserTypeSelectionController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		AAF2346027250BB7005A940C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2B60F26C4A0F00070BC7D /* OnboardingLinkVC.swift */,
+				AAF2345E27250B82005A940C /* SettingsLinkVC.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		AAF7C8A0269A091B00EB11EC /* StockImagePicker */ = {
