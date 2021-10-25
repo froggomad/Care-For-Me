@@ -17,6 +17,7 @@ enum TabBar: Int {
         tabBar.modalPresentationStyle = .fullScreen
         tabBar.viewControllers = [
             NavigationViewController.main.navigationController,
+            NavigationViewController.calendar.navigationController,
             NavigationViewController.notifications.navigationController,
             NavigationViewController.settings.navigationController
         ]
@@ -53,6 +54,7 @@ class MainTabController: UITabBarController {
 private enum NavigationViewController {
     
     case main
+    case calendar
     case notifications
     case settings
     
@@ -62,6 +64,8 @@ private enum NavigationViewController {
             return MainViewController()
         case .notifications:
             return NotificationListViewController()
+        case .calendar:
+            return CalendarViewController()
         case .settings:
             return SettingsViewController()
         }

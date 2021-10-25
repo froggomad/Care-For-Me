@@ -17,8 +17,17 @@ class CalendarViewController: UIViewController, DateChangeDelegate, Authenticabl
     
     lazy var calView = CalendarView(month: month, collectionViewDelegate: self, collectionViewDataSource: self, monthChangeDelegate: self)
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        setTabBar()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
+    
     override func loadView() {
-        super.loadView()
+        super.loadView()        
         view = calView
     }
     
@@ -26,14 +35,24 @@ class CalendarViewController: UIViewController, DateChangeDelegate, Authenticabl
         super.viewDidAppear(animated)
         authenticate()
     }
+    
+    private func setTabBar() {
+        self.title = "Calendar"
+        self.tabBarItem.image = UIImage(systemName: "calendar")
+        self.tabBarItem.selectedImage = UIImage(systemName: "calendar.fill")
+    }
 }
 
 // MARK: - Collection View Conformance -
 extension CalendarViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        print(month.date(from: indexPath))
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = .red
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! DateCollectionViewCell
+        if month.date(from: indexPath) >= Date() {
+            cell.backgroundColor = .red
+        }
+        
+        let vc = DayDetailViewController(day: month.date(from: indexPath), events: [CalendarEvent.mockEvent])
+        present(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
