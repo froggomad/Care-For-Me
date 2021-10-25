@@ -121,17 +121,17 @@ class DayDetailTableViewCell: UITableViewCell {
         fatalError("programmatic view")
     }
     
+    private func setupViews() {
+        if !subviews.contains(stackView) {
+            addSubview(stackView)
+        }
+        setLabels()
+        constraints()
+    }
+    
     private func setLabels() {
         titleLabel.text = event?.title
         notesLabel.text = event?.notes
-    }
-    
-    private func setupViews() {
-        if !subviews.contains(stackView) {
-            setLabels()
-            addSubview(stackView)
-            constraints()
-        }
     }
     
     private func constraints() {
