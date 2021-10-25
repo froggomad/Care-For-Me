@@ -11,11 +11,28 @@ class DayDetailViewController: UIViewController, AuthenticableViewController {
     var day: Date
     var events: [CalendarEvent]
     
+    lazy var dayDetailView: DayDetailView = .init(tableViewDelegate: self,
+                                                  tableViewDataSource: self,
+                                                  day: day,
+                                                  navBarHeight: navigationController?.navigationBar.frame.height,
+                                                  tabBarHeight: tabBarController?.tabBar.frame.height)
+    
     init(day: Date, events: [CalendarEvent]) {
         self.day = day
         self.events = events
         super.init(nibName: nil, bundle: nil)
+        setupViews()
+    }
+    
+    private func setupViews() {
         modalPresentationStyle = .fullScreen
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc func addEvent() {
+        events.append(CalendarEvent.mockEvent)
+        dayDetailView.tableView.reloadData()
     }
     
     required init?(coder: NSCoder) {
@@ -29,10 +46,7 @@ class DayDetailViewController: UIViewController, AuthenticableViewController {
     
     override func loadView() {
         super.loadView()
-        let tabBarHeight = tabBarController?.tabBar.frame.height
-        let navBarHeight = navigationController?.navigationBar.frame.height
-        let dayView = DayDetailView(tableViewDelegate: self, tableViewDataSource: self, day: day, navBarHeight: navBarHeight, tabBarHeight: tabBarHeight)
-        self.view = dayView
+        self.view = dayDetailView
     }
 }
 

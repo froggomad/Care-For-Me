@@ -66,6 +66,8 @@
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
 		AACDA1062727000D00CA30DD /* String+height.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA1052727000D00CA30DD /* String+height.swift */; };
+		AACDA10C272746E900CA30DD /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA10B272746E900CA30DD /* CalendarEvent.swift */; };
+		AACDA10E2727471200CA30DD /* DayDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA10D2727471200CA30DD /* DayDetailTableViewCell.swift */; };
 		AACE9341271110A80030083A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE9340271110A80030083A /* UserController.swift */; };
 		AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */; };
 		AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150826A7E05C0010A9D7 /* Protocols.swift */; };
@@ -217,6 +219,8 @@
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
 		AACDA1052727000D00CA30DD /* String+height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+height.swift"; sourceTree = "<group>"; };
+		AACDA10B272746E900CA30DD /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		AACDA10D2727471200CA30DD /* DayDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailTableViewCell.swift; sourceTree = "<group>"; };
 		AACE9340271110A80030083A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextFieldView.swift; sourceTree = "<group>"; };
 		AAD1150826A7E05C0010A9D7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -609,6 +613,41 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		AACDA107272746A100CA30DD /* CalendarEvent */ = {
+			isa = PBXGroup;
+			children = (
+				AACDA10A272746DC00CA30DD /* Model */,
+				AACDA108272746B900CA30DD /* Controller */,
+				AACDA109272746C200CA30DD /* View */,
+			);
+			path = CalendarEvent;
+			sourceTree = "<group>";
+		};
+		AACDA108272746B900CA30DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AACDA109272746C200CA30DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AABE5314272625A80024BCC8 /* DayDetailView.swift */,
+				AACDA10D2727471200CA30DD /* DayDetailTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AACDA10A272746DC00CA30DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AACDA10B272746E900CA30DD /* CalendarEvent.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AAD0AAA526F7B30100F0321B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +706,7 @@
 		AAD6D13C26C5FA6D007595CA /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				AACDA107272746A100CA30DD /* CalendarEvent */,
 				AAD6D14426C5FCA7007595CA /* Model */,
 				AAD6D13F26C5FBC4007595CA /* Controller */,
 				AAD6D13E26C5FA86007595CA /* Delegate */,
@@ -682,7 +722,6 @@
 				AAD6D14B26C6058E007595CA /* MonthView.swift */,
 				AAD6D14726C60323007595CA /* WeekDayView.swift */,
 				AAD6D14926C60343007595CA /* DateCollectionView.swift */,
-				AABE5314272625A80024BCC8 /* DayDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -698,7 +737,6 @@
 			isa = PBXGroup;
 			children = (
 				AAD6D14026C5FBD4007595CA /* CalendarViewController.swift */,
-				AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1263,6 +1301,7 @@
 				AAE2B61226C4A1100070BC7D /* OnboardingPagedViewController.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
 				AABE531727265D1D0024BCC8 /* DayDetailViewController.swift in Sources */,
+				AACDA10C272746E900CA30DD /* CalendarEvent.swift in Sources */,
 				AA73E32026B9805D006FAD08 /* UISearchController+initWithDelegate.swift in Sources */,
 				AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
@@ -1305,6 +1344,7 @@
 				AADA72232722036E00EAD2A8 /* LinkRequestViewController.swift in Sources */,
 				AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */,
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
+				AACDA10E2727471200CA30DD /* DayDetailTableViewCell.swift in Sources */,
 				AAD6D14A26C60343007595CA /* DateCollectionView.swift in Sources */,
 				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
