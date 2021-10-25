@@ -39,6 +39,8 @@
 		AABB53E0268FAC0A00EF7ABC /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */; };
 		AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */; };
 		AABB53E4269025C000EF7ABC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AABB53E3269025C000EF7ABC /* FirebaseAuth */; };
+		AABE5315272625A80024BCC8 /* DayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE5314272625A80024BCC8 /* DayDetailView.swift */; };
+		AABE531727265D1D0024BCC8 /* DayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */; };
 		AABF3D26269BBF69008A2CC2 /* AddCategoryViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF3D25269BBF69008A2CC2 /* AddCategoryViewControllerView.swift */; };
 		AABF3D28269BBFFC008A2CC2 /* UIButton+underlinedTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF3D27269BBFFC008A2CC2 /* UIButton+underlinedTitle.swift */; };
 		AABF3D2A269BC021008A2CC2 /* UIStackView+componentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF3D29269BC021008A2CC2 /* UIStackView+componentView.swift */; };
@@ -187,6 +189,8 @@
 		AA8B6D1C26F4F91100D500A3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		AABB53DF268FAC0A00EF7ABC /* NotificationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModel.swift; sourceTree = "<group>"; };
 		AABB53E1268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+preferredFont(for style, weight).swift"; sourceTree = "<group>"; };
+		AABE5314272625A80024BCC8 /* DayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailView.swift; sourceTree = "<group>"; };
+		AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailViewController.swift; sourceTree = "<group>"; };
 		AABF3D25269BBF69008A2CC2 /* AddCategoryViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewControllerView.swift; sourceTree = "<group>"; };
 		AABF3D27269BBFFC008A2CC2 /* UIButton+underlinedTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+underlinedTitle.swift"; sourceTree = "<group>"; };
 		AABF3D29269BC021008A2CC2 /* UIStackView+componentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+componentView.swift"; sourceTree = "<group>"; };
@@ -676,6 +680,7 @@
 				AAD6D14B26C6058E007595CA /* MonthView.swift */,
 				AAD6D14726C60323007595CA /* WeekDayView.swift */,
 				AAD6D14926C60343007595CA /* DateCollectionView.swift */,
+				AABE5314272625A80024BCC8 /* DayDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -691,6 +696,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD6D14026C5FBD4007595CA /* CalendarViewController.swift */,
+				AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1253,6 +1259,7 @@
 				AA08787726B1BD4200AAFF3B /* CareTypeable.swift in Sources */,
 				AAE2B61226C4A1100070BC7D /* OnboardingPagedViewController.swift in Sources */,
 				AAE59FE726975B34008BF7FE /* ParentDetailViewController.swift in Sources */,
+				AABE531727265D1D0024BCC8 /* DayDetailViewController.swift in Sources */,
 				AA73E32026B9805D006FAD08 /* UISearchController+initWithDelegate.swift in Sources */,
 				AAD1150B26A7E0D40010A9D7 /* ExampleConformance.swift in Sources */,
 				AA5068B026918F00006F1126 /* RegistrationVC.swift in Sources */,
@@ -1275,6 +1282,7 @@
 				AA79AD0D2697FDDB00786881 /* ColorPickerViewController.swift in Sources */,
 				AA21E89F26A25E7700A2FBE4 /* AlertCategoryTableViewCell.swift in Sources */,
 				AA2BB8E8270E206C0052DD0B /* JoinRequestAcceptResponse.swift in Sources */,
+				AABE5315272625A80024BCC8 /* DayDetailView.swift in Sources */,
 				AAE262F42679A15100ABC882 /* AlertTypeCollectionViewCell.swift in Sources */,
 				AAD7DA07270FD4B500046BD7 /* AuthenticableViewController.swift in Sources */,
 				AAEB5160268267B000A0B741 /* FirebaseDatabaseController.swift in Sources */,
