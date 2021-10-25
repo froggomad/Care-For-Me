@@ -52,7 +52,7 @@ extension CalendarViewController: UICollectionViewDelegate {
         }
         
         let vc = DayDetailViewController(day: month.date(from: indexPath), events: [CalendarEvent.mockEvent])
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
