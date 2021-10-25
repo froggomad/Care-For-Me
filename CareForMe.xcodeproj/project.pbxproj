@@ -65,6 +65,7 @@
 		AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591E2698A5920090CAF2 /* ColorPickerView.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
 		AACD900A2692A3A0009740EA /* NotificationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */; };
+		AACDA1062727000D00CA30DD /* String+height.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA1052727000D00CA30DD /* String+height.swift */; };
 		AACE9341271110A80030083A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE9340271110A80030083A /* UserController.swift */; };
 		AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */; };
 		AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150826A7E05C0010A9D7 /* Protocols.swift */; };
@@ -215,6 +216,7 @@
 		AACA591E2698A5920090CAF2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
 		AACD90092692A3A0009740EA /* NotificationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDetailViewController.swift; sourceTree = "<group>"; };
+		AACDA1052727000D00CA30DD /* String+height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+height.swift"; sourceTree = "<group>"; };
 		AACE9340271110A80030083A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextFieldView.swift; sourceTree = "<group>"; };
 		AAD1150826A7E05C0010A9D7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 				AAEE98A926BCEE5600C51ABC /* UserDefaultsWrapper.swift */,
 				AAF1825126BF951C00D73651 /* Int+randomString.swift */,
 				AAF4F09E27038D2A0002CC38 /* DateFormatter+firebaseDate.swift */,
+				AACDA1052727000D00CA30DD /* String+height.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1295,6 +1298,7 @@
 				AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */,
 				AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */,
 				AAD4CF0E27140A73003E36BE /* UserTypeSelectionView.swift in Sources */,
+				AACDA1062727000D00CA30DD /* String+height.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */,
 				AAF7C8AB269ABA2500EB11EC /* NeedsModel.swift in Sources */,
