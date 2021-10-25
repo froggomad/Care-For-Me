@@ -29,7 +29,9 @@ class DayDetailViewController: UIViewController, AuthenticableViewController {
     
     override func loadView() {
         super.loadView()
-        let dayView = DayDetailView(tableViewDelegate: self, tableViewDataSource: self, day: day)
+        let tabBarHeight = tabBarController?.tabBar.frame.height
+        let navBarHeight = navigationController?.navigationBar.frame.height
+        let dayView = DayDetailView(tableViewDelegate: self, tableViewDataSource: self, day: day, navBarHeight: navBarHeight, tabBarHeight: tabBarHeight)
         self.view = dayView
     }
 }
@@ -49,17 +51,10 @@ extension DayDetailViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension Date {
-    func shortDateText() -> String {
+    func text(timeStyle: DateFormatter.Style = .none, dateStyle: DateFormatter.Style = .medium) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .short
-        return dateFormatter.string(from: self)
-    }
-    
-    func mediumDateText() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = timeStyle
+        dateFormatter.dateStyle = dateStyle
         return dateFormatter.string(from: self)
     }
 }

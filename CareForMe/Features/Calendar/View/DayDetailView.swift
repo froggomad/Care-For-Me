@@ -11,9 +11,16 @@ class DayDetailView: UIView {
     let day: Date
     weak var tableViewDataSource: UITableViewDataSource?
     weak var tableViewDelegate: UITableViewDelegate?
+    private var tabBarHeight: CGFloat?
+    private var navBarHeight: CGFloat?
     
-    required init(tableViewDelegate: UITableViewDelegate, tableViewDataSource: UITableViewDataSource, day: Date) {
+    private let titleFont = UIFont.preferredFont(for: .title3, weight: .bold)
+    private lazy var dayHeight = day.text().height(withConstrainedWidth: UIScreen.main.bounds.width, font: titleFont)
+    
+    required init(tableViewDelegate: UITableViewDelegate, tableViewDataSource: UITableViewDataSource, day: Date, navBarHeight: CGFloat?, tabBarHeight: CGFloat?) {
         self.day = day
+        self.tabBarHeight = tabBarHeight
+        self.navBarHeight = navBarHeight
         super.init(frame: .zero)
         self.tableViewDelegate = tableViewDelegate
         self.tableViewDataSource = tableViewDataSource
@@ -31,7 +38,12 @@ class DayDetailView: UIView {
     }()
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel.headlineLabel(text: "\(day.mediumDateText())")
+        let label = UILabel()
+        label.text = day.text()
+        label.font = titleFont
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.heightAnchor.constraint(equalToConstant: dayHeight).isActive = true
         return label
     }()
     
@@ -40,7 +52,10 @@ class DayDetailView: UIView {
         tv.register(DayDetailTableViewCell.self, forCellReuseIdentifier: DayDetailTableViewCell.reuseIdentifier)
         tv.dataSource = tableViewDataSource
         tv.delegate = tableViewDelegate
-        tv.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height - 120).isActive = true
+        
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        let uiItemsHeight = (navBarHeight ?? 0) + (tabBarHeight ?? 0)
+        tv.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height - dayHeight - uiItemsHeight - 20).isActive = true
         return tv
     }()
     
@@ -52,6 +67,7 @@ class DayDetailView: UIView {
     
     private func constraints() {
         let padding: CGFloat = 8
+
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
