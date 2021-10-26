@@ -68,6 +68,7 @@
 		AACDA1062727000D00CA30DD /* String+height.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA1052727000D00CA30DD /* String+height.swift */; };
 		AACDA10C272746E900CA30DD /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA10B272746E900CA30DD /* CalendarEvent.swift */; };
 		AACDA10E2727471200CA30DD /* DayDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA10D2727471200CA30DD /* DayDetailTableViewCell.swift */; };
+		AACDA1102727492F00CA30DD /* CalendarEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDA10F2727492F00CA30DD /* CalendarEventController.swift */; };
 		AACE9341271110A80030083A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE9340271110A80030083A /* UserController.swift */; };
 		AAD1150326A78DF60010A9D7 /* StatusTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */; };
 		AAD1150926A7E05C0010A9D7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1150826A7E05C0010A9D7 /* Protocols.swift */; };
@@ -221,6 +222,7 @@
 		AACDA1052727000D00CA30DD /* String+height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+height.swift"; sourceTree = "<group>"; };
 		AACDA10B272746E900CA30DD /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		AACDA10D2727471200CA30DD /* DayDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailTableViewCell.swift; sourceTree = "<group>"; };
+		AACDA10F2727492F00CA30DD /* CalendarEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventController.swift; sourceTree = "<group>"; };
 		AACE9340271110A80030083A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		AAD1150226A78DF60010A9D7 /* StatusTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextFieldView.swift; sourceTree = "<group>"; };
 		AAD1150826A7E05C0010A9D7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -627,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */,
+				AACDA10F2727492F00CA30DD /* CalendarEventController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1315,6 +1318,7 @@
 				AAC8EBE926C09A2A005FC455 /* ConfirmPinView.swift in Sources */,
 				AAE918A2268EF9AA003A8278 /* NotificationListTableView.swift in Sources */,
 				AA6B1978268D9923002B43BA /* CareUser.swift in Sources */,
+				AACDA1102727492F00CA30DD /* CalendarEventController.swift in Sources */,
 				AAE9189B268EF6F6003A8278 /* NotificationListViewController.swift in Sources */,
 				AAF2345F27250B82005A940C /* SettingsLinkVC.swift in Sources */,
 				AA8B6D1D26F4F91100D500A3 /* AlertViewController.swift in Sources */,
