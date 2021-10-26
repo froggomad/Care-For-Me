@@ -22,9 +22,29 @@ class FirebaseDatabaseController {
             completion(error)
         }
     }
+    /// Create a new database entry with an auto-created ID
+    /// - Parameters:
+    ///   - childRef: The path to the database entry
+    ///   - value: a Codable instance used to set keys and values
+    func createReferenceWithId<T: Codable>(for childRef: UserDatabaseAPIRef, using value: T, completion: @escaping (Error?) -> Void) {
+        do {
+            try Self.db.child(childRef.endpoint).childByAutoId().setValue(from: value, completion: completion)
+        } catch {
+            completion(error)
+        }
+    }
     
-    func setUserValue<T: Encodable>(for ref: UserDatabaseAPIRef, with value: T) {
-        try? Self.db.child(ref.endpoint).setValue(from: value)
+    func setUserValue<T: Encodable>(for ref: UserDatabaseAPIRef, endpoint: String? = nil, with value: T) {
+        var endpointRef: DatabaseReference
+        let dbRef = Self.db.child(ref.endpoint)
+        
+        if let endpoint = endpoint {
+            endpointRef = dbRef.child(endpoint)
+        } else {
+            endpointRef = dbRef
+        }
+        
+        try? endpointRef.setValue(from: value)
     }
     
     func setNotificationValue<T: Encodable>(for ref: NotificationAPIRef, with value: T) {
@@ -45,11 +65,17 @@ class FirebaseDatabaseController {
         ref.observe(event, with: completion)
     }
     
+    func delete(ref: UserDatabaseAPIRef, endpoint: String, completion: @escaping (Error?, DatabaseReference) -> Void) {
+        let ref = Self.db.child(ref.endpoint).child(endpoint)
+        ref.removeValue(completionBlock: completion)
+    }
+    
 }
 
 enum UserDatabaseAPIRef {
     case userRef(userId: String)
     case tokenRef(userId: String)
+    case eventRef(userId: String)
     case joinRequests(userId: String)
     case userLinkRef(userId: String)
     case publicDetailsRef(userId: String)
@@ -60,6 +86,8 @@ enum UserDatabaseAPIRef {
             return Self.userRefEndpoint(userId: userId)
         case let .tokenRef(userId):
             return Self.privateUserDetails(userId: userId)
+        case let .eventRef(userId: userId):
+            return Self.privateUserDetails(userId: userId) + "/events"
         case let .joinRequests(userId):
             return Self.privateUserDetails(userId: userId) + "/joinRequests"
         case let  .userLinkRef(userId):
