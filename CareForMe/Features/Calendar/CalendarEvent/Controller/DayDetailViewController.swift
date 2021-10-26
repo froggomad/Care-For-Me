@@ -7,9 +7,10 @@
 
 import UIKit
 
-class DayDetailViewController: UIViewController, AuthenticableViewController {
+class DayDetailViewController: UIViewController, AuthenticableViewController, CalendarEventDelegate {
     var day: Date
-    var events: [CalendarEvent]
+    var calendarEventController: CalendarEventController
+    lazy var events = calendarEventController.events
     
     lazy var dayDetailView: DayDetailView = .init(tableViewDelegate: self,
                                                   tableViewDataSource: self,
@@ -17,11 +18,17 @@ class DayDetailViewController: UIViewController, AuthenticableViewController {
                                                   navBarHeight: navigationController?.navigationBar.frame.height,
                                                   tabBarHeight: tabBarController?.tabBar.frame.height)
     
-    init(day: Date, events: [CalendarEvent]) {
+    init(day: Date, calendarEventController: CalendarEventController) {
         self.day = day
-        self.events = events
+        self.calendarEventController = calendarEventController
         super.init(nibName: nil, bundle: nil)
+        self.calendarEventController.delegate = self
         setupViews()
+    }
+    
+    func update() {
+        self.events = calendarEventController.events
+        dayDetailView.tableView.reloadData()
     }
     
     private func setupViews() {
@@ -31,7 +38,7 @@ class DayDetailViewController: UIViewController, AuthenticableViewController {
     }
     
     @objc func addEvent() {
-        events.append(CalendarEvent.mockEvent)
+        calendarEventController.saveEvent(CalendarEvent.mockEvent)
         dayDetailView.tableView.reloadData()
     }
     
