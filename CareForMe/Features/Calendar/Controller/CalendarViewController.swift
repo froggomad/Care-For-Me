@@ -51,7 +51,7 @@ extension CalendarViewController: UICollectionViewDelegate {
             cell.backgroundColor = .red
         }
         
-        let vc = DayDetailViewController(day: month.date(from: indexPath), events: [CalendarEvent.mockEvent])
+        let vc = DayDetailViewController(day: month.date(from: indexPath), calendarEventController: CalendarEventController())
         navigationController?.pushViewController(vc, animated: true)
     }
     
