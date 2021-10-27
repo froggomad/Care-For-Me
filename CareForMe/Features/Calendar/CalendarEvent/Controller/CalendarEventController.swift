@@ -9,7 +9,7 @@ import Foundation
 
 protocol CalendarEventDelegate: AnyObject {
     var calendarEventController: CalendarEventController { get set }
-    var events: [CalendarEvent] { get set }
+    var events: [Date: [CalendarEvent]] { get set }
     func update()
 }
 
@@ -21,21 +21,26 @@ extension CalendarEventDelegate {
 
 class CalendarEventController {
     let dbController = FirebaseDatabaseController()
-    var events: [CalendarEvent] {
+    var events: [Date: [CalendarEvent]] = [:] {
         didSet {
             delegate?.update()
         }
     }
     weak var delegate: CalendarEventDelegate?
     
-    init(events: [CalendarEvent] = [], delegate: CalendarEventDelegate? = nil) {
-        self.events = events
+    init(delegate: CalendarEventDelegate? = nil) {
         self.delegate = delegate
         observeEventsFromAPI()
     }
     
     func saveEvent(_ event: CalendarEvent) {
-        events.append(event)
+        
+        if events[event.date.dayDate()]?.isEmpty ?? true {
+            events[event.date.dayDate()] = [event]
+        } else {
+            events[event.date.dayDate()]!.append(event)
+        }
+        
         sendEventToAPI(event) { error in
             print(error)
         }
@@ -43,7 +48,7 @@ class CalendarEventController {
     }
     
     func deleteEvent(_ event: CalendarEvent) {
-        events.removeAll(where: { $0 == event })
+        events[event.date]
         deleteEventFromAPI(event: event) { error in
             print(error)
         }
@@ -59,12 +64,25 @@ class CalendarEventController {
             guard let self = self,
                   snapshot.exists()
             else {
-                self?.events = []
+                self?.events = [:]
                 return
             }
             do {
                 let events = try snapshot.data(as: [String: CalendarEvent].self)
-                self.events = Array(events.values)
+                
+                var dayEvents: [Date: [CalendarEvent]] = [:]
+                
+                events.forEach({
+                    
+                    let date = $1.date.dayDate()
+                    
+                    if dayEvents[date] != nil {
+                        dayEvents[date]!.append($1)
+                    } else {
+                        dayEvents[date] = [$1]
+                    }
+                })
+                self.events = dayEvents
             } catch {
                 print(error)
             }
@@ -87,4 +105,15 @@ class CalendarEventController {
 
 extension Notification.Name {
     static var eventsUpdated = Notification.Name(rawValue: "eventsUpdated")
+}
+
+extension Date {
+    func dayDate() -> Date {
+        let day = Calendar.current.dateComponents([.year, .day, .month], from: self)
+        print(day)
+        
+        let dayComponents = DateComponents(calendar: .current, timeZone: .current, year: day.year, month: day.month, day: day.day)
+        let date = dayComponents.date ?? Date()
+        return date
+    }
 }

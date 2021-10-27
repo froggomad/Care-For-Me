@@ -9,6 +9,8 @@ import UIKit
 
 class CalendarViewController: UIViewController, DateChangeDelegate, AuthenticableViewController {
     
+    private let eventController = CalendarEventController()
+    
     var month: CalendarMonth = .init() {
         didSet {
             calView.month = month
@@ -51,7 +53,7 @@ extension CalendarViewController: UICollectionViewDelegate {
             cell.backgroundColor = .red
         }
         
-        let vc = DayDetailViewController(day: month.date(from: indexPath), calendarEventController: CalendarEventController())
+        let vc = DayDetailViewController(day: month.date(from: indexPath), calendarEventController: eventController)
         navigationController?.pushViewController(vc, animated: true)
     }
     

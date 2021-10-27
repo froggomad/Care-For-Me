@@ -8,11 +8,11 @@
 import UIKit
 
 class DayDetailViewController: UIViewController, AuthenticableViewController, CalendarEventDelegate {
-    var day: Date
+    private var day: Date
     var calendarEventController: CalendarEventController
     lazy var events = calendarEventController.events
     
-    lazy var dayDetailView: DayDetailView = .init(tableViewDelegate: self,
+    private lazy var dayDetailView: DayDetailView = .init(tableViewDelegate: self,
                                                   tableViewDataSource: self,
                                                   day: day,
                                                   navBarHeight: navigationController?.navigationBar.frame.height,
@@ -31,19 +31,19 @@ class DayDetailViewController: UIViewController, AuthenticableViewController, Ca
         dayDetailView.tableView.reloadData()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("programmatic view")
+    }
+    
     private func setupViews() {
         modalPresentationStyle = .fullScreen
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
         navigationItem.rightBarButtonItem = button
     }
     
-    @objc func addEvent() {
-        calendarEventController.saveEvent(CalendarEvent.mockEvent)
-        dayDetailView.tableView.reloadData()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("programmatic view")
+    @objc private func addEvent() {
+        let vc = EventDetailViewController(eventController: calendarEventController)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,16 +58,21 @@ class DayDetailViewController: UIViewController, AuthenticableViewController, Ca
 }
 
 extension DayDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        events.count
+        events[day.dayDate()]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DayDetailTableViewCell.reuseIdentifier, for: indexPath) as! DayDetailTableViewCell
-        cell.event = events[indexPath.row]
+        cell.event = events[day.dayDate()]?[indexPath.row]
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = EventDetailViewController(eventController: calendarEventController, editMode: false, event: events[day.dayDate()]?[indexPath.row])
+        navigationController?.pushViewController(vc, animated: true)
+    }    
     
 }
 
