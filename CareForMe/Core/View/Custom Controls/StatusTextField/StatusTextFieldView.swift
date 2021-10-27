@@ -13,6 +13,7 @@ enum StatusType {
 }
 
 enum TextFieldType {
+    case empty
     case secure
     case email
 }
@@ -43,7 +44,7 @@ class StatusTextFieldView: UIView {
     let textFieldPlaceholderText: String?
     let instructionText: String?
     // MARK: - Views -
-    lazy var parentStack: UIStackView = .componentStack(elements: [exampleLabel,textField,instructionLabel])
+    lazy var parentStack: UIStackView = .componentStack(elements: [exampleLabel,textField,instructionLabel], distribution: .fill, horizontalAlignment: .leading)
     
     lazy var exampleLabel: UILabel = .captionLabel(text: exampleText)
     lazy var textField: UITextField = .borderedTextField(placeholderText: textFieldPlaceholderText)
@@ -100,6 +101,10 @@ class StatusTextFieldView: UIView {
             textField.isSecureTextEntry = true
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
+        case .empty:
+            textField.textContentType = .name
+            textField.autocapitalizationType = .none
+            textField.autocorrectionType = .yes
         }
     }
     

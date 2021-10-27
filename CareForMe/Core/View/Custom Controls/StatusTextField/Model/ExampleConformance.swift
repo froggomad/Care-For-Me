@@ -86,8 +86,6 @@ extension ExampleStatusTextFieldPasswordDelegate: StatusTextFieldDelegate {
 // MARK: - Outside Controller -
 final class Foo: NSObject, StatusTextFieldDelegate {
     
-    
-    
     enum FooError: Swift.Error, StatusErrorable {
         case badStuffHappenedHere
         

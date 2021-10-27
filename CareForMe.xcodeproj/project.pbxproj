@@ -61,6 +61,9 @@
 		AAC9D17B269656D700DB3FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */; };
 		AAC9D1812696A86200DB3FA5 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D1802696A86200DB3FA5 /* InstructionView.swift */; };
 		AAC9D1842696AB9100DB3FA5 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9D1832696AB9100DB3FA5 /* InstructionViewController.swift */; };
+		AACA25AF27286270007264BD /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA25AE27286270007264BD /* EventDetailViewController.swift */; };
+		AACA25B127287B7E007264BD /* UITextView+borderedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA25B027287B7E007264BD /* UITextView+borderedTextView.swift */; };
+		AACA25B327287FD4007264BD /* EmptyStatusTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA25B227287FD4007264BD /* EmptyStatusTextFieldDelegate.swift */; };
 		AACA591D269881660090CAF2 /* UIColor+isDarkColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591C269881660090CAF2 /* UIColor+isDarkColor.swift */; };
 		AACA591F2698A5920090CAF2 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACA591E2698A5920090CAF2 /* ColorPickerView.swift */; };
 		AACAF27026952C08005821B4 /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAF26F26952C08005821B4 /* AppSettingsController.swift */; };
@@ -215,6 +218,9 @@
 		AAC9D17A269656D700DB3FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AAC9D1802696A86200DB3FA5 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		AAC9D1832696AB9100DB3FA5 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		AACA25AE27286270007264BD /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		AACA25B027287B7E007264BD /* UITextView+borderedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+borderedTextView.swift"; sourceTree = "<group>"; };
+		AACA25B227287FD4007264BD /* EmptyStatusTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStatusTextFieldDelegate.swift; sourceTree = "<group>"; };
 		AACA591C269881660090CAF2 /* UIColor+isDarkColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+isDarkColor.swift"; sourceTree = "<group>"; };
 		AACA591E2698A5920090CAF2 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		AACAF26F26952C08005821B4 /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
@@ -630,6 +636,8 @@
 			children = (
 				AABE531627265D1D0024BCC8 /* DayDetailViewController.swift */,
 				AACDA10F2727492F00CA30DD /* CalendarEventController.swift */,
+				AACA25AE27286270007264BD /* EventDetailViewController.swift */,
+				AACA25B227287FD4007264BD /* EmptyStatusTextFieldDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -862,6 +870,7 @@
 				AABF3D2D269BC078008A2CC2 /* UITextField+borderedTextField.swift */,
 				AAFFECEC269CE03900847072 /* UIViewController+presentAlert.swift */,
 				AAFFECEE269D3AEA00847072 /* UIButton+fullWidthButton.swift */,
+				AACA25B027287B7E007264BD /* UITextView+borderedTextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1341,6 +1350,7 @@
 				AAF1825226BF951C00D73651 /* Int+randomString.swift in Sources */,
 				AAC5CCD826A9036800019BE8 /* PasswordStatusTextFieldDelegate.swift in Sources */,
 				AAD4CF0E27140A73003E36BE /* UserTypeSelectionView.swift in Sources */,
+				AACA25B327287FD4007264BD /* EmptyStatusTextFieldDelegate.swift in Sources */,
 				AACDA1062727000D00CA30DD /* String+height.swift in Sources */,
 				AA50685E2690AAA6006F1126 /* TapticFeedback.swift in Sources */,
 				AAC7C8E726A53C820008EFFE /* TargetSelector.swift in Sources */,
@@ -1350,6 +1360,7 @@
 				AAE262EB2679539800ABC882 /* AlertType.swift in Sources */,
 				AACDA10E2727471200CA30DD /* DayDetailTableViewCell.swift in Sources */,
 				AAD6D14A26C60343007595CA /* DateCollectionView.swift in Sources */,
+				AACA25B127287B7E007264BD /* UITextView+borderedTextView.swift in Sources */,
 				AA79AD0B2697FDAF00786881 /* Color.swift in Sources */,
 				AAC9D177269652E200DB3FA5 /* LabeledToggle.swift in Sources */,
 				AAFFECED269CE03900847072 /* UIViewController+presentAlert.swift in Sources */,
@@ -1369,6 +1380,7 @@
 				AAC5CCD526A872B800019BE8 /* StatusTextField.swift in Sources */,
 				AABB53E2268FC0E900EF7ABC /* UILabel+preferredFont(for style, weight).swift in Sources */,
 				AAE262F22679716500ABC882 /* CareCollectionView.swift in Sources */,
+				AACA25AF27286270007264BD /* EventDetailViewController.swift in Sources */,
 				AABF3D2A269BC021008A2CC2 /* UIStackView+componentView.swift in Sources */,
 				AAE262EF2679705000ABC882 /* AlertTypeViewModel.swift in Sources */,
 				AAE262F62679AA3600ABC882 /* UIView+programmatic.swift in Sources */,
